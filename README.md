@@ -1,4 +1,4 @@
-# 2022-2C--E-Historias-Clinicas
+# 2022-2C-E-Historias-Clinicas
 # Historias Clinicas 📖
 
 ## Objetivos 📋
