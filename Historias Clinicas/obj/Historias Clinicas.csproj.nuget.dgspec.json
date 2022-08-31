@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {}
+    "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {
+    "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+        "projectUniqueName": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
         "projectName": "Historias Clinicas",
-        "projectPath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+        "projectPath": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
         "packagesPath": "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+        "outputPath": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mateo Bellomo\\AppData\\Roaming\\NuGet\\NuGet.Config",
