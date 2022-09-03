@@ -1,10 +1,11 @@
-﻿namespace Historias_Clinicas.Models
+﻿using Microsoft.VisualBasic;
+using System;
+
+namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
         public int IDMedico { get; set; }
-
-        public string Descripcion { get; set; }
 
         public DateAndTime FechaYHoraInicio { get; set; }
 

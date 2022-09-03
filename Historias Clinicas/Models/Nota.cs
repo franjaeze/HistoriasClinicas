@@ -1,4 +1,6 @@
-﻿namespace Historias_Clinicas.Models
+﻿using Microsoft.VisualBasic;
+
+namespace Historias_Clinicas.Models
 {
     public class Nota
     {
