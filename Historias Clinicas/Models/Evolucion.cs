@@ -5,7 +5,8 @@ namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
-        public int IDMedico { get; set; }
+        public int Id { get; set; }
+        public int MedicoId { get; set; }
 
         public DateAndTime FechaYHoraInicio { get; set; }
 
