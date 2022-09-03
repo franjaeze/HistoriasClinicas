@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Historias Clinicas",
+    "\\Historias Clinicas\\bin",
+    "\\Historias Clinicas\\Controllers",
+    "\\Historias Clinicas\\obj",
+    "\\Historias Clinicas\\Properties"
   ],
+  "SelectedNode": "\\Historias Clinicas",
   "PreviewInSolutionExplorer": false
 }
