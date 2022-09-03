@@ -2,5 +2,6 @@
 {
     public class HistoriaClinica
     {
+        public int IDPaciente { get; set; }
     }
 }
