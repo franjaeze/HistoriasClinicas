@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Models
 {
-    public class HistoriaClinica
+    public class Empleado
     {
-        public int IDPaciente { get; set; }
     }
 }

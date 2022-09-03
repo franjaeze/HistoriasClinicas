@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-
-namespace Historias_Clinicas.Models
+﻿namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
