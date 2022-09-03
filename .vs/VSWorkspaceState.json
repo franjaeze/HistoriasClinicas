@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Historias Clinicas",
-    "\\Historias Clinicas\\bin",
-    "\\Historias Clinicas\\Models",
-    "\\Historias Clinicas\\Views",
-    "\\Historias Clinicas\\wwwroot"
+    "\\Historias Clinicas"
   ],
+  "SelectedNode": "\\Historias Clinicas\\Historias Clinicas.sln",
   "PreviewInSolutionExplorer": false
 }
