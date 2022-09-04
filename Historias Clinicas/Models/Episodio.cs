@@ -5,7 +5,8 @@ namespace Historias_Clinicas.Models
 {
     public class Episodio
     {
-        public int IDMedico { get; set; }
+        public int Id { get; set; }
+        public int MedicoId { get; set; }
 
         public string Descripcion { get; set; }
 
@@ -17,6 +18,6 @@ namespace Historias_Clinicas.Models
 
         public Boolean EstadoAbierto { get; set; }
 
-        public int IDEmpleadoRegistra { get; set; }
+        public int EmpleadoRegistraId { get; set; }
     }
 }
