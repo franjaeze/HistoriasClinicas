@@ -9,7 +9,6 @@ namespace Historias_Clinicas.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public String Nombre { get; set; }
         public String Apellido { get; set; }
 
