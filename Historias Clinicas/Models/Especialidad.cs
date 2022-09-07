@@ -7,8 +7,19 @@ namespace Historias_Clinicas.Models
 {
     public enum Especialidad
     {
+        Cardiologia,
+        ClinicaMedica,
         Dermatologia,
-        Otorrinolaringologia
+        Ginecologia,
+        Nefrología,
+        Neumología,
+        Neurología,
+        Oncologia,
+        Otorrinolaringologia,
+        Pediatría,
+        Psiquiatría,
+        Rehabilitación,
+        Reumatología
 
     }
 }
