@@ -5,7 +5,21 @@ using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Models
 {
-    public class Especialidad
+    public enum Especialidad
     {
+        Cardiologia,
+        ClinicaMedica,
+        Dermatologia,
+        Ginecologia,
+        Nefrología,
+        Neumología,
+        Neurología,
+        Oncologia,
+        Otorrinolaringologia,
+        Pediatría,
+        Psiquiatría,
+        Rehabilitación,
+        Reumatología
+
     }
 }
