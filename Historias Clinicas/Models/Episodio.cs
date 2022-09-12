@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Collections.Generic;
 
 namespace Historias_Clinicas.Models
 {
@@ -18,6 +19,11 @@ namespace Historias_Clinicas.Models
 
         public Boolean EstadoAbierto { get; set; }
 
-        public int EmpleadoRegistraId { get; set; }
+        public int EmpleadoId { get; set; }
+
+        public List<Evolucion> Evoluciones { get; set; }
+
+        public Epicrisis Epicrisis { get; set; }
+
     }
 }

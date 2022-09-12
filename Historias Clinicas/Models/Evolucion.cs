@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Collections.Generic;
 
 namespace Historias_Clinicas.Models
 {
@@ -17,5 +18,7 @@ namespace Historias_Clinicas.Models
         public Boolean EstadoAbierto { get; set; }
 
         public string DescripcionAtencion { get; set; }
+
+        public List<Nota> Notas { get; set; }
     }
 }
