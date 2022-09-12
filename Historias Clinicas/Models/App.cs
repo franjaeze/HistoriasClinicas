@@ -13,5 +13,13 @@ namespace Historias_Clinicas.Models
         public String Direccion { get; set; }
 
         public String Telefono { get; set; }
+
+        public List<Paciente> Pacientes{ get; set; }
+
+        public List<Medico> Medicos { get; set; }
+
+        public List<Empleado> Empleados { get; set; }
+
+        public List<Usuario> Usuarios { get; set; }
     }
 }
