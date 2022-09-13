@@ -7,5 +7,12 @@ namespace Historias_Clinicas.Models
 {
     public class Epicrisis
     {
+        public int Id { get; set; }
+
+        public int MedicoId { get; set; }
+
+        public DateTime FechaYHora { get; set; }
+
+        public List<Diagnostico> Diagnostico { get; set; }
     }
 }

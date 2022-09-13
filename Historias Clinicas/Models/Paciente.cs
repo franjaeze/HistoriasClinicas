@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Models
 {
-    public class Paciente
+    public class Paciente : Persona
     {
+
+        public String  ObraSocial { get; set; }
+
     }
 }

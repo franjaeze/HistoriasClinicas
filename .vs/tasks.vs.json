@@ -5,6 +5,11 @@
       "taskLabel": "task-2022-2C-E-Historias-Clinicas",
       "appliesTo": "/",
       "type": "launch"
+    },
+    {
+      "taskLabel": "task-Models",
+      "appliesTo": "Historias Clinicas/Models/",
+      "type": "launch"
     }
   ]
 }
