@@ -16,6 +16,10 @@ namespace Historias_Clinicas.Models
 
         public String Recomendacion { get; set; }
 
+        public String Tratamiento { get; set; }
 
+        public String EstudiosEfectuados { get; set; }
+
+        public Especialidad Especialidad { get; set; }
     }
 }
