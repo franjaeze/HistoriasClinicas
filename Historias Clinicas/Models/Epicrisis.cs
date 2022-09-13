@@ -13,5 +13,6 @@ namespace Historias_Clinicas.Models
 
         public DateTime FechaYHora { get; set; }
 
+        public List<Diagnostico> Diagnostico { get; set; }
     }
 }
