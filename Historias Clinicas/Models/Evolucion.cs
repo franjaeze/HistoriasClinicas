@@ -19,6 +19,12 @@ namespace Historias_Clinicas.Models
 
         public string DescripcionAtencion { get; set; }
 
+        public string Indicaciones { get; set; }
+
+        public Boolean PrecisaEstudiosAdicionales { get; set; }
+
+        public Boolean PrecisaInterconsultaMedica { get; set; }
+
         public List<Nota> Notas { get; set; }
     }
 }
