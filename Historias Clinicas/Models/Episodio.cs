@@ -7,6 +7,9 @@ namespace Historias_Clinicas.Models
     public class Episodio
     {
         public int Id { get; set; }
+
+        public int PacienteId { get; set; }
+
         public int MedicoId { get; set; }
 
         public string Descripcion { get; set; }

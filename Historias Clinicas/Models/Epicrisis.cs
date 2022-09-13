@@ -11,6 +11,8 @@ namespace Historias_Clinicas.Models
 
         public int MedicoId { get; set; }
 
+        public int PacienteId { get; set; }
+
         public String Resumen { get; set; }
 
         public int DiasInternacion { get; set; }
