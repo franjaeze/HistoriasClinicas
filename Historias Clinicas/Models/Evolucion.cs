@@ -1,12 +1,15 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
         public int Id { get; set; }
+
+        [Required]
         public int MedicoId { get; set; }
 
         public DateAndTime FechaYHoraInicio { get; set; }
