@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Models
 {
-    public class Medico : Persona
+    public class MedicoPaciente
     {
+        [Required]
+        [Key]
+        public int MedicoId { get; set; }
 
         [Required]
-        public int Matricula { get; set; }
-
-        public List<Especialidad> Especialidades { get; set; }
+        [Key]
+        public int PacienteId { get; set; }
 
     }
 }
