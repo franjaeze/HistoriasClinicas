@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Oj4jX+Awg4LApFakgisg54K0X5Jg9EnG/kWvXA3MxUrQa2JI2Nj9OHu16S1E2kOlf8zQYtN4fzmZ+S8tJG4f4A==",
+  "dgSpecHash": "WaSE/4nFrmm7Z8qBsPICu5tHA09EX2mXaczqsSEZVpRKcWnLeMqvRWvqrIZbTl9wI8aB40rDu1NRdrfRLt+ulg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.29\\microsoft.netcore.app.host.win-x64.3.1.29.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
