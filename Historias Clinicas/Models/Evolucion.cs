@@ -9,6 +9,8 @@ namespace Historias_Clinicas.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
         public int MedicoId { get; set; }
 
         public DateAndTime FechaYHoraInicio { get; set; }
@@ -20,6 +22,12 @@ namespace Historias_Clinicas.Models
         public Boolean EstadoAbierto { get; set; }
 
         public string DescripcionAtencion { get; set; }
+
+        public string Indicaciones { get; set; }
+
+        public Boolean PrecisaEstudiosAdicionales { get; set; }
+
+        public Boolean PrecisaInterconsultaMedica { get; set; }
 
         public List<Nota> Notas { get; set; }
     }

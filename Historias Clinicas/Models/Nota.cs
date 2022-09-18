@@ -7,6 +7,8 @@ namespace Historias_Clinicas.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
         public string MedicoID { get; set; }
 
         public string Mensaje { get; set; }

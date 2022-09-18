@@ -5,4 +5,8 @@
     <RootNamespace>Historias_Clinicas</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.29" />
+  </ItemGroup>
+
 </Project>
