@@ -10,5 +10,6 @@ namespace Historias_Clinicas.Models
 		
 			public const string Requerido = "El campo es requerido";
 			public const string MinMaxString = "El campo {0} de estar en el rango correcto";
-	}
+            public const string NumerosPositivos = "El campo {0} debe contener numeros positivos";
+    }
 }

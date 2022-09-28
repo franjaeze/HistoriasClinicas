@@ -9,8 +9,12 @@ namespace Historias_Clinicas.Models
     {
         public int Id { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [StringLength(6, MinimumLength = 1, ErrorMessage = MensajeError.MinMaxString)] // Puede haber entre 0 y 999.999 medicos
+        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]  // En cada caracter solo se puede poner numeros de 0 a 9
         public int MedicoId { get; set; }
+
 
         public DateAndTime FechaYHoraInicio { get; set; }
 
@@ -20,14 +24,26 @@ namespace Historias_Clinicas.Models
 
         public Boolean EstadoAbierto { get; set; }
 
+
+        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public string DescripcionAtencion { get; set; }
 
+
+        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public string Indicaciones { get; set; }
 
+
+        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         public Boolean PrecisaEstudiosAdicionales { get; set; }
 
+
+        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         public Boolean PrecisaInterconsultaMedica { get; set; }
 
+
+        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         public List<Nota> Notas { get; set; }
     }
 }
