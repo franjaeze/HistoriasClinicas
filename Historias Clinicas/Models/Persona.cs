@@ -28,6 +28,7 @@ namespace Historias_Clinicas.Models
         public String Dni { get; set; }
 
         [DataType(DataType.PhoneNumber)]
+        [StringLength(16, MinimumLength = 8, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
 
