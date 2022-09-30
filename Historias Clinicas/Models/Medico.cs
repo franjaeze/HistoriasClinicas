@@ -10,17 +10,21 @@ namespace Historias_Clinicas.Models
     {
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [Required(ErrorMessage = MensajeError.UnaOpcion)] //Debe haber al menos 1 Matricula. Pueden existir MN y MP
-        public List<TipoDeMatricula> TiposDeMatriculas { get; set; }
+        [StringLength(8, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
+        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
+        public int MatriculaNacional{ get; set; }
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+        //ESTE CAMPO ES OPCIONAL, PUEDE SER NULO
         [StringLength(7, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
         [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
-        public int Matricula{ get; set; }
+        public int MatriculaProvincial { get; set; }
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+
         [Required(ErrorMessage = MensajeError.UnaOpcion)]//Al menos 1 Especialidad
         public List<Especialidad> Especialidades { get; set; }
 
+
+        [Required(ErrorMessage = MensajeError.Requerido)]
+        public Boolean EstaActivo { get; set; }
     }
 }
