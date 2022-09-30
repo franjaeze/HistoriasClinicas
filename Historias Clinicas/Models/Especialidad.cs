@@ -26,6 +26,5 @@ namespace Historias_Clinicas.Models
         Rehabilitación,
         Reumatología,
         Traumatologia
-
     }
 }
