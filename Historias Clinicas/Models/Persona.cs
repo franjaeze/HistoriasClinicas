@@ -41,7 +41,7 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.PhoneNumber)]
-        [StringLength(16, MinimumLength = 8, ErrorMessage = MensajeError.MinMaxString)]
+        [StringLength(15,MinimumLength =7, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
 

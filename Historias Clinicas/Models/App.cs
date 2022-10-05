@@ -4,8 +4,8 @@ using System.Linq;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using System.Text;
-using Historias_Clinicas.Models;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Historias_Clinicas.Models
 {
@@ -21,6 +21,9 @@ namespace Historias_Clinicas.Models
         [StringLength(40, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Direccion { get; set; }
 
+        [Required(ErrorMessage = MensajeError.Requerido)]
+        [DataType(DataType.PhoneNumber)]
+        [StringLength(15,MinimumLength =7, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
         public List<Paciente> Pacientes{ get; set; }
