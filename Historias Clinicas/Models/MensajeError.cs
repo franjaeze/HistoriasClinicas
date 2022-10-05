@@ -10,7 +10,7 @@ namespace Historias_Clinicas.Models
 		
 			public const string Requerido = "El campo es requerido";
 			public const string MinMaxString = "El campo {0} de estar en el rango correcto";
-		    public const string StringSoloAlfab = "El campo {0} solo admite caracteres alfabeticos"
+		public const string StringSoloAlfab = "El campo {0} solo admite caracteres alfabeticos";
 			
 	}
 }
