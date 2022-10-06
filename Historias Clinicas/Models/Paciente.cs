@@ -7,6 +7,9 @@ namespace Historias_Clinicas.Models
 {
     public class Paciente : Persona
     {
+
+
+
         [Required(ErrorMessage = MensajeError.Requerido)]
         public ObraSocial  ObraSocial { get; set; }
 
