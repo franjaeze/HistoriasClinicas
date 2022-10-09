@@ -16,21 +16,29 @@ namespace Historias_Clinicas.Models
         public int MedicoId { get; set; }
 
 
+        [DataType(DataType.Date)]
         public DateAndTime FechaYHoraInicio { get; set; }
 
+
+        [DataType(DataType.Date)]
         public DateAndTime FechaYHoraAlta { get; set; }
 
+
+        [DataType(DataType.Date)]
         public DateAndTime FechaYHoraCierre { get; set; }
+
 
         public Boolean EstadoAbierto { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public string DescripcionAtencion { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public string Indicaciones { get; set; }
 

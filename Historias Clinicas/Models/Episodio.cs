@@ -25,16 +25,19 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public string Descripcion { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public String Motivo { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
+        [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
         public String Antecedentes { get; set; }
 
@@ -42,11 +45,18 @@ namespace Historias_Clinicas.Models
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         public Boolean Internacion { get; set; }
 
+
+        [DataType(DataType.Date)]
         public DateAndTime FechaYHoraInicio { get; set; }
 
+
+        [DataType(DataType.Date)]
         public DateAndTime FechaYHoraAlta { get; set; }
 
+
+        [DataType(DataType.Date)]
         public DateAndTime FechaYHoraCierre { get; set; }
+
 
         public Boolean EstadoAbierto { get; set; }
 
