@@ -18,5 +18,6 @@ namespace Historias_Clinicas.Models
         public HistoriaClinica NroHistoriaClinica { get; set; }
 
 
+        public List<MedicoPaciente> MedicosPaciente { get; set; }
     }
 }
