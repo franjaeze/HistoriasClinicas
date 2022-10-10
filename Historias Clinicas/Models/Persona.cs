@@ -9,8 +9,11 @@ using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.Models
 {
+  
     public class Persona
-    {
+    {  
+        public Persona() { }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -46,7 +49,7 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-        public DateTime FechaDeAlta { get; set; }
+       public DateTime FechaDeAlta { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
