@@ -8,7 +8,8 @@ namespace Historias_Clinicas.Models
     public class Paciente : Persona
     {
 
-
+        public Paciente() { }
+        
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         public ObraSocial  ObraSocial { get; set; }
@@ -18,5 +19,6 @@ namespace Historias_Clinicas.Models
         public HistoriaClinica NroHistoriaClinica { get; set; }
 
 
+        public List<MedicoPaciente> MedicosPaciente { get; set; }
     }
 }

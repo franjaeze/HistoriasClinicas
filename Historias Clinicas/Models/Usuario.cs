@@ -9,9 +9,16 @@ namespace Historias_Clinicas.Models
 {
     public class Usuario : Persona
     {
+        public Usuario()
+        {
 
-    
-        public DateTime FechaAlta { get; set; }
+        }
+
+        public Usuario(int id, String nombre, string segundoNombre, String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario, String pass) : base(id, nombre, segundoNombre, apellido, dni, email, telefono, fechaAlta, usuario)
+        {
+            Password = pass;
+         
+        }
 
         
        [Required(ErrorMessage = MensajeError.Requerido)]

@@ -9,6 +9,11 @@ namespace Historias_Clinicas.Models
     public class Episodio
     {
 
+        public Episodio()
+        {
+
+        }
+
         public int Id { get; set; }
 
 
