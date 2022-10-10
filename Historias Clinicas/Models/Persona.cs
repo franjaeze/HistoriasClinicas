@@ -12,7 +12,24 @@ namespace Historias_Clinicas.Models
   
     public class Persona
     {  
-        public Persona() { }
+        public Persona() 
+        {
+            
+        }
+
+        public Persona(int id, String nombre, string segundoNombre,  String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario)
+        {
+            Id = id;
+            Nombre = nombre;
+            SegundoNombre = segundoNombre;
+            Apellido = apellido;
+            Dni = dni;
+            Email = email;
+            Telefono = telefono;
+            FechaDeAlta = fechaAlta;
+            Usuario = usuario;
+
+        }
 
         public int Id { get; set; }
 
