@@ -51,5 +51,17 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         public Usuario Usuario { get; set; }
+
+        public String NombreCompleto
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Apellido) && string.IsNullOrEmpty(Nombre)) return "Sin Definir";
+                if (string.IsNullOrEmpty(Apellido)) return Nombre;
+                if (string.IsNullOrEmpty(Nombre)) return Apellido.ToUpper();
+
+                return $"{Apellido.ToUpper()}, {Nombre}";
+            }
+        }
     }
 }
