@@ -8,7 +8,9 @@ namespace Historias_Clinicas.Models
 { 
 			public static class MensajeError{
 		
-			public const string Requerido = "El campo es requerido";
+			public const string Requerido = "El campo es obligatorio";
 			public const string MinMaxString = "El campo {0} de estar en el rango correcto";
+            public const string NumerosPositivos = "El campo {0} debe contener numeros positivos";
+			public const string UnaOpcion = "Se debe registrar al menos una opcion";
 	}
 }
