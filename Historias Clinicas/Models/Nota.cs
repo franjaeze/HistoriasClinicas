@@ -10,8 +10,9 @@ namespace Historias_Clinicas.Models
 
         }
 
-        public Nota (string medicoId, string mensaje, DateAndTime fechayhora )
+        public Nota (int id, string medicoId, string mensaje, DateAndTime fechayhora )
         {
+            Id = id;
             MedicoID = medicoId;
             Mensaje = mensaje;
             FechaYHora = fechayhora;

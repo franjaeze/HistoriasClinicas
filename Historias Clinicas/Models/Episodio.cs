@@ -8,11 +8,28 @@ namespace Historias_Clinicas.Models
 {
     public class Episodio
     {
-
         public Episodio()
         {
 
         }
+
+        public Episodio(int id, int pacienteId, int medicoId, string descripcion, string motivo, string antecedentes, bool internacion, DateAndTime fechaYHoraInicio, int empleadoId, List<Evolucion> evoluciones, Epicrisis epicrisis, Especialidad especialidad)
+        {
+            Id = id;
+            PacienteId = pacienteId;
+            MedicoId = medicoId;
+            Descripcion = descripcion;
+            Motivo = motivo;
+            Antecedentes = antecedentes;
+            Internacion = internacion;
+            FechaYHoraInicio = fechaYHoraInicio;
+            EstadoAbierto = true;
+            EmpleadoId = empleadoId;
+            Evoluciones = evoluciones;
+            Epicrisis = epicrisis;
+            Especialidad = especialidad;
+        }
+
 
         public int Id { get; set; }
 
@@ -38,13 +55,13 @@ namespace Historias_Clinicas.Models
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
-        public String Motivo { get; set; }
+        public string Motivo { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
-        public String Antecedentes { get; set; }
+        public string Antecedentes { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
