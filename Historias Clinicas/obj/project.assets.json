@@ -18,6 +18,31 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/Azure.Core.dll": {}
+<<<<<<< HEAD
+=======
+        }
+      },
+      "EntityFramework/6.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.CodeDom": "4.7.0",
+          "System.ComponentModel.Annotations": "4.7.0",
+          "System.Configuration.ConfigurationManager": "4.7.0",
+          "System.Data.SqlClient": "4.8.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/EntityFramework.SqlServer.dll": {},
+          "lib/netstandard2.1/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/EntityFramework.SqlServer.dll": {},
+          "lib/netstandard2.1/EntityFramework.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.0/EntityFramework.props": {},
+          "buildTransitive/netcoreapp3.0/EntityFramework.targets": {}
+>>>>>>> develop
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -877,6 +902,27 @@
           }
         }
       },
+<<<<<<< HEAD
+=======
+      "Microsoft.Win32.SystemEvents/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+>>>>>>> develop
       "NETStandard.Library/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -1181,6 +1227,18 @@
           "lib/netstandard1.1/System.Buffers.dll": {}
         }
       },
+<<<<<<< HEAD
+=======
+      "System.CodeDom/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.CodeDom.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {}
+        }
+      },
+>>>>>>> develop
       "System.Collections/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1352,7 +1410,11 @@
           "System.Security.Permissions": "4.5.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netstandard2.0/_._": {}
+=======
+          "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
+>>>>>>> develop
         },
         "runtime": {
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
@@ -1369,6 +1431,33 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Console.dll": {}
+<<<<<<< HEAD
+=======
+        }
+      },
+      "System.Data.SqlClient/4.8.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.7.0",
+          "System.Security.Principal.Windows": "4.7.0",
+          "runtime.native.System.Data.SqlClient.sni": "4.7.0"
+        },
+        "compile": {
+          "ref/netcoreapp2.1/System.Data.SqlClient.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Data.SqlClient.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+>>>>>>> develop
         }
       },
       "System.Diagnostics.Debug/4.3.0": {
@@ -1411,6 +1500,32 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
+<<<<<<< HEAD
+=======
+        }
+      },
+      "System.Drawing.Common/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.Win32.SystemEvents": "4.7.0"
+        },
+        "compile": {
+          "ref/netcoreapp3.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+>>>>>>> develop
         }
       },
       "System.Globalization/4.3.0": {
@@ -1975,7 +2090,11 @@
           "System.Security.Principal.Windows": "4.5.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netstandard2.0/_._": {}
+=======
+          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
+>>>>>>> develop
         },
         "runtime": {
           "lib/netstandard2.0/System.Security.AccessControl.dll": {}
@@ -2229,10 +2348,17 @@
           "System.Security.AccessControl": "4.5.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netstandard2.0/_._": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Security.Permissions.dll": {}
+=======
+          "ref/netcoreapp3.0/System.Security.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Security.Permissions.dll": {}
+>>>>>>> develop
         }
       },
       "System.Security.Principal/4.3.0": {
@@ -2253,7 +2379,11 @@
           "Microsoft.NETCore.Platforms": "2.0.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netstandard2.0/_._": {}
+=======
+          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {}
+>>>>>>> develop
         },
         "runtime": {
           "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
@@ -2396,6 +2526,27 @@
         },
         "compile": {
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
+<<<<<<< HEAD
+=======
+        }
+      },
+      "System.Windows.Extensions/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.7.0"
+        },
+        "compile": {
+          "ref/netcoreapp3.0/System.Windows.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Windows.Extensions.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+>>>>>>> develop
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -8031,11 +8182,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Paola\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Fran.000\\.nuget\\packages\\": {}
+>>>>>>> develop
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
       "projectName": "Historias Clinicas",
       "projectPath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
@@ -8044,6 +8200,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Paola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
+      "projectName": "Historias Clinicas",
+      "projectPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
+      "packagesPath": "C:\\Users\\Fran.000\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Fran.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> develop
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8118,7 +8284,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+>>>>>>> develop
       }
     }
   }
