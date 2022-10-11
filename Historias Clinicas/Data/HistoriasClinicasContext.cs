@@ -1,7 +1,5 @@
 ﻿using Historias_Clinicas.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 
 namespace Historias_Clinicas.Data
 {
