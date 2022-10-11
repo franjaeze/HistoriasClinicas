@@ -9,6 +9,23 @@ namespace Historias_Clinicas.Models
 {
     public class Diagnostico
     {
+
+        public Diagnostico() 
+         {
+         }
+
+        public Diagnostico(int id, int medicoId, String descripcion, String recomendacion, String tratamiento, String estudiosEfectuados, Especialidad especialidad)
+        
+        {
+            MedicoId = medicoId;
+            Descripcion = descripcion;
+            Recomendacion = recomendacion;
+            Tratamiento = tratamiento;
+            EstudiosEfectuados = estudiosEfectuados;
+            EspecialidadD = especialidad;
+        
+        }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -42,6 +59,6 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        public Especialidad Especialidad { get; set; }
+        public Especialidad EspecialidadD { get; set; }
     }
 }
