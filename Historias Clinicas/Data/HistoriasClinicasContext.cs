@@ -47,7 +47,7 @@ namespace Historias_Clinicas.Data
 
         public DbSet<Paciente> Pacientes { get; set; }
 
-        public DbSet<Persona> Persona { get; set; }
+        public DbSet<Persona> Personas { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }
 
