@@ -11,7 +11,12 @@ namespace Historias_Clinicas.Models
 {
     public class App
     {
+        public App()
+        {
 
+        }
+
+     
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]

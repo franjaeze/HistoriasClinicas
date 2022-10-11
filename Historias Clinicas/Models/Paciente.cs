@@ -1,6 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using System.Collections.Generic;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Historias_Clinicas.Models
