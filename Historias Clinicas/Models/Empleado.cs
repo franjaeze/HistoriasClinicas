@@ -9,6 +9,17 @@ namespace Historias_Clinicas.Models
 {
     public class Empleado : Persona
     {
+        public Empleado()
+        {
+
+        }
+
+        public Empleado(int id, String nombre, string segundoNombre, String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario, int legajo) : base(id, nombre, segundoNombre, apellido, dni, email, telefono, fechaAlta, usuario)
+        {
+            Legajo = legajo;
+
+        }
+
         [Required(ErrorMessage = MensajeError.Requerido)]
         public int Legajo { get; set; }
 
