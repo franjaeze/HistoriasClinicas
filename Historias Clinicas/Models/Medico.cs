@@ -7,6 +7,7 @@ namespace Historias_Clinicas.Models
 {
     public class Medico : Persona
     {
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -20,7 +21,6 @@ namespace Historias_Clinicas.Models
         public int MatriculaProvincial { get; set; }
 
 
-        //[Required(ErrorMessage = MensajeError.UnaOpcion)]//Al menos 1 Especialidad
         public Especialidad Especialidad { get; set; }
 
 

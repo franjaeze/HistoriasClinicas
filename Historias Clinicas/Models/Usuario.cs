@@ -7,15 +7,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Historias_Clinicas.Models
 {
-    public class Usuario : Persona
+    public class Usuario
     {
-        //public Usuario()
-        //{
 
-        //}
-        
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = MensajeError.Requerido)]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = MensajeError.MinMaxString)]
+        public string NombreUsuario { get; set; }    
+
        [Required(ErrorMessage = MensajeError.Requerido)]
-       [StringLength(20,MinimumLength =6, ErrorMessage = MensajeError.MinMaxString)]
+       [StringLength(20,MinimumLength = 6, ErrorMessage = MensajeError.MinMaxString)]
         public String Password { get; set; }
     }
 }

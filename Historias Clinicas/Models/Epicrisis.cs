@@ -9,10 +9,6 @@ namespace Historias_Clinicas.Models
     public class Epicrisis
     {
 
-        //public Epicrisis ()
-        //{ 
-        //}
-
          public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -49,7 +45,7 @@ namespace Historias_Clinicas.Models
         public DateTime FechaYHoraIngreso { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+
         public List<Diagnostico> Diagnosticos { get; set; }
 
     }

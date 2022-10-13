@@ -9,7 +9,7 @@ namespace Historias_Clinicas.Models
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+
         public Cobertura  ObraSocialP { get; set; }
 
 
