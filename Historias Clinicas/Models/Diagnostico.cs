@@ -10,10 +10,6 @@ namespace Historias_Clinicas.Models
     public class Diagnostico
     {
 
-        //public Diagnostico() 
-        // {
-        // }
-
         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -46,7 +42,7 @@ namespace Historias_Clinicas.Models
         public String EstudiosEfectuados { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+
         public Especialidad EspecialidadD { get; set; }
     }
 }

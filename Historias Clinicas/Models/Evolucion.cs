@@ -6,11 +6,7 @@ namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
-        //public Evolucion()
-        //{
-
-        //}
-        
+      
         public int Id { get; set; }
 
 
@@ -55,7 +51,6 @@ namespace Historias_Clinicas.Models
         public Boolean PrecisaInterconsultaMedica { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         public List<Nota> Notas { get; set; }
     }
 }
