@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JORo9UB1uhiM1bzShF35De0Nak9xMoL7jh9LGDQ1boohHHK1dwXkuyS0A+xiT6l/gMG+uDgmIdf/wO3G06DSng==",
+  "dgSpecHash": "wZHSZucEJwhQTdHxeHhtUvtLM4EO0yCINWbjlEylsujNaumbuFGnPyqkDXcZdSa/rYClJyXQWW/6wOLqrgAVjA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
   "expectedPackageFiles": [
@@ -166,14 +166,7 @@
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.29\\microsoft.netcore.app.host.win-x64.3.1.29.nupkg.sha512"
+    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.30\\microsoft.netcore.app.host.win-x64.3.1.30.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
