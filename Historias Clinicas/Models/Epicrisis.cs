@@ -9,23 +9,10 @@ namespace Historias_Clinicas.Models
     public class Epicrisis
     {
 
-        public Epicrisis ()
-        { 
-        }
+        //public Epicrisis ()
+        //{ 
+        //}
 
-        public Epicrisis (int id , int medicoId, int pacienteId, String resumen, int diasInternacion, DateTime fechaYHora, DateTime fechaAlta, DateTime fechaIngreso, List<Diagnostico> diagnostico )
-
-        {
-            MedicoId = medicoId;
-            PacienteId = pacienteId;
-            Resumen = resumen;
-            DiasInternacion = diasInternacion;
-            FechaYHora = fechaYHora;
-            FechaYHoraAlta = fechaAlta;
-            FechaYHoraIngreso = fechaIngreso;
-            Diagnosticos = diagnostico; 
-        }  
-            
          public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
