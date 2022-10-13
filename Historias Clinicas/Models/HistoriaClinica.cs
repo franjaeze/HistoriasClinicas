@@ -14,14 +14,6 @@ namespace Historias_Clinicas.Models
 
          }
 
-        public HistoriaClinica(int id, int pacienteid, List<Episodio> episodios)
-        {
-            Id = id;
-            PacienteId = pacienteid;
-            Episodios = episodios;
-
-        }
-
         public int Id { get; set; }
 
         [Required]

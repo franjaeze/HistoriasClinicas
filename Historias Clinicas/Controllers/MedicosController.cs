@@ -10,16 +10,16 @@ namespace Historias_Clinicas.Controllers
 {
     public class MedicosController : Controller
     {
-        private readonly HistoriasClinicasContext hcontext;
+        private readonly HistoriasClinicasContext _context;
 
         public MedicosController(HistoriasClinicasContext context)
         {
-            this.hcontext = context;
+            this._context = context;
         }
 
         public IActionResult Index()
         {
-            var medicos = hcontext.Medicos.ToList();
+            var medicos = _context.Medicos.ToList();
 
             return View();
         }
@@ -35,8 +35,8 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Create(int id, String nombre, string segundoNombre, String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario, int matriculan, int matriculap, List<Especialidad> especialidades, Boolean activo)
         {
             Medico medico = new Medico() { Id = id, Nombre = nombre, SegundoNombre = segundoNombre, Apellido = apellido, Dni = dni, Email = email, Telefono = telefono, FechaDeAlta = fechaAlta, Usuario = usuario, MatriculaNacional = matriculan, MatriculaProvincial = matriculap, Especialidades = especialidades, EstaActivo = activo };
-            hcontext.Medicos.Add(medico);
-            hcontext.SaveChanges();
+            _context.Medicos.Add(medico);
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
         }

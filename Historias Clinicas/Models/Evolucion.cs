@@ -12,19 +12,6 @@ namespace Historias_Clinicas.Models
 
         }
         
-        public Evolucion(int id, int medicoId, DateAndTime fechaYHoraInicio, string descripcionAtencion, string indicaciones, bool precisaEstudiosAdicionales, bool precisaInterconsultaMedica, List<Nota> notas)
-        {
-            Id = id;
-            MedicoId = medicoId;
-            FechaYHoraInicio = fechaYHoraInicio;
-            EstadoAbierto = true;
-            DescripcionAtencion = descripcionAtencion;
-            Indicaciones = indicaciones;
-            PrecisaEstudiosAdicionales = precisaEstudiosAdicionales;
-            PrecisaInterconsultaMedica = precisaInterconsultaMedica;
-            Notas = notas;
-        }
-
         public int Id { get; set; }
 
 

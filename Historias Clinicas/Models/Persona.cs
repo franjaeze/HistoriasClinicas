@@ -17,19 +17,6 @@ namespace Historias_Clinicas.Models
             
         }
 
-        public Persona(int id, String nombre, string segundoNombre,  String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario)
-        {
-            Id = id;
-            Nombre = nombre;
-            SegundoNombre = segundoNombre;
-            Apellido = apellido;
-            Dni = dni;
-            Email = email;
-            Telefono = telefono;
-            FechaDeAlta = fechaAlta;
-            Usuario = usuario;
-
-        }
 
         public int Id { get; set; }
 
@@ -66,7 +53,7 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-       public DateTime FechaDeAlta { get; set; }
+        public DateTime FechaDeAlta { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]

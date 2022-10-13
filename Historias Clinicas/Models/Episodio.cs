@@ -13,23 +13,6 @@ namespace Historias_Clinicas.Models
 
         }
 
-        public Episodio(int id, int pacienteId, int medicoId, string descripcion, string motivo, string antecedentes, bool internacion, DateAndTime fechaYHoraInicio, int empleadoId, List<Evolucion> evoluciones, Epicrisis epicrisis, Especialidad especialidad)
-        {
-            Id = id;
-            PacienteId = pacienteId;
-            MedicoId = medicoId;
-            Descripcion = descripcion;
-            Motivo = motivo;
-            Antecedentes = antecedentes;
-            Internacion = internacion;
-            FechaYHoraInicio = fechaYHoraInicio;
-            EstadoAbierto = true;
-            EmpleadoId = empleadoId;
-            Evoluciones = evoluciones;
-            Epicrisis = epicrisis;
-            Especialidad = especialidad;
-        }
-
 
         public int Id { get; set; }
 

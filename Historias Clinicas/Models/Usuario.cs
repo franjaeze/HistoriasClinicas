@@ -13,13 +13,6 @@ namespace Historias_Clinicas.Models
         {
 
         }
-
-        public Usuario(int id, String nombre, string segundoNombre, String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario, String pass) : base(id, nombre, segundoNombre, apellido, dni, email, telefono, fechaAlta, usuario)
-        {
-            Password = pass;
-         
-        }
-
         
        [Required(ErrorMessage = MensajeError.Requerido)]
        [StringLength(20,MinimumLength =6, ErrorMessage = MensajeError.MinMaxString)]

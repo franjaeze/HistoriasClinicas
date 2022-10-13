@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "38zGQHgkZfexQlASvxb87YuwgKijGcKPXrypfD5SX+yl0BFeJ2nf33ysd97OqvZhKhCxC6bEt5ScUeXMus4mAA==",
+  "dgSpecHash": "j6aiIripgNvEJRFFpiiT6mGD/soXpBr/8Ob4slCf69pzqynns2wcvZnqxzqALxmakL4HxT61mio9T5dsQIn/+w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
   "expectedPackageFiles": [
@@ -19,25 +19,25 @@
     "C:\\Users\\Paola\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\3.3.1\\microsoft.codeanalysis.workspaces.common.3.3.1.nupkg.sha512",
     "C:\\Users\\Paola\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Paola\\.nuget\\packages\\microsoft.data.sqlclient\\1.1.3\\microsoft.data.sqlclient.1.1.3.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.29\\microsoft.entityframeworkcore.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.29\\microsoft.entityframeworkcore.abstractions.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.29\\microsoft.entityframeworkcore.analyzers.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.25\\microsoft.entityframeworkcore.design.3.1.25.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\3.1.29\\microsoft.entityframeworkcore.inmemory.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.29\\microsoft.entityframeworkcore.relational.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.25\\microsoft.entityframeworkcore.sqlserver.3.1.25.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.25\\microsoft.entityframeworkcore.tools.3.1.25.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.29\\microsoft.extensions.caching.abstractions.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.29\\microsoft.extensions.caching.memory.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.29\\microsoft.extensions.configuration.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.29\\microsoft.extensions.configuration.abstractions.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.29\\microsoft.extensions.configuration.binder.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.29\\microsoft.extensions.dependencyinjection.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.29\\microsoft.extensions.dependencyinjection.abstractions.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.logging\\3.1.29\\microsoft.extensions.logging.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.29\\microsoft.extensions.logging.abstractions.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.options\\3.1.29\\microsoft.extensions.options.3.1.29.nupkg.sha512",
-    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.29\\microsoft.extensions.primitives.3.1.29.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.30\\microsoft.entityframeworkcore.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.30\\microsoft.entityframeworkcore.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.30\\microsoft.entityframeworkcore.analyzers.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.30\\microsoft.entityframeworkcore.design.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\3.1.30\\microsoft.entityframeworkcore.inmemory.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.30\\microsoft.entityframeworkcore.relational.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.30\\microsoft.entityframeworkcore.sqlserver.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.30\\microsoft.entityframeworkcore.tools.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.30\\microsoft.extensions.caching.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.30\\microsoft.extensions.caching.memory.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.30\\microsoft.extensions.configuration.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.30\\microsoft.extensions.configuration.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.30\\microsoft.extensions.configuration.binder.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.30\\microsoft.extensions.dependencyinjection.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.30\\microsoft.extensions.dependencyinjection.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.logging\\3.1.30\\microsoft.extensions.logging.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.30\\microsoft.extensions.logging.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.options\\3.1.30\\microsoft.extensions.options.3.1.30.nupkg.sha512",
+    "C:\\Users\\Paola\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.30\\microsoft.extensions.primitives.3.1.30.nupkg.sha512",
     "C:\\Users\\Paola\\.nuget\\packages\\microsoft.graph\\4.43.0\\microsoft.graph.4.43.0.nupkg.sha512",
     "C:\\Users\\Paola\\.nuget\\packages\\microsoft.graph.core\\2.0.13\\microsoft.graph.core.2.0.13.nupkg.sha512",
     "C:\\Users\\Paola\\.nuget\\packages\\microsoft.identity.client\\4.47.1\\microsoft.identity.client.4.47.1.nupkg.sha512",
@@ -161,12 +161,5 @@
     "C:\\Users\\Paola\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Paola\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
