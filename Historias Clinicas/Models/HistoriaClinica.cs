@@ -9,10 +9,10 @@ namespace Historias_Clinicas.Models
 {
     public class HistoriaClinica
     { 
-        public HistoriaClinica()
-         {
+        //public HistoriaClinica()
+        // {
 
-         }
+        // }
 
         public int Id { get; set; }
 

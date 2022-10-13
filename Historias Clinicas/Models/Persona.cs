@@ -12,10 +12,10 @@ namespace Historias_Clinicas.Models
   
     public class Persona
     {  
-        public Persona() 
-        {
+        //public Persona() 
+        //{
             
-        }
+        //}
 
 
         public int Id { get; set; }
@@ -56,7 +56,7 @@ namespace Historias_Clinicas.Models
         public DateTime FechaDeAlta { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+        //[Required(ErrorMessage = MensajeError.Requerido)]
         public Usuario Usuario { get; set; }
 
         public String NombreCompleto

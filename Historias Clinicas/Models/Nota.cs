@@ -1,14 +1,15 @@
 ﻿using Microsoft.VisualBasic;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Historias_Clinicas.Models
 {
     public class Nota
     {
-       public Nota ()
-        {
+       //public Nota ()
+       // {
 
-        }
+       // }
 
 
         public int Id { get; set; }
@@ -25,7 +26,7 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHora { get; set; }
+        public DateTime FechaYHora { get; set; }
 
     }
 }

@@ -10,9 +10,9 @@ namespace Historias_Clinicas.Models
     public class Diagnostico
     {
 
-        public Diagnostico() 
-         {
-         }
+        //public Diagnostico() 
+        // {
+        // }
 
         public int Id { get; set; }
 

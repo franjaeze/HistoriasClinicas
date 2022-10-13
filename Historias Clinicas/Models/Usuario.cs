@@ -9,10 +9,10 @@ namespace Historias_Clinicas.Models
 {
     public class Usuario : Persona
     {
-        public Usuario()
-        {
+        //public Usuario()
+        //{
 
-        }
+        //}
         
        [Required(ErrorMessage = MensajeError.Requerido)]
        [StringLength(20,MinimumLength =6, ErrorMessage = MensajeError.MinMaxString)]

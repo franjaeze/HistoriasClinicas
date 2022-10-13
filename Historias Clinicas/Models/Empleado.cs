@@ -9,12 +9,7 @@ namespace Historias_Clinicas.Models
 {
     public class Empleado : Persona
     {
-        public Empleado()
-        {
-
-        }
-
- 
+        public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         public int Legajo { get; set; }

@@ -9,9 +9,9 @@ namespace Historias_Clinicas.Models
     public class Epicrisis
     {
 
-        public Epicrisis ()
-        { 
-        }
+        //public Epicrisis ()
+        //{ 
+        //}
 
          public int Id { get; set; }
 
