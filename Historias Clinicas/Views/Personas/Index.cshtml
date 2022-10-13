@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Historias_Clinicas.Models.Medico>
+﻿@model IEnumerable<Historias_Clinicas.Models.Persona>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,18 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MatriculaNacional)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatriculaProvincial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Especialidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstaActivo)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -51,18 +39,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatriculaNacional)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatriculaProvincial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especialidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstaActivo)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>

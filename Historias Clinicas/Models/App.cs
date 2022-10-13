@@ -11,10 +11,10 @@ namespace Historias_Clinicas.Models
 {
     public class App
     {
-        public App()
-        {
+        //public App()
+        //{
 
-        }
+        //}
 
      
         [Required(ErrorMessage = MensajeError.Requerido)]

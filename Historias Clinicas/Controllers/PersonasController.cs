@@ -10,22 +10,22 @@ using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.Controllers
 {
-    public class MedicosController : Controller
+    public class PersonasController : Controller
     {
         private readonly HistoriasClinicasContext _context;
 
-        public MedicosController(HistoriasClinicasContext context)
+        public PersonasController(HistoriasClinicasContext context)
         {
             _context = context;
         }
 
-        // GET: Medicos
+        // GET: Personas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Medicos.ToListAsync());
+            return View(await _context.Personas.ToListAsync());
         }
 
-        // GET: Medicos/Details/5
+        // GET: Personas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var medico = await _context.Medicos
+            var persona = await _context.Personas
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (medico == null)
+            if (persona == null)
             {
                 return NotFound();
             }
 
-            return View(medico);
+            return View(persona);
         }
 
-        // GET: Medicos/Create
+        // GET: Personas/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Medicos/Create
+        // POST: Personas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MatriculaNacional,MatriculaProvincial,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(medico);
+                _context.Add(persona);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(medico);
+            return View(persona);
         }
 
-        // GET: Medicos/Edit/5
+        // GET: Personas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var medico = await _context.Medicos.FindAsync(id);
-            if (medico == null)
+            var persona = await _context.Personas.FindAsync(id);
+            if (persona == null)
             {
                 return NotFound();
             }
-            return View(medico);
+            return View(persona);
         }
 
-        // POST: Medicos/Edit/5
+        // POST: Personas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MatriculaNacional,MatriculaProvincial,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
         {
-            if (id != medico.Id)
+            if (id != persona.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(medico);
+                    _context.Update(persona);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MedicoExists(medico.Id))
+                    if (!PersonaExists(persona.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Historias_Clinicas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(medico);
+            return View(persona);
         }
 
-        // GET: Medicos/Delete/5
+        // GET: Personas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var medico = await _context.Medicos
+            var persona = await _context.Personas
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (medico == null)
+            if (persona == null)
             {
                 return NotFound();
             }
 
-            return View(medico);
+            return View(persona);
         }
 
-        // POST: Medicos/Delete/5
+        // POST: Personas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var medico = await _context.Medicos.FindAsync(id);
-            _context.Medicos.Remove(medico);
+            var persona = await _context.Personas.FindAsync(id);
+            _context.Personas.Remove(persona);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MedicoExists(int id)
+        private bool PersonaExists(int id)
         {
-            return _context.Medicos.Any(e => e.Id == id);
+            return _context.Personas.Any(e => e.Id == id);
         }
     }
 }

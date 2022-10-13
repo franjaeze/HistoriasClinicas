@@ -7,18 +7,7 @@ namespace Historias_Clinicas.Models
 {
     public class Medico : Persona
     {
-        public Medico()
-        {
-
-        }
-
-        public Medico(int id, String nombre, string segundoNombre, String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario, int matriculan, int matriculap, List<Especialidad> especialidades, Boolean activo) : base(id, nombre, segundoNombre, apellido, dni, email, telefono, fechaAlta, usuario)
-        {
-            MatriculaNacional = matriculan;
-            MatriculaProvincial = matriculap;
-            EstaActivo = activo;
-            Especialidades = especialidades;
-        }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(8, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
@@ -31,8 +20,8 @@ namespace Historias_Clinicas.Models
         public int MatriculaProvincial { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.UnaOpcion)]//Al menos 1 Especialidad
-        public List<Especialidad> Especialidades { get; set; }
+        //[Required(ErrorMessage = MensajeError.UnaOpcion)]//Al menos 1 Especialidad
+        public Especialidad Especialidad { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
