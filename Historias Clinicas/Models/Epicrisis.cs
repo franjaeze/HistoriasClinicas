@@ -8,7 +8,12 @@ namespace Historias_Clinicas.Models
 {
     public class Epicrisis
     {
-        public int Id { get; set; }
+
+        //public Epicrisis ()
+        //{ 
+        //}
+
+         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(6, MinimumLength = 1, ErrorMessage = MensajeError.MinMaxString)]
@@ -45,7 +50,7 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        public List<Diagnostico> Diagnostico { get; set; }
+        public List<Diagnostico> Diagnosticos { get; set; }
 
     }
 }

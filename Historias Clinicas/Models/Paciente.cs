@@ -1,6 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using System.Collections.Generic;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Historias_Clinicas.Models
@@ -8,15 +7,14 @@ namespace Historias_Clinicas.Models
     public class Paciente : Persona
     {
 
-        public Paciente() { }
-        
+        public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        public ObraSocial  ObraSocial { get; set; }
+        public Cobertura  ObraSocialP { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        public HistoriaClinica NroHistoriaClinica { get; set; }
+        public int HistoriaClincaId { get; set; }
 
 
         public List<MedicoPaciente> MedicosPaciente { get; set; }

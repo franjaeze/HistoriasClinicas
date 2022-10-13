@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Models
 {
-    public enum ObraSocial
+    public enum Cobertura
     {
         DOCTHOS,
         GALENO,

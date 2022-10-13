@@ -1,22 +1,17 @@
 ﻿using Microsoft.VisualBasic;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Historias_Clinicas.Models
 {
     public class Nota
     {
-       public Nota ()
-        {
+       //public Nota ()
+       // {
 
-        }
+       // }
 
-        public Nota (int id, string medicoId, string mensaje, DateAndTime fechayhora )
-        {
-            Id = id;
-            MedicoID = medicoId;
-            Mensaje = mensaje;
-            FechaYHora = fechayhora;
-        }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
@@ -31,7 +26,7 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHora { get; set; }
+        public DateTime FechaYHora { get; set; }
 
     }
 }
