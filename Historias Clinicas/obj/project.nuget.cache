@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bNT7rhFwzH1ye6pNbYegNRKAIjwVMfaqzttxLucbDhmpYJgxyAVib5U0TxQdZZ/ksDYzVA9kVM/aKNP3ovwfAg==",
+  "dgSpecHash": "7ZNTUTupithdhfXSJwV/wbbXN5IFub/Y1YKrhw0Ypz7vcZJMmtrXxAYzJJnogxKJJ2h/CivLCIMqy9dsSm1gCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+  "projectFilePath": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

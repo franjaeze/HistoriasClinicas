@@ -20,9 +20,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Episodios
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Episodios.ToListAsync());
+            return View(_context.Episodios.ToList());
         }
 
         // GET: Episodios/Details/5

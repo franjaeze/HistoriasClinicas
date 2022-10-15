@@ -20,9 +20,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Notas
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Notas.ToListAsync());
+            return View(_context.Notas.ToList());
         }
 
         // GET: Notas/Details/5

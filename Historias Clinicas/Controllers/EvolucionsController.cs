@@ -20,9 +20,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Evolucions
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Evoluciones.ToListAsync());
+            return View(_context.Evoluciones.ToList());
         }
 
         // GET: Evolucions/Details/5
