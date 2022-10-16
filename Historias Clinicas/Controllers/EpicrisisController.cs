@@ -20,9 +20,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Epicrisis
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Epicrisis.ToListAsync());
+            return View(_context.Epicrisis.ToListAsync());
         }
 
         // GET: Epicrisis/Details/5
