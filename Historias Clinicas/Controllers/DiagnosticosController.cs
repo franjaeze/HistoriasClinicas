@@ -20,9 +20,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Diagnosticos
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Diagnosticos.ToListAsync());
+            return View(_context.Diagnosticos.ToListAsync());
         }
 
         // GET: Diagnosticos/Details/5
