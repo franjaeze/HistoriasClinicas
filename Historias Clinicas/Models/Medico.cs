@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Historias_Clinicas.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,18 +14,11 @@ namespace Historias_Clinicas.Models
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(8, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
         [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
+        
         public int MatriculaNacional{ get; set; }
-
-        //ESTE CAMPO ES OPCIONAL, PUEDE SER NULO
-        [StringLength(7, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
-        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
-        public int MatriculaProvincial { get; set; }
-
 
         public Especialidad Especialidad { get; set; }
 
-
-        [Required(ErrorMessage = MensajeError.Requerido)]
         public Boolean EstaActivo { get; set; }
 
         public List<MedicoPaciente> MedicoPacientes { get; set; }
