@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Text;
 using Historias_Clinicas.Models;
+using Historias_Clinicas.Helpers;
 
 namespace Historias_Clinicas.Models
 {
@@ -14,6 +15,7 @@ namespace Historias_Clinicas.Models
     {  
 
         public int Id { get; set; }
+
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
@@ -33,6 +35,7 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
+        [DataType(Alias.DNI)]
         public String Dni { get; set; }
 
 
@@ -53,6 +56,7 @@ namespace Historias_Clinicas.Models
 
         public Usuario Usuario { get; set; }
 
+        [DataType(Alias.NombreCompleto)]
         public String NombreCompleto
         {
             get
