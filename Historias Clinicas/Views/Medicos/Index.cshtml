@@ -9,14 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.MatriculaNacional)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MatriculaProvincial)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Especialidad)
@@ -53,9 +51,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.MatriculaNacional)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatriculaProvincial)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Especialidad)

@@ -20,9 +20,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Medicos.ToListAsync());
+            return View( _context.Medicos.ToListAsync());
+        }
+
+        // GET: Medicos Menu de Opciones
+        public IActionResult Menu()
+        {
+            return View();
         }
 
         // GET: Medicos/Details/5
@@ -54,7 +60,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MatriculaNacional,MatriculaProvincial,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public async Task<IActionResult> Create([Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +92,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MatriculaNacional,MatriculaProvincial,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public async Task<IActionResult> Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (id != medico.Id)
             {
