@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj": {}
+    "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj": {
+    "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
+        "projectUniqueName": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj",
         "projectName": "Historias Clinicas",
-        "projectPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
-        "packagesPath": "C:\\Users\\Fran.000\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\obj\\",
+        "projectPath": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj",
+        "packagesPath": "C:\\Users\\anali\\.nuget\\packages\\",
+        "outputPath": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fran.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,35 +40,27 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.29, )"
+              "version": "[3.1.30, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[3.1.29, )"
+              "version": "[3.1.30, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[3.1.29, )"
+              "version": "[3.1.30, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.25, )"
+              "version": "[3.1.30, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.25, )"
-            },
-            "Microsoft.Graph": {
-              "target": "Package",
-              "version": "[4.43.0, )"
+              "version": "[3.1.30, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -81,7 +73,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -93,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

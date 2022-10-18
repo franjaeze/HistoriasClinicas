@@ -6,32 +6,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Text;
 using Historias_Clinicas.Models;
+using Historias_Clinicas.Helpers;
 
 namespace Historias_Clinicas.Models
 {
   
     public class Persona
     {  
-        public Persona() 
-        {
-            
-        }
-
-        public Persona(int id, String nombre, string segundoNombre,  String apellido, String dni, String email, String telefono, DateTime fechaAlta, Usuario usuario)
-        {
-            Id = id;
-            Nombre = nombre;
-            SegundoNombre = segundoNombre;
-            Apellido = apellido;
-            Dni = dni;
-            Email = email;
-            Telefono = telefono;
-            FechaDeAlta = fechaAlta;
-            Usuario = usuario;
-
-        }
 
         public int Id { get; set; }
+
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
@@ -51,6 +35,7 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
+        [DataType(Alias.DNI)]
         public String Dni { get; set; }
 
 
@@ -66,12 +51,12 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-       public DateTime FechaDeAlta { get; set; }
+        public DateTime FechaDeAlta { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
         public Usuario Usuario { get; set; }
 
+        [DataType(Alias.NombreCompleto)]
         public String NombreCompleto
         {
             get

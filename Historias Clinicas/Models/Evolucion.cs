@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,24 +6,7 @@ namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
-        public Evolucion()
-        {
-
-        }
-        
-        public Evolucion(int id, int medicoId, DateAndTime fechaYHoraInicio, string descripcionAtencion, string indicaciones, bool precisaEstudiosAdicionales, bool precisaInterconsultaMedica, List<Nota> notas)
-        {
-            Id = id;
-            MedicoId = medicoId;
-            FechaYHoraInicio = fechaYHoraInicio;
-            EstadoAbierto = true;
-            DescripcionAtencion = descripcionAtencion;
-            Indicaciones = indicaciones;
-            PrecisaEstudiosAdicionales = precisaEstudiosAdicionales;
-            PrecisaInterconsultaMedica = precisaInterconsultaMedica;
-            Notas = notas;
-        }
-
+      
         public int Id { get; set; }
 
 
@@ -35,15 +17,15 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHoraInicio { get; set; }
+        public DateTime FechaYHoraInicio { get; set; }
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHoraAlta { get; set; }
+        public DateTime FechaYHoraAlta { get; set; }
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHoraCierre { get; set; }
+        public DateTime FechaYHoraCierre { get; set; }
 
 
         public Boolean EstadoAbierto { get; set; }
@@ -69,7 +51,6 @@ namespace Historias_Clinicas.Models
         public Boolean PrecisaInterconsultaMedica { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         public List<Nota> Notas { get; set; }
     }
 }

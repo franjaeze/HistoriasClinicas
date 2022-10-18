@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Historias_Clinicas.Models;
@@ -8,28 +7,6 @@ namespace Historias_Clinicas.Models
 {
     public class Episodio
     {
-        public Episodio()
-        {
-
-        }
-
-        public Episodio(int id, int pacienteId, int medicoId, string descripcion, string motivo, string antecedentes, bool internacion, DateAndTime fechaYHoraInicio, int empleadoId, List<Evolucion> evoluciones, Epicrisis epicrisis, Especialidad especialidad)
-        {
-            Id = id;
-            PacienteId = pacienteId;
-            MedicoId = medicoId;
-            Descripcion = descripcion;
-            Motivo = motivo;
-            Antecedentes = antecedentes;
-            Internacion = internacion;
-            FechaYHoraInicio = fechaYHoraInicio;
-            EstadoAbierto = true;
-            EmpleadoId = empleadoId;
-            Evoluciones = evoluciones;
-            Epicrisis = epicrisis;
-            Especialidad = especialidad;
-        }
-
 
         public int Id { get; set; }
 
@@ -69,15 +46,15 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHoraInicio { get; set; }
+        public DateTime FechaYHoraInicio { get; set; }
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHoraAlta { get; set; }
+        public DateTime FechaYHoraAlta { get; set; }
 
 
         [DataType(DataType.Date)]
-        public DateAndTime FechaYHoraCierre { get; set; }
+        public DateTime FechaYHoraCierre { get; set; }
 
 
         public Boolean EstadoAbierto { get; set; }
