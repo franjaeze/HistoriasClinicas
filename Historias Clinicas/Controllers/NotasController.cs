@@ -37,7 +37,8 @@ namespace Historias_Clinicas.Controllers
                 .FirstOrDefault(m => m.Id == id);
             if (nota == null)
             {
-                return NotFound();
+                return Content($"La nota con id {id} no fue encontrada");
+                // Se cambio del NotFound para que no se rompa todo
             }
 
             return View(nota);
