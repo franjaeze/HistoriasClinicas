@@ -10,86 +10,85 @@ using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.Controllers
 {
-    public class EpisodiosController : Controller
+    public class HistoriasClinicasController : Controller
     {
         private readonly HistoriasClinicasContext _context;
 
-        public EpisodiosController(HistoriasClinicasContext context)
+        public HistoriasClinicasController(HistoriasClinicasContext context)
         {
             _context = context;
         }
 
-        // GET: Episodios
+        // GET: HistoriaClinicas
         public IActionResult Index()
         {
-            return View(_context.Episodios.ToList());
+            return View( _context.HistoriasClinicas.ToListAsync());
         }
 
-        // GET: Episodios/Details/5
-        public IActionResult Details(int? id)
+        // GET: HistoriaClinicas/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var episodio = _context.Episodios
-                .FirstOrDefault(m => m.Id == id);
-            if (episodio == null)
+            var historiaClinica = await _context.HistoriasClinicas
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (historiaClinica == null)
             {
-                return Content($"El episodio con id {id} no fue encontrado"); 
-                // Se cambio del NotFound para que no se rompa todo
+                return NotFound();
             }
 
-            return View(episodio);
+            return View(historiaClinica);
         }
 
-        // GET: Episodios/Create
+        // GET: HistoriaClinicas/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Episodios/Create
+        // POST: HistoriaClinicas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
+        public async Task<IActionResult> Create([Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(episodio);
-                _context.SaveChanges();
+                _context.Add(historiaClinica);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(episodio);
+            return View(historiaClinica);
         }
 
-        // GET: Episodios/Edit/5
-        public IActionResult Edit(int? id)
+        // GET: HistoriaClinicas/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var episodio = _context.Episodios.Find(id);
-            if (episodio == null)
+            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
+            if (historiaClinica == null)
             {
                 return NotFound();
             }
-            return View(episodio);
+            return View(historiaClinica);
         }
 
-        // POST: Episodios/Edit/5
+        // POST: HistoriaClinicas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
         {
-            if (id != episodio.Id)
+            if (id != historiaClinica.Id)
             {
                 return NotFound();
             }
@@ -98,12 +97,12 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(episodio);
-                    _context.SaveChanges();
+                    _context.Update(historiaClinica);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EpisodioExists(episodio.Id))
+                    if (!HistoriaClinicaExists(historiaClinica.Id))
                     {
                         return NotFound();
                     }
@@ -114,41 +113,41 @@ namespace Historias_Clinicas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(episodio);
+            return View(historiaClinica);
         }
 
-        // GET: Episodios/Delete/5
-        public IActionResult Delete(int? id)
+        // GET: HistoriaClinicas/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var episodio = _context.Episodios
-                .FirstOrDefault(m => m.Id == id);
-            if (episodio == null)
+            var historiaClinica = await _context.HistoriasClinicas
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (historiaClinica == null)
             {
                 return NotFound();
             }
 
-            return View(episodio);
+            return View(historiaClinica);
         }
 
-        // POST: Episodios/Delete/5
+        // POST: HistoriaClinicas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var episodio = _context.Episodios.Find(id);
-            _context.Episodios.Remove(episodio);
-            _context.SaveChanges();
+            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
+            _context.HistoriasClinicas.Remove(historiaClinica);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EpisodioExists(int id)
+        private bool HistoriaClinicaExists(int id)
         {
-            return _context.Episodios.Any(e => e.Id == id);
+            return _context.HistoriasClinicas.Any(e => e.Id == id);
         }
     }
 }
