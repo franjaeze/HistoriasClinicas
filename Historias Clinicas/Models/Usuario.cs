@@ -18,6 +18,7 @@ namespace Historias_Clinicas.Models
 
        [Required(ErrorMessage = MensajeError.Requerido)]
        [StringLength(20,MinimumLength = 6, ErrorMessage = MensajeError.MinMaxString)]
+       [DataType(DataType.Password)]
         public String Password { get; set; }
     }
 }
