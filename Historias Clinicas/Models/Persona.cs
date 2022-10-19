@@ -42,6 +42,7 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [EmailAddress]
+        [Display(Name = Alias.Email)]
         public String Email { get; set; }
 
 
