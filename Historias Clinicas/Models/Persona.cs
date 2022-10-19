@@ -10,20 +10,23 @@ using Historias_Clinicas.Helpers;
 
 namespace Historias_Clinicas.Models
 {
-  
+
     public class Persona
-    {  
+    {
 
         public int Id { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
+        string TextBoxData { get; set; }
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Nombre { get; set; }
 
 
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         [Display(Name = Alias.SegundoNombre)]
         public String SegundoNombre { get; set; }
@@ -36,6 +39,7 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
+        [RegularExpression("([0-9]+)", ErrorMessage = MensajeError.SoloNumeros)]
         [Display(Name = Alias.DNI)]
         public String Dni { get; set; }
 
