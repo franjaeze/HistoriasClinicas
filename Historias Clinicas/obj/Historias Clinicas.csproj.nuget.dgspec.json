@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {}
+    "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {
+    "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+        "projectUniqueName": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
         "projectName": "Historias Clinicas",
-        "projectPath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
-        "packagesPath": "C:\\Users\\Paola\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+        "projectPath": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+        "packagesPath": "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Paola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mateo Bellomo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,10 +73,17 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.30, 3.1.30]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -85,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
