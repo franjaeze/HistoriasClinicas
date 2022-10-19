@@ -10,22 +10,22 @@ using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.Controllers
 {
-    public class HistoriaClinicasController : Controller
+    public class AppsController : Controller
     {
         private readonly HistoriasClinicasContext _context;
 
-        public HistoriaClinicasController(HistoriasClinicasContext context)
+        public AppsController(HistoriasClinicasContext context)
         {
             _context = context;
         }
 
-        // GET: HistoriaClinicas
+        // GET: Apps
         public IActionResult Index()
         {
-            return View( _context.HistoriasClinicas.ToListAsync());
+            return View(_context.App.ToListAsync());
         }
 
-        // GET: HistoriaClinicas/Details/5
+        // GET: Apps/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas
+            var app = await _context.App
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (historiaClinica == null)
+            if (app == null)
             {
                 return NotFound();
             }
 
-            return View(historiaClinica);
+            return View(app);
         }
 
-        // GET: HistoriaClinicas/Create
+        // GET: Apps/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: HistoriaClinicas/Create
+        // POST: Apps/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Direccion,Telefono")] App app)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(historiaClinica);
+                _context.Add(app);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(historiaClinica);
+            return View(app);
         }
 
-        // GET: HistoriaClinicas/Edit/5
+        // GET: Apps/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
-            if (historiaClinica == null)
+            var app = await _context.App.FindAsync(id);
+            if (app == null)
             {
                 return NotFound();
             }
-            return View(historiaClinica);
+            return View(app);
         }
 
-        // POST: HistoriaClinicas/Edit/5
+        // POST: Apps/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Direccion,Telefono")] App app)
         {
-            if (id != historiaClinica.Id)
+            if (id != app.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(historiaClinica);
+                    _context.Update(app);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HistoriaClinicaExists(historiaClinica.Id))
+                    if (!AppExists(app.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Historias_Clinicas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(historiaClinica);
+            return View(app);
         }
 
-        // GET: HistoriaClinicas/Delete/5
+        // GET: Apps/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas
+            var app = await _context.App
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (historiaClinica == null)
+            if (app == null)
             {
                 return NotFound();
             }
 
-            return View(historiaClinica);
+            return View(app);
         }
 
-        // POST: HistoriaClinicas/Delete/5
+        // POST: Apps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
-            _context.HistoriasClinicas.Remove(historiaClinica);
+            var app = await _context.App.FindAsync(id);
+            _context.App.Remove(app);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HistoriaClinicaExists(int id)
+        private bool AppExists(int id)
         {
-            return _context.HistoriasClinicas.Any(e => e.Id == id);
+            return _context.App.Any(e => e.Id == id);
         }
     }
 }

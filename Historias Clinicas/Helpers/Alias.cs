@@ -20,7 +20,7 @@ namespace Historias_Clinicas.Helpers
         public const string NombreCompleto = "Nombre completo";
         public const string RolName = "Nombre";
         public const string MatriculaNacional = "Matricula Nacional";
-        
+        public const string NombreUsuario = "Usuario"; 
     }
 
     public static class AliasGUI

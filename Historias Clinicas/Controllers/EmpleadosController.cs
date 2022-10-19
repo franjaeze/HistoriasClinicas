@@ -10,22 +10,22 @@ using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.Controllers
 {
-    public class HistoriaClinicasController : Controller
+    public class EmpleadosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
 
-        public HistoriaClinicasController(HistoriasClinicasContext context)
+        public EmpleadosController(HistoriasClinicasContext context)
         {
             _context = context;
         }
 
-        // GET: HistoriaClinicas
-        public IActionResult Index()
+        // GET: Empleadoes
+        public  IActionResult Index()
         {
-            return View( _context.HistoriasClinicas.ToListAsync());
+            return View(_context.Empleados.ToListAsync());
         }
 
-        // GET: HistoriaClinicas/Details/5
+        // GET: Empleadoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas
+            var empleado = await _context.Empleados
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (historiaClinica == null)
+            if (empleado == null)
             {
                 return NotFound();
             }
 
-            return View(historiaClinica);
+            return View(empleado);
         }
 
-        // GET: HistoriaClinicas/Create
+        // GET: Empleadoes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: HistoriaClinicas/Create
+        // POST: Empleadoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
+        public async Task<IActionResult> Create([Bind("Id,Legajo,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(historiaClinica);
+                _context.Add(empleado);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(historiaClinica);
+            return View(empleado);
         }
 
-        // GET: HistoriaClinicas/Edit/5
+        // GET: Empleadoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
-            if (historiaClinica == null)
+            var empleado = await _context.Empleados.FindAsync(id);
+            if (empleado == null)
             {
                 return NotFound();
             }
-            return View(historiaClinica);
+            return View(empleado);
         }
 
-        // POST: HistoriaClinicas/Edit/5
+        // POST: Empleadoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Legajo,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Empleado empleado)
         {
-            if (id != historiaClinica.Id)
+            if (id != empleado.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(historiaClinica);
+                    _context.Update(empleado);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HistoriaClinicaExists(historiaClinica.Id))
+                    if (!EmpleadoExists(empleado.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Historias_Clinicas.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(historiaClinica);
+            return View(empleado);
         }
 
-        // GET: HistoriaClinicas/Delete/5
+        // GET: Empleadoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas
+            var empleado = await _context.Empleados
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (historiaClinica == null)
+            if (empleado == null)
             {
                 return NotFound();
             }
 
-            return View(historiaClinica);
+            return View(empleado);
         }
 
-        // POST: HistoriaClinicas/Delete/5
+        // POST: Empleadoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
-            _context.HistoriasClinicas.Remove(historiaClinica);
+            var empleado = await _context.Empleados.FindAsync(id);
+            _context.Empleados.Remove(empleado);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HistoriaClinicaExists(int id)
+        private bool EmpleadoExists(int id)
         {
-            return _context.HistoriasClinicas.Any(e => e.Id == id);
+            return _context.Empleados.Any(e => e.Id == id);
         }
     }
 }
