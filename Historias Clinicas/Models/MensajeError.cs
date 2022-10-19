@@ -12,6 +12,8 @@ namespace Historias_Clinicas.Models
 			public const string MinMaxString = "El campo {0} no se encuentra dentro de los rangos";
             public const string NumerosPositivos = "El campo {0} debe contener numeros positivos";
 			public const string UnaOpcion = "Se debe registrar al menos una opcion";
-	}       public const string SoloLetras = "El campo solo admite caracteres de la A a la Z";
+	        public const string SoloLetras = "El campo solo admite caracteres de la A a la Z";
 	        public const string SoloNumeros = "El campo solo admite numeros";
+
+    }
 }
