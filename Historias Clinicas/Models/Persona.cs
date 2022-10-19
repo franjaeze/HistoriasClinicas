@@ -25,6 +25,7 @@ namespace Historias_Clinicas.Models
 
         [DataType(DataType.Text)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
+        [Display(Name = Alias.SegundoNombre)]
         public String SegundoNombre { get; set; }
 
 
@@ -35,28 +36,30 @@ namespace Historias_Clinicas.Models
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(Alias.DNI)]
+        [Display(Name = Alias.DNI)]
         public String Dni { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public String Email { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(DataType.PhoneNumber)]
+        [Phone]
         [StringLength(15,MinimumLength =7, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
 
         [DataType(DataType.Date)]
+        [Display(Name = Alias.FechaDeAlta)]
         public DateTime FechaDeAlta { get; set; }
 
 
         public Usuario Usuario { get; set; }
 
-        [DataType(Alias.NombreCompleto)]
+
+        [Display(Name = Alias.NombreCompleto)]
         public String NombreCompleto
         {
             get
