@@ -26,18 +26,19 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Notas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var nota = await _context.Notas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var nota = _context.Notas
+                .FirstOrDefault(m => m.Id == id);
             if (nota == null)
             {
-                return NotFound();
+                return Content($"La nota con id {id} no fue encontrada");
+                // Se cambio del NotFound para que no se rompa todo
             }
 
             return View(nota);
@@ -54,26 +55,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MedicoID,Mensaje,FechaYHora")] Nota nota)
+        public IActionResult Create([Bind("Id,MedicoID,Mensaje,FechaYHora")] Nota nota)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(nota);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(nota);
         }
 
         // GET: Notas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var nota = await _context.Notas.FindAsync(id);
+            var nota = _context.Notas.Find(id);
             if (nota == null)
             {
                 return NotFound();
@@ -86,7 +87,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MedicoID,Mensaje,FechaYHora")] Nota nota)
+        public IActionResult Edit(int id, [Bind("Id,MedicoID,Mensaje,FechaYHora")] Nota nota)
         {
             if (id != nota.Id)
             {
@@ -98,7 +99,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(nota);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +118,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Notas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var nota = await _context.Notas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var nota = _context.Notas
+                .FirstOrDefault(m => m.Id == id);
             if (nota == null)
             {
                 return NotFound();
@@ -137,11 +138,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Notas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var nota = await _context.Notas.FindAsync(id);
+            var nota = _context.Notas.Find(id);
             _context.Notas.Remove(nota);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
