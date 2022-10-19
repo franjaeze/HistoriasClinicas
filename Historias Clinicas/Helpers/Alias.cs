@@ -8,7 +8,7 @@ namespace Historias_Clinicas.Helpers
     public class Alias
     {
         
-        public const string DNI = "Documento";
+        public const string DNI = "DNI";
         public const string Email = "Correo electrónico";
         public const string PersonaId = "Persona";
         public const string Password = "Contraseña";
@@ -20,7 +20,10 @@ namespace Historias_Clinicas.Helpers
         public const string NombreCompleto = "Nombre completo";
         public const string RolName = "Nombre";
         public const string MatriculaNacional = "Matricula Nacional";
-        
+        public const string NombreUsuario = "Usuario";
+        public const string Activo = "Activo";
+        public const string SegundoNombre = "Segundo Nombre";
+        public const string FechaDeAlta = "Fecha De Alta";
     }
 
     public static class AliasGUI
