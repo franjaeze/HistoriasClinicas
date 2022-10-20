@@ -22,19 +22,19 @@ namespace Historias_Clinicas.Controllers
         // GET: HistoriaClinicas
         public IActionResult Index()
         {
-            return View( _context.HistoriasClinicas.ToListAsync());
+            return View( _context.HistoriasClinicas.ToList());
         }
 
         // GET: HistoriaClinicas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var historiaClinica = _context.HistoriasClinicas
+                .FirstOrDefault(m => m.Id == id);
             if (historiaClinica == null)
             {
                 return NotFound();
@@ -54,26 +54,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
+        public IActionResult Create([Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(historiaClinica);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(historiaClinica);
         }
 
         // GET: HistoriaClinicas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
+            var historiaClinica = _context.HistoriasClinicas.Find(id);
             if (historiaClinica == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
+        public IActionResult Edit(int id, [Bind("Id,PacienteId")] HistoriaClinica historiaClinica)
         {
             if (id != historiaClinica.Id)
             {
@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(historiaClinica);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +117,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: HistoriaClinicas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var historiaClinica = await _context.HistoriasClinicas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var historiaClinica = _context.HistoriasClinicas
+                .FirstOrDefault(m => m.Id == id);
             if (historiaClinica == null)
             {
                 return NotFound();
@@ -137,11 +137,11 @@ namespace Historias_Clinicas.Controllers
         // POST: HistoriaClinicas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var historiaClinica = await _context.HistoriasClinicas.FindAsync(id);
+            var historiaClinica = _context.HistoriasClinicas.Find(id);
             _context.HistoriasClinicas.Remove(historiaClinica);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 

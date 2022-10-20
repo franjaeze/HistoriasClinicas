@@ -19,35 +19,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Especialidad" class="control-label"></label>
-                <select asp-for="Especialidad" class="form-control">
-                    <option selected>Seleccione una Especialidad</option>
-                    <option value="1">@Especialidad.Cardiologia</option>
-                    <option value="2">@Especialidad.ClinicaMedica</option>
-                    <option value="3">@Especialidad.Dermatologia</option>
-                    <option value="4">@Especialidad.Enfermeria</option>
-                    <option value="5">@Especialidad.Gastroenterologia</option>
-                    <option value="6">@Especialidad.Ginecologia</option>
-                    <option value="7">@Especialidad.Laboratorio</option>
-                    <option value="8">@Especialidad.Nefrología</option>
-                    <option value="9">@Especialidad.Neumología</option>
-                    <option value="10">@Especialidad.Neurología</option>
-                    <option value="11">@Especialidad.Nutricion</option>
-                    <option value="12">@Especialidad.Oncologia</option>
-                    <option value="13">@Especialidad.OncologiaPediatrica</option>
-                    <option value="14">@Especialidad.Otorrinolaringologia</option>
-                    <option value="15">@Especialidad.Pediatría</option>
-                    <option value="16">@Especialidad.Psiquiatría</option>
-                    <option value="17">@Especialidad.Rehabilitación</option>
-                    <option value="18">@Especialidad.Reumatología</option>
-                    <option value="19">@Especialidad.Traumatologia</option>
+                <select asp-for="Especialidad" class="form-control" asp-items="@Html.GetEnumSelectList<Especialidad>()">
                 </select>
                 <span asp-validation-for="Especialidad" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            @*<div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input " asp-for="EstaActivo" /> @Html.DisplayNameFor(model => model.EstaActivo)
                 </label>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />

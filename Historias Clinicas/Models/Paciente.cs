@@ -6,10 +6,6 @@ namespace Historias_Clinicas.Models
 {
     public class Paciente : Persona
     {
-
-        public int Id { get; set; }
-
-
         public Cobertura  ObraSocialP { get; set; }
 
 
