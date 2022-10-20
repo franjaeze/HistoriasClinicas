@@ -13,7 +13,7 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(8, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
-        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
+        //[RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
         [Display(Name = Alias.MatriculaNacional)]
         public int MatriculaNacional{ get; set; }
 
