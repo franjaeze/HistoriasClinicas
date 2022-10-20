@@ -19,14 +19,14 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
+        [RegularExpression(@"^[a-zA-Z-Ñ-ñ]+$", ErrorMessage = MensajeError.SoloLetras)]
         string TextBoxData { get; set; }
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Nombre { get; set; }
 
 
         [DataType(DataType.Text)]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
+        [RegularExpression(@"^[a-zA-Z-Ñ-ñ]+$", ErrorMessage = MensajeError.SoloLetras)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         [Display(Name = Alias.SegundoNombre)]
         public String SegundoNombre { get; set; }
@@ -34,7 +34,7 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
+        [RegularExpression(@"^[a-zA-Z-Ñ-ñ]+$", ErrorMessage = MensajeError.SoloLetras)]
         [DataType(DataType.Text)]
         public String Apellido { get; set; }
 
