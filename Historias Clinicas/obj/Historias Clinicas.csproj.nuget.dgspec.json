@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {}
+    "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {
+    "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+        "projectUniqueName": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj",
         "projectName": "Historias Clinicas",
-        "projectPath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
-        "packagesPath": "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+        "projectPath": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj",
+        "packagesPath": "C:\\Users\\anali\\.nuget\\packages\\",
+        "outputPath": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Mateo Bellomo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\anali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,34 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
