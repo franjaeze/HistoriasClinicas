@@ -34,6 +34,7 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
         [DataType(DataType.Text)]
         public String Apellido { get; set; }
 
