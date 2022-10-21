@@ -20,21 +20,21 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Personas
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Personas.ToListAsync());
+            return View(_context.Personas.ToList());
         }
 
         // GET: Personas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var persona = await _context.Personas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var persona = _context.Personas
+                .FirstOrDefault(m => m.Id == id);
             if (persona == null)
             {
                 return NotFound();
@@ -54,26 +54,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
+        public IActionResult Create([Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(persona);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(persona);
         }
 
         // GET: Personas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var persona = await _context.Personas.FindAsync(id);
+            var persona = _context.Personas.Find(id);
             if (persona == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
+        public IActionResult Edit(int id, [Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
         {
             if (id != persona.Id)
             {
@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(persona);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +117,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Personas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var persona = await _context.Personas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var persona = _context.Personas
+                .FirstOrDefault(m => m.Id == id);
             if (persona == null)
             {
                 return NotFound();
@@ -137,11 +137,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Personas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var persona = await _context.Personas.FindAsync(id);
+            var persona = _context.Personas.Find(id);
             _context.Personas.Remove(persona);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
