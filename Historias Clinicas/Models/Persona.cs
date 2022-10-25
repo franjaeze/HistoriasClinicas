@@ -6,53 +6,67 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Text;
 using Historias_Clinicas.Models;
+using Historias_Clinicas.Helpers;
 
 namespace Historias_Clinicas.Models
 {
-  
+
     public class Persona
-    {  
+    {
 
         public int Id { get; set; }
 
+
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
+        //string TextBoxData { get; set; }
+
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Nombre { get; set; }
 
 
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
+        [Display(Name = Alias.SegundoNombre)]
         public String SegundoNombre { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
         [DataType(DataType.Text)]
         public String Apellido { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        public String Dni { get; set; }
+        [RegularExpression("([0-9]+)", ErrorMessage = MensajeError.SoloNumeros)]
+        [Display(Name = Alias.DNI)]
+        public int Dni { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+        [Display(Name = Alias.Email)]
         public String Email { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(DataType.PhoneNumber)]
+        [Phone]
         [StringLength(15,MinimumLength =7, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
 
         [DataType(DataType.Date)]
+        [Display(Name = Alias.FechaDeAlta)]
         public DateTime FechaDeAlta { get; set; }
 
 
         public Usuario Usuario { get; set; }
 
+
+        [Display(Name = Alias.NombreCompleto)]
         public String NombreCompleto
         {
             get

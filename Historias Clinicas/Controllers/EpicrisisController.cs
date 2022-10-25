@@ -22,19 +22,19 @@ namespace Historias_Clinicas.Controllers
         // GET: Epicrisis
         public IActionResult Index()
         {
-            return View(_context.Epicrisis.ToListAsync());
+            return View(_context.Epicrisis.ToList());
         }
 
         // GET: Epicrisis/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var epicrisis = await _context.Epicrisis
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var epicrisis = _context.Epicrisis
+                .FirstOrDefault(m => m.Id == id);
             if (epicrisis == null)
             {
                 return NotFound();
@@ -54,26 +54,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MedicoId,PacienteId,Resumen,DiasInternacion,FechaYHora,FechaYHoraAlta,FechaYHoraIngreso")] Epicrisis epicrisis)
+        public IActionResult Create([Bind("Id,MedicoId,PacienteId,Resumen,DiasInternacion,FechaYHora,FechaYHoraAlta,FechaYHoraIngreso")] Epicrisis epicrisis)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(epicrisis);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(epicrisis);
         }
 
         // GET: Epicrisis/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var epicrisis = await _context.Epicrisis.FindAsync(id);
+            var epicrisis = _context.Epicrisis.Find(id);
             if (epicrisis == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MedicoId,PacienteId,Resumen,DiasInternacion,FechaYHora,FechaYHoraAlta,FechaYHoraIngreso")] Epicrisis epicrisis)
+        public IActionResult Edit(int id, [Bind("Id,MedicoId,PacienteId,Resumen,DiasInternacion,FechaYHora,FechaYHoraAlta,FechaYHoraIngreso")] Epicrisis epicrisis)
         {
             if (id != epicrisis.Id)
             {
@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(epicrisis);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +117,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Epicrisis/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var epicrisis = await _context.Epicrisis
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var epicrisis = _context.Epicrisis
+                .FirstOrDefault(m => m.Id == id);
             if (epicrisis == null)
             {
                 return NotFound();
@@ -137,11 +137,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Epicrisis/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var epicrisis = await _context.Epicrisis.FindAsync(id);
+            var epicrisis = _context.Epicrisis.Find(id);
             _context.Epicrisis.Remove(epicrisis);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 

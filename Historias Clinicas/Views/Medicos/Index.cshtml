@@ -9,6 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -16,14 +17,11 @@
                 @Html.DisplayNameFor(model => model.MatriculaNacional)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MatriculaProvincial)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Especialidad)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.EstaActivo)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -55,14 +53,11 @@
                 @Html.DisplayFor(modelItem => item.MatriculaNacional)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MatriculaProvincial)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Especialidad)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.EstaActivo)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
@@ -85,9 +80,9 @@
                 @Html.DisplayFor(modelItem => item.FechaDeAlta)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }

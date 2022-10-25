@@ -26,18 +26,19 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Episodios/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var episodio = await _context.Episodios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var episodio = _context.Episodios
+                .FirstOrDefault(m => m.Id == id);
             if (episodio == null)
             {
-                return NotFound();
+                return Content($"El episodio con id {id} no fue encontrado"); 
+                // Se cambio del NotFound para que no se rompa todo
             }
 
             return View(episodio);
@@ -54,26 +55,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
+        public IActionResult Create([Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(episodio);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(episodio);
         }
 
         // GET: Episodios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var episodio = await _context.Episodios.FindAsync(id);
+            var episodio = _context.Episodios.Find(id);
             if (episodio == null)
             {
                 return NotFound();
@@ -86,7 +87,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
+        public IActionResult Edit(int id, [Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
         {
             if (id != episodio.Id)
             {
@@ -98,7 +99,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(episodio);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +118,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Episodios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var episodio = await _context.Episodios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var episodio = _context.Episodios
+                .FirstOrDefault(m => m.Id == id);
             if (episodio == null)
             {
                 return NotFound();
@@ -137,11 +138,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Episodios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var episodio = await _context.Episodios.FindAsync(id);
+            var episodio = _context.Episodios.Find(id);
             _context.Episodios.Remove(episodio);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 

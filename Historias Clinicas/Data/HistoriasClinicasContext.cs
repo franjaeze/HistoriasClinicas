@@ -1,5 +1,6 @@
 ﻿using Historias_Clinicas.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Historias_Clinicas.Data
 {
@@ -21,6 +22,7 @@ namespace Historias_Clinicas.Data
                 .HasOne(mp => mp.Medico)
                 .WithMany(m => m.MedicoPacientes)
                 .HasForeignKey(mp => mp.MedicoId);
+               
 
 
             modelBuilder.Entity<MedicoPaciente>()
@@ -28,6 +30,11 @@ namespace Historias_Clinicas.Data
                 .WithMany(p => p.MedicosPaciente)
                 .HasForeignKey(mp => mp.PacienteId);
         }
+
+        //private void WillCascadeOnDelete(bool v)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public DbSet<Diagnostico> Diagnosticos { get; set; }
 
@@ -50,6 +57,8 @@ namespace Historias_Clinicas.Data
         public DbSet<Persona> Personas { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }
+
+        public DbSet<Historias_Clinicas.Models.App> App { get; set; }
 
     }
     
