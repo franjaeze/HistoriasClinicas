@@ -20,7 +20,8 @@ namespace Historias_Clinicas.Models
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
-        string TextBoxData { get; set; }
+        //string TextBoxData { get; set; }
+
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Nombre { get; set; }
 
@@ -42,7 +43,7 @@ namespace Historias_Clinicas.Models
         [Required(ErrorMessage = MensajeError.Requerido)]
         [RegularExpression("([0-9]+)", ErrorMessage = MensajeError.SoloNumeros)]
         [Display(Name = Alias.DNI)]
-        public String Dni { get; set; }
+        public int Dni { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
