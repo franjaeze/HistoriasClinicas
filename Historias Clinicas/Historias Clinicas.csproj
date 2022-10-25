@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20221020021758_inicial.cs" />
-    <Compile Remove="Migrations\20221020021758_inicial.Designer.cs" />
-    <Compile Remove="Migrations\20221020024155_inicial.cs" />
-    <Compile Remove="Migrations\20221020024155_inicial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="Views\Medicos\Menu.cshtml" />
   </ItemGroup>
 

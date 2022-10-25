@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Historias_Clinicas.Migrations
+namespace Historias_Clinicas.Data.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    [Migration("20221020025748_inicial")]
-    partial class inicial
+    [Migration("20221025025055_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -263,12 +263,10 @@ namespace Historias_Clinicas.Migrations
             modelBuilder.Entity("Historias_Clinicas.Models.MedicoPaciente", b =>
                 {
                     b.Property<int>("MedicoId")
-                        .HasColumnType("int")
-                        .HasMaxLength(6);
+                        .HasColumnType("int");
 
                     b.Property<int>("PacienteId")
-                        .HasColumnType("int")
-                        .HasMaxLength(6);
+                        .HasColumnType("int");
 
                     b.HasKey("MedicoId", "PacienteId");
 
