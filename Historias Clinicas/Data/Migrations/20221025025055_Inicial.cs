@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Historias_Clinicas.Migrations
+namespace Historias_Clinicas.Data.Migrations
 {
-    public partial class inicial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,6 +72,7 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.AppId,
                         principalTable: "App",
                         principalColumn: "Id",
+                        //onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -97,6 +98,7 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.EpicrisisId,
                         principalTable: "Epicrisis",
                         principalColumn: "Id",
+                       // onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -129,12 +131,14 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.EpicrisisId,
                         principalTable: "Epicrisis",
                         principalColumn: "Id",
+                        //onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Episodios_HistoriasClinicas_HistoriaClinicaId",
                         column: x => x.HistoriaClinicaId,
                         principalTable: "HistoriasClinicas",
                         principalColumn: "Id",
+                        //onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -170,6 +174,7 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.AppId,
                         principalTable: "App",
                         principalColumn: "Id",
+                        //onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Personas_App_Medico_AppId",
@@ -182,12 +187,14 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.Paciente_AppId,
                         principalTable: "App",
                         principalColumn: "Id",
+                        //onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Personas_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
+                        //onDelete: ReferentialAction.NoAction);
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -223,8 +230,8 @@ namespace Historias_Clinicas.Migrations
                 name: "MedicoPaciente",
                 columns: table => new
                 {
-                    MedicoId = table.Column<int>(maxLength: 6, nullable: false),
-                    PacienteId = table.Column<int>(maxLength: 6, nullable: false)
+                    MedicoId = table.Column<int>(nullable: false),
+                    PacienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -234,13 +241,15 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.MedicoId,
                         principalTable: "Personas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                    //onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MedicoPaciente_Personas_PacienteId",
                         column: x => x.PacienteId,
                         principalTable: "Personas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                    //onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

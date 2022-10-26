@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Historias_Clinicas.Migrations
+namespace Historias_Clinicas.Data.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
     partial class HistoriasClinicasContextModelSnapshot : ModelSnapshot
@@ -261,12 +261,10 @@ namespace Historias_Clinicas.Migrations
             modelBuilder.Entity("Historias_Clinicas.Models.MedicoPaciente", b =>
                 {
                     b.Property<int>("MedicoId")
-                        .HasColumnType("int")
-                        .HasMaxLength(6);
+                        .HasColumnType("int");
 
                     b.Property<int>("PacienteId")
-                        .HasColumnType("int")
-                        .HasMaxLength(6);
+                        .HasColumnType("int");
 
                     b.HasKey("MedicoId", "PacienteId");
 
