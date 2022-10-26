@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Dar de Alta paciente</h1>
 
 <h4>Paciente</h4>
 <hr />
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ObraSocialP" class="control-label"></label>
-                <select asp-for="ObraSocialP" class="form-control"></select>
+                <select asp-for="ObraSocialP" class="form-control" asp-items="@Html.GetEnumSelectList<Cobertura>()"></select>
                 <span asp-validation-for="ObraSocialP" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -57,15 +57,16 @@
                 <input asp-for="FechaDeAlta" class="form-control" />
                 <span asp-validation-for="FechaDeAlta" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="divBoton">
+                <input type="submit" value="Guardar" class="boton" />
+                <input type="submit" value="Cancelar" class="boton" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class = "boton" asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {

@@ -22,19 +22,19 @@ namespace Historias_Clinicas.Controllers
         // GET: Apps
         public IActionResult Index()
         {
-            return View(_context.App.ToListAsync());
+            return View(_context.App.ToList());
         }
 
         // GET: Apps/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var app = await _context.App
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var app = _context.App
+                .FirstOrDefault(m => m.Id == id);
             if (app == null)
             {
                 return NotFound();
@@ -54,26 +54,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Direccion,Telefono")] App app)
+        public IActionResult Create([Bind("Id,Nombre,Direccion,Telefono")] App app)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(app);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(app);
         }
 
         // GET: Apps/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var app = await _context.App.FindAsync(id);
+            var app = _context.App.Find(id);
             if (app == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Direccion,Telefono")] App app)
+        public IActionResult Edit(int id, [Bind("Id,Nombre,Direccion,Telefono")] App app)
         {
             if (id != app.Id)
             {
@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(app);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +117,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Apps/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var app = await _context.App
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var app = _context.App
+                .FirstOrDefault(m => m.Id == id);
             if (app == null)
             {
                 return NotFound();
@@ -137,11 +137,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Apps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var app = await _context.App.FindAsync(id);
+            var app = _context.App.Find(id);
             _context.App.Remove(app);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 

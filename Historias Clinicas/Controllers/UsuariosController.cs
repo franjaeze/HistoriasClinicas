@@ -22,19 +22,19 @@ namespace Historias_Clinicas.Controllers
         // GET: Usuarios
         public IActionResult Index()
         {
-            return View( _context.Usuarios.ToListAsync());
+            return View( _context.Usuarios.ToList());
         }
 
         // GET: Usuarios/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var usuario = _context.Usuarios
+                .FirstOrDefault(m => m.Id == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -54,26 +54,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NombreUsuario,Password")] Usuario usuario)
+        public IActionResult Create([Bind("Id,NombreUsuario,Password")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(usuario);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(usuario);
         }
 
         // GET: Usuarios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = _context.Usuarios.Find(id);
             if (usuario == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreUsuario,Password")] Usuario usuario)
+        public IActionResult Edit(int id, [Bind("Id,NombreUsuario,Password")] Usuario usuario)
         {
             if (id != usuario.Id)
             {
@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(usuario);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +117,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Usuarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var usuario = _context.Usuarios
+                .FirstOrDefault(m => m.Id == id);
             if (usuario == null)
             {
                 return NotFound();
@@ -137,11 +137,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = _context.Usuarios.Find(id);
             _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
