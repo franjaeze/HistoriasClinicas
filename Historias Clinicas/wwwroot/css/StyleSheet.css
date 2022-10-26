@@ -1,4 +1,6 @@
-﻿
+﻿.table {
+    overflow-x: auto;
+}
 
 h1 {
     color: #081c6b;
@@ -43,4 +45,10 @@ a:active {
     background: black;
     color: white;
     border-radius: 5px;
+}
+
+.encabezado a:hover {
+    background-color: #b6c8fa;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
