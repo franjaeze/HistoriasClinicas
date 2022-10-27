@@ -7,23 +7,28 @@ using System.Threading.Tasks;
 using System.Text;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace Historias_Clinicas.Models
 {
-  
-    public class Persona
-    {  
 
-        public int Id { get; set; }
+    public class Persona : IdentityUser<int>
+    {
+
+        //public int Id { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
+        //string TextBoxData { get; set; }
+
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Nombre { get; set; }
 
 
         [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         [Display(Name = Alias.SegundoNombre)]
         public String SegundoNombre { get; set; }
@@ -31,18 +36,24 @@ namespace Historias_Clinicas.Models
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
         [DataType(DataType.Text)]
         public String Apellido { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
+        [RegularExpression("([0-9]+)", ErrorMessage = MensajeError.SoloNumeros)]
         [Display(Name = Alias.DNI)]
-        public String Dni { get; set; }
+        public int Dni { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [EmailAddress]
-        public String Email { get; set; }
+        [Display(Name = Alias.Email)]
+        public override String Email {
+            get { return base.Email; }
+            set { base.Email = value; }
+             }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]

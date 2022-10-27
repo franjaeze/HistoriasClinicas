@@ -22,7 +22,7 @@ namespace Historias_Clinicas.Controllers
         // GET: Medicos
         public IActionResult Index()
         {
-            return View( _context.Medicos.ToListAsync());
+            return View( _context.Medicos.ToList());
         }
 
         // GET: Medicos Menu de Opciones
@@ -32,15 +32,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public  IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var medico = await _context.Medicos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var medico =  _context.Medicos
+                .FirstOrDefault(m => m.Id == id);
             if (medico == null)
             {
                 return NotFound();
@@ -60,26 +60,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public  IActionResult Create([Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(medico);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(medico);
         }
 
         // GET: Medicos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public  IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var medico = await _context.Medicos.FindAsync(id);
+            var medico =  _context.Medicos.Find(id);
             if (medico == null)
             {
                 return NotFound();
@@ -92,7 +92,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public  IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (id != medico.Id)
             {
@@ -104,7 +104,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(medico);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,15 +123,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public  IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var medico = await _context.Medicos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var medico = _context.Medicos
+                .FirstOrDefault(m => m.Id == id);
             if (medico == null)
             {
                 return NotFound();
@@ -143,11 +143,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Medicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var medico = await _context.Medicos.FindAsync(id);
+            var medico = _context.Medicos.Find(id);
             _context.Medicos.Remove(medico);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 

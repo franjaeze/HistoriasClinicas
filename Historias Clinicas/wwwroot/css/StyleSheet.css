@@ -1,0 +1,54 @@
+﻿.table {
+    overflow-x: auto;
+}
+
+h1 {
+    color: #081c6b;
+}
+
+.boton {
+    display: inline;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.divBoton {
+    display: inline-flex;
+    padding: 2px;
+    line-height: 1px;
+}
+.boton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+li:last-child a {
+    margin-right: 0;
+    border-radius: 5px;
+}
+
+
+a:hover {
+    background: #488694;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+a:active {
+    background: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.encabezado a:hover {
+    background-color: #b6c8fa;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

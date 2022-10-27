@@ -22,19 +22,19 @@ namespace Historias_Clinicas.Controllers
         // GET: Diagnosticos
         public IActionResult Index()
         {
-            return View(_context.Diagnosticos.ToListAsync());
+            return View(_context.Diagnosticos.ToList());
         }
 
         // GET: Diagnosticos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var diagnostico = await _context.Diagnosticos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var diagnostico = _context.Diagnosticos
+                .FirstOrDefault(m => m.Id == id);
             if (diagnostico == null)
             {
                 return NotFound();
@@ -54,26 +54,26 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
+        public IActionResult Create([Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(diagnostico);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(diagnostico);
         }
 
         // GET: Diagnosticos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var diagnostico = await _context.Diagnosticos.FindAsync(id);
+            var diagnostico = _context.Diagnosticos.Find(id);
             if (diagnostico == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
+        public IActionResult Edit(int id, [Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
         {
             if (id != diagnostico.Id)
             {
@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.Update(diagnostico);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,15 +117,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Diagnosticos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var diagnostico = await _context.Diagnosticos
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var diagnostico = _context.Diagnosticos
+                .FirstOrDefault(m => m.Id == id);
             if (diagnostico == null)
             {
                 return NotFound();
@@ -137,11 +137,11 @@ namespace Historias_Clinicas.Controllers
         // POST: Diagnosticos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var diagnostico = await _context.Diagnosticos.FindAsync(id);
+            var diagnostico = _context.Diagnosticos.Find(id);
             _context.Diagnosticos.Remove(diagnostico);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 

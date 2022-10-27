@@ -9,18 +9,17 @@ namespace Historias_Clinicas.Models
     public class Medico : Persona
     {
 
-        public int Id { get; set; }
-
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [StringLength(8, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
-        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
+        [Range(9999, 1000000, ErrorMessage = MensajeError.MinMaxString)]
+        [RegularExpression("([0-9]+)", ErrorMessage = MensajeError.NumerosPositivos)]
+
         [Display(Name = Alias.MatriculaNacional)]
         public int MatriculaNacional{ get; set; }
 
         public Especialidad Especialidad { get; set; }
 
-        [Display(Name = Alias.Activo)]
-        public Boolean EstaActivo { get; set; }
+        //[Display(Name = Alias.Activo)]
+        ////public Boolean EstaActivo { get; set; }
 
         public List<MedicoPaciente> MedicoPacientes { get; set; }
     }
