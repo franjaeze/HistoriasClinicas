@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cLw7ski3V7hir2gz+WtS2/LZtzbqtjm2IAV9mctJJwDAz33r7KGBSOBqZZ0NTqDa0gd+ydHOXupsAPeTEp69xg==",
+  "dgSpecHash": "VkDF3FuAfjhr7JDcDJabB7FHI4SzcUk1gGVgpDB8Rxc1F+MaIyZrcbabJRobbFTa54k8X7r4QPAjJp6eoFFnlw==",
   "success": true,
   "projectFilePath": "C:\\ort\\NT1\\HISTORIAS-CLINICAS\\Historias Clinicas\\Historias Clinicas.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.30\\microsoft.aspnetcore.cryptography.internal.3.1.30.nupkg.sha512",
-    "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.30\\microsoft.aspnetcore.cryptography.keyderivation.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
-    "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.30\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
@@ -36,8 +33,6 @@
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.30\\microsoft.extensions.configuration.binder.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.30\\microsoft.extensions.dependencyinjection.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.30\\microsoft.extensions.dependencyinjection.abstractions.3.1.30.nupkg.sha512",
-    "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.30\\microsoft.extensions.identity.core.3.1.30.nupkg.sha512",
-    "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.30\\microsoft.extensions.identity.stores.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.logging\\3.1.30\\microsoft.extensions.logging.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.30\\microsoft.extensions.logging.abstractions.3.1.30.nupkg.sha512",
     "C:\\Users\\anali\\.nuget\\packages\\microsoft.extensions.options\\3.1.30\\microsoft.extensions.options.3.1.30.nupkg.sha512",
