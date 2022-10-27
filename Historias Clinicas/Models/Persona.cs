@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using System.Text;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace Historias_Clinicas.Models
 {
 
-    public class Persona
+    public class Persona : IdentityUser<int>
     {
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -49,7 +50,10 @@ namespace Historias_Clinicas.Models
         [Required(ErrorMessage = MensajeError.Requerido)]
         [EmailAddress]
         [Display(Name = Alias.Email)]
-        public String Email { get; set; }
+        public override String Email {
+            get { return base.Email; }
+            set { base.Email = value; }
+             }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]

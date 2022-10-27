@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "bNT7rhFwzH1ye6pNbYegNRKAIjwVMfaqzttxLucbDhmpYJgxyAVib5U0TxQdZZ/ksDYzVA9kVM/aKNP3ovwfAg==",
+  "dgSpecHash": "bQPDgPmXghvioJTAZDhkpIxlDommV39ijWcsOzCcI+88PoVXabEt2AvVhZcH4ZUn8vfdxMoVCHhteykGZjvuaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.30\\microsoft.aspnetcore.cryptography.internal.3.1.30.nupkg.sha512",
+    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.30\\microsoft.aspnetcore.cryptography.keyderivation.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.30\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
@@ -33,6 +36,8 @@
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.30\\microsoft.extensions.configuration.binder.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.30\\microsoft.extensions.dependencyinjection.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.30\\microsoft.extensions.dependencyinjection.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.30\\microsoft.extensions.identity.core.3.1.30.nupkg.sha512",
+    "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.30\\microsoft.extensions.identity.stores.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.logging\\3.1.30\\microsoft.extensions.logging.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.30\\microsoft.extensions.logging.abstractions.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.extensions.options\\3.1.30\\microsoft.extensions.options.3.1.30.nupkg.sha512",
