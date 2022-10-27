@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Medico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de Medicos</h1>
+
+<p>
+    <a class = "boton" asp-action="Create">Agregar Medico</a>
+</p>
+
+<table class="table">
+    
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MatriculaNacional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.EstaActivo)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeAlta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatriculaNacional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidad)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.EstaActivo)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeAlta)
+            </td>
+            <td>
+
+                <div class="divBoton">
+                    <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                    <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a> 
+                    <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
