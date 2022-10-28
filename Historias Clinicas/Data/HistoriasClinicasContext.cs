@@ -1,10 +1,12 @@
 ﻿using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Historias_Clinicas.Data
 {
-    public class HistoriasClinicasContext : DbContext
+    public class HistoriasClinicasContext : IdentityDbContext <IdentityUser<int>, IdentityRole<int>, int>
     {
 
         public HistoriasClinicasContext(DbContextOptions options) : base(options)
@@ -29,6 +31,13 @@ namespace Historias_Clinicas.Data
                 .HasOne(mp => mp.Paciente)
                 .WithMany(p => p.MedicosPaciente)
                 .HasForeignKey(mp => mp.PacienteId);
+
+            modelBuilder.Entity<IdentityUser<int>>().ToTable("Personas");
+            modelBuilder.Entity<IdentityRole<int>>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserRole<int>>().ToTable("PersonasRoles");
+
+
+
         }
 
         //private void WillCascadeOnDelete(bool v)
@@ -59,6 +68,8 @@ namespace Historias_Clinicas.Data
         public DbSet<Usuario> Usuarios { get; set; }
 
         public DbSet<Historias_Clinicas.Models.App> App { get; set; }
+
+        public DbSet<Rol> Roles { get; set; }
 
     }
     
