@@ -1,7 +1,9 @@
 using Historias_Clinicas.Data;
+using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,20 @@ namespace Historias_Clinicas
         {
             //services.AddDbContext<HistoriasClinicasContext>(options => options.UseInMemoryDatabase("HistoriaClinicaDb"));
             builder.AddDbContext<HistoriasClinicasContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HistoriasClinicasDBCS")));
+
+            builder.AddIdentity<Persona, Rol>().AddEntityFrameworkStores<HistoriasClinicasContext>();
+            builder.Configure<IdentityOptions>(opciones =>
+            {
+                opciones.Password.RequireNonAlphanumeric = false;
+                opciones.Password.RequireUppercase = false;
+                opciones.Password.RequireLowercase = false;
+                opciones.Password.RequireDigit = false;
+                opciones.Password.RequiredLength = 5;
+            }
+            );
+
+
+
             builder.AddControllersWithViews();
         }
 
@@ -42,9 +58,9 @@ namespace Historias_Clinicas
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+           
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

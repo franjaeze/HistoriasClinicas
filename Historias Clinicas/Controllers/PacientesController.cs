@@ -97,6 +97,26 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
+                    var pacienteEnDb = _context.Pacientes.Find(paciente.Id);
+
+                    if (pacienteEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    pacienteEnDb.Dni = paciente.Dni;
+                    pacienteEnDb.Telefono = paciente.Telefono;
+                    pacienteEnDb.ObraSocialP = paciente.ObraSocialP;
+                    pacienteEnDb.HistoriaClincaId = paciente.HistoriaClincaId;
+                    pacienteEnDb.Nombre = paciente.Nombre;
+                    pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
+                    pacienteEnDb.Apellido  = paciente.Apellido;
+                    pacienteEnDb.Email = paciente.Email;
+                    pacienteEnDb.FechaDeAlta = paciente.FechaDeAlta;
+
+
+
                     _context.Update(paciente);
                     _context.SaveChanges();
                 }
