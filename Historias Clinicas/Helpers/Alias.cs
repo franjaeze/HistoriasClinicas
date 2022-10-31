@@ -24,9 +24,6 @@ namespace Historias_Clinicas.Helpers
         public const string Activo = "Activo";
         public const string SegundoNombre = "Segundo Nombre";
         public const string FechaDeAlta = "Fecha De Alta";
-        public const string ContraseniaUsuario = "Contraseña del usuario";
-        public const string ConfirmarContrasenia = "Confirmacion de la contraseña";
-
 
     }
 

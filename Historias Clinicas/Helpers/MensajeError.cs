@@ -14,8 +14,8 @@ namespace Historias_Clinicas.Models
 			public const string UnaOpcion = "Se debe registrar al menos una opcion";
 	        public const string SoloLetras = "El campo solo admite caracteres de la A a la Z";
 	        public const string SoloNumeros = "El campo solo admite numeros";
-		    public const string ContraseniaDiferente = "El campo {0} no coinside";
-		    public const string NoValido = "El mail no es valido";
-
+            public const string NoValido = "El email no es valido";
+            public const string PassMissMatch = "El campo {0} no coincide";
+        
     }
 }

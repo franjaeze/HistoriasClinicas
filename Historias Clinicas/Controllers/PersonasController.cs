@@ -97,7 +97,27 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(persona);
+                    var personaEnDb = _context.Pacientes.Find(persona.Id);
+                    if (personaEnDb == null)
+                    {
+                        return NotFound();
+                    }
+
+                    personaEnDb.Nombre = persona.Nombre;
+                    personaEnDb.SegundoNombre = persona.SegundoNombre;
+                    personaEnDb.Apellido = persona.Apellido;
+                    personaEnDb.Dni = persona.Dni;
+                    personaEnDb.Email = persona.Email;
+                    personaEnDb.Telefono = persona.Telefono;
+                    personaEnDb.FechaDeAlta = persona.FechaDeAlta;
+
+                    if(!ActualizarEmail(persona, personaEnDb))
+                    {
+                        ModelState.AddModelError("Email", "El email ya esta en uso");
+                        return View(persona);
+                    }
+                    
+                    _context.Update(personaEnDb);
                     _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -114,6 +134,39 @@ namespace Historias_Clinicas.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(persona);
+        }
+
+        private bool ActualizarEmail(Persona personaForm, Persona personaDb)
+        {
+            bool resultado = true;
+            try
+            {
+                if (!personaDb.NormalizedEmail.Equals(personaForm.Email.ToUpper()))
+                {
+                    if (ExistEmail(personaForm.Email))
+                    {
+                        resultado = false;
+                    }
+                    else
+                    {
+                        personaDb.Email = personaForm.Email;
+                        personaDb.NormalizedEmail = personaForm.Email.ToUpper();
+                        personaDb.UserName = personaForm.Email;
+                        personaDb.NormalizedUserName = personaForm.NormalizedEmail;
+
+                    }
+                }
+            }
+            catch
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+
+        private bool ExistEmail(string email)
+        {
+            return _context.Personas.Any(p => p.NormalizedEmail == email.ToUpper());
         }
 
         // GET: Personas/Delete/5

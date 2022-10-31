@@ -4,7 +4,6 @@ using System.Linq;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace Historias_Clinicas.Models
