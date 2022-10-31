@@ -65,7 +65,7 @@ namespace Historias_Clinicas.Data
 
         public DbSet<Persona> Personas { get; set; }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        
 
         public DbSet<Historias_Clinicas.Models.App> App { get; set; }
 

@@ -33,6 +33,6 @@ namespace Historias_Clinicas.Models
 
         public List<Empleado> Empleados { get; set; }
 
-        public List<Usuario> Usuarios { get; set; }
+        
     }
 }
