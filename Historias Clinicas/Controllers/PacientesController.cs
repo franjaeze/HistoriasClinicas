@@ -96,7 +96,7 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {
+                {   
                     _context.Update(paciente);
                     _context.SaveChanges();
                 }
