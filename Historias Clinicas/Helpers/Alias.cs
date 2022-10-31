@@ -24,7 +24,7 @@ namespace Historias_Clinicas.Helpers
         public const string Activo = "Activo";
         public const string SegundoNombre = "Segundo Nombre";
         public const string FechaDeAlta = "Fecha De Alta";
-        
+
     }
 
     public static class AliasGUI

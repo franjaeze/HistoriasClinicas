@@ -1,4 +1,5 @@
-﻿@model Estacionamiento.ViewModels.RegistracionViewModel
+﻿@using Historias_Clinicas.ViewModels
+@model RegistroUsuario
 
 @{
     ViewData["Title"] = "Registrar";
@@ -41,4 +42,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    }
+}

@@ -5,9 +5,11 @@ using System.Xml.Linq;
 
 namespace Historias_Clinicas.ViewModels
 {
-    public class RegistroUsuario
+    public class Login
     {
+
         [Required(ErrorMessage = MensajeError.Requerido)]
+        [Display(Name = "Correo Electrónico")]
         [EmailAddress(ErrorMessage = MensajeError.NoValido)]
         public string Email { get; set; }
 
@@ -17,11 +19,6 @@ namespace Historias_Clinicas.ViewModels
         public string Password { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(DataType.Password)]
-        [Display(Name = Alias.PassConfirm)]
-        [Compare("Password", ErrorMessage = MensajeError.PassMissMatch)]
-        public string ConfirmacionPassword { get; set; }
-
+        public bool Recordarme { get; set; } = false;
     }
 }
