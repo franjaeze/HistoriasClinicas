@@ -30,7 +30,7 @@ namespace Historias_Clinicas.Controllers
 
         [HttpPost]
 
-       
+
         public async Task<IActionResult> Registrar([Bind("Email,Password,ConfirmacionPassword")] RegistroUsuario viewModel)
         {
 
@@ -46,13 +46,13 @@ namespace Historias_Clinicas.Controllers
                 if (resultadoCreacion.Succeeded)
                 {
                     await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
-          
+
                     return RedirectToAction("Edit", "Personas", new { id = pacienteACrear.Id });
 
                 }
 
                 foreach (var error in resultadoCreacion.Errors)
-                { 
+                {
                     ModelState.AddModelError(string.Empty, error.Description);
 
                 }
@@ -66,26 +66,29 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> IniciarSesion(Login loginViewModel)
+        public async Task<IActionResult> IniciarSesion(Login viewModel)
         {
             if (ModelState.IsValid)
-            {         
-                var resultado = await _signinManager.PasswordSignInAsync(loginViewModel.Email, loginViewModel.Password, loginViewModel.Recordarme, false);
+            {
+                var resultado = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
                 if (resultado.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
-                }  
+                }
                 ModelState.AddModelError(String.Empty, "Inicio de Sesión inválida");
             }
-            return View(loginViewModel);
+            return View(viewModel);
         }
 
 
         public async Task<IActionResult> CerrarSesion()
         {
-             await _signinManager.SignOutAsync();
+            await _signinManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+  
+
     }
 }
 
