@@ -25,6 +25,11 @@ namespace Historias_Clinicas.Controllers
             return View( _context.Pacientes.ToList());
         }
 
+        public IActionResult MenuPaciente()
+        {
+            return View();
+        }
+
         // GET: Pacientes/Details/5
         public IActionResult Details(int? id)
         {
