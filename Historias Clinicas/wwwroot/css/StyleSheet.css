@@ -5,6 +5,17 @@
 h1 {
     color: #081c6b;
 }
+.menuBoton {
+    display: inline;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: #FFFF;
+    font-weight: bold;
+    line-height: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
 
 .boton {
     display: inline;
@@ -35,12 +46,12 @@ li:last-child a {
 .menuBoton {
     display: inline;
     background: #4E9CAF;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     border-radius: 5px;
-    color: white;
+    color: #FFFF;
     font-weight: bold;
-    line-height: 10px;
+    line-height: 5px;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 } 
 

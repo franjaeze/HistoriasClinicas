@@ -73,7 +73,7 @@ namespace Historias_Clinicas.Controllers
                 var resultado = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
                 if (resultado.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("MenuPaciente", "Pacientes");
                 }
                 ModelState.AddModelError(String.Empty, "Inicio de Sesión inválida");
             }
