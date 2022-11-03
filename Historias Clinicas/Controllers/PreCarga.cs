@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Controllers
@@ -36,8 +37,34 @@ namespace Historias_Clinicas.Controllers
 
         private async Task CrearMedicos()
         {
+            if (!_context.Medicos.Any())
+            {
 
+                Medico medico = new Medico()
+                {
+                    Nombre = "Charly",
+                    Apellido = "Garcia",
+                    Dni = 55667788,
+                    Email = "charly@ort.edu.ar"
+
+                };
+                _context.Personas.Add(persona);
+                _context.SaveChanges();
+
+                Persona persona2 = new Persona()
+                {
+
+                    Nombre = "Luis",
+                    Apellido = "Alberto Spinetta",
+                    Dni = 55228788,
+                    Email = "LASy@ort.edu.ar"
+
+                };
+                _context.Personas.Add(persona2);
+                _context.SaveChanges();
+            }
         }
+    }
 
         private async Task CrearEmpleados()
         {
