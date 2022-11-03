@@ -27,7 +27,8 @@ namespace Historias_Clinicas.Models
         }
          public override string NormalizedName 
         { get => base.NormalizedName; 
-          set => base.NormalizedName = value; }
+          set => base.NormalizedName = value; 
+        }
 
     }
 }
