@@ -23,7 +23,7 @@
                     <ul class="nav justify-content-center">
                     </ul>
                 </div>
-                @if(signInManager.IsSignedIn(User))
+                @if (signInManager.IsSignedIn(User))
                 {
 
                     <li class="nav-item">
@@ -41,6 +41,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
                     </li>
+                    @if (User.IsInRole("EsAdmin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ListarRoles">Listar Roles</a>
+                        </li>
+                    }
                 }
                 else
                 {

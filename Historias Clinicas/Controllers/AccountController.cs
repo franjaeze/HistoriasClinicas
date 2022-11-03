@@ -1,4 +1,5 @@
 ﻿using Historias_Clinicas.Data;
+using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -45,10 +46,18 @@ namespace Historias_Clinicas.Controllers
 
                 if (resultadoCreacion.Succeeded)
                 {
-                    await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
+                    var resultadoAddRole = await _userManager.AddToRoleAsync(pacienteACrear, Configs.PacienteRolName);
 
-                    return RedirectToAction("Edit", "Personas", new { id = pacienteACrear.Id });
+                    if (resultadoAddRole.Succeeded)
+                    {
+                        await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
 
+                        return RedirectToAction("Edit", "Personas", new { id = pacienteACrear.Id });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, $" No se pudo agregar el rol de {Configs.PacienteRolName}");
+                    }
                 }
 
                 foreach (var error in resultadoCreacion.Errors)
