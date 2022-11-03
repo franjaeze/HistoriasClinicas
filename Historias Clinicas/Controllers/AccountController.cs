@@ -70,15 +70,21 @@ namespace Historias_Clinicas.Controllers
             return View(viewModel);
         }
 
-        public IActionResult IniciarSesion()
+        public IActionResult IniciarSesion(string returnUrl)
         {
+            TempData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> IniciarSesion(Login viewModel)
         {
+            string returnUrl = TempData["ReturnUrl"] as string;
             if (ModelState.IsValid)
             {
+                if(!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 var resultado = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
                 if (resultado.Succeeded)
                 {
