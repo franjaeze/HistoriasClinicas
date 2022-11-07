@@ -24,6 +24,7 @@
                     </ul>
                 </div>
                 @if (signInManager.IsSignedIn(User))
+<<<<<<< HEAD
                 {<ul class="nav justify-content-center">
 
 
@@ -43,14 +44,47 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
                         </li>
                     </ul>
+=======
+                {
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleado</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Paciente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
+                    </li>
+                    @if (User.IsInRole("EsAdmin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ListarRoles">Listar Roles</a>
+                        </li>
+                    }
+>>>>>>> f0098c8551283e6e2f49edb83fdcbd7437364a60
                 }
                 else
                 { <ul class="nav justify-content-center">
 
                     <li class="nav-item">
+<<<<<<< HEAD
              <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
                 </li>
 </ul>
+=======
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a>
+                    </li>
+>>>>>>> f0098c8551283e6e2f49edb83fdcbd7437364a60
                 }
 
 
