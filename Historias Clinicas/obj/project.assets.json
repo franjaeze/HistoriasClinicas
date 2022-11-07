@@ -8654,35 +8654,28 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\Paola\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Fran.000\\.nuget\\packages\\": {}
->>>>>>> Francisco
+    "C:\\Users\\EQUIPO\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\Paola\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+      "projectUniqueName": "C:\\OrtRepos\\Proyecto\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
       "projectName": "Historias Clinicas",
-      "projectPath": "C:\\Users\\Paola\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
-      "packagesPath": "C:\\Users\\Paola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Paola\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+      "projectPath": "C:\\OrtRepos\\Proyecto\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+      "packagesPath": "C:\\Users\\EQUIPO\\.nuget\\packages\\",
+      "outputPath": "C:\\OrtRepos\\Proyecto\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Paola\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
-      "projectName": "Historias Clinicas",
-      "projectPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
-      "packagesPath": "C:\\Users\\Fran.000\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\Fran.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Francisco
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\EQUIPO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -8756,11 +8749,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
->>>>>>> Francisco
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
       }
     }
   }
