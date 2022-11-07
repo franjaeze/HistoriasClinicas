@@ -213,3 +213,19 @@ C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\n
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Account\IniciarSesion.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Account\ListarRoles.cshtml.g.cs
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.AssemblyReference.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.AssemblyInfoInputs.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.AssemblyInfo.cs
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.CoreCompileInputs.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorAssemblyInfo.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorAssemblyInfo.cs
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\staticwebassets\Historias Clinicas.StaticWebAssets.Manifest.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\staticwebassets\Historias Clinicas.StaticWebAssets.xml
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\scopedcss\bundle\Historias Clinicas.styles.css
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.TagHelpers.input.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.TagHelpers.output.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorCoreGenerate.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
