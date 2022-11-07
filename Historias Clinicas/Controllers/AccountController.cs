@@ -15,12 +15,13 @@ namespace Historias_Clinicas.Controllers
     {
         private readonly UserManager<Persona> _userManager;
         private readonly SignInManager<Persona> _signinManager;
+        private readonly RoleManager<Rol> _roleManager;
 
-        public AccountController(UserManager<Persona> userManager, SignInManager<Persona> signInManager)
+        public AccountController(UserManager<Persona> userManager, SignInManager<Persona> signInManager, RoleManager<Rol> roleManager)
         {
             this._userManager = userManager;
             this._signinManager = signInManager;
-
+            this._roleManager = roleManager;
         }
 
         public IActionResult Registrar()
@@ -102,7 +103,11 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-  
+        public async Task<IActionResult> ListarRoles()
+        {
+            var roles = _roleManager.Roles.ToList();
+            return View(roles);
+        }
 
     }
 }
