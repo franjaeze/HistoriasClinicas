@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
+    [Authorize]
+
     public class EmpleadosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
@@ -117,6 +120,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Empleadoes/Delete/5
+        [Authorize (Roles = "Admin, Empelados")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -135,6 +139,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // POST: Empleadoes/Delete/5
+        [Authorize(Roles = "Admin, Empelados")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)

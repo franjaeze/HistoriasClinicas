@@ -1,6 +1,8 @@
 ﻿using Historias_Clinicas.Data;
+using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,12 +16,13 @@ namespace Historias_Clinicas.Controllers
     {
         private readonly UserManager<Persona> _userManager;
         private readonly SignInManager<Persona> _signinManager;
+        private readonly RoleManager<Rol> _roleManager;
 
-        public AccountController(UserManager<Persona> userManager, SignInManager<Persona> signInManager)
+        public AccountController(UserManager<Persona> userManager, SignInManager<Persona> signInManager, RoleManager<Rol> roleManager)
         {
             this._userManager = userManager;
             this._signinManager = signInManager;
-
+            this._roleManager = roleManager;
         }
 
         public IActionResult Registrar()
@@ -45,10 +48,18 @@ namespace Historias_Clinicas.Controllers
 
                 if (resultadoCreacion.Succeeded)
                 {
-                    await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
+                    var resultadoAddRole = await _userManager.AddToRoleAsync(pacienteACrear, Configs.PacienteRolName);
 
-                    return RedirectToAction("Edit", "Personas", new { id = pacienteACrear.Id });
+                    if (resultadoAddRole.Succeeded)
+                    {
+                        await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
 
+                        return RedirectToAction("Edit", "Personas", new { id = pacienteACrear.Id });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, $" No se pudo agregar el rol de {Configs.PacienteRolName}");
+                    }
                 }
 
                 foreach (var error in resultadoCreacion.Errors)
@@ -61,19 +72,25 @@ namespace Historias_Clinicas.Controllers
             return View(viewModel);
         }
 
-        public IActionResult IniciarSesion()
+        public IActionResult IniciarSesion(string returnUrl)
         {
+            TempData["ReturnUrl"] = returnUrl;
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> IniciarSesion(Login viewModel)
         {
+            string returnUrl = TempData["ReturnUrl"] as string;
             if (ModelState.IsValid)
             {
+                if(!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 var resultado = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
                 if (resultado.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("MenuPaciente", "Pacientes");
                 }
                 ModelState.AddModelError(String.Empty, "Inicio de Sesión inválida");
             }
@@ -87,7 +104,18 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-  
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ListarRoles()
+        {
+            var roles = _roleManager.Roles.ToList();
+            return View(roles);
+        }
+
+        public IActionResult AccesoDenegado(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
 
     }
 }
