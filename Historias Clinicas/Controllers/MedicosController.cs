@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
+    [Authorize]
+
     public class MedicosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
@@ -50,6 +53,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Create
+        [Authorize(Roles = "Admin, Medico, Empleado")]
         public IActionResult Create()
         {
             return View();
@@ -123,6 +127,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Delete/5
+        [Authorize(Roles = "Admin, Medico, Empleado")]
         public  IActionResult Delete(int? id)
         {
             if (id == null)

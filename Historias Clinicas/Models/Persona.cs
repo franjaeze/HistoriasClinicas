@@ -67,7 +67,7 @@ namespace Historias_Clinicas.Models
         public DateTime FechaDeAlta { get; set; }
 
 
-        public Usuario Usuario { get; set; }
+        
 
 
         [Display(Name = Alias.NombreCompleto)]
