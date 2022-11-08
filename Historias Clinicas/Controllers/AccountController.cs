@@ -111,6 +111,12 @@ namespace Historias_Clinicas.Controllers
             return View(roles);
         }
 
+        public IActionResult AccesoDenegado(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
     }
 }
 
