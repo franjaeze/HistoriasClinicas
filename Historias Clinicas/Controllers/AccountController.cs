@@ -2,6 +2,7 @@
 using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -103,6 +104,7 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ListarRoles()
         {
             var roles = _roleManager.Roles.ToList();

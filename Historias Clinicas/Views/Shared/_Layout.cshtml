@@ -21,77 +21,57 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="nav justify-content-center">
-                    </ul>
-                </div>
-                @if (signInManager.IsSignedIn(User))
-<<<<<<< HEAD
-                {<ul class="nav justify-content-center">
-
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleado</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medico</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Paciente</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
-                        </li>
+
+                        @if (signInManager.IsSignedIn(User))
+
+                        {                   /// aca dememos mostrar lo que necesita unusuario logueado
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleado</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Paciente</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
+                            </li>
+                            @if (User.IsInRole("EsAdmin"))
+                            /// ACA VA A MOSTRAR SOLO SI EL USUARIO ES ADMIN
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ListarRoles">Listar Roles</a>
+                                </li>
+                            }
+                        }
+                        else
+                        /// ACA EL VA A MOSTRAR CUANDO EL USUARIO NO ESTE LOGUEADO
+                        {
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
+                            </li>
+                       
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a>
+                            </li>
+
+
+                        }
+
+
+
                     </ul>
-=======
-                {
-
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleado</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medico</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Paciente</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
-                    </li>
-                    @if (User.IsInRole("EsAdmin"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ListarRoles">Listar Roles</a>
-                        </li>
-                    }
->>>>>>> f0098c8551283e6e2f49edb83fdcbd7437364a60
-                }
-                else
-                { <ul class="nav justify-content-center">
-
-                    <li class="nav-item">
-<<<<<<< HEAD
-             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
-                </li>
-</ul>
-=======
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a>
-                    </li>
->>>>>>> f0098c8551283e6e2f49edb83fdcbd7437364a60
-                }
 
 
-            </div>
+                </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -101,8 +81,8 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - Historias_Clinicas - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
-                                               <a asp-area="" asp-controller="Home" asp-action="AboutUs">Sobre nosotros</a>
-                                               <a asp-area="" asp-controller="PreCarga" asp-action="Seed" class="btn btn-sm btn-info">PreCarga</a>
+            <a asp-area="" asp-controller="Home" asp-action="AboutUs">Sobre nosotros</a>
+            <a asp-area="" asp-controller="PreCarga" asp-action="Seed" class="btn btn-sm btn-info">PreCarga</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

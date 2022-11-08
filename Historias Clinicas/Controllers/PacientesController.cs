@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
+    [Authorize]
     public class PacientesController : Controller
     {
         private readonly HistoriasClinicasContext _context;
@@ -71,6 +73,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Pacientes/Edit/5
+        [Authorize(Roles = "Admin, Medico, Empleado")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,6 +94,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Medico, Empleado")]
         public IActionResult Edit(int id, [Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
             if (id != paciente.Id)
@@ -142,6 +146,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Pacientes/Delete/5
+        [Authorize(Roles = "Admin, Medico, Empleado")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
