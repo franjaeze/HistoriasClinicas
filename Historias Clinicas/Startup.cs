@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Historias_Clinicas
 {
@@ -26,6 +26,18 @@ namespace Historias_Clinicas
         {
             //services.AddDbContext<HistoriasClinicasContext>(options => options.UseInMemoryDatabase("HistoriaClinicaDb"));
             builder.AddDbContext<HistoriasClinicasContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HistoriasClinicasDBCS")));
+
+            
+
+            builder.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
+                opciones =>
+            {
+                opciones.LoginPath = "/Account/Iniciarsesion";
+                opciones.AccessDeniedPath = "/Account/AccesoDenegado";
+                opciones.Cookie.Name = "IdentidadHistoriasClinicasApp";
+
+            });
+
 
             builder.AddIdentity<Persona, Rol>().AddEntityFrameworkStores<HistoriasClinicasContext>();
             builder.Configure<IdentityOptions>(opciones =>

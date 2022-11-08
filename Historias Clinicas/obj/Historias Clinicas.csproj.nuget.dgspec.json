@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Paola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
+        "projectName": "Historias Clinicas",
+        "projectPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
+        "packagesPath": "C:\\Users\\Fran.000\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Fran.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> c38b015c094fab74f4144be13d22bf146ebe0bb0
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +106,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+>>>>>>> c38b015c094fab74f4144be13d22bf146ebe0bb0
         }
       }
     }
