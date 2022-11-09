@@ -213,3 +213,13 @@ C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clini
 C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.AssemblyReference.cache
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.GeneratedMSBuildEditorConfig.editorconfig
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.AssemblyInfoInputs.cache
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.AssemblyInfo.cs
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.CoreCompileInputs.cache
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.MvcApplicationPartsAssemblyInfo.cache
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorAssemblyInfo.cache
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorAssemblyInfo.cs
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
+C:\ort\NT1\HISTORIAS-CLINICAS\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
