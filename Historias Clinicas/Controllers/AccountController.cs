@@ -17,8 +17,12 @@ namespace Historias_Clinicas.Controllers
         private readonly UserManager<Persona> _userManager;
         private readonly SignInManager<Persona> _signinManager;
         private readonly RoleManager<Rol> _roleManager;
+       
 
-        public AccountController(UserManager<Persona> userManager, SignInManager<Persona> signInManager, RoleManager<Rol> roleManager)
+        public AccountController(UserManager<Persona> userManager, 
+            SignInManager<Persona> signInManager,
+            HistoriasClinicasContext contexto,
+            RoleManager<Rol> roleManager)
         {
             this._userManager = userManager;
             this._signinManager = signInManager;
@@ -117,6 +121,19 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
+        public IActionResult TestCurrentUser()
+        {
+            if (_signinManager.IsSignedIn(User))
+            {
+                string nombreUsuario = User.Identity.Name;
+
+
+                int personaId = Int32.Parse(_userManager.GetUserId(User));
+            }
+
+
+            return null;
+        }
     }
 }
 
