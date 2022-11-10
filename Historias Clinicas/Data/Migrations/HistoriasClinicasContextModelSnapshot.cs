@@ -303,33 +303,6 @@ namespace Historias_Clinicas.Data.Migrations
                     b.ToTable("Notas");
                 });
 
-            modelBuilder.Entity("Historias_Clinicas.Models.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AppId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NombreUsuario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppId");
-
-                    b.ToTable("Usuarios");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -575,11 +548,6 @@ namespace Historias_Clinicas.Data.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("UsuarioId");
-
                     b.HasDiscriminator().HasValue("Persona");
                 });
 
@@ -683,13 +651,6 @@ namespace Historias_Clinicas.Data.Migrations
                         .HasForeignKey("EvolucionId");
                 });
 
-            modelBuilder.Entity("Historias_Clinicas.Models.Usuario", b =>
-                {
-                    b.HasOne("Historias_Clinicas.Models.App", null)
-                        .WithMany("Usuarios")
-                        .HasForeignKey("AppId");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
@@ -739,13 +700,6 @@ namespace Historias_Clinicas.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Historias_Clinicas.Models.Persona", b =>
-                {
-                    b.HasOne("Historias_Clinicas.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("Historias_Clinicas.Models.Empleado", b =>
