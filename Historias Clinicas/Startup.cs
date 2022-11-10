@@ -81,6 +81,13 @@ namespace Historias_Clinicas
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var contexto = serviceScope.ServiceProvider.GetRequiredService<HistoriasClinicasContext>();
+
+                contexto.Database.Migrate();
+            }
         }
     }
 }
