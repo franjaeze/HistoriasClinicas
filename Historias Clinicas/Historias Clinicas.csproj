@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20221110000256_Inica.cs" />
+    <Compile Remove="Data\Migrations\20221110000256_Inica.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Medicos\Menu.cshtml" />
   </ItemGroup>
 
