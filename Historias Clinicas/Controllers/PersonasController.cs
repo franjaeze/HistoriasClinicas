@@ -54,32 +54,32 @@ namespace Historias_Clinicas.Controllers
         }
 
         // POST: Personas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(bool EsAdmin,[Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
+        public async Task<IActionResult> Create(bool EsMedico, bool EsEmpleado, bool EsPaciente,[Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
         {
             if (ModelState.IsValid)
             {
-                //_context.Add(persona);
-                //_context.SaveChanges();
-                persona.UserName = persona.Email;
 
+                persona.UserName = persona.Email;
                 var resultadoNewPersona = await _userManager.CreateAsync(persona, Configs.PasswordGenerica);
+
                 if(resultadoNewPersona.Succeeded)
                 {
                     IdentityResult resultadoAddRole;
                     string rolDefinido;
 
-                    if (EsAdmin)
+                    if(EsMedico)
                     {
-                        rolDefinido = Configs.AdminRolName;
-                        
+                        rolDefinido = Configs.MedicoRolName;
+                    }
+                    else if (EsEmpleado)
+                    {
+                        rolDefinido = Configs.EmpleadoRolName;
                     }
                     else
                     {
-                        rolDefinido = Configs.UsuarioRolName;
+                        rolDefinido = Configs.PacienteRolName;
                     }
 
                     resultadoAddRole = await _userManager.AddToRoleAsync(persona, rolDefinido);
@@ -120,8 +120,6 @@ namespace Historias_Clinicas.Controllers
         }
 
         // POST: Personas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
