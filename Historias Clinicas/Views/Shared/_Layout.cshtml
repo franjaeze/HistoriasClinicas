@@ -21,9 +21,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="nav justify-content-center">
-                        @*<li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                </li>*@
 
                         @if (signInManager.IsSignedIn(User))
                         {
@@ -63,10 +60,10 @@
                         else
                         /// ACA EL VA A MOSTRAR CUANDO EL USUARIO NO ESTE LOGUEADO
                         {
-                            <li class="nav-item">
-
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrarme">Registrate</a>
-                            </li>
+                    <li class="nav-item">
+              
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
+                    </li>
 
                             @*<li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a>
