@@ -8654,28 +8654,45 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\EQUIPO\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+=======
+    "C:\\Users\\Paola\\.nuget\\packages\\": {}
+>>>>>>> Paola
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\OrtRepos\\Proyecto\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
       "projectName": "Historias Clinicas",
       "projectPath": "C:\\OrtRepos\\Proyecto\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
       "packagesPath": "C:\\Users\\EQUIPO\\.nuget\\packages\\",
       "outputPath": "C:\\OrtRepos\\Proyecto\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+      "projectName": "Historias Clinicas",
+      "projectPath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+      "packagesPath": "C:\\Users\\Paola\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Paola\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+>>>>>>> Paola
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\EQUIPO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+        "C:\\Users\\Paola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> Paola
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -8749,7 +8766,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+>>>>>>> Paola
       }
     }
   }

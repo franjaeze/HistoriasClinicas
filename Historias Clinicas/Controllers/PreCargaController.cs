@@ -1,4 +1,5 @@
 ﻿using Historias_Clinicas.Data;
+using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace Historias_Clinicas.Controllers
         private readonly RoleManager<Rol> _roleManager;
         private readonly HistoriasClinicasContext _context;
 
-        private readonly List<string> roles = new List<string>() { "Usuario", "Admin", "Paciente", "Empleado", "Medico" };
+        private readonly List<string> roles = new List<string>() { Configs.MedicoRolName, Configs.PacienteRolName, Configs.EmpleadoRolName };
         
         public PreCargaController(UserManager<Persona> userManager, RoleManager<Rol> roleManager, HistoriasClinicasContext context)
         {
