@@ -108,7 +108,7 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "EsEmpleado")]
         public async Task<IActionResult> ListarRoles()
         {
             var roles = _roleManager.Roles.ToList();
