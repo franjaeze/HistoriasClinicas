@@ -56,7 +56,7 @@ namespace Historias_Clinicas
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, HistoriasClinicasContext contexto)
         {
             if (env.IsDevelopment())
             {
@@ -82,12 +82,8 @@ namespace Historias_Clinicas
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var contexto = serviceScope.ServiceProvider.GetRequiredService<HistoriasClinicasContext>();
-
                 contexto.Database.Migrate();
-            }
+            
         }
     }
 }
