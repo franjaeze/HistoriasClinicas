@@ -5,6 +5,7 @@ using Historias_Clinicas.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,7 +112,7 @@ namespace Historias_Clinicas.Controllers
         [Authorize(Roles = "EsEmpleado")]
         public async Task<IActionResult> ListarRoles()
         {
-            var roles = _roleManager.Roles.ToList();
+            var roles = await _roleManager.Roles.ToListAsync();
             return View(roles);
         }
 
