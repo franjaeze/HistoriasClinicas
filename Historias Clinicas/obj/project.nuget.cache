@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ezYXUeyNm+i9/Ef6irBaESEqxsGDJRIJj7unMt62LcCthJ2b64E1j08is8f14EfaX8YRdcFpXrKaCKGTBVKjmg==",
+  "dgSpecHash": "7X4yadI/F6D/H/Pn7VOKvT+/he9W0tEy4VF32HPTgSJBTVBJpJwS/ju8UrEImSNy9qxi5ecQS+NjjfoS3LZXiw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateo Bellomo\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+  "projectFilePath": "C:\\Users\\Mateo Bellomo\\source\\repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.30\\microsoft.aspnetcore.cryptography.internal.3.1.30.nupkg.sha512",
     "C:\\Users\\Mateo Bellomo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.30\\microsoft.aspnetcore.cryptography.keyderivation.3.1.30.nupkg.sha512",
