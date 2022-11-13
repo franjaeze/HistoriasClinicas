@@ -1,4 +1,5 @@
 ﻿using Historias_Clinicas.Data;
+using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace Historias_Clinicas.Controllers
         private readonly RoleManager<Rol> _roleManager;
         private readonly HistoriasClinicasContext _context;
 
-        private readonly List<string> roles = new List<string>() { "Usuario", "Admin", "Paciente", "Empleado", "Medico" };
+        private readonly List<string> roles = new List<string>() { Configs.MedicoRolName, Configs.PacienteRolName, Configs.EmpleadoRolName };
         
         public PreCargaController(UserManager<Persona> userManager, RoleManager<Rol> roleManager, HistoriasClinicasContext context)
         {
@@ -28,7 +29,6 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Seed() // Semilla(Origen) de la base de datos
         {
             CrearRoles().Wait();
-            //CrearAdmin().Wait();
             CrearPacientes().Wait();
             CrearEmpleados().Wait();
             CrearMedicos().Wait();
@@ -38,78 +38,78 @@ namespace Historias_Clinicas.Controllers
 
         private async Task CrearMedicos()
         {
-            if (!_context.Medicos.Any())
-            {
-
-                Medico medico = new Medico()
-                {
-                    Nombre = "Mateo",
-                    SegundoNombre = "Agustin",
-                    Apellido = "Bellomo",
-                    Dni = 42375111,
-                    Email = "mateo@ort.edu.ar",
-                    Telefono = "1158889987",
-                    FechaDeAlta = new DateTime(2015, 12, 25),
-                    MatriculaNacional = 10000,
-                    Especialidad = Especialidad.ClinicaMedica
-                };
-                _context.Medicos.Add(medico);
-                _context.SaveChanges();
-
-                Medico medico2 = new Medico()
+                if (!_context.Medicos.Any())
                 {
 
-                    Nombre = "Camila",
-                    SegundoNombre = "Belen",
-                    Apellido = "Szesko",
-                    Dni = 42375112,
-                    Email = "camila@ort.edu.ar",
-                    Telefono = "1159999988",
-                    FechaDeAlta = new DateTime(2015, 12, 28),
-                    MatriculaNacional = 10001,
-                    Especialidad = Especialidad.Cardiologia
+                    Medico medico = new Medico()
+                    {
+                        Nombre = "Mateo",
+                        SegundoNombre = "Agustin",
+                        Apellido = "Bellomo",
+                        Dni = 42375111,
+                        Email = "mateo@ort.edu.ar",
+                        Telefono = "1158889987",
+                        FechaDeAlta = new DateTime(2015, 12, 25),
+                        MatriculaNacional = 10000,
+                        Especialidad = Especialidad.ClinicaMedica
+                    };
+                    _context.Medicos.Add(medico);
+                    await _context.SaveChangesAsync();
 
-                };
-                _context.Medicos.Add(medico2);
-                _context.SaveChanges();
-            }
+                    Medico medico2 = new Medico()
+                    {
+
+                        Nombre = "Camila",
+                        SegundoNombre = "Belen",
+                        Apellido = "Szesko",
+                        Dni = 42375112,
+                        Email = "camila@ort.edu.ar",
+                        Telefono = "1159999988",
+                        FechaDeAlta = new DateTime(2015, 12, 28),
+                        MatriculaNacional = 10001,
+                        Especialidad = Especialidad.Cardiologia
+
+                    };
+                    _context.Medicos.Add(medico2);
+                    await _context.SaveChangesAsync();
+                }        
         }
     
 
         private async Task CrearEmpleados()
         {
-        if (!_context.Empleados.Any())
-        {
+                if (!_context.Empleados.Any())
+                {
 
-            Empleado empleado = new Empleado()
-            {
-                Nombre = "Francisco",
-                SegundoNombre = "Javier",
-                Apellido = "Veron",
-                Dni = 42375222,
-                Email = "francisco@ort.edu.ar",
-                Telefono = "1166669987",
-                FechaDeAlta = new DateTime(2018, 12, 25),
-                Legajo = 1
-            };
-            _context.Empleados.Add(empleado);
-            _context.SaveChanges();
+                    Empleado empleado = new Empleado()
+                    {
+                        Nombre = "Francisco",
+                        SegundoNombre = "Javier",
+                        Apellido = "Veron",
+                        Dni = 42375222,
+                        Email = "francisco@ort.edu.ar",
+                        Telefono = "1166669987",
+                        FechaDeAlta = new DateTime(2018, 12, 25),
+                        Legajo = 1
+                    };
+                    _context.Empleados.Add(empleado);
+                    _context.SaveChanges();
 
-            Empleado empleado2 = new Empleado()
-            {
-                Nombre = "Paola",
-                SegundoNombre = "Yanina",
-                Apellido = "Quinionez",
-                Dni = 42300222,
-                Email = "paola@ort.edu.ar",
-                Telefono = "1177779987",
-                FechaDeAlta = new DateTime(2014, 12, 10),
-                Legajo = 2
+                    Empleado empleado2 = new Empleado()
+                    {
+                        Nombre = "Paola",
+                        SegundoNombre = "Yanina",
+                        Apellido = "Quinionez",
+                        Dni = 42300222,
+                        Email = "paola@ort.edu.ar",
+                        Telefono = "1177779987",
+                        FechaDeAlta = new DateTime(2014, 12, 10),
+                        Legajo = 2
 
-            };
-            _context.Empleados.Add(empleado2);
-            _context.SaveChanges();
-        }
+                    };
+                    _context.Empleados.Add(empleado2);
+                    await _context.SaveChangesAsync();
+                }     
     }
 
         private async Task CrearPacientes()
@@ -130,7 +130,7 @@ namespace Historias_Clinicas.Controllers
                 HistoriaClincaId = 1
             };
             _context.Pacientes.Add(paciente);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             Paciente paciente2 = new Paciente()
             {
@@ -146,14 +146,9 @@ namespace Historias_Clinicas.Controllers
 
             };
             _context.Pacientes.Add(paciente2);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
-
-        //private async Task CrearAdmin()
-        //{
-
-        //}
 
         private async Task CrearRoles()
         {

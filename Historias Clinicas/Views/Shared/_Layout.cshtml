@@ -21,44 +21,53 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
 
                         @if (signInManager.IsSignedIn(User))
-
-                        {                   /// aca dememos mostrar lo que necesita unusuario logueado
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleado</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medico</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Paciente</a>
-                            </li>
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="CerrarSesion">Cerrar Sesion</a>
                             </li>
-                            @if (User.IsInRole("EsAdmin"))
+
+                            @if (User.IsInRole("EsEmpleado"))
                             /// ACA VA A MOSTRAR SOLO SI EL USUARIO ES ADMIN
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ListarRoles">Listar Roles</a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleado</a>
+                                </li>
                             }
+
+                            else if (User.IsInRole("EsMedico"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medico</a>
+                                </li>
+                            }
+
+                            else if(User.IsInRole("EsPaciente"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Paciente</a>
+                                </li>
+
+                            }
+
+
                         }
                         else
                         /// ACA EL VA A MOSTRAR CUANDO EL USUARIO NO ESTE LOGUEADO
                         {
-                            <li class="nav-item">
+                    <li class="nav-item">
+              
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
+                    </li>
 
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registrar">Registrate</a>
-                            </li>
-                       
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a>
-                            </li>
+                            @*<li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a>
+                    </li>*@
 
 
                         }
@@ -69,6 +78,7 @@
 
 
                 </div>
+            </div>
         </nav>
     </header>
 
