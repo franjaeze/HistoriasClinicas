@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Controllers
@@ -122,6 +121,21 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> EmailDisponible(string email)
+           {
+            var PersonaExistente = await _userManager.FindByEmailAsync(email);
+            if (PersonaExistente == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"El correo {email} ya esta en uso.");
+            }
+           }
+
         public IActionResult TestCurrentUser()
         {
             if (_signinManager.IsSignedIn(User))
@@ -135,6 +149,8 @@ namespace Historias_Clinicas.Controllers
 
             return null;
         }
+
+
     }
 }
 
