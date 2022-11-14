@@ -73,12 +73,12 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-
+                    @if (User.IsInRole("Admin")) { 
                     <div class="divBoton">
                         <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                         <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </div>
+                    </div>}
                 </td>
             </tr>
         }
