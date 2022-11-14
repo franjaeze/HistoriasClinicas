@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -15,17 +14,33 @@ namespace Historias_Clinicas.Controllers
 
     public class MedicosController : Controller
     {
+        private readonly ILogger<MedicosController> _logger;
         private readonly HistoriasClinicasContext _context;
+        IList<Medico> _listaMedicos;
 
-        public MedicosController(HistoriasClinicasContext context)
+        public MedicosController(ILogger<MedicosController> logger, HistoriasClinicasContext context)
         {
-            _context = context;
+            _logger = logger;
+            this._context = context;
+            
         }
 
         // GET: Medicos
-        public IActionResult Index()
+        public IActionResult Index(String mensaje)
         {
-            return View( _context.Medicos.ToList());
+            MedicosCollections();
+            return View(_context.Medicos.ToList());
+            //return View();
+        }
+
+        private void MedicosCollections()
+        {
+            IList<Medico> listaMedicos = _context.Medicos.ToList();
+
+            foreach (Medico medico in listaMedicos)
+            {
+                _logger.Log(LogLevel.Information, $"IList - {medico.MatriculaNacional} {medico.Nombre} {medico.Apellido} {medico.Especialidad} {medico.Email} {medico.FechaDeAlta}");
+            }
         }
 
         // GET: Medicos Menu de Opciones
@@ -35,14 +50,14 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Details/5
-        public  IActionResult Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var medico =  _context.Medicos
+            var medico = _context.Medicos
                 .FirstOrDefault(m => m.Id == id);
             if (medico == null)
             {
@@ -53,7 +68,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Create
-        [Authorize(Roles = "Admin, Medico, Empleado")]
+        [Authorize(Roles = "Admin, Empleado")]
         public IActionResult Create()
         {
             return View();
@@ -64,26 +79,27 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  IActionResult Create([Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public IActionResult Create([Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(medico);
                 _context.SaveChanges();
+                _listaMedicos.Add(medico);
                 return RedirectToAction(nameof(Index));
             }
             return View(medico);
         }
 
         // GET: Medicos/Edit/5
-        public  IActionResult Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var medico =  _context.Medicos.Find(id);
+            var medico = _context.Medicos.Find(id);
             if (medico == null)
             {
                 return NotFound();
@@ -96,7 +112,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (id != medico.Id)
             {
@@ -127,8 +143,8 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Delete/5
-        [Authorize(Roles = "Admin, Medico, Empleado")]
-        public  IActionResult Delete(int? id)
+        [Authorize(Roles = "Admin, Empleado")]
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -142,6 +158,7 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
+            _listaMedicos.Remove(medico);
             return View(medico);
         }
 
@@ -162,3 +179,7 @@ namespace Historias_Clinicas.Controllers
         }
     }
 }
+   
+
+
+
