@@ -1,30 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace Historias_Clinicas.Controllers
 {
     [Authorize]
     public class PacientesController : Controller
     {
+        private readonly ILogger<PacientesController> _logger;
         private readonly HistoriasClinicasContext _context;
+        IList<Paciente> _listaPacientes;
 
-        public PacientesController(HistoriasClinicasContext context)
+        public PacientesController(ILogger<PacientesController> logger, HistoriasClinicasContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
         // GET: Pacientes
         public  IActionResult Index()
         {
+            PacientesCollections();
             return View( _context.Pacientes.ToList());
+        }
+
+        private void PacientesCollections()
+        {
+            IList<Paciente> listaPacientes = _context.Pacientes.ToList();
+
+            foreach (Paciente paciente in listaPacientes)
+            {
+                _logger.Log(LogLevel.Information, $"IList - {paciente.Nombre} {paciente.Apellido}");
+            }
         }
 
         public IActionResult MenuPaciente()
@@ -67,13 +80,14 @@ namespace Historias_Clinicas.Controllers
             {
                 _context.Add(paciente);
                 _context.SaveChanges();
+                _listaPacientes.Add(paciente);
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);
         }
 
         // GET: Pacientes/Edit/5
-        [Authorize(Roles = "Admin, Medico, Empleado")]
+        [Authorize(Roles = "Admin, Empleado")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,7 +108,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Medico, Empleado")]
+        [Authorize(Roles = "Admin, Empleado")]
         public IActionResult Edit(int id, [Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
             if (id != paciente.Id)
@@ -146,7 +160,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Pacientes/Delete/5
-        [Authorize(Roles = "Admin, Medico, Empleado")]
+        [Authorize(Roles = "Admin, Empleado")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -161,6 +175,7 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
+            _listaPacientes.Remove(paciente);
             return View(paciente);
         }
 

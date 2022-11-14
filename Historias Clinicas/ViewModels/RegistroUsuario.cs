@@ -9,6 +9,7 @@ namespace Historias_Clinicas.ViewModels
     {
         [Required(ErrorMessage = MensajeError.Requerido)]
         [EmailAddress(ErrorMessage = MensajeError.NoValido)]
+        [Microsoft.AspNetCore.Mvc.Remote(action: "Email disponible", controller: "Account")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]

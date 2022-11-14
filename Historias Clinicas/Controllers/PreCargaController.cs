@@ -48,15 +48,17 @@ namespace Historias_Clinicas.Controllers
                         Apellido = "Bellomo",
                         Dni = 42375111,
                         Email = "mateo@ort.edu.ar",
+                        UserName = "mateo@ort.edu.ar",
                         Telefono = "1158889987",
                         FechaDeAlta = new DateTime(2015, 12, 25),
                         MatriculaNacional = 10000,
                         Especialidad = Especialidad.ClinicaMedica
                     };
-                    _context.Medicos.Add(medico);
-                    await _context.SaveChangesAsync();
 
-                    Medico medico2 = new Medico()
+                await _userManager.CreateAsync(medico, Configs.PasswordGenerica);
+                await _userManager.AddToRoleAsync(medico, Configs.MedicoRolName);
+
+                Medico medico2 = new Medico()
                     {
 
                         Nombre = "Camila",
@@ -64,15 +66,16 @@ namespace Historias_Clinicas.Controllers
                         Apellido = "Szesko",
                         Dni = 42375112,
                         Email = "camila@ort.edu.ar",
+                        UserName = "camila@ort.edu.ar",
                         Telefono = "1159999988",
                         FechaDeAlta = new DateTime(2015, 12, 28),
                         MatriculaNacional = 10001,
                         Especialidad = Especialidad.Cardiologia
 
                     };
-                    _context.Medicos.Add(medico2);
-                    await _context.SaveChangesAsync();
-                }        
+                await _userManager.CreateAsync(medico2, Configs.PasswordGenerica);
+                await _userManager.AddToRoleAsync(medico2, Configs.MedicoRolName);
+            }        
         }
     
 
@@ -88,28 +91,29 @@ namespace Historias_Clinicas.Controllers
                         Apellido = "Veron",
                         Dni = 42375222,
                         Email = "francisco@ort.edu.ar",
+                        UserName = "francisco@ort.edu.ar",
                         Telefono = "1166669987",
                         FechaDeAlta = new DateTime(2018, 12, 25),
                         Legajo = 1
                     };
-                    _context.Empleados.Add(empleado);
-                    _context.SaveChanges();
-
-                    Empleado empleado2 = new Empleado()
+                await _userManager.CreateAsync(empleado, Configs.PasswordGenerica);
+                await _userManager.AddToRoleAsync(empleado, Configs.EmpleadoRolName);
+                Empleado empleado2 = new Empleado()
                     {
                         Nombre = "Paola",
                         SegundoNombre = "Yanina",
                         Apellido = "Quinionez",
                         Dni = 42300222,
                         Email = "paola@ort.edu.ar",
+                        UserName = "paola@ort.edu.ar",
                         Telefono = "1177779987",
                         FechaDeAlta = new DateTime(2014, 12, 10),
                         Legajo = 2
 
                     };
-                    _context.Empleados.Add(empleado2);
-                    await _context.SaveChangesAsync();
-                }     
+                await _userManager.CreateAsync(empleado2, Configs.PasswordGenerica);
+                await _userManager.AddToRoleAsync(empleado2, Configs.EmpleadoRolName);
+            }     
     }
 
         private async Task CrearPacientes()
@@ -124,29 +128,30 @@ namespace Historias_Clinicas.Controllers
                 Apellido = "Caseres",
                 Dni = 41115222,
                 Email = "valentino@ort.edu.ar",
+                UserName = "valentino@ort.edu.ar",
                 Telefono = "1100069987",
                 FechaDeAlta = new DateTime(2012, 12, 14),
                 ObraSocialP = Cobertura.OSDE,
                 HistoriaClincaId = 1
             };
-            _context.Pacientes.Add(paciente);
-            await _context.SaveChangesAsync();
+         await _userManager.CreateAsync(paciente, Configs.PasswordGenerica);
+         await _userManager.AddToRoleAsync(paciente, Configs.PacienteRolName);
 
-            Paciente paciente2 = new Paciente()
-            {
+                Paciente paciente2 = new Paciente()
+                {
                 Nombre = "Juan",
                 SegundoNombre = "Jose",
                 Apellido = "Cruz",
                 Dni = 42321222,
                 Email = "juan@ort.edu.ar",
+                UserName = "juan@ort.edu.ar",
                 Telefono = "1177047980",
                 FechaDeAlta = new DateTime(2011, 12, 05),
                 ObraSocialP = Cobertura.OSECAC,
                 HistoriaClincaId = 2
-
-            };
-            _context.Pacientes.Add(paciente2);
-            await _context.SaveChangesAsync();
+                };
+        await _userManager.CreateAsync(paciente2, Configs.PasswordGenerica);
+        await _userManager.AddToRoleAsync(paciente2, Configs.PacienteRolName);
         }
     }
 
