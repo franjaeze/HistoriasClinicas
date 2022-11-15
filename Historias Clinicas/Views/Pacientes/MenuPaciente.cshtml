@@ -1,24 +1,40 @@
 ﻿<div class="container">
     <div class="row">
         <div class=" col-lg-2"></div>
-        <div class=" col-lg-6 col-md-12">
-            <h1> Bienvenido ! </h1>
-            <h1 class="m-4">En que podemos ayudarte?</h1>
-            <button type="button" class="btn btn-secondary btn-lg btn-block">
-                Historia Clinica
-            </button>
+        <div class=" col-lg-8 col-md-12">
+            <h1> Bienvenido @User.Identity.Name  ! </h1>
+            <h3 class="my-2">En que podemos ayudarte? </h3>
+            <ul class="nobull my-5">
+                <li class="my-3">
+                    <a type="button" class="menuBoton" asp-area="" asp-controller="HistoriasClinicas" asp-action="Index">
+                        Historia Clinica
+                    </a>
+                </li>
+                <li class="my-3">
+                    <a type="button" class="menuBoton" asp-area="" asp-controller="Medicos" asp-action="Index">
+                        Consultar Medico
+                    </a>
+                </li>
+                <li class="my-3">
+                    <a type="button" class="menuBoton">
+                        Contactar un representante
+                    </a>
+                </li>
+                <li class="my-3">
+                    <a type="button" class="menuBoton">
+                        Actualizar Datos
+                    </a>
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="my-3">
+                        <a type="button" class="menuBoton"asp-area="" asp-controller="Pacientes" asp-action="Index">
+                     Lista de Pacientes
+                        </a>
+                    </li>
 
-            <button type="button" class="btn btn-secondary btn-lg btn-block">
-              Consultar Medico
-            </button>          
-            
-            <button type="button" class="btn btn-secondary btn-lg btn-block">
-                   Episodios </button>
-            
-            <button type="button" class="btn btn-secondary btn-lg btn-block">
-                Actualizar Datos
-            </button>
-
+                }
+            </ul>
         </div>
         <div class=" col-lg-2"></div>
     </div>
