@@ -17,9 +17,9 @@ namespace Historias_Clinicas.Controllers
         private readonly UserManager<Persona> _userManager;
         private readonly SignInManager<Persona> _signinManager;
         private readonly RoleManager<Rol> _roleManager;
-       
 
-        public AccountController(UserManager<Persona> userManager, 
+
+        public AccountController(UserManager<Persona> userManager,
             SignInManager<Persona> signInManager,
             HistoriasClinicasContext contexto,
             RoleManager<Rol> roleManager)
@@ -87,7 +87,7 @@ namespace Historias_Clinicas.Controllers
             string returnUrl = TempData["ReturnUrl"] as string;
             if (ModelState.IsValid)
             {
-                if(!string.IsNullOrEmpty(returnUrl))
+                if (!string.IsNullOrEmpty(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
@@ -121,20 +121,20 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> EmailDisponible(string email)
-           {
-            var PersonaExistente = await _userManager.FindByEmailAsync(email);
-            if (PersonaExistente == null)
-            {
-                return Json(true);
-            }
-            else
-            {
-                return Json($"El correo {email} ya esta en uso.");
-            }
-           }
+        //[HttpGet]
+        //[AllowAnonymous]
+        ////public async Task<IActionResult> EmailDisponible(string email)
+        //   {
+        //    var PersonaExistente = await _userManager.FindByEmailAsync(email);
+        //    if (PersonaExistente == null)
+        //    {
+        //        return Json(true);
+        //    }
+        //    else
+        //    {
+        //        return Json($"El correo {email} ya esta en uso.");
+        //    }
+        //   }
 
         public IActionResult TestCurrentUser()
         {
@@ -151,6 +151,10 @@ namespace Historias_Clinicas.Controllers
         }
 
 
+        }
+
     }
-}
+
+
+
 
