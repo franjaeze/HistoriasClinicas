@@ -136,22 +136,22 @@ namespace Historias_Clinicas.Controllers
         //    }
         //   }
 
-        //public IActionResult TestCurrentUser()
-        //{
-        //    if (_signinManager.IsSignedIn(User))
-        //    {
-        //        string nombreUsuario = User.Identity.Name;
+        public IActionResult TestCurrentUser()
+        {
+            if (_signinManager.IsSignedIn(User))
+            {
+                string nombreUsuario = User.Identity.Name;
 
 
-        //        int personaId = Int32.Parse(_userManager.GetUserId(User));
-        //    }
+                int personaId = Int32.Parse(_userManager.GetUserId(User));
+            }
 
 
-        //    return null;
-        //}
+            return null;
+        }
 
 
-        //}
+        }
 
     }
 }
