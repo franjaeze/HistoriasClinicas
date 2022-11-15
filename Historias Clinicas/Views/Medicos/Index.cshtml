@@ -6,12 +6,26 @@
 
 <h1>Medicos</h1>
 
-<p>
-    <a class = "boton" asp-action="Create">Agregar Medico</a>
+<p align="right">
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Medico</a>
 </p>
 
+@*CÓDIGO PARA EL FILTRO DE BÚSQUEDA*@
+<div class="d-md-flex justify-content-md-start">
+    <form method="get" action=@Url.Action("Index", "Medico" )>
+        <div class="btn-group">
+            @Html.TextBox("buscar", null, new
+            {
+                placeholder = "texto de búsqueda",
+                                    @class = "form-control"
+            })
+        </div>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
+</div>
+
+@*CÓDIGO PARA LA TABLA DE DATOS*@
 <table class="table">
-    
     <thead>
         <tr>
             <th>
@@ -20,9 +34,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Especialidad)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.EstaActivo)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -33,62 +44,43 @@
                 @Html.DisplayNameFor(model => model.Apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dni)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaDeAlta)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatriculaNacional)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especialidad)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.EstaActivo)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SegundoNombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dni)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaDeAlta)
-            </td>
-            <td>
-
-                <div class="divBoton">
-                    <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
-                    <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a> 
-                    <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </div>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatriculaNacional)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SegundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin")) { 
+                    <div class="divBoton">
+                        <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </div>}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -89,6 +89,7 @@ namespace Historias_Clinicas.Controllers
                         if (resultadoAddRole.Succeeded)
                         {
                             return RedirectToAction("Index", "Personas");
+                            
                         }
                         else
                         {

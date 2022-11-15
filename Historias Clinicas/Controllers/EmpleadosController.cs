@@ -133,7 +133,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Empleadoes/Delete/5
-        [Authorize (Roles = "Admin, Empelados")]
+        [Authorize (Roles = "Admin, Empleado")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -152,7 +152,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // POST: Empleadoes/Delete/5
-        [Authorize(Roles = "Admin, Empelados")]
+        [Authorize(Roles = "Admin, Empleado")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
