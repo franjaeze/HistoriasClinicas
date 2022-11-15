@@ -650,3 +650,220 @@ C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.json
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.exe
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.deps.json
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.runtimeconfig.json
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.runtimeconfig.dev.json
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.pdb
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.Views.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.Views.pdb
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.AssemblyReference.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.GeneratedMSBuildEditorConfig.editorconfig
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.AssemblyInfoInputs.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.AssemblyInfo.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.CoreCompileInputs.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.MvcApplicationPartsAssemblyInfo.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorAssemblyInfo.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorAssemblyInfo.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\staticwebassets\Historias Clinicas.StaticWebAssets.Manifest.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\staticwebassets\Historias Clinicas.StaticWebAssets.xml
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\scopedcss\bundle\Historias Clinicas.styles.css
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.TagHelpers.input.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.TagHelpers.output.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorCoreGenerate.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccesoDenegado.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Account\IniciarSesion.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Account\ListarRoles.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Account\Registrar.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Apps\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Apps\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Apps\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Apps\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Apps\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Diagnosticos\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Diagnosticos\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Diagnosticos\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Diagnosticos\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Diagnosticos\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\MenuPaciente.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Personas\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Personas\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Personas\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Personas\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Personas\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorTargetAssemblyInfo.cache
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.RazorTargetAssemblyInfo.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.Views.pdb
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.CopyComplete
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
