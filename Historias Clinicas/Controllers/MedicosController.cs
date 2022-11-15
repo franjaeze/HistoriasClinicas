@@ -14,13 +14,11 @@ namespace Historias_Clinicas.Controllers
 
     public class MedicosController : Controller
     {
-        private readonly ILogger<MedicosController> _logger;
         private readonly HistoriasClinicasContext _context;
-        IList<Medico> _listaMedicos;
 
-        public MedicosController(ILogger<MedicosController> logger, HistoriasClinicasContext context)
+        public MedicosController(HistoriasClinicasContext context)
         {
-            _logger = logger;
+   
             this._context = context;
             
         }
@@ -28,19 +26,9 @@ namespace Historias_Clinicas.Controllers
         // GET: Medicos
         public IActionResult Index(String mensaje)
         {
-            MedicosCollections();
+           // MedicosCollections();
             return View(_context.Medicos.ToList());
             //return View();
-        }
-
-        private void MedicosCollections()
-        {
-            IList<Medico> listaMedicos = _context.Medicos.ToList();
-
-            foreach (Medico medico in listaMedicos)
-            {
-                _logger.Log(LogLevel.Information, $"IList - {medico.MatriculaNacional} {medico.Nombre} {medico.Apellido} {medico.Especialidad} {medico.Email} {medico.FechaDeAlta}");
-            }
         }
 
         // GET: Medicos Menu de Opciones
@@ -85,7 +73,6 @@ namespace Historias_Clinicas.Controllers
             {
                 _context.Add(medico);
                 _context.SaveChanges();
-                _listaMedicos.Add(medico);
                 return RedirectToAction(nameof(Index));
             }
             return View(medico);
@@ -158,7 +145,6 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            _listaMedicos.Remove(medico);
             return View(medico);
         }
 
