@@ -71,7 +71,9 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
+                paciente.FechaDeAlta = DateTime.Now;
                 _context.Add(paciente);
+   
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
