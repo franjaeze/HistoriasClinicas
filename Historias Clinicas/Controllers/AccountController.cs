@@ -121,20 +121,20 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //[AllowAnonymous]
-        ////public async Task<IActionResult> EmailDisponible(string email)
-        //   {
-        //    var PersonaExistente = await _userManager.FindByEmailAsync(email);
-        //    if (PersonaExistente == null)
-        //    {
-        //        return Json(true);
-        //    }
-        //    else
-        //    {
-        //        return Json($"El correo {email} ya esta en uso.");
-        //    }
-        //   }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> EmailDisponible(string email)
+        {
+            var PersonaExistente = await _userManager.FindByEmailAsync(email);
+            if (PersonaExistente == null)
+            {
+                return Json(true);
+             }
+            else
+            {
+                return Json($"El correo {email} ya esta en uso.");
+             }
+           }
 
         public IActionResult TestCurrentUser()
         {
