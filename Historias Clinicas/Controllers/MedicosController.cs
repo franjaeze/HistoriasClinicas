@@ -130,7 +130,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Delete/5
-        [Authorize(Roles = "Admin, Empleado")]
+
         public IActionResult Delete(int? id)
         {
             if (id == null)
