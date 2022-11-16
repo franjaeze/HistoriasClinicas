@@ -33,6 +33,11 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
+        public IActionResult Contacto()
+        {
+            return View();
+        }
+
         // GET: Pacientes/Details/5
         public IActionResult Details(int? id)
         {
