@@ -6,34 +6,28 @@
             <h3 class="my-2">En que podemos ayudarte? </h3>
             <ul class="nobull my-5">
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area="" asp-controller="HistoriasClinicas" asp-action="Index">
-                        Historia Clinica
+                    <a type="button" class="menuBoton" asp-area="" asp-controller="HistoriaClinicas" asp-action="Index">
+                        Mi Historia Clinica
                     </a>
                 </li>
                 <li class="my-3">
                     <a type="button" class="menuBoton" asp-area="" asp-controller="Medicos" asp-action="Index">
-                        Consultar Medico
+                        Mis Medicos
                     </a>
                 </li>
                 <li class="my-3">
-                    <a type="button" class="menuBoton">
-                        Contactar un representante
+                    <a type="button" class="menuBoton" asp-area="" asp-controller="Pacientes" asp-action="Contacto">
+                        Contactarme con un representante
                     </a>
                 </li>
                 <li class="my-3">
-                    <a type="button" class="menuBoton">
-                        Actualizar Datos
+                    <a type="button" class="menuBoton" asp-area=""  asp-route-id="TestCurrentUser()"asp-controller="Pacientes" asp-action="Edit">
+                        Actualizar Informacion Personal
                     </a>
                 </li>
-                @if (User.IsInRole("Admin"))
-                {
-                    <li class="my-3">
-                        <a type="button" class="menuBoton"asp-area="" asp-controller="Pacientes" asp-action="Index">
-                     Lista de Pacientes
-                        </a>
-                    </li>
+                                  
 
-                }
+                 
             </ul>
         </div>
         <div class=" col-lg-2"></div>
