@@ -94,7 +94,7 @@ namespace Historias_Clinicas.Controllers
             bool devolver = false;
             if (paciente.Dni != 0)
             {
-                if (paciente.Id != null && paciente.Id != 0)
+                if ( paciente.Id != 0)
                 {
                     devolver = _context.Pacientes.Any(p => p.Dni == paciente.Dni && p.Id != paciente.Id);
                 }
