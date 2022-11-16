@@ -69,7 +69,10 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
-            VerificarDNI(paciente);
+            if (DniExist(paciente.Dni))
+            {
+                ModelState.AddModelError("Dni", "El dni ya esta registrado en el sistema");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(paciente);
@@ -81,27 +84,15 @@ namespace Historias_Clinicas.Controllers
            
         }
 
-        private void VerificarDNI(Paciente paciente)
-        {
-            if (DniExist(paciente))
-            {
-                ModelState.AddModelError("Dni", "El dni ya esta registrado");
-            }
-        }
 
-        private bool DniExist(Paciente paciente)
+
+        private bool DniExist(int dni)
         {
             bool devolver = false;
-           
-                if ( paciente.Id != 0)
-                {
-                    devolver = _context.Pacientes.Any(p => p.Dni == paciente.Dni && p.Id != paciente.Id);
-                }
-                else
-                {
-                    devolver = _context.Pacientes.Any(p => p.Dni == paciente.Dni);
-                }
-            
+            if (dni == 0)
+            {
+                devolver = _context.Pacientes.Any(p => p.Dni == dni);
+            }
             return devolver;
         }
 
