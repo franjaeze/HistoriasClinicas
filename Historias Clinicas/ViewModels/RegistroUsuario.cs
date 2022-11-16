@@ -1,5 +1,6 @@
 ﻿using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
@@ -9,7 +10,7 @@ namespace Historias_Clinicas.ViewModels
     {
         [Required(ErrorMessage = MensajeError.Requerido)]
         [EmailAddress(ErrorMessage = MensajeError.NoValido)]
-        [Microsoft.AspNetCore.Mvc.Remote(action: "Email disponible", controller: "Account")]
+        [Remote(action: "EmailDisponible", controller: "Account")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]

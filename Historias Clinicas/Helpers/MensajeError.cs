@@ -16,6 +16,8 @@ namespace Historias_Clinicas.Models
 	        public const string SoloNumeros = "El campo solo admite numeros";
             public const string NoValido = "El email no es valido";
             public const string PassMissMatch = "El campo {0} no coincide";
-        
+            public const string MatriculaNacionalExistente = "Matricula Nacional existente";
+            public const string LegajoExistente = "Legajo existente";
+            public const string DniExistente = "DNI existente";
     }
 }

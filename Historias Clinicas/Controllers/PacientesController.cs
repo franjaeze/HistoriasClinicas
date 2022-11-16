@@ -13,31 +13,19 @@ namespace Historias_Clinicas.Controllers
     [Authorize]
     public class PacientesController : Controller
     {
-        private readonly ILogger<PacientesController> _logger;
-        private readonly HistoriasClinicasContext _context;
-        IList<Paciente> _listaPacientes;
 
-        public PacientesController(ILogger<PacientesController> logger, HistoriasClinicasContext context)
+        private readonly HistoriasClinicasContext _context;
+
+        public PacientesController(HistoriasClinicasContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
         // GET: Pacientes
         public  IActionResult Index()
         {
-            PacientesCollections();
+            //PacientesCollections();
             return View( _context.Pacientes.ToList());
-        }
-
-        private void PacientesCollections()
-        {
-            IList<Paciente> listaPacientes = _context.Pacientes.ToList();
-
-            foreach (Paciente paciente in listaPacientes)
-            {
-                _logger.Log(LogLevel.Information, $"IList - {paciente.Nombre} {paciente.Apellido}");
-            }
         }
 
         public IActionResult MenuPaciente()
@@ -80,7 +68,6 @@ namespace Historias_Clinicas.Controllers
             {
                 _context.Add(paciente);
                 _context.SaveChanges();
-                _listaPacientes.Add(paciente);
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);
@@ -174,8 +161,6 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
-
-            _listaPacientes.Remove(paciente);
             return View(paciente);
         }
 
