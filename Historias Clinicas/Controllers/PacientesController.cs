@@ -129,7 +129,7 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
-            VerificarDNI(paciente);
+            
             if (ModelState.IsValid)
             {
                 try
