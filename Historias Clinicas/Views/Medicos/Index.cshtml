@@ -5,10 +5,10 @@
 }
 
 <h1>Medicos</h1>
-
+@if(User.IsInRole("Empleado")){
 <p align="right">
     <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Medico</a>
-</p>
+</p>}
 
 @*CÓDIGO PARA EL FILTRO DE BÚSQUEDA*@
 <div class="d-md-flex justify-content-md-start">
@@ -73,12 +73,13 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @if (User.IsInRole("Admin")) { 
-                    <div class="divBoton">
-                        <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                        <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </div>}
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div class="divBoton">
+                            <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                            <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </div>}
                 </td>
             </tr>
         }
