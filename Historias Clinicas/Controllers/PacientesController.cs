@@ -92,8 +92,7 @@ namespace Historias_Clinicas.Controllers
         private bool DniExist(Paciente paciente)
         {
             bool devolver = false;
-            if (paciente.Dni != 0)
-            {
+           
                 if ( paciente.Id != 0)
                 {
                     devolver = _context.Pacientes.Any(p => p.Dni == paciente.Dni && p.Id != paciente.Id);
@@ -102,7 +101,7 @@ namespace Historias_Clinicas.Controllers
                 {
                     devolver = _context.Pacientes.Any(p => p.Dni == paciente.Dni);
                 }
-            }
+            
             return devolver;
         }
 
