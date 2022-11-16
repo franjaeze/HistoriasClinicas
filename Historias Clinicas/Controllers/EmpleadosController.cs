@@ -24,6 +24,8 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Empleadoes
+
+        [Authorize(Roles = "Empleado")]
         public  IActionResult Index()
         {
             return View(_context.Empleados.ToList());
@@ -133,7 +135,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Empleadoes/Delete/5
-        [Authorize (Roles = "Admin, Empleado")]
+    
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -152,7 +154,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // POST: Empleadoes/Delete/5
-        [Authorize(Roles = "Admin, Empleado")]
+      
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
