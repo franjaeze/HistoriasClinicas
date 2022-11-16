@@ -10,6 +10,7 @@ using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -25,6 +26,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Personas
+       
         public IActionResult Index()
         {
             return View(_context.Personas.ToList());
