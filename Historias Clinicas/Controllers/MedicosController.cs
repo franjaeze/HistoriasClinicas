@@ -24,7 +24,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos
-        public IActionResult Index(String mensaje)
+        public IActionResult Index()
         {
            // MedicosCollections();
             return View(_context.Medicos.ToList());
@@ -32,7 +32,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos Menu de Opciones
-        public IActionResult Menu()
+        public IActionResult MenuMedico()
         {
             return View();
         }
@@ -56,9 +56,10 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Medicos/Create
-        [Authorize(Roles = "Admin, Empleado")]
+        [Authorize(Roles = "Empleado")]
         public IActionResult Create()
         {
+           
             return View();
         }
 
@@ -71,6 +72,7 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
+                medico.FechaDeAlta = DateTime.Now;
                 _context.Add(medico);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
@@ -162,6 +164,27 @@ namespace Historias_Clinicas.Controllers
         private bool MedicoExists(int id)
         {
             return _context.Medicos.Any(e => e.Id == id);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Buscar(string apellido)
+        {
+            //var medicos = _context.Medicos
+            //    .Where(x => string.IsNullOrWhiteSpace(apellido) || EF.Functions.Like(x.Apellido, $"%{apellido}%"));
+            ////.ToList();
+            //ViewBag.Apellido = apellido;
+
+            var medicos = from m in _context.Medicos
+                          select m;
+
+            if (!String.IsNullOrEmpty(apellido))
+            {
+                medicos = medicos.Where(s => s.NombreCompleto.Contains(apellido));
+                ViewBag.Apellido = apellido;
+            }
+            
+            return View(medicos);
         }
     }
 }
