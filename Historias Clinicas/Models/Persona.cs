@@ -53,22 +53,20 @@ namespace Historias_Clinicas.Models
         public override String Email {
             get { return base.Email; }
             set { base.Email = value; }
-             }
+        }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [Phone]
-        [StringLength(15,MinimumLength =7, ErrorMessage = MensajeError.MinMaxString)]
+        [StringLength(15, MinimumLength = 7, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
 
         [DataType(DataType.Date)]
         [Display(Name = Alias.FechaDeAlta)]
+
         public DateTime FechaDeAlta { get; set; }
-
-
-        
-
+   
 
         [Display(Name = Alias.NombreCompleto)]
         public String NombreCompleto

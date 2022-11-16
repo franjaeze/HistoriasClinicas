@@ -69,17 +69,39 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
+           /* if (DniExist(paciente.Dni))
+            {
+                ModelState.AddModelError("Dni", "El dni ya esta registrado en el sistema");
+            } */
             if (ModelState.IsValid)
             {
+                paciente.FechaDeAlta = DateTime.Now;
                 _context.Add(paciente);
+   
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);
+
+           
         }
 
+
+
+      /*  private bool DniExist(int dni)
+        {
+            bool devolver = false;
+            if (dni == 0)
+            {
+                devolver = _context.Pacientes.Any(p => p.Dni == dni);
+            }
+            return devolver;
+        } */
+
+
+
         // GET: Pacientes/Edit/5
-        
+
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,7 +129,7 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
                 try

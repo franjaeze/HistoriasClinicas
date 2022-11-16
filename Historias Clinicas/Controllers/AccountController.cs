@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Controllers
@@ -47,6 +46,7 @@ namespace Historias_Clinicas.Controllers
                 {
                     pacienteACrear.Email = viewModel.Email;
                     pacienteACrear.UserName = viewModel.Email;
+                    pacienteACrear.FechaDeAlta = DateTime.Now;
                 }
                 var resultadoCreacion = await _userManager.CreateAsync(pacienteACrear, viewModel.Password);
 
