@@ -36,9 +36,17 @@ namespace Historias_Clinicas.Data
             modelBuilder.Entity<IdentityRole<int>>().ToTable("Roles");
             modelBuilder.Entity<IdentityUserRole<int>>().ToTable("PersonasRoles");
 
-
+            #region Unique
+            modelBuilder.Entity<Persona>().HasIndex(p => p.Dni).IsUnique();
+            modelBuilder.Entity<Medico>().HasIndex(m => m.MatriculaNacional).IsUnique();
+            modelBuilder.Entity<Empleado>().HasIndex(e => e.Legajo).IsUnique();
+            #endregion
 
         }
+
+
+
+
 
         //private void WillCascadeOnDelete(bool v)
         //{
