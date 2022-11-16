@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Data.SqlClient;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -23,6 +24,8 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Empleadoes
+
+        [Authorize(Roles = "Empleado")]
         public  IActionResult Index()
         {
             return View(_context.Empleados.ToList());
@@ -62,8 +65,16 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(empleado);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+
+                try
+                {
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException dbex)
+                {
+                    ProcesarDuplicado(dbex);
+                }
             }
             return View(empleado);
         }
@@ -102,6 +113,7 @@ namespace Historias_Clinicas.Controllers
                 {
                     _context.Update(empleado);
                     _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -114,13 +126,16 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateException dbex)
+                {
+                    ProcesarDuplicado(dbex);
+                }
             }
             return View(empleado);
         }
 
         // GET: Empleadoes/Delete/5
-        [Authorize (Roles = "Admin, Empleado")]
+    
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -139,7 +154,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // POST: Empleadoes/Delete/5
-        [Authorize(Roles = "Admin, Empleado")]
+      
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
@@ -153,6 +168,19 @@ namespace Historias_Clinicas.Controllers
         private bool EmpleadoExists(int id)
         {
             return _context.Empleados.Any(e => e.Id == id);
+        }
+
+        private void ProcesarDuplicado(DbUpdateException dbex)
+        {
+            SqlException innerException = dbex.InnerException as SqlException;
+            if (innerException != null && (innerException.Number == 2627 || innerException.Number == 2601))
+            {
+                ModelState.AddModelError("Legajo", MensajeError.LegajoExistente);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, dbex.Message);
+            }
         }
     }
 }

@@ -33,6 +33,11 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
+        public IActionResult Contacto()
+        {
+            return View();
+        }
+
         // GET: Pacientes/Details/5
         public IActionResult Details(int? id)
         {
@@ -74,7 +79,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Pacientes/Edit/5
-        [Authorize(Roles = "Admin, Empleado")]
+        
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,7 +100,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Empleado")]
+    
         public IActionResult Edit(int id, [Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
             if (id != paciente.Id)
@@ -141,13 +146,13 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
         }
 
         // GET: Pacientes/Delete/5
-        [Authorize(Roles = "Admin, Empleado")]
+      
         public IActionResult Delete(int? id)
         {
             if (id == null)

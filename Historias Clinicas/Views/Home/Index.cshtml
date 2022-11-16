@@ -44,9 +44,16 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4 col-md-12">
                 <div class="fadeImg4">
-                    <a class="boton" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Ingresar</a>
-                    @* <a class="boton" asp-area="" asp-controller="Pacientes" asp-action="MenuPaciente">Menu Paciente</a>
-                    *@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <a class="boton" asp-area="" asp-controller="Pacientes" asp-action="MenuPaciente">Ingresar</a>
+                    }
+                    else
+                    {
+                        <a class="boton" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Ingresar</a>
+                    }
+                   
                 </div>
             </div>
             <div class="col-lg-4"></div>

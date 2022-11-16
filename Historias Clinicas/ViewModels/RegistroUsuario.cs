@@ -10,7 +10,7 @@ namespace Historias_Clinicas.ViewModels
     {
         [Required(ErrorMessage = MensajeError.Requerido)]
         [EmailAddress(ErrorMessage = MensajeError.NoValido)]
-      //  [Remote(action: "Email disponible", controller: "Account")]
+        [Remote(action: "EmailDisponible", controller: "Account")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]

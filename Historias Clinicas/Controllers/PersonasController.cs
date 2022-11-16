@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +9,8 @@ using Historias_Clinicas.Data;
 using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -24,6 +26,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Personas
+       
         public IActionResult Index()
         {
             return View(_context.Personas.ToList());
@@ -60,31 +63,32 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                persona.UserName = persona.Email;
-                var resultadoNewPersona = await _userManager.CreateAsync(persona, Configs.PasswordGenerica);
-
-                if(resultadoNewPersona.Succeeded)
+                try
                 {
-                    IdentityResult resultadoAddRole;
-                    string rolDefinido;
+                    persona.UserName = persona.Email;
+                    var resultadoNewPersona = await _userManager.CreateAsync(persona, Configs.PasswordGenerica);
 
-                    if(EsMedico)
+                    if (resultadoNewPersona.Succeeded)
                     {
-                        rolDefinido = Configs.MedicoRolName;
-                    }
-                    else if (EsEmpleado)
-                    {
-                        rolDefinido = Configs.EmpleadoRolName;
-                    }
-                    else
-                    {
-                        rolDefinido = Configs.PacienteRolName;
-                    }
+                        IdentityResult resultadoAddRole;
+                        string rolDefinido;
 
-                    resultadoAddRole = await _userManager.AddToRoleAsync(persona, rolDefinido);
+                        if (EsMedico)
+                        {
+                            rolDefinido = Configs.MedicoRolName;
+                        }
+                        else if (EsEmpleado)
+                        {
+                            rolDefinido = Configs.EmpleadoRolName;
+                        }
+                        else
+                        {
+                            rolDefinido = Configs.PacienteRolName;
+                        }
 
-                    if ( resultadoAddRole.Succeeded)
+                        resultadoAddRole = await _userManager.AddToRoleAsync(persona, rolDefinido);
+
+                        if (resultadoAddRole.Succeeded)
                         {
                             return RedirectToAction("Index", "Personas");
                             
@@ -94,12 +98,15 @@ namespace Historias_Clinicas.Controllers
                             return Content($"No se ha podido agregar el rol{rolDefinido}");
                         }
                     }
-                foreach (var error in resultadoNewPersona.Errors)
-                {
-                    ModelState.AddModelError(String.Empty, error.Description);
+                    foreach (var error in resultadoNewPersona.Errors)
+                    {
+                        ModelState.AddModelError(String.Empty, error.Description);
+                    }
                 }
-
-
+                catch (DbUpdateException dbex)
+                {
+                    ProcesarDuplicado(dbex);
+                }        
             }
             return View(persona);
         }
@@ -156,6 +163,7 @@ namespace Historias_Clinicas.Controllers
                     
                     _context.Update(personaEnDb);
                     _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -168,7 +176,11 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateException dbex)
+                {
+                   ProcesarDuplicado(dbex);
+                }
+                
             }
             return View(persona);
         }
@@ -238,6 +250,19 @@ namespace Historias_Clinicas.Controllers
         private bool PersonaExists(int id)
         {
             return _context.Personas.Any(e => e.Id == id);
+        }
+
+        private void ProcesarDuplicado(DbUpdateException dbex)
+        {
+            SqlException innerException = dbex.InnerException as SqlException;
+            if (innerException != null && (innerException.Number == 2627 || innerException.Number == 2601))
+            {
+                ModelState.AddModelError("Dni", MensajeError.DniExistente);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, dbex.Message);
+            }
         }
     }
 }

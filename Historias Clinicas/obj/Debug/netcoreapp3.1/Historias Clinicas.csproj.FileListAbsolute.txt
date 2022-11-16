@@ -650,3 +650,4 @@ C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Contacto.cshtml.g.cs
