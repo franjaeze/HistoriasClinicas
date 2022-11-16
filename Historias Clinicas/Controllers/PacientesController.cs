@@ -76,10 +76,27 @@ namespace Historias_Clinicas.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);
+
+            if (DniExist(paciente.Dni))
+            {
+                ModelState.AddModelError("Dni", "El dni ya esta registrado en el sistema");
+            }
         }
 
+        private bool DniExist(int dni)
+        {
+            bool devolver = false;
+            if (dni == 0)
+            {
+                devolver = _context.Pacientes.Any(p => p.Dni == dni);
+            }
+            return devolver;
+        }
+
+
+
         // GET: Pacientes/Edit/5
-        
+
         public IActionResult Edit(int? id)
         {
             if (id == null)
