@@ -61,12 +61,25 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
+        public IActionResult Create([Bind("Id,ObraSocialP,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(paciente);
                 _context.SaveChanges();
+
+                //HistoriaClinica historiaClinica = new HistoriaClinica()
+                //{
+                //    PacienteId = paciente.Id,
+                //    Episodios = new List<Episodio>()
+                //};
+
+                //_context.Add(historiaClinica);
+                //_context.SaveChanges();
+
+                //paciente.HistoriaClincaId = historiaClinica.Id;
+
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);

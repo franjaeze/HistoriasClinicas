@@ -17,11 +17,11 @@
                 <select asp-for="ObraSocialP" class="form-control" asp-items="@Html.GetEnumSelectList<Cobertura>()"></select>
                 <span asp-validation-for="ObraSocialP" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="HistoriaClincaId" class="control-label"></label>
-                <input asp-for="HistoriaClincaId" class="form-control" />
+                <input asp-for="HistoriaClincaId" class="form-control"/>
                 <span asp-validation-for="HistoriaClincaId" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
