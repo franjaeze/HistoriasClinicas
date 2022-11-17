@@ -5,10 +5,13 @@
 }
 
 <h1>Notas</h1>
+if (User.IsInRole("Medico"))
+{
+    <p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Nota</a>
+    </p>}
 
-<p>
-    <a asp-action="Create">Agregar nota</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -35,10 +38,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EmpleadoId)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+              <td>
+                if (User.IsInRole("Medico, Empleado"))
+                { <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                <p align="right">
+                    
+                </p>}
+               </td>
+            <td>
+                
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                
             </td>
         </tr>
 }
