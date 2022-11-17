@@ -4,14 +4,16 @@ using Historias_Clinicas.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Historias_Clinicas.Data.Migrations
+namespace Historias_Clinicas.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    partial class HistoriasClinicasContextModelSnapshot : ModelSnapshot
+    [Migration("20221116215854_UniqueLegajoMatriculaNacional")]
+    partial class UniqueLegajoMatriculaNacional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -547,10 +549,6 @@ namespace Historias_Clinicas.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
-
-                    b.HasIndex("Dni")
-                        .IsUnique()
-                        .HasFilter("[Dni] IS NOT NULL");
 
                     b.HasDiscriminator().HasValue("Persona");
                 });
