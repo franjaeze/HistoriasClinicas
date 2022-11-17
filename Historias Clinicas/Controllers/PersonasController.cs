@@ -61,6 +61,9 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(bool EsMedico, bool EsEmpleado, bool EsPaciente,[Bind("Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Persona persona)
         {
+
+            VerificarDni(persona);
+
             if (ModelState.IsValid)
             {
                 try
@@ -111,6 +114,31 @@ namespace Historias_Clinicas.Controllers
             return View(persona);
         }
 
+        private bool DniExist(Persona persona)
+        {
+            bool devolver = false;
+            if (persona.Dni != 0)
+            {
+                if (persona.Id != 0)
+                {
+                    devolver = _context.Pacientes.Any(p => p.Dni == persona.Dni && p.Id != persona.Id);
+                }
+                else
+                {
+                    devolver = _context.Pacientes.Any(p => p.Dni == persona.Dni);
+                }
+            }
+            return devolver;
+        }
+
+        private void VerificarDni(Persona persona)
+        {
+            if (DniExist(persona))
+            {
+                ModelState.AddModelError("Dni", "El dni ya esta registrado");
+            }
+        }
+
         // GET: Personas/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -136,6 +164,8 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+
+            VerificarDni(persona);
 
             if (ModelState.IsValid)
             {
