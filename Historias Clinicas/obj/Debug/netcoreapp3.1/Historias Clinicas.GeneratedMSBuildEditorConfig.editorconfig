@@ -1,3 +1,7 @@
 is_global = true
 build_property.RootNamespace = Historias_Clinicas
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\
+=======
+build_property.ProjectDir = C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\
+>>>>>>> b3d79cb60f9036993c312d4b09b31f6d32341eb9
