@@ -58,23 +58,23 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.HistoriaClinicaId)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Apellido)
+                <td class="text-center">
+                      @Html.DisplayFor(modelItem => item.Apellido)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.SegundoNombre)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.Dni)
                 </td>
 
-                <td>
+                <td class="text-center">
 
                     @if (User.IsInRole("Empleado"))
                     {

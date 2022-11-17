@@ -7,7 +7,7 @@ namespace Historias_Clinicas.Models
 {
     public class Evolucion 
     {
-      
+        [Key]
         public int Id { get; set; }
 
 

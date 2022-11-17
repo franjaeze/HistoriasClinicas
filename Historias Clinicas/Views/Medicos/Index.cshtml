@@ -64,25 +64,25 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.MatriculaNacional)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Apellido)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Especialidad)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.SegundoNombre)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
+            <td class="text-center">
                 @if (User.IsInRole("Empleado"))
                 {
                     <div class="divBoton">
