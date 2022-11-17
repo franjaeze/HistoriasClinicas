@@ -25,9 +25,28 @@
                 @Html.DisplayFor(modelItem => item.PacienteId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                </td>
+                @if (User.IsInRole("Medico"))
+                {
+                    <div class="divBoton">
+                       <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                       <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                       <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a> 
+
+                    </div>
+                }
+                </td>
+             
+                 </td>
+                
+                {
+                    <div class="divBoton">
+                        <a class="boton small" asp-action="Index" asp-controller="Episodios" asp-route-id="@item.Id">Acceso Episodios</a>
+
+                    </div>
+                }
+                </td>
+             
             </td>
         </tr>
 }
