@@ -64,6 +64,7 @@ namespace Historias_Clinicas.Controllers
             {
                 _context.Add(episodio);
                 _context.SaveChanges();
+                List<Evolucion> Evoluciones = new List<Evolucion>();
                 return RedirectToAction(nameof(Index));
             }
             return View(episodio);

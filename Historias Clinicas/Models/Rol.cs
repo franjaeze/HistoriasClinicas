@@ -17,10 +17,6 @@ namespace Historias_Clinicas.Models
 
         }
         
-        // public int ID { get; set; }
-
-
-        //[Display(Name = Alias.RoleName)]
         public override string Name {
             get { return base.Name; }
             set { base.Name = value; }

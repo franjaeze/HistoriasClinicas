@@ -67,7 +67,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
+        public IActionResult Create([Bind("Id,ObraSocialP,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
            /* if (DniExist(paciente.Dni))
             {
@@ -75,10 +75,21 @@ namespace Historias_Clinicas.Controllers
             } */
             if (ModelState.IsValid)
             {
-                paciente.FechaDeAlta = DateTime.Now;
                 _context.Add(paciente);
    
                 _context.SaveChanges();
+
+                //HistoriaClinica historiaClinica = new HistoriaClinica()
+                //{
+                //    PacienteId = paciente.Id,
+                //    Episodios = new List<Episodio>()
+                //};
+
+                //_context.Add(historiaClinica);
+                //_context.SaveChanges();
+
+                //paciente.HistoriaClincaId = historiaClinica.Id;
+
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);
@@ -144,8 +155,8 @@ namespace Historias_Clinicas.Controllers
 
                     pacienteEnDb.Dni = paciente.Dni;
                     pacienteEnDb.Telefono = paciente.Telefono;
-                    pacienteEnDb.ObraSocialP = paciente.ObraSocialP;
-                    pacienteEnDb.HistoriaClincaId = paciente.HistoriaClincaId;
+                    pacienteEnDb.ObraSocial = paciente.ObraSocial;
+                    pacienteEnDb.HistoriaClinicaId = paciente.HistoriaClinicaId;
                     pacienteEnDb.Nombre = paciente.Nombre;
                     pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
                     pacienteEnDb.Apellido  = paciente.Apellido;

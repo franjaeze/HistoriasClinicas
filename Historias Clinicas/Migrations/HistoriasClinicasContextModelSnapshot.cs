@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Historias_Clinicas.Data.Migrations
+namespace Historias_Clinicas.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
     partial class HistoriasClinicasContextModelSnapshot : ModelSnapshot
@@ -547,10 +547,6 @@ namespace Historias_Clinicas.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
-
-                    b.HasIndex("Dni")
-                        .IsUnique()
-                        .HasFilter("[Dni] IS NOT NULL");
 
                     b.HasDiscriminator().HasValue("Persona");
                 });

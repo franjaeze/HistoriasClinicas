@@ -18,8 +18,6 @@ namespace Historias_Clinicas.Models
 
         public Especialidad Especialidad { get; set; }
 
-        //[Display(Name = Alias.Activo)]
-        ////public Boolean EstaActivo { get; set; }
 
         public List<MedicoPaciente> MedicoPacientes { get; set; }
     }

@@ -170,20 +170,19 @@ namespace Historias_Clinicas.Controllers
         [HttpGet]
         public IActionResult Buscar(string apellido)
         {
-            //var medicos = _context.Medicos
-            //    .Where(x => string.IsNullOrWhiteSpace(apellido) || EF.Functions.Like(x.Apellido, $"%{apellido}%"));
-            ////.ToList();
+            var medicos = _context.Medicos
+                .Where(x => x.Apellido.Contains(apellido));
             //ViewBag.Apellido = apellido;
 
-            var medicos = from m in _context.Medicos
-                          select m;
+            //var medicos = from m in _context.Medicos
+            //              select m;
 
-            if (!String.IsNullOrEmpty(apellido))
-            {
-                medicos = medicos.Where(s => s.NombreCompleto.Contains(apellido));
-                ViewBag.Apellido = apellido;
-            }
-            
+            //if (!String.IsNullOrEmpty(apellido))
+            //{
+            //    medicos = medicos.Where(m => m.NombreCompleto.Contains(apellido));
+            //    ViewBag.Apellido = apellido;
+            //}
+
             return View(medicos);
         }
     }

@@ -10,6 +10,7 @@ namespace Historias_Clinicas.Models
 {
     public class App
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
