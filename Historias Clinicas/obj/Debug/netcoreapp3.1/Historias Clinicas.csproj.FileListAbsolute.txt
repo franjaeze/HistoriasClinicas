@@ -872,3 +872,5 @@ C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\n
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Contacto.cshtml.g.cs
 >>>>>>> 6e6fbdd695b126317a30640c9a60dc0f98dcf1bb
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Contacto.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Buscar.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\MenuMedico.cshtml.g.cs
