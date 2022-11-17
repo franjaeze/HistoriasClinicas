@@ -20,12 +20,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+       <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.PacienteId)
             </td>
             <td>
-                </td>
+                
                 @if (User.IsInRole("Medico"))
                 {
                     <div class="divBoton">
@@ -35,10 +35,9 @@
 
                     </div>
                 }
-                </td>
-             
-                 </td>
-                
+               
+          </td>
+                <td>  
                 {
                     <div class="divBoton">
                         <a class="boton small" asp-action="Index" asp-controller="Episodios" asp-route-id="@item.Id">Acceso Episodios</a>
@@ -47,8 +46,8 @@
                 }
                 </td>
              
-            </td>
-        </tr>
+            
+        </tr> 
 }
     </tbody>
 </table>

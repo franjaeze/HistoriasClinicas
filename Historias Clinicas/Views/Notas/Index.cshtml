@@ -38,10 +38,18 @@ if (User.IsInRole("Medico"))
             <td>
                 @Html.DisplayFor(modelItem => item.EmpleadoId)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+              <td>
+                if (User.IsInRole("Medico, Empleado"))
+                { <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                <p align="right">
+                    
+                </p>}
+               </td>
+            <td>
+                
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                
             </td>
         </tr>
 }
