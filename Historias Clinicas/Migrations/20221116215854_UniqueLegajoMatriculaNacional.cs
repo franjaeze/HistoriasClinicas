@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Historias_Clinicas.Data.Migrations
+namespace Historias_Clinicas.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class UniqueLegajoMatriculaNacional : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -289,7 +289,7 @@ namespace Historias_Clinicas.Data.Migrations
                         column: x => x.MedicoId,
                         principalTable: "Personas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_MedicoPaciente_Personas_PacienteId",
                         column: x => x.PacienteId,
@@ -423,9 +423,23 @@ namespace Historias_Clinicas.Data.Migrations
                 column: "AppId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Personas_Legajo",
+                table: "Personas",
+                column: "Legajo",
+                unique: true,
+                filter: "[Legajo] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Personas_Medico_AppId",
                 table: "Personas",
                 column: "Medico_AppId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Personas_MatriculaNacional",
+                table: "Personas",
+                column: "MatriculaNacional",
+                unique: true,
+                filter: "[MatriculaNacional] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Personas_Paciente_AppId",

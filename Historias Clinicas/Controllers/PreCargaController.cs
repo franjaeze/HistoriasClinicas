@@ -113,7 +113,7 @@ namespace Historias_Clinicas.Controllers
                     };
                 await _userManager.CreateAsync(empleado2, Configs.PasswordGenerica);
                 await _userManager.AddToRoleAsync(empleado2, Configs.EmpleadoRolName);
-            }     
+              }     
     }
 
         private async Task CrearPacientes()
