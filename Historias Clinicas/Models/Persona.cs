@@ -8,21 +8,19 @@ using System.Text;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.Helpers;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Historias_Clinicas.Models
 {
 
     public class Persona : IdentityUser<int>
     {
-
-        //public int Id { get; set; }
-
+        [ForeignKey ("Direccion")]
+        public int DireccionId { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = MensajeError.SoloLetras)]
-        //string TextBoxData { get; set; }
-
         [StringLength(20, MinimumLength = 2, ErrorMessage = MensajeError.MinMaxString)]
         public String Nombre { get; set; }
 
@@ -53,22 +51,21 @@ namespace Historias_Clinicas.Models
         public override String Email {
             get { return base.Email; }
             set { base.Email = value; }
-             }
+        }
+
+      
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [Phone]
-        [StringLength(15,MinimumLength =7, ErrorMessage = MensajeError.MinMaxString)]
+        [StringLength(15, MinimumLength = 7, ErrorMessage = MensajeError.MinMaxString)]
         public String Telefono { get; set; }
 
 
         [DataType(DataType.Date)]
         [Display(Name = Alias.FechaDeAlta)]
         public DateTime FechaDeAlta { get; set; }
-
-
-        
-
+   
 
         [Display(Name = Alias.NombreCompleto)]
         public String NombreCompleto
@@ -82,5 +79,7 @@ namespace Historias_Clinicas.Models
                 return $"{Apellido.ToUpper()}, {Nombre}";
             }
         }
+
+
     }
 }

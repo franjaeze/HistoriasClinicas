@@ -4,34 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Epicrisis</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Epicrisis</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.EpisodioId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.MedicoId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PacienteId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resumen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiasInternacion)
+                @Html.DisplayNameFor(model => model.DiagnosticoId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaYHora)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaYHoraAlta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaYHoraIngreso)
             </th>
             <th></th>
         </tr>
@@ -40,30 +31,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayNameFor(model => model.EpisodioId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.MedicoId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PacienteId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Resumen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiasInternacion)
+                @Html.DisplayFor(modelItem => item.DiagnosticoId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaYHora)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaYHoraIngreso)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

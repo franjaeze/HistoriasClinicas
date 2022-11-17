@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
+    [Authorize]
+
     public class EpisodiosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
@@ -61,6 +64,7 @@ namespace Historias_Clinicas.Controllers
             {
                 _context.Add(episodio);
                 _context.SaveChanges();
+                List<Evolucion> Evoluciones = new List<Evolucion>();
                 return RedirectToAction(nameof(Index));
             }
             return View(episodio);

@@ -7,6 +7,13 @@
         <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>*@
 
+@if(ViewBag.Mensaje != null)
+{
+    <div>
+        <p class="text-info">@ViewBag.Mensaje</p>
+    </div>
+
+}
 
 
 
@@ -37,7 +44,16 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4 col-md-12">
                 <div class="fadeImg4">
-                    <button class="btn btn-primary ingresar" type="button"> Ingresar</button>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <a class="boton" asp-area="" asp-controller="Pacientes" asp-action="MenuPaciente">Ingresar</a>
+                    }
+                    else
+                    {
+                        <a class="boton" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Ingresar</a>
+                    }
+                   
                 </div>
             </div>
             <div class="col-lg-4"></div>

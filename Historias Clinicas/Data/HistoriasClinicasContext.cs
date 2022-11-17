@@ -36,9 +36,16 @@ namespace Historias_Clinicas.Data
             modelBuilder.Entity<IdentityRole<int>>().ToTable("Roles");
             modelBuilder.Entity<IdentityUserRole<int>>().ToTable("PersonasRoles");
 
-
+            #region Unique
+            modelBuilder.Entity<Medico>().HasIndex(m => m.MatriculaNacional).IsUnique();
+            modelBuilder.Entity<Empleado>().HasIndex(e => e.Legajo).IsUnique();
+            #endregion
 
         }
+
+
+
+
 
         //private void WillCascadeOnDelete(bool v)
         //{
@@ -69,8 +76,10 @@ namespace Historias_Clinicas.Data
 
         public DbSet<Historias_Clinicas.Models.App> App { get; set; }
 
+        #pragma warning disable CS0114 // Member hides inherited member; missing override keyword
         public DbSet<Rol> Roles { get; set; }
-
+        #pragma warning restore CS0114 // Member hides inherited member; missing override keyword
+        // Mariano dice que ignoremos este warning, que no afecta en nada(video 33, minuto 36)
     }
-    
+
 }

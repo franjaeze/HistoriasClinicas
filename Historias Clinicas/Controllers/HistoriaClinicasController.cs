@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Historias_Clinicas.Controllers
 {
+    [Authorize]
+
     public class HistoriaClinicasController : Controller
     {
         private readonly HistoriasClinicasContext _context;
@@ -60,6 +63,7 @@ namespace Historias_Clinicas.Controllers
             {
                 _context.Add(historiaClinica);
                 _context.SaveChanges();
+                List<Episodio> Episodios = new List<Episodio>();
                 return RedirectToAction(nameof(Index));
             }
             return View(historiaClinica);
@@ -148,6 +152,21 @@ namespace Historias_Clinicas.Controllers
         private bool HistoriaClinicaExists(int id)
         {
             return _context.HistoriasClinicas.Any(e => e.Id == id);
+        }
+
+        private IActionResult ListarEpisodios(int idHca)
+        {
+            if (!HistoriaClinicaExists(idHca))
+            {
+                return NotFound();
+            }
+            else
+            {
+                var episodios = _context.Episodios
+                .Where(x => x.HistoriaClinicaId == idHca);
+                return View(episodios);
+
+            }
         }
     }
 }

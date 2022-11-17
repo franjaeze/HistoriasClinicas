@@ -1,222 +1,160 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
+﻿using Historias_Clinicas.Data;
+using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Historias_Clinicas.Data;
 using Historias_Clinicas.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Controllers
 {
-
-
     public class AccountController : Controller
     {
-        private readonly HistoriasClinicasContext _context;
         private readonly UserManager<Persona> _userManager;
         private readonly SignInManager<Persona> _signinManager;
-        private readonly RoleManager<Rol> _rolManager;
-        private const string passDefault = "Password1!";
+        private readonly RoleManager<Rol> _roleManager;
 
-        public AccountController(
-            HistoriasClinicasContext context,
-            UserManager<Persona> userManager,
-            SignInManager<Persona> signinManager,
-            RoleManager<Rol> rolManager
-            )
+
+        public AccountController(UserManager<Persona> userManager,
+            SignInManager<Persona> signInManager,
+            HistoriasClinicasContext contexto,
+            RoleManager<Rol> roleManager)
         {
-            this._context = context;
             this._userManager = userManager;
-            this._signinManager = signinManager;
-            this._rolManager = rolManager;
+            this._signinManager = signInManager;
+            this._roleManager = roleManager;
         }
 
-        [HttpGet]
-        public IActionResult EmailDisponible(string email)
-        {
-            var emailUsado = _context.Personas.Any(p => p.Email == email);
-
-            if (!emailUsado)
-            {
-                
-                return Json(true);
-            }
-            else
-            {
-                
-                return Json($"El correo {email} ya está en uso.");
-            }
-        }
-
-        public ActionResult Registrar()
+        public IActionResult Registrar()
         {
             return View();
         }
 
 
         [HttpPost]
-        public async Task<ActionResult> Registrar(RegistroUsuario viewModel)
+
+
+        public async Task<IActionResult> Registrar([Bind("Email,Password,ConfirmacionPassword")] RegistroUsuario viewModel)
         {
-            
 
             if (ModelState.IsValid)
             {
                 Paciente pacienteACrear = new Paciente();
-                pacienteACrear.Email = viewModel.NombreUsuario;
-                pacienteACrear.UserName = viewModel.NombreUsuario;
-
+                {
+                    pacienteACrear.Email = viewModel.Email;
+                    pacienteACrear.UserName = viewModel.Email;
+            
+                }
                 var resultadoCreacion = await _userManager.CreateAsync(pacienteACrear, viewModel.Password);
 
                 if (resultadoCreacion.Succeeded)
                 {
-                    
-                    await CrearRolesBase();
+                    var resultadoAddRole = await _userManager.AddToRoleAsync(pacienteACrear, Configs.PacienteRolName);
 
-
-                    var resultado = await _userManager.AddToRoleAsync(pacienteACrear, "Paciente");
-
-                    if (resultado.Succeeded)
+                    if (resultadoAddRole.Succeeded)
                     {
-                        
                         await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
-                        return RedirectToAction("Edit", "Paciente", new { id = pacienteACrear.Id });
-                    }
 
-                    
+                        return RedirectToAction("Edit", "Pacientes", new { id = pacienteACrear.Id });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, $" No se pudo agregar el rol de {Configs.PacienteRolName}");
+                    }
                 }
 
-                
                 foreach (var error in resultadoCreacion.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
+
                 }
             }
 
             return View(viewModel);
         }
 
-        public ActionResult IniciarSesion(string returnurl)
+        public IActionResult IniciarSesion(string returnUrl)
         {
-            TempData["returnUrl"] = returnurl;
+            TempData["ReturnUrl"] = returnUrl;
             return View();
         }
-
         [HttpPost]
-        public async Task<ActionResult> IniciarSesion(Login viewModel)
+        public async Task<IActionResult> IniciarSesion(Login viewModel)
         {
-            string returnUrl = TempData["returnUrl"] as string;
-
+            string returnUrl = TempData["ReturnUrl"] as string;
             if (ModelState.IsValid)
             {
-                var resultadoSignIn = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
-
-                if (resultadoSignIn.Succeeded)
+                if (!string.IsNullOrEmpty(returnUrl))
                 {
-                    if (!string.IsNullOrEmpty(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-
-                    return RedirectToAction("Index", "Home");
+                    return Redirect(returnUrl);
                 }
-
-                ModelState.AddModelError(string.Empty, "Inicio de sesión inválido");
+                var resultado = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
+                if (resultado.Succeeded)
+                {
+                    return RedirectToAction("MenuPaciente", "Pacientes");
+                }
+                ModelState.AddModelError(String.Empty, "Inicio de Sesión inválida");
             }
-
             return View(viewModel);
         }
 
-        public async Task<ActionResult> CerrarSesion()
+
+        public async Task<IActionResult> CerrarSesion()
         {
             await _signinManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
-            return RedirectToAction("Index", "home");
+        [Authorize(Roles = "EsEmpleado")]
+        public async Task<IActionResult> ListarRoles()
+        {
+            var roles = await _roleManager.Roles.ToListAsync();
+            return View(roles);
+        }
+
+        public IActionResult AccesoDenegado(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
         }
 
         [HttpGet]
-        public IActionResult AccesoDenegado()
+        [AllowAnonymous]
+        public async Task<IActionResult> EmailDisponible(string email)
         {
-            return View();
-        }
+            var PersonaExistente = await _userManager.FindByEmailAsync(email);
+            if (PersonaExistente == null)
+            {
+                return Json(true);
+             }
+            else
+            {
+                return Json($"El correo {email} ya esta en uso.");
+             }
+           }
 
-
-        private async Task CrearRolesBase()
+        public IActionResult TestCurrentUser()
         {
-            List<string> roles = new List<string>() { "Administrator", "Paciente", "Empleado", "UsuarioBase", "Medico" };
-
-            foreach (string rol in roles)
+            if (_signinManager.IsSignedIn(User))
             {
-                await CrearRole(rol);
-            }
-        }
-
-        private async Task CrearRole(string rolName)
-        {
-            if (!await _rolManager.RoleExistsAsync(rolName))
-            {
-                await _rolManager.CreateAsync(new Rol(rolName));
-            }
-        }
+                string nombreUsuario = User.Identity.Name;
 
 
-        public async Task<IActionResult> CrearAdmin()
-        {
-            Persona account = new Persona()
-            {
-                Nombre = "Administrador",
-                Apellido = "Dios",
-                Email = "administrador@administrador.com",
-                UserName = "administrador@administrador.com"
-            };
-
-            var resuAdm = await _userManager.CreateAsync(account, passDefault);
-            if (resuAdm.Succeeded)
-            {
-                string rolAdm = "Administrador";
-                await CrearRole(rolAdm);
-                await _userManager.AddToRoleAsync(account, rolAdm);
-                TempData["Mensaje"] = $"Empleado creado {account.Email} y {passDefault}";
+                int personaId = Int32.Parse(_userManager.GetUserId(User));
             }
 
-            return RedirectToAction("Index", "Home");
+
+            return null;
         }
 
-        public async Task<IActionResult> CrearEmpleado()
-        {
-            Empleado account = new Empleado()
-            {
-                Nombre = "Empleado",
-                Apellido = "Del Año",
-                Email = "empleado@empleado.com",
-                UserName = "empleado@empleado.com"
-            };
 
-            var resuAdm = await _userManager.CreateAsync(account, passDefault);
-            if (resuAdm.Succeeded)
-            {
-                string rolAdm = "Empleado";
-                await CrearRole(rolAdm);
-                await _userManager.AddToRoleAsync(account, rolAdm);
-                TempData["Mensaje"] = $"Empleado creado {account.Email} y {passDefault}";
-            }
-
-            return RedirectToAction("Index", "Home");
         }
+
     }
-    //public class AccountController : Controller
-    //{
 
-    //    private readonly UserManager<Persona> _usermanager;
-    //    public AccountController(UserManager<Persona> usermanager)
-    //    {
-    //        this._usermanager = usermanager;
-    //    }
 
-    //    public IActionResult Registrar()
-    //    {
-    //        return View();
-    //    }
-    //}
-}
+
+

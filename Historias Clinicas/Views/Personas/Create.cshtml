@@ -4,11 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
 <h4>Persona</h4>
 <hr />
-<div class="row">
+<div class="wrap">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -47,15 +47,28 @@
                 <input asp-for="FechaDeAlta" class="form-control" />
                 <span asp-validation-for="FechaDeAlta" class="text-danger"></span>
             </div>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label font-weight-bold" for="inlineCheckbox1"> Medico </label>
+                <input class="form-check-input"  id="inlineCheckbox2" name="EsMedico" type="checkbox" value="true" />
+            </div>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label font-weight-bold" for="inlineCheckbox2"> Empleado </label>
+                <input class="form-check-input"  id="inlineCheckbox3"  name="EsEmpleado" type="checkbox" value="true" />
+            </div>
+            <div class="form-check form-check-inline cen">
+                <label class="form-check-label font-weight-bold" for="inlineCheckbox3"> Paciente </label>
+                <input class="form-check-label"  id="inlineCheckbox4" name="EsPaciente" type="checkbox"  value="true" />
+            </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary"/>
+
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Cancelar</a>
 </div>
 
 @section Scripts {

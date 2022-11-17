@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Historias_Clinicas.Helpers;
+using Historias_Clinicas.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
-using Historias_Clinicas.Helpers;
-using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.ViewModels
 {
     public class RegistroUsuario
     {
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = MensajeError.MinMaxString)]
-        [Display(Name = Alias.NombreUsuario)]
-        public string NombreUsuario { get; set; }
+        [EmailAddress(ErrorMessage = MensajeError.NoValido)]
+        [Remote(action: "EmailDisponible", controller: "Account")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = MensajeError.MinMaxString)]
         [DataType(DataType.Password)]
-        [Display(Name = Alias.ContraseniaUsuario)]
-        public String Password { get; set; }
+        [Display(Name = Alias.Password)]
+        public string Password { get; set; }
+
 
         [Required(ErrorMessage = MensajeError.Requerido)]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = MensajeError.MinMaxString)]
         [DataType(DataType.Password)]
-        [Display(Name = Alias.ConfirmarContrasenia)]
-        [Compare("Password", ErrorMessage = MensajeError.ContraseniaDiferente)]
-        public String ConfirmacionPassword { get; set; }
+        [Display(Name = Alias.PassConfirm)]
+        [Compare("Password", ErrorMessage = MensajeError.PassMissMatch)]
+        public string ConfirmacionPassword { get; set; }
+
     }
 }

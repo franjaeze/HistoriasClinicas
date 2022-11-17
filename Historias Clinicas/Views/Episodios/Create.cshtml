@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
 <h4>Episodio</h4>
 <hr />
@@ -12,16 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PacienteId" class="control-label"></label>
-                <input asp-for="PacienteId" class="form-control" />
-                <span asp-validation-for="PacienteId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedicoId" class="control-label"></label>
-                <input asp-for="MedicoId" class="form-control" />
-                <span asp-validation-for="MedicoId" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
@@ -31,11 +21,6 @@
                 <label asp-for="Motivo" class="control-label"></label>
                 <input asp-for="Motivo" class="form-control" />
                 <span asp-validation-for="Motivo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Antecedentes" class="control-label"></label>
-                <input asp-for="Antecedentes" class="form-control" />
-                <span asp-validation-for="Antecedentes" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -80,7 +65,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {

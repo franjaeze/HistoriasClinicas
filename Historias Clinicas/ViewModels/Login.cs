@@ -1,16 +1,15 @@
 ﻿using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Historias_Clinicas.ViewModels
 {
     public class Login
     {
+
         [Required(ErrorMessage = MensajeError.Requerido)]
+        [Display(Name = "Correo Electrónico")]
         [EmailAddress(ErrorMessage = MensajeError.NoValido)]
         public string Email { get; set; }
 
@@ -21,6 +20,5 @@ namespace Historias_Clinicas.ViewModels
 
 
         public bool Recordarme { get; set; } = false;
-
     }
 }
