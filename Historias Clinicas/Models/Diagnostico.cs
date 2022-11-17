@@ -13,8 +13,8 @@ namespace Historias_Clinicas.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("Medico")]
-        public int MedicoId { get; set; }
+        [ForeignKey("Epicrisis")]
+        public int EpicrisisId { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]
@@ -27,19 +27,6 @@ namespace Historias_Clinicas.Models
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
         public String Recomendacion { get; set; }
-
-
-        [Required(ErrorMessage = MensajeError.Requerido)]
-        [DataType(DataType.Text)]
-        [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
-        public String Tratamiento { get; set; }
-
-
-        [Required(ErrorMessage = MensajeError.Requerido)]
-        [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
-        [DataType(DataType.Text)]
-        public String EstudiosEfectuados { get; set; }
-
 
 
         public Especialidad Especialidad { get; set; }

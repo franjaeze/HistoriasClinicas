@@ -13,19 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MedicoId)
+                @Html.DisplayNameFor(model => model.EpicrisisId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Recomendacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tratamiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstudiosEfectuados)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Especialidad)
@@ -37,19 +31,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MedicoId)
+                @Html.DisplayFor(modelItem => item.EpicrisisId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Recomendacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tratamiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstudiosEfectuados)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Especialidad)

@@ -8,15 +8,15 @@ using System.Text;
 using Historias_Clinicas.Models;
 using Historias_Clinicas.Helpers;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Historias_Clinicas.Models
 {
 
     public class Persona : IdentityUser<int>
     {
-
-        //public int Id { get; set; }
-
+        [ForeignKey ("Direccion")]
+        public int DireccionId { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
@@ -53,6 +53,8 @@ namespace Historias_Clinicas.Models
             set { base.Email = value; }
         }
 
+      
+
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [Phone]
@@ -77,5 +79,7 @@ namespace Historias_Clinicas.Models
                 return $"{Apellido.ToUpper()}, {Nombre}";
             }
         }
+
+
     }
 }

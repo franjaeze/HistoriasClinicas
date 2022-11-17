@@ -16,9 +16,9 @@ namespace Historias_Clinicas.Models
 
 
         [ForeignKey("Paciente")]
-        public int PacienteId { get; set; }
+        public int PacienteId { get; set; } 
 
 
-        public List<Episodio> Episodios { get; set; }
+        public List<Episodio> Episodios { get; set; } 
     }
 }

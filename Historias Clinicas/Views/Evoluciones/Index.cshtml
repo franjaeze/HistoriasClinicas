@@ -33,15 +33,6 @@ if (User.IsInRole("Medico"))
             <th>
                 @Html.DisplayNameFor(model => model.DescripcionAtencion)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Indicaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecisaEstudiosAdicionales)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecisaInterconsultaMedica)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -65,15 +56,6 @@ if (User.IsInRole("Medico"))
             </td>
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.DescripcionAtencion)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Indicaciones)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.PrecisaEstudiosAdicionales)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.PrecisaInterconsultaMedica)
             </td>
             <td>
                     @if (User.IsInRole("Medico"))

@@ -15,17 +15,23 @@ namespace Historias_Clinicas.Models
         [ForeignKey("HistoriaClinica")]
         public int HistoriaClinicaId { get; set; }
 
+        [ForeignKey("Epicrisis")]
+        public int EpicrisisId { get; set; }
+
+        [ForeignKey("Empleado")]
+        public int EmpleadoId { get; set; }
+
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
-        public string Descripcion { get; set; }
+        public string Descripcion { get; set; } 
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)] //Minimo 5 caracteres con maximo 10000
-        public string Motivo { get; set; }
+        public string Motivo { get; set; } 
 
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
@@ -33,26 +39,20 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
-        public DateTime FechaYHoraInicio { get; set; }
+        public DateTime FechaYHoraInicio { get; set; } 
 
 
         [DataType(DataType.Date)]
-        public DateTime FechaYHoraAlta { get; set; }
+        public DateTime FechaYHoraAlta { get; set; } 
 
 
         [DataType(DataType.Date)]
-        public DateTime FechaYHoraCierre { get; set; }
+        public DateTime FechaYHoraCierre { get; set; } 
 
 
-        public Boolean EstadoAbierto { get; set; }
+        public Boolean EstadoAbierto { get; set; } 
 
-
-        [ForeignKey("Empleado")]
-        public int EmpleadoId { get; set; }
-
-        public List<Evolucion> Evoluciones { get; set; }
-
-        public Epicrisis Epicrisis { get; set; }
+        public List<Evolucion> Evoluciones { get; set; } 
 
         public Especialidad Especialidad { get; set; }
 

@@ -14,9 +14,10 @@ namespace Historias_Clinicas.Models
         [RegularExpression("([0-9]+)", ErrorMessage = MensajeError.NumerosPositivos)]
 
         [Display(Name = Alias.MatriculaNacional)]
-        public int MatriculaNacional{ get; set; }
+        public int MatriculaNacional{ get; set; } 
 
-        public Especialidad Especialidad { get; set; }
+
+        public Especialidad Especialidad { get; set; }  
 
 
         public List<MedicoPaciente> MedicoPacientes { get; set; }
