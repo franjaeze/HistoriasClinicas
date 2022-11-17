@@ -131,8 +131,8 @@ namespace Historias_Clinicas.Controllers
                 UserName = "valentino@ort.edu.ar",
                 Telefono = "1100069987",
                 FechaDeAlta = new DateTime(2012, 12, 14),
-                ObraSocialP = Cobertura.OSDE,
-                HistoriaClincaId = 1
+                ObraSocial = Cobertura.OSDE,
+                HistoriaClinicaId = 1
             };
          await _userManager.CreateAsync(paciente, Configs.PasswordGenerica);
          await _userManager.AddToRoleAsync(paciente, Configs.PacienteRolName);
@@ -147,8 +147,8 @@ namespace Historias_Clinicas.Controllers
                 UserName = "juan@ort.edu.ar",
                 Telefono = "1177047980",
                 FechaDeAlta = new DateTime(2011, 12, 05),
-                ObraSocialP = Cobertura.OSECAC,
-                HistoriaClincaId = 2
+                ObraSocial = Cobertura.OSECAC,
+                HistoriaClinicaId = 2
                 };
         await _userManager.CreateAsync(paciente2, Configs.PasswordGenerica);
         await _userManager.AddToRoleAsync(paciente2, Configs.PacienteRolName);

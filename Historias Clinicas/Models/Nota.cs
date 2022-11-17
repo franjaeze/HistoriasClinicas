@@ -1,18 +1,19 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Historias_Clinicas.Models
 {
     public class Nota
     {
-
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
-        [StringLength(6, MinimumLength = 1, ErrorMessage = MensajeError.MinMaxString)] // Puede haber entre 0 y 999.999 medicos
-        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]  // En cada caracter solo se puede poner numeros de 0 a 9
-        public string MedicoID { get; set; }
+
+        [ForeignKey("Evolucion")]
+        public int EvolucionId { get; set; }
+
 
         [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
         [DataType(DataType.Text)]
@@ -22,6 +23,9 @@ namespace Historias_Clinicas.Models
 
         [DataType(DataType.Date)]
         public DateTime FechaYHora { get; set; }
+
+        [ForeignKey("Empleado")]
+        public int EmpleadoId { get; set; }
 
     }
 }

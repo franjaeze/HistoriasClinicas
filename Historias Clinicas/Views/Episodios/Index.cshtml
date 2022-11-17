@@ -6,26 +6,26 @@
 
 <h1>Episodios</h1>
 
-<p>
-    <a asp-action="Create">Agregar Episodio</a>
-</p>
+@if (User.IsInRole("Empleado"))
+{
+    <p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Episodio</a>
+    </p>}
+
 <table class="table">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoAbierto)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PacienteId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Motivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Antecedentes)
+                @Html.DisplayNameFor(model => model.Especialidad)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Internacion)
@@ -34,68 +34,47 @@
                 @Html.DisplayNameFor(model => model.FechaYHoraInicio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaYHoraAlta)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FechaYHoraCierre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoAbierto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmpleadoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Especialidad)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PacienteId)
+                @Html.DisplayNameFor(model => model.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MedicoId)
+                @Html.DisplayNameFor(model => model.EstadoAbierto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
+                @Html.DisplayNameFor(model => model.PacienteId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Motivo)
+                @Html.DisplayNameFor(model => model.Especialidad)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Antecedentes)
+                @Html.DisplayNameFor(model => model.Internacion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Internacion)
+                @Html.DisplayNameFor(model => model.FechaYHoraInicio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+                @Html.DisplayNameFor(model => model.FechaYHoraCierre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoAbierto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpleadoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Especialidad)
-            </td>
-            <td>
-                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                 <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                 <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                @if (User.IsInRole("Empleado, Medico"))
+                {
+                    <div class="divBoton">
+                        <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="boton small" asp-action="Create" asp-controller="Notas" asp-route-id="@item.Id">Crear Nota</a>
+
+                    </div>}
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

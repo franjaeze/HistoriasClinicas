@@ -46,7 +46,7 @@ namespace Historias_Clinicas.Controllers
                 {
                     pacienteACrear.Email = viewModel.Email;
                     pacienteACrear.UserName = viewModel.Email;
-                    pacienteACrear.FechaDeAlta = DateTime.Now;
+            
                 }
                 var resultadoCreacion = await _userManager.CreateAsync(pacienteACrear, viewModel.Password);
 
@@ -58,7 +58,7 @@ namespace Historias_Clinicas.Controllers
                     {
                         await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
 
-                        return RedirectToAction("Edit", "Personas", new { id = pacienteACrear.Id });
+                        return RedirectToAction("Edit", "Pacientes", new { id = pacienteACrear.Id });
                     }
                     else
                     {

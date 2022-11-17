@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Historias_Clinicas.Models
 {
@@ -10,9 +11,7 @@ namespace Historias_Clinicas.Models
         public int Id { get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)] // Es un requerimiento completar este campo
-        [StringLength(6, MinimumLength = 1, ErrorMessage = MensajeError.MinMaxString)] // Puede haber entre 0 y 999.999 medicos
-        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]  // En cada caracter solo se puede poner numeros de 0 a 9
+        [ForeignKey("Medico")]
         public int MedicoId { get; set; }
 
 

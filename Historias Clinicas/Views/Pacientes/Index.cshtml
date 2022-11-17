@@ -6,17 +6,40 @@
 
 <h1>Pacientes</h1>
 
-<p>
-    <a class="boton" asp-action="Create">Agregar paciente nuevo</a>
-</p>
+@if (User.IsInRole("Empleado"))
+{<p align="right">
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Paciente</a>
+    </p>}
+
+<section class="search-section">
+    <div class="container">
+        <form method="get" asp-action="Buscar" asp-controller="Pacientes" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-input" name="Medico" placeholder=" Buscar por DNI" />
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                            <button class="btn btn-info search-button" type="submit">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ObraSocialP)
+                @Html.DisplayNameFor(model => model.HistoriaClinicaId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HistoriaClincaId)
+                @Html.DisplayNameFor(model => model.Apellido)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
@@ -25,20 +48,9 @@
                 @Html.DisplayNameFor(model => model.SegundoNombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Dni)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaDeAlta)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -47,10 +59,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ObraSocialP)
+                    @Html.DisplayFor(modelItem => item.HistoriaClinicaId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HistoriaClincaId)
+                    @Html.DisplayFor(modelItem => item.Apellido)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nombre)
@@ -59,28 +71,28 @@
                     @Html.DisplayFor(modelItem => item.SegundoNombre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Apellido)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Dni)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaDeAlta)
-                </td>
-                <td>
-                  
+
+                    @if (User.IsInRole("Empleado"))
+                    {
                         <div class="divBoton">
                             <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                             <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                             <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                   
+                            <a class="boton" asp-action="Index" asp-controller="Episodios" asp-route-id="@item.Id">Episodios</a>
+
                         </div>
+                    }
+                    @if (User.IsInRole("Medico"))
+                    {
+                        <div class="divBoton">
+                            <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                            <a class="boton" asp-action="Index" asp-controller="Episodios" asp-route-id="@item.Id">Episodios</a>
+                        </div>
+                    }
                 </td>
             </tr>
         }

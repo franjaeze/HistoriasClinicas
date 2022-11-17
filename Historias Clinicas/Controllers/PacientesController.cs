@@ -155,8 +155,8 @@ namespace Historias_Clinicas.Controllers
 
                     pacienteEnDb.Dni = paciente.Dni;
                     pacienteEnDb.Telefono = paciente.Telefono;
-                    pacienteEnDb.ObraSocialP = paciente.ObraSocialP;
-                    pacienteEnDb.HistoriaClincaId = paciente.HistoriaClincaId;
+                    pacienteEnDb.ObraSocial = paciente.ObraSocial;
+                    pacienteEnDb.HistoriaClinicaId = paciente.HistoriaClinicaId;
                     pacienteEnDb.Nombre = paciente.Nombre;
                     pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
                     pacienteEnDb.Apellido  = paciente.Apellido;
