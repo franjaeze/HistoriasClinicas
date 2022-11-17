@@ -31,6 +31,11 @@ namespace Historias_Clinicas.Controllers
             return View(_context.Empleados.ToList());
         }
 
+        public IActionResult MenuEmpleado()
+        {
+            return View();
+        }
+
         // GET: Empleadoes/Details/5
         public IActionResult Details(int? id)
         {

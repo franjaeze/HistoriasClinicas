@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
@@ -9,12 +10,10 @@ namespace Historias_Clinicas.Models
 {
     public class Diagnostico
     {
-
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
-        [StringLength(6, MinimumLength = 1, ErrorMessage = MensajeError.MinMaxString)] 
-        [RegularExpression(@" ^ [0-9] ", ErrorMessage = MensajeError.NumerosPositivos)]
+        [ForeignKey("Medico")]
         public int MedicoId { get; set; }
 
 
@@ -24,7 +23,7 @@ namespace Historias_Clinicas.Models
         public String Descripcion {get; set; }
 
 
-        [Required(ErrorMessage = MensajeError.Requerido)]
+        
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
         public String Recomendacion { get; set; }
@@ -43,6 +42,6 @@ namespace Historias_Clinicas.Models
 
 
 
-        public Especialidad EspecialidadD { get; set; }
+        public Especialidad Especialidad { get; set; }
     }
 }
