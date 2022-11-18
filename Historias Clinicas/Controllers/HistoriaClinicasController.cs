@@ -16,6 +16,7 @@ namespace Historias_Clinicas.Controllers
     public class HistoriaClinicasController : Controller
     {
         private readonly HistoriasClinicasContext _context;
+        List<Episodio> Episodios;
 
         public HistoriaClinicasController(HistoriasClinicasContext context)
         {
@@ -154,19 +155,24 @@ namespace Historias_Clinicas.Controllers
             return _context.HistoriasClinicas.Any(e => e.Id == id);
         }
 
-        private IActionResult ListarEpisodios(int idHca)
+        public IActionResult HistoriaClinicaDePaciente(int id)
         {
-            if (!HistoriaClinicaExists(idHca))
-            {
-                return NotFound();
-            }
-            else
-            {
-                var episodios = _context.Episodios
-                .Where(x => x.HistoriaClinicaId == idHca);
-                return View(episodios);
+            var paciente = _context.Pacientes.Find(id);
+            var historia = _context.HistoriasClinicas.Find(paciente.HistoriaClinicaId);
+            var episodios = _context.Episodios
+                .Where(x => x.HistoriaClinicaId == historia.Id);
 
+            return View(episodios);
+        }
+
+        public IActionResult AgregarEpisodio(int id)
+        {
+            Episodio episodio = new Episodio();
+            {
+                episodio.HistoriaClinicaId = id;
             }
+            Episodios.Add(episodio);
+            return RedirectToAction("Create", "Episodios", new { id = episodio.Id });
         }
     }
 }
