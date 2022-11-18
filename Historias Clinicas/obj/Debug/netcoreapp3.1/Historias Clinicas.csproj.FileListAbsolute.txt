@@ -874,3 +874,9 @@ C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Contacto.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Buscar.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\MenuMedico.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\MenuEmpleado.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Index.cshtml.g.cs
