@@ -651,7 +651,6 @@ C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
-<<<<<<< HEAD
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.json
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.exe
@@ -1095,7 +1094,6 @@ C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\ob
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\HistoriaClinicaPaciente.cshtml.g.cs
-=======
 C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.exe
@@ -1319,3 +1317,5 @@ C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\
 C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
 C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.csproj.AssemblyReference.cache
 >>>>>>> Paola
+C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\HistoriaClinicaDePaciente.cshtml.g.cs
+C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Favicons.cshtml.g.cs
