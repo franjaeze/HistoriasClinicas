@@ -1093,3 +1093,4 @@ C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\ob
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
+C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\HistoriaClinicaPaciente.cshtml.g.cs
