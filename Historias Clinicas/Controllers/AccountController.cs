@@ -101,7 +101,7 @@ namespace Historias_Clinicas.Controllers
                     if (User.IsInRole("Medico"))
                     {
                         return RedirectToAction("MenuMedico", "Medicos");
-                    } else
+                    } if (User.IsInRole("Empleado"))
                      {
                         return RedirectToAction("MenuEmpleado", "Empleados");
 
