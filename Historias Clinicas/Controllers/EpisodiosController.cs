@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -40,7 +41,7 @@ namespace Historias_Clinicas.Controllers
                 .FirstOrDefault(m => m.Id == id);
             if (episodio == null)
             {
-                return Content($"El episodio con id {id} no fue encontrado"); 
+                return Content($"El episodio con id {id} no fue encontrado");
                 // Se cambio del NotFound para que no se rompa todo
             }
 
@@ -58,10 +59,17 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,PacienteId,MedicoId,Descripcion,Motivo,Antecedentes,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
+        public IActionResult Create(int id , [Bind("Id,HistoriaClinicaId,EpicrisisId,Descripcion,Motivo,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
         {
             if (ModelState.IsValid)
+                        
             {
+                episodio.EmpleadoId = getUsuarioId();
+                episodio.Id = id;
+                
+                //var historia = _context.HistoriasClinicas
+                //                .Find(episodio.HistoriaClinicaId);
+                
                 _context.Add(episodio);
                 _context.SaveChanges();
                 List<Evolucion> Evoluciones = new List<Evolucion>();
@@ -153,6 +161,24 @@ namespace Historias_Clinicas.Controllers
         private bool EpisodioExists(int id)
         {
             return _context.Episodios.Any(e => e.Id == id);
+        }
+
+        private int getUsuarioId()
+        {
+            var userIdValue = 0;
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                                  .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    userIdValue = Int32.Parse(userIdClaim.Value);
+                }
+            }
+
+            return userIdValue;
         }
     }
 }

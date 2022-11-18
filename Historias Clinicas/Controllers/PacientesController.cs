@@ -73,6 +73,7 @@ namespace Historias_Clinicas.Controllers
 
             if (ModelState.IsValid)
             {
+                paciente.FechaDeAlta = DateTime.Today;
                 _context.Add(paciente);
                 _context.SaveChanges();
 
@@ -86,20 +87,20 @@ namespace Historias_Clinicas.Controllers
 
 
                     _context.Add(historiaClinica);
+                    _context.SaveChanges();
 
                     paciente.HistoriaClinicaId = historiaClinica.Id;
 
-             
+                    _context.Update(paciente);
                     _context.SaveChanges();
-                }
 
+                }
 
                 return RedirectToAction(nameof(Index));
             }
             return View(paciente);
 
-           
-        }
+           }
 
 
         // GET: Pacientes/Edit/5
@@ -252,7 +253,17 @@ namespace Historias_Clinicas.Controllers
               }
 
             return userIdValue;
+        }
 
+        private IActionResult listarEpisodios(int id)
+        {
+            var paciente = _context.Pacientes.Find(id);
+            var historia = _context.HistoriasClinicas
+                            .Find(paciente);
+            var episodios = _context.Episodios
+                            .Where(s => s.HistoriaClinicaId == historia.Id);
+
+            return View(episodios);
         }
     }
 }

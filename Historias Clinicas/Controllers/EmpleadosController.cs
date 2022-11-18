@@ -187,5 +187,24 @@ namespace Historias_Clinicas.Controllers
                 ModelState.AddModelError(string.Empty, dbex.Message);
             }
         }
+
+        private IActionResult AltaEpisodio(int idPac)
+        {
+            var paciente = _context.Pacientes
+                           .Find(idPac);
+            var hca = _context.HistoriasClinicas
+                       .Find(paciente.HistoriaClinicaId);
+
+            if (hca != null)
+            {
+                Episodio episodio = new Episodio();
+                hca.Episodios.Add(episodio);
+                _context.SaveChanges();
+
+                return RedirectToAction("Create", "Episodios", new { id = episodio.Id });
+            }
+
+            return View(paciente);
+        }
     }
 }
