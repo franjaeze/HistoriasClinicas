@@ -11,7 +11,7 @@ namespace Historias_Clinicas.Models
 
 
         [ForeignKey("HistoriaClinica")]
-        public int HistoriaClinicaId { get; set; }
+        public int? HistoriaClinicaId { get; set; }
 
 
         public List<MedicoPaciente> MedicosPaciente { get; set; }

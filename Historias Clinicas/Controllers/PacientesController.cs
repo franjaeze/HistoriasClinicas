@@ -7,6 +7,7 @@ using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -67,27 +68,31 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,ObraSocialP,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
+        public IActionResult Create([Bind("Id,ObraSocial,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
-
-            
 
             if (ModelState.IsValid)
             {
                 _context.Add(paciente);
-   
                 _context.SaveChanges();
 
-                //HistoriaClinica historiaClinica = new HistoriaClinica()
-                //{
-                //    PacienteId = paciente.Id,
-                //    Episodios = new List<Episodio>()
-                //};
+                if (paciente.HistoriaClinicaId == null)
+                {
+                    HistoriaClinica historiaClinica = new HistoriaClinica()
+                    {
+                        PacienteId = paciente.Id,
+                        Episodios = new List<Episodio>()
+                    };
 
-                //_context.Add(historiaClinica);
-                //_context.SaveChanges();
 
-                //paciente.HistoriaClincaId = historiaClinica.Id;
+                    _context.Add(historiaClinica);
+
+                    paciente.HistoriaClinicaId = historiaClinica.Id;
+
+             
+                    _context.SaveChanges();
+                }
+
 
                 return RedirectToAction(nameof(Index));
             }
@@ -95,9 +100,6 @@ namespace Historias_Clinicas.Controllers
 
            
         }
-
-       
-
 
 
         // GET: Pacientes/Edit/5
@@ -123,14 +125,14 @@ namespace Historias_Clinicas.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
     
-        public IActionResult Edit(int id, [Bind("Id,ObraSocialP,HistoriaClincaId,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
+        public IActionResult Edit(int id,[Bind("Id,ObraSocial,Nombre,SegundoNombre,Apellido,HistoriaClinicaId,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
+
             if (id != paciente.Id)
             {
+
                 return NotFound();
             }
-
-            
 
             if (ModelState.IsValid)
             {
@@ -150,15 +152,29 @@ namespace Historias_Clinicas.Controllers
                     pacienteEnDb.HistoriaClinicaId = paciente.HistoriaClinicaId;
                     pacienteEnDb.Nombre = paciente.Nombre;
                     pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
-                    pacienteEnDb.Apellido  = paciente.Apellido;
+                    pacienteEnDb.Apellido = paciente.Apellido;
                     pacienteEnDb.Email = paciente.Email;
                     pacienteEnDb.FechaDeAlta = paciente.FechaDeAlta;
 
 
+                    if (paciente.HistoriaClinicaId == null)
+                    {
+                        HistoriaClinica historiaClinica = new HistoriaClinica()
+                        {
+                            PacienteId = paciente.Id,
+                            Episodios = new List<Episodio>()
+                        };
 
-                    _context.Update(paciente);
-                    _context.SaveChanges();
+                        _context.Add(historiaClinica);
+                        _context.SaveChanges();
+
+                        pacienteEnDb.HistoriaClinicaId = historiaClinica.Id;
+
+                       
+                        _context.SaveChanges();
+                    }
                 }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!PacienteExists(paciente.Id))
@@ -176,7 +192,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Pacientes/Delete/5
-      
+
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -207,6 +223,36 @@ namespace Historias_Clinicas.Controllers
         private bool PacienteExists(int id)
         {
             return _context.Pacientes.Any(e => e.Id == id);
+        }
+
+        private IActionResult HistoriaClinicaPaciente()
+        {
+            int userId = getUsuarioId();
+            var historia = _context.HistoriasClinicas
+                            .Find(userId);
+            var episodios = _context.Episodios
+                            .Where(s => s.HistoriaClinicaId == historia.Id);
+
+            return View(episodios);
+         }
+
+        private int getUsuarioId()
+        {
+            var userIdValue = 0;
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+              {
+                var userIdClaim = claimsIdentity.Claims
+                                  .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                    {
+                           userIdValue = Int32.Parse(userIdClaim.Value);
+                    }
+              }
+
+            return userIdValue;
+
         }
     }
 }

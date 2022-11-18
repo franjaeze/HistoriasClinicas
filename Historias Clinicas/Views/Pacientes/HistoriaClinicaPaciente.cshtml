@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Episodio>
+
+@{
+    ViewData["Title"] = "HistoriaClinicaPaciente";
+}
+
+<h1>Historia Clinica</h1>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Número de Historia Clinica</label>
+        <div class="col-lg-10">
+            <p class="form-control-static">XXXXX</p>
+        </div>
+    </div>
+</form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoAbierto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Especialidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Internacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaYHoraInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaYHoraCierre)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.EstadoAbierto)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Especialidad)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Internacion)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.FechaYHoraInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayNameFor(model => model.FechaYHoraCierre)
+                    </td>
+                    
+
+                </tr>
+
+                <div class="divBoton">
+                    <a class="boton small" asp-action="MenuPaciente" asp-controller="Paciente">Volver</a>
+
+                </div>
+            }
+            </td>
+            </tr>
+            }
+        </tbody>
+    </table>
