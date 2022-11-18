@@ -46,8 +46,21 @@
                 <div class="fadeImg4">
                     @if (User.Identity.IsAuthenticated)
                     {
+                        if (User.IsInRole("Empleado"))
+                        {
+                            <a class="boton" asp-area="" asp-controller="Empleados" asp-action="MenuEmpleado">Ingresar</a>
+                        }
+                        if (User.IsInRole("Medico"))
+                         {
+                            <a class="boton" asp-area="" asp-controller="Medicos" asp-action="MenuMedico">Ingresar</a>
+                        }
+                        else if (User.IsInRole("Paciente"))
+                          {
+                            <a class="boton" asp-area="" asp-controller="Pacientes" asp-action="MenuPaciente">Ingresar</a>
 
-                        <a class="boton" asp-area="" asp-controller="Pacientes" asp-action="MenuPaciente">Ingresar</a>
+                          }
+
+
                     }
                     else
                     {
