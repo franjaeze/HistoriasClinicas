@@ -7,6 +7,7 @@ using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -185,6 +186,31 @@ namespace Historias_Clinicas.Controllers
 
             return View(medicos);
         }
+
+        private int getUsuarioId()
+        {
+            var userIdValue = 0;
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                                  .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    userIdValue = Int32.Parse(userIdClaim.Value);
+                }
+            }
+            ViewData["MedicoId"] = getUsuarioId();
+
+            return userIdValue;
+        }
+
+        //public IActionResult ListarPacientes(int? id)
+        //{
+        //    var medico = _context.Medicos.Find(id);
+            
+        //}
     }
 }
    

@@ -4,39 +4,50 @@
     ViewData["Title"] = "HistoriaClinicaDePaciente";
 }
 
-<h1>Historia Clinica</h1>
 
-<p align="left"> Numero de Historia Clínica</p>
-<p align="left"> XXXXX</p>
+
+<header>
+    <h1>Historia Clinica</h1>
+    <h3> Listado de Episodios</h3>
+    <p></p>
+    <p></p>
+    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Historia Clínica : @ViewData["historiaId"] </p>
+</header>
+
+
+
 
 
 @if (User.IsInRole("Empleado"))
 
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Episodios">Agregar Episodio</a>
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Episodios" asp-route-Id="@ViewData["historiaId"]">
+            Agregar Episodio
+        </a>
+
     </p>}
 
 
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-left">
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoAbierto)
+            <th class="text-left">
+                Abierto
             </th>
-            <th>
+            <th class="text-left">
                 @Html.DisplayNameFor(model => model.Especialidad)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Internacion)
+            <th class="text-left">
+                Episodio de Internacion
             </th>
-            <th>
+            <th class="text-left">
                 @Html.DisplayNameFor(model => model.FechaYHoraInicio)
             </th>
-            <th>
+            <th class="text-left">
                 @Html.DisplayNameFor(model => model.FechaYHoraCierre)
             </th>
             <th></th>
@@ -47,22 +58,22 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => model.Id)
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.EstadoAbierto)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.EstadoAbierto)
+                    @Html.DisplayFor(modelItem => item.Especialidad)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Internacion)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.Especialidad)
+                    @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.Internacion)
-                </td>
-                <td>
-                    @Html.DisplayNameFor(model => model.FechaYHoraInicio)
-                </td>
-                <td>
-                    @Html.DisplayNameFor(model => model.FechaYHoraCierre)
+                    @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
                 </td>
                 <td>
                     @if (User.IsInRole("Empleado, Medico"))
@@ -70,11 +81,7 @@
                         <div class="divBoton">
                             <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                             <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                        </div>
-
-                        <div class="divBoton">
                             <a class="boton small" asp-action="Index" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
-
                         </div>
                     }
                 </td>
@@ -82,5 +89,8 @@
         }
     </tbody>
 </table>
+<div>
+    <a asp-action="Index" asp-controller="Pacientes">Volver</a>
+</div>
 
 

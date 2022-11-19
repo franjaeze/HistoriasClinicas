@@ -59,19 +59,25 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(int id , [Bind("Id,HistoriaClinicaId,EpicrisisId,Descripcion,Motivo,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
+        public IActionResult Create(int id, [Bind("Id,HistoriaClinicaId,EpicrisisId,Descripcion,Motivo,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
         {
             if (ModelState.IsValid)
                         
             {
                 episodio.EmpleadoId = getUsuarioId();
-                episodio.Id = id;
+                episodio.HistoriaClinicaId = id;
+                var historia = _context.HistoriasClinicas.Find(id);
+
+                episodio.Id = 0;
                 
-                //var historia = _context.HistoriasClinicas
-                //                .Find(episodio.HistoriaClinicaId);
                 
                 _context.Add(episodio);
                 _context.SaveChanges();
+
+                historia.Episodios.Add(episodio);
+                _context.SaveChanges();
+
+
                 List<Evolucion> Evoluciones = new List<Evolucion>();
                 return RedirectToAction(nameof(Index));
             }
@@ -180,5 +186,9 @@ namespace Historias_Clinicas.Controllers
 
             return userIdValue;
         }
+
+ 
+
     }
+
 }

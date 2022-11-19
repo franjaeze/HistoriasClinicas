@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -16,7 +17,7 @@ namespace Historias_Clinicas.Controllers
     public class HistoriaClinicasController : Controller
     {
         private readonly HistoriasClinicasContext _context;
-        List<Episodio> Episodios;
+       
 
         public HistoriaClinicasController(HistoriasClinicasContext context)
         {
@@ -26,7 +27,7 @@ namespace Historias_Clinicas.Controllers
         // GET: HistoriaClinicas
         public IActionResult Index()
         {
-            return View( _context.HistoriasClinicas.ToList());
+            return View(_context.HistoriasClinicas.ToList());
         }
 
         // GET: HistoriaClinicas/Details/5
@@ -162,17 +163,9 @@ namespace Historias_Clinicas.Controllers
             var episodios = _context.Episodios
                 .Where(x => x.HistoriaClinicaId == historia.Id);
 
-            return View(episodios);
-        }
+            ViewData["historiaId"] = paciente.HistoriaClinicaId;
 
-        public IActionResult AgregarEpisodio(int id)
-        {
-            Episodio episodio = new Episodio();
-            {
-                episodio.HistoriaClinicaId = id;
-            }
-            Episodios.Add(episodio);
-            return RedirectToAction("Create", "Episodios", new { id = episodio.Id });
+            return View(episodios);
         }
     }
 }
