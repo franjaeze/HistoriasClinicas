@@ -2,11 +2,11 @@
     <div class="row">
         <div class=" col-lg-2"></div>
         <div class=" col-lg-8 col-md-12">
-            <h1> Bienvenido @User.Identity.Name  ! </h1>
+            <h1> Bienvenido @User.Identity.Name ! </h1>
             <h3 class="my-2">En que podemos ayudarte? </h3>
             <ul class="nobull my-5">
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area="" asp-controller="Pacientes" asp-action="HistoriaClinicaPaciente">
+                    <a type="button" class="menuBoton"  asp-controller="HistoriaClinicas" asp-action="HistoriaClinicaDePaciente" asp-route-id="@ViewData["PacienteId"]">
                         Mi Historia Clinica
                     </a>
                 </li>
@@ -16,7 +16,7 @@
                     </a>
                 </li>
 
-                 <li class="my-3">
+                <li class="my-3">
                     <a type="button" class="menuBoton" asp-area="" asp-controller="Medicos" asp-action="Index">
                         Cartilla medica
                     </a>
@@ -28,13 +28,13 @@
                     </a>
                 </li>
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area=""  asp-route-id="TestCurrentUser()"asp-controller="Pacientes" asp-action="Edit">
+                    <a type="button" class="menuBoton" asp-area="" asp-route-id="TestCurrentUser()" asp-controller="Pacientes" asp-action="Edit">
                         Actualizar Informacion Personal
                     </a>
                 </li>
-                                  
 
-                 
+
+
             </ul>
         </div>
         <div class=" col-lg-2"></div>

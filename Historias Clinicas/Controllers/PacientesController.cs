@@ -226,16 +226,16 @@ namespace Historias_Clinicas.Controllers
             return _context.Pacientes.Any(e => e.Id == id);
         }
 
-        private IActionResult HistoriaClinicaPaciente()
-        {
-            int userId = getUsuarioId();
-            var historia = _context.HistoriasClinicas
-                            .Find(userId);
-            var episodios = _context.Episodios
-                            .Where(s => s.HistoriaClinicaId == historia.Id);
+        //private IActionResult HistoriaClinicaPaciente()
+        //{
+        //    int userId = getUsuarioId();
+        //    var historia = _context.HistoriasClinicas
+        //                    .Find(userId);
+        //    var episodios = _context.Episodios
+        //                    .Where(s => s.HistoriaClinicaId == historia.Id);
 
-            return View(episodios);
-         }
+        //    return View(episodios);
+        // }
 
         private int getUsuarioId()
         {
@@ -251,19 +251,10 @@ namespace Historias_Clinicas.Controllers
                            userIdValue = Int32.Parse(userIdClaim.Value);
                     }
               }
+            ViewData["PacienteId"] = getUsuarioId();
 
             return userIdValue;
         }
-
-        private IActionResult listarEpisodios(int id)
-        {
-            var paciente = _context.Pacientes.Find(id);
-            var historia = _context.HistoriasClinicas
-                            .Find(paciente);
-            var episodios = _context.Episodios
-                            .Where(s => s.HistoriaClinicaId == historia.Id);
-
-            return View(episodios);
-        }
+       
     }
 }
