@@ -121,11 +121,11 @@ namespace Historias_Clinicas.Controllers
             {
                 if (persona.Id != 0)
                 {
-                    devolver = _context.Pacientes.Any(p => p.Dni == persona.Dni && p.Id != persona.Id);
+                    devolver = _context.Personas.Any(p => p.Dni == persona.Dni && p.Id != persona.Id);
                 }
                 else
                 {
-                    devolver = _context.Pacientes.Any(p => p.Dni == persona.Dni);
+                    devolver = _context.Personas.Any(p => p.Dni == persona.Dni);
                 }
             }
             return devolver;
@@ -135,7 +135,7 @@ namespace Historias_Clinicas.Controllers
         {
             if (DniExist(persona))
             {
-                ModelState.AddModelError("Dni", "El dni ya esta registrado");
+                ModelState.AddModelError("Dni", "Ya existe una persona con el dni ingresado");
             }
         }
 
