@@ -76,6 +76,9 @@ namespace Historias_Clinicas.Controllers
                 medico.FechaDeAlta = DateTime.Now;
                 _context.Add(medico);
                 _context.SaveChanges();
+
+                List<MedicoPaciente> MedicoPacientes = new List <MedicoPaciente>();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(medico);
@@ -151,6 +154,7 @@ namespace Historias_Clinicas.Controllers
             return View(medico);
         }
 
+      
         // POST: Medicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -209,8 +213,16 @@ namespace Historias_Clinicas.Controllers
         //public IActionResult ListarPacientes(int? id)
         //{
         //    var medico = _context.Medicos.Find(id);
-            
+
         //}
+
+        public IActionResult ListarPacientes(int? id)
+        {
+            var medico = _context.Medicos.Find(id);
+            return View(medico.MedicoPacientes.ToList());
+        }
+
+       
     }
 }
    

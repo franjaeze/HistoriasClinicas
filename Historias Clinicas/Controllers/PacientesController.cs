@@ -34,6 +34,7 @@ namespace Historias_Clinicas.Controllers
             return View();
         }
 
+       
         public IActionResult Contacto()
         {
             return View();
@@ -93,6 +94,7 @@ namespace Historias_Clinicas.Controllers
 
                     _context.Update(paciente);
                     _context.SaveChanges();
+                    List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
 
                 }
 
@@ -255,6 +257,33 @@ namespace Historias_Clinicas.Controllers
 
             return userIdValue;
         }
-       
+
+        public IActionResult ListarMedico(int? id)
+        {
+            var paciente = _context.Pacientes.Find(id);
+            return View(paciente.MedicosPaciente.ToList());
+        }
+
+        public IActionResult SacarTurno(int id)
+        {
+            var paciente = _context.Pacientes.Find(getUsuarioId());
+            var medico = _context.Medicos
+                .Find(id);
+            MedicoPaciente medicoPaciente = new MedicoPaciente()
+            {
+                MedicoId = id,
+                PacienteId = getUsuarioId(),
+                Medico = medico,
+                Paciente = paciente
+            };
+
+            paciente.MedicosPaciente.Add(medicoPaciente);
+
+            medico.MedicoPacientes.Add(medicoPaciente);
+
+
+            return View();
+        }
+
     }
 }
