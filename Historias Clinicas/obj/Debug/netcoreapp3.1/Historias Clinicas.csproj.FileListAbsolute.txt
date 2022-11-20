@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Mateo Bellomo\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.exe
@@ -651,6 +652,8 @@ C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
+=======
+>>>>>>> Valentino
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\appsettings.json
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\bin\Debug\netcoreapp3.1\Historias Clinicas.exe
@@ -812,6 +815,7 @@ C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\n
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Details.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Edit.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Empleados\MenuEmpleado.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Create.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Delete.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\Details.cshtml.g.cs
@@ -822,11 +826,11 @@ C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\n
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Details.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Edit.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Episodios\Index.cshtml.g.cs
-C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Create.cshtml.g.cs
-C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Delete.cshtml.g.cs
-C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Details.cshtml.g.cs
-C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Edit.cshtml.g.cs
-C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evolucions\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Create.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Delete.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Details.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Edit.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\Index.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Create.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Delete.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\Details.cshtml.g.cs
@@ -835,16 +839,19 @@ C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\n
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Buscar.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Create.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Delete.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Details.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Edit.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Medicos\MenuMedico.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Create.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Delete.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Details.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Edit.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\Index.cshtml.g.cs
+C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Contacto.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Create.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Delete.cshtml.g.cs
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Details.cshtml.g.cs
@@ -868,6 +875,7 @@ C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\n
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.dll
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.pdb
 C:\OrtRepos\Proyecto\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Historias Clinicas.genruntimeconfig.cache
+<<<<<<< HEAD
 =======
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Contacto.cshtml.g.cs
 >>>>>>> 6e6fbdd695b126317a30640c9a60dc0f98dcf1bb
@@ -1319,3 +1327,5 @@ C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\
 >>>>>>> Paola
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\HistoriaClinicaDePaciente.cshtml.g.cs
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Favicons.cshtml.g.cs
+=======
+>>>>>>> Valentino
