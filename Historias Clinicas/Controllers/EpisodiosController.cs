@@ -69,8 +69,8 @@ namespace Historias_Clinicas.Controllers
                 var historia = _context.HistoriasClinicas.Find(id);
 
                 episodio.Id = 0;
-                
-                
+                episodio.FechaYHoraInicio = DateTime.Today;
+                episodio.EstadoAbierto = true;
                 _context.Add(episodio);
                 _context.SaveChanges();
 
@@ -187,6 +187,18 @@ namespace Historias_Clinicas.Controllers
             return userIdValue;
         }
 
+        public IActionResult EvolucionesPorEpisodio(int id)
+        {
+            var episodio = _context.Episodios.Find(id);
+           
+               
+            var evoluciones = _context.Evoluciones
+                .Where(x => x.EpisodioId == episodio.Id);
+
+            ViewData["episodioId"] = id;
+
+            return View(evoluciones);
+        }
 
     }
 

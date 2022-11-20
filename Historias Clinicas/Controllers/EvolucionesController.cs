@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
-    public class EvolucionsController : Controller
+    public class EvolucionesController : Controller
     {
         private readonly HistoriasClinicasContext _context;
 
-        public EvolucionsController(HistoriasClinicasContext context)
+        public EvolucionesController(HistoriasClinicasContext context)
         {
             _context = context;
         }
@@ -60,8 +61,9 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(evolucion);
-                
+                evolucion.MedicoId = getUsuarioId();
                 _context.SaveChanges();
+               
                 return RedirectToAction(nameof(Index));
             }
             return View(evolucion);
@@ -150,6 +152,38 @@ namespace Historias_Clinicas.Controllers
         private bool EvolucionExists(int id)
         {
             return _context.Evoluciones.Any(e => e.Id == id);
+        }
+
+        private int getUsuarioId()
+        {
+            var userIdValue = 0;
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                                  .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    userIdValue = Int32.Parse(userIdClaim.Value);
+                }
+            }
+            //ViewData["MedicoId"] = getUsuarioId();
+
+            return userIdValue;
+        }
+
+        public IActionResult NotasPorEvolucion(int id)
+        {
+            var evolucion = _context.Evoluciones.Find(id);
+
+
+            var notas = _context.Notas
+                .Where(x => x.EvolucionId == evolucion.Id);
+
+            ViewData["evolucionId"] = id;
+
+            return View(notas);
         }
     }
 }

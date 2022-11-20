@@ -6,11 +6,12 @@
 
 <h1>Evoluciones</h1>
 
-if (User.IsInRole("Medico"))
+@if (User.IsInRole("Medico"))
 {
 <p align="right">
     <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Evolucion</a>
-</p>}
+</p>
+}
 
 <table class="table">
     <thead>

@@ -15,9 +15,7 @@ namespace Historias_Clinicas.Models
         [ForeignKey("HistoriaClinica")]
         public int HistoriaClinicaId { get; set; }
 
-        [ForeignKey("Epicrisis")]
-        public int EpicrisisId { get; set; }
-
+        
         [ForeignKey("Empleado")]
         public int EmpleadoId { get; set; }
 
