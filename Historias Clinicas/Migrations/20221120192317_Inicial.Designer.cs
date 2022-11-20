@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Historias_Clinicas.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    [Migration("20221117223756_Inicial")]
+    [Migration("20221120192317_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,6 +72,9 @@ namespace Historias_Clinicas.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EpicrisisId")
+                        .IsUnique();
+
                     b.ToTable("Diagnosticos");
                 });
 
@@ -81,9 +84,6 @@ namespace Historias_Clinicas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DiagnosticoId")
-                        .HasColumnType("int");
 
                     b.Property<int>("EpisodioId")
                         .HasColumnType("int");
@@ -112,9 +112,6 @@ namespace Historias_Clinicas.Migrations
                         .HasMaxLength(10000);
 
                     b.Property<int>("EmpleadoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EpicrisisId")
                         .HasColumnType("int");
 
                     b.Property<int>("Especialidad")
@@ -162,7 +159,7 @@ namespace Historias_Clinicas.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasMaxLength(10000);
 
-                    b.Property<int?>("EpisodioId")
+                    b.Property<int>("EpisodioId")
                         .HasColumnType("int");
 
                     b.Property<bool>("EstadoAbierto")
@@ -546,7 +543,7 @@ namespace Historias_Clinicas.Migrations
                         .HasColumnName("Paciente_AppId")
                         .HasColumnType("int");
 
-                    b.Property<int>("HistoriaClinicaId")
+                    b.Property<int?>("HistoriaClinicaId")
                         .HasColumnType("int");
 
                     b.Property<int>("ObraSocial")
@@ -555,6 +552,15 @@ namespace Historias_Clinicas.Migrations
                     b.HasIndex("AppId");
 
                     b.HasDiscriminator().HasValue("Paciente");
+                });
+
+            modelBuilder.Entity("Historias_Clinicas.Models.Diagnostico", b =>
+                {
+                    b.HasOne("Historias_Clinicas.Models.Epicrisis", null)
+                        .WithOne("Diagnostico")
+                        .HasForeignKey("Historias_Clinicas.Models.Diagnostico", "EpicrisisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Historias_Clinicas.Models.Episodio", b =>
@@ -570,7 +576,9 @@ namespace Historias_Clinicas.Migrations
                 {
                     b.HasOne("Historias_Clinicas.Models.Episodio", null)
                         .WithMany("Evoluciones")
-                        .HasForeignKey("EpisodioId");
+                        .HasForeignKey("EpisodioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Historias_Clinicas.Models.MedicoPaciente", b =>

@@ -38,24 +38,28 @@
 <table class="table">
     <thead>
         <tr>
+            @if (User.IsInRole("Empleado")) { 
+                <th>
+                    @Html.DisplayNameFor(model => model.MatriculaNacional)
+                </th>
             <th>
-                @Html.DisplayNameFor(model => model.MatriculaNacional)
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            }          
+            <th>
+                 @Html.DisplayNameFor(model => model.Especialidad)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Apellido)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Especialidad)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SegundoNombre)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
+
 
             <th></th>
         </tr>
@@ -64,24 +68,28 @@
         @foreach (var item in Model)
         {
         <tr>
+            @if (User.IsInRole("Empleado")) { 
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.MatriculaNacional)
+                </td>
             <td class="text-center">
-                @Html.DisplayFor(modelItem => item.MatriculaNacional)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
+            }
+              <td class="text-center">
+               @Html.DisplayFor(modelItem => item.Especialidad)
+               </td>
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Apellido)
             </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Especialidad)
-            </td>
+            
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.SegundoNombre)
             </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+
             <td class="text-center">
                 @if (User.IsInRole("Empleado"))
                 {
@@ -89,7 +97,19 @@
                         <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                         <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </div>}
+                    </div>
+
+                }
+
+
+                @if (User.IsInRole("Paciente"))
+                {
+                    <div class="divBoton">
+                        <a class="boton small" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
+
+                    </div>
+
+                }
             </td>
         </tr>
         }

@@ -71,9 +71,10 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Create([Bind("Id,ObraSocial,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
 
+            VerificarDni(paciente);
+
             if (ModelState.IsValid)
             {
-                paciente.FechaDeAlta = DateTime.Today;
                 _context.Add(paciente);
                 _context.SaveChanges();
 
@@ -91,6 +92,9 @@ namespace Historias_Clinicas.Controllers
 
                     paciente.HistoriaClinicaId = historiaClinica.Id;
 
+                    List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
+                    paciente.MedicosPaciente = MedicosPaciente;
+
                     _context.Update(paciente);
                     _context.SaveChanges();
 
@@ -102,6 +106,30 @@ namespace Historias_Clinicas.Controllers
 
            }
 
+        private bool DniExist(Paciente paciente)
+        {
+            bool devolver = false;
+            if (paciente.Dni != 0)
+            {
+                if (paciente.Id != 0)
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == paciente.Dni && p.Id != paciente.Id);
+                }
+                else
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == paciente.Dni);
+                }
+            }
+            return devolver;
+        }
+
+        private void VerificarDni(Paciente paciente)
+        {
+            if (DniExist(paciente))
+            {
+                ModelState.AddModelError("Dni", "Ya existe un persona con el dni ingresado");
+            }
+        }
 
         // GET: Pacientes/Edit/5
 
@@ -135,6 +163,8 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
+            VerificarDni(paciente);
+
             if (ModelState.IsValid)
             {
                 try
@@ -155,8 +185,21 @@ namespace Historias_Clinicas.Controllers
                     pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
                     pacienteEnDb.Apellido = paciente.Apellido;
                     pacienteEnDb.Email = paciente.Email;
-                    pacienteEnDb.FechaDeAlta = paciente.FechaDeAlta;
 
+                    var fechaDefault = new DateTime(0001, 1, 1, 00, 00, 00);
+
+                    if (pacienteEnDb.FechaDeAlta == fechaDefault)
+                    {
+                        pacienteEnDb.FechaDeAlta = DateTime.Today;
+                    }
+
+                    if (pacienteEnDb.MedicosPaciente == null)
+                    {
+                        List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
+                        pacienteEnDb.MedicosPaciente = MedicosPaciente;
+                    }
+
+                    _context.SaveChanges();
 
                     if (pacienteEnDb.HistoriaClinicaId == null)
                     {
@@ -251,6 +294,24 @@ namespace Historias_Clinicas.Controllers
 
             //ViewData["PacienteId"] = getUsuarioId();
             return userIdValue;
+        }
+
+        public IActionResult SacarTurno(int id)
+        {
+            var paciente = _context.Pacientes.Find(getUsuarioId());
+            var medico = _context.Medicos.Find(id);
+            MedicoPaciente MedicoPaciente = new MedicoPaciente()
+            {
+                MedicoId = id,
+                PacienteId = getUsuarioId(),
+                Medico = medico,
+                Paciente = paciente
+            };
+
+            medico.MedicoPacientes.Add(MedicoPaciente);
+            paciente.MedicosPaciente.Add(MedicoPaciente);
+
+            return View();
         }
 
     }

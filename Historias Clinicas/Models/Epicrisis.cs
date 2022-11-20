@@ -16,13 +16,10 @@ namespace Historias_Clinicas.Models
         [ForeignKey("Medico")]
         public int MedicoId { get; set; }
 
+        public Diagnostico Diagnostico { get; set; }
 
         [ForeignKey("Episodio")]
         public int EpisodioId { get; set; }
-
-
-        [ForeignKey("Diagnostico")]
-        public int DiagnosticoId { get; set; }
 
 
         [DataType(DataType.Date)]

@@ -22,11 +22,16 @@
                 <input asp-for="EpisodioId" class="form-control" />
                 <span asp-validation-for="EpisodioId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DiagnosticoId" class="control-label"></label>
-                <input asp-for="DiagnosticoId" class="form-control" />
-                <span asp-validation-for="DiagnosticoId" class="text-danger"></span>
+            @if (User.IsInRole("Medico"))
+            {
+                <div class="divBoton">
+                        <a type="boton" asp-action="Create" asp-controller="Diagnostico">Agregar Diagnostico</a>
+                    </div>
+            }
+            <div class="divBoton">
+                <a type="boton" asp-action="DiagnosticoPorEpicrisis" asp-controller="Diagnostico">Ver Diagnostico</a>
             </div>
+            </td>
             <div class="form-group">
                 <label asp-for="FechaYHora" class="control-label"></label>
                 <input asp-for="FechaYHora" class="form-control" />

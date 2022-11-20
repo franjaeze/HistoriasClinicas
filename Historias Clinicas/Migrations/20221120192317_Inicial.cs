@@ -23,22 +23,6 @@ namespace Historias_Clinicas.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Diagnosticos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EpicrisisId = table.Column<int>(nullable: false),
-                    Descripcion = table.Column<string>(maxLength: 10000, nullable: false),
-                    Recomendacion = table.Column<string>(maxLength: 10000, nullable: true),
-                    Especialidad = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Diagnosticos", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Epicrisis",
                 columns: table => new
                 {
@@ -46,7 +30,6 @@ namespace Historias_Clinicas.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MedicoId = table.Column<int>(nullable: false),
                     EpisodioId = table.Column<int>(nullable: false),
-                    DiagnosticoId = table.Column<int>(nullable: false),
                     FechaYHora = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -144,13 +127,34 @@ namespace Historias_Clinicas.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Diagnosticos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EpicrisisId = table.Column<int>(nullable: false),
+                    Descripcion = table.Column<string>(maxLength: 10000, nullable: false),
+                    Recomendacion = table.Column<string>(maxLength: 10000, nullable: true),
+                    Especialidad = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Diagnosticos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Diagnosticos_Epicrisis_EpicrisisId",
+                        column: x => x.EpicrisisId,
+                        principalTable: "Epicrisis",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Episodios",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HistoriaClinicaId = table.Column<int>(nullable: false),
-                    EpicrisisId = table.Column<int>(nullable: false),
                     EmpleadoId = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(maxLength: 10000, nullable: false),
                     Motivo = table.Column<string>(maxLength: 10000, nullable: false),
@@ -308,13 +312,13 @@ namespace Historias_Clinicas.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    EpisodioId = table.Column<int>(nullable: false),
                     MedicoId = table.Column<int>(nullable: false),
                     FechaYHoraInicio = table.Column<DateTime>(nullable: false),
                     FechaYHoraAlta = table.Column<DateTime>(nullable: false),
                     FechaYHoraCierre = table.Column<DateTime>(nullable: false),
                     EstadoAbierto = table.Column<bool>(nullable: false),
-                    DescripcionAtencion = table.Column<string>(maxLength: 10000, nullable: false),
-                    EpisodioId = table.Column<int>(nullable: true)
+                    DescripcionAtencion = table.Column<string>(maxLength: 10000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -324,7 +328,7 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.EpisodioId,
                         principalTable: "Episodios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -363,6 +367,12 @@ namespace Historias_Clinicas.Migrations
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Diagnosticos_EpicrisisId",
+                table: "Diagnosticos",
+                column: "EpicrisisId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Episodios_HistoriaClinicaId",
@@ -456,9 +466,6 @@ namespace Historias_Clinicas.Migrations
                 name: "Diagnosticos");
 
             migrationBuilder.DropTable(
-                name: "Epicrisis");
-
-            migrationBuilder.DropTable(
                 name: "MedicoPaciente");
 
             migrationBuilder.DropTable(
@@ -466,6 +473,9 @@ namespace Historias_Clinicas.Migrations
 
             migrationBuilder.DropTable(
                 name: "PersonasRoles");
+
+            migrationBuilder.DropTable(
+                name: "Epicrisis");
 
             migrationBuilder.DropTable(
                 name: "Evoluciones");

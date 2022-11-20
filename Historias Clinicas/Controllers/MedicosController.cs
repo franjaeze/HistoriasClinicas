@@ -71,14 +71,48 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
+
+            VerificarDni(medico);
+
             if (ModelState.IsValid)
             {
-                medico.FechaDeAlta = DateTime.Now;
                 _context.Add(medico);
                 _context.SaveChanges();
+
+                List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
+                medico.MedicoPacientes = MedicoPacientes;
+
+                _context.SaveChanges();
+
+
                 return RedirectToAction(nameof(Index));
             }
             return View(medico);
+        }
+
+        private bool DniExist(Medico medico)
+        {
+            bool devolver = false;
+            if (medico.Dni != 0)
+            {
+                if (medico.Id != 0)
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == medico.Dni && p.Id != medico.Id);
+                }
+                else
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == medico.Dni);
+                }
+            }
+            return devolver;
+        }
+
+        private void VerificarDni(Medico medico)
+        {
+            if (DniExist(medico))
+            {
+                ModelState.AddModelError("Dni", "Ya existe un persona con el dni ingresado");
+            }
         }
 
         // GET: Medicos/Edit/5
@@ -109,10 +143,18 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
+            VerificarDni(medico);
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (medico.MedicoPacientes == null)
+                    {
+
+                        List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
+                        medico.MedicoPacientes = MedicoPacientes;
+                    }
                     _context.Update(medico);
                     _context.SaveChanges();
                 }
@@ -151,6 +193,7 @@ namespace Historias_Clinicas.Controllers
             return View(medico);
         }
 
+      
         // POST: Medicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -186,6 +229,7 @@ namespace Historias_Clinicas.Controllers
 
             return View(medicos);
         }
+
         private int getUsuarioId()
         {
             var userIdValue = 0;
@@ -204,9 +248,19 @@ namespace Historias_Clinicas.Controllers
 
             return userIdValue;
         }
+
+        //public IActionResult ListarPacientes(int? id)
+        //{
+        //    var medico = _context.Medicos.Find(id);
+
+        //}
+
+        public IActionResult ListarPacientes(int? id)
+        {
+            var medico = _context.Medicos.Find(id);
+            return View(medico.MedicoPacientes.ToList());
+        }
+
+       
     }
 }
-   
-
-
-

@@ -32,6 +32,8 @@ namespace Historias_Clinicas.Controllers
             CrearPacientes().Wait();
             CrearEmpleados().Wait();
             CrearMedicos().Wait();
+            CrearHCA().Wait();
+            CrearEpisodios().Wait();
 
             return RedirectToAction("Index","Home", new { mensaje = "Precarga finalizada"});
         }
@@ -149,6 +151,7 @@ namespace Historias_Clinicas.Controllers
                 FechaDeAlta = new DateTime(2011, 12, 05),
                 ObraSocial = Cobertura.OSECAC,
                 HistoriaClinicaId = 2
+                
                 };
         await _userManager.CreateAsync(paciente2, Configs.PasswordGenerica);
         await _userManager.AddToRoleAsync(paciente2, Configs.PacienteRolName);
@@ -165,5 +168,70 @@ namespace Historias_Clinicas.Controllers
                 }
             }
         }
+
+        private async Task CrearEpisodios()
+            {
+            if (!_context.Episodios.Any())
+            {
+
+                Episodio episodio = new Episodio()
+                {
+                    Descripcion = "El paciente se encontraba andando en skate.",
+                    Motivo = "Traumatismo en pierna izquierda",
+                    Internacion = true,
+                    FechaYHoraInicio = DateTime.Today,
+                    FechaYHoraAlta = DateTime.Today,
+                    FechaYHoraCierre = DateTime.Today,
+                    EstadoAbierto = true,
+                    Especialidad = Especialidad.Enfermeria,
+                    HistoriaClinicaId = 1,
+                    EmpleadoId = 1
+
+                };
+                _context.SaveChanges();
+
+                Episodio episodio2 = new Episodio()
+                {
+                    Descripcion = "El paciente se encontraba accidentado con fuego",
+                    Motivo = "Quemaduras",
+                    Internacion = true,
+                    FechaYHoraInicio = DateTime.Today,
+                    FechaYHoraAlta = DateTime.Today,
+                    FechaYHoraCierre = DateTime.Today,
+                    EstadoAbierto = true,
+                    Especialidad = Especialidad.Enfermeria,
+                    HistoriaClinicaId = 2,
+                    EmpleadoId = 1
+
+
+                };
+                _context.SaveChanges();
+
+            }
+        }
+        private async Task CrearHCA()
+        {
+
+            if (!_context.Empleados.Any())
+            {
+                HistoriaClinica hca = new HistoriaClinica()
+                {
+                    PacienteId = 1,
+                    Episodios = new List<Episodio>()
+
+                };
+                _context.SaveChanges();
+
+                HistoriaClinica hca2 = new HistoriaClinica()
+                {
+                    PacienteId = 2,
+                    Episodios = new List<Episodio>()
+
+                };
+                _context.SaveChanges();
+            }
+                
+        }
+
     }
 }
