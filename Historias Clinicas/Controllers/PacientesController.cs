@@ -91,6 +91,9 @@ namespace Historias_Clinicas.Controllers
 
                     paciente.HistoriaClinicaId = historiaClinica.Id;
 
+                    List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
+                    paciente.MedicosPaciente = MedicosPaciente;
+
                     _context.Update(paciente);
                     _context.SaveChanges();
 
@@ -157,6 +160,13 @@ namespace Historias_Clinicas.Controllers
                     pacienteEnDb.Email = paciente.Email;
                     pacienteEnDb.FechaDeAlta = paciente.FechaDeAlta;
 
+                    if (pacienteEnDb.MedicosPaciente == null)
+                    {
+                        List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
+                        pacienteEnDb.MedicosPaciente = MedicosPaciente;
+                    }
+
+                    _context.SaveChanges();
 
                     if (pacienteEnDb.HistoriaClinicaId == null)
                     {
@@ -251,6 +261,24 @@ namespace Historias_Clinicas.Controllers
 
             //ViewData["PacienteId"] = getUsuarioId();
             return userIdValue;
+        }
+
+        public IActionResult SacarTurno(int id)
+        {
+            var paciente = _context.Pacientes.Find(getUsuarioId());
+            var medico = _context.Medicos.Find(id);
+            MedicoPaciente MedicoPaciente = new MedicoPaciente()
+            {
+                MedicoId = id,
+                PacienteId = getUsuarioId(),
+                Medico = medico,
+                Paciente = paciente
+            };
+
+            medico.MedicoPacientes.Add(MedicoPaciente);
+            paciente.MedicosPaciente.Add(MedicoPaciente);
+
+            return View();
         }
 
     }

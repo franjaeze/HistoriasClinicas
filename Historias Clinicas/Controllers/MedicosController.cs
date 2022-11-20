@@ -77,7 +77,11 @@ namespace Historias_Clinicas.Controllers
                 _context.Add(medico);
                 _context.SaveChanges();
 
-                List<MedicoPaciente> MedicoPacientes = new List <MedicoPaciente>();
+                List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
+                medico.MedicoPacientes = MedicoPacientes;
+
+                _context.SaveChanges();
+
 
                 return RedirectToAction(nameof(Index));
             }
@@ -116,6 +120,12 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
+                    if (medico.MedicoPacientes == null)
+                    {
+
+                        List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
+                        medico.MedicoPacientes = MedicoPacientes;
+                    }
                     _context.Update(medico);
                     _context.SaveChanges();
                 }
@@ -225,7 +235,3 @@ namespace Historias_Clinicas.Controllers
        
     }
 }
-   
-
-
-
