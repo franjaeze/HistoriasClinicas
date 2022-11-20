@@ -148,20 +148,6 @@ namespace Historias_Clinicas.Controllers
              }
            }
 
-        //public int getId()
-        //{
-        //    var currentUser=0;
-
-        //    if (_signinManager.IsSignedIn(User))
-        //    {
-
-        //        currentUser =  _userManager.GetUserAsync(User).Id;
-
-
-        //    }
-        //    return currentUser;
-        //}
-
     }
 
     }

@@ -186,7 +186,6 @@ namespace Historias_Clinicas.Controllers
 
             return View(medicos);
         }
-
         private int getUsuarioId()
         {
             var userIdValue = 0;
@@ -205,12 +204,6 @@ namespace Historias_Clinicas.Controllers
 
             return userIdValue;
         }
-
-        //public IActionResult ListarPacientes(int? id)
-        //{
-        //    var medico = _context.Medicos.Find(id);
-            
-        //}
     }
 }
    

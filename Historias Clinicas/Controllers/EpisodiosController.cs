@@ -187,7 +187,6 @@ namespace Historias_Clinicas.Controllers
             return userIdValue;
         }
 
- 
 
     }
 

@@ -1,29 +1,24 @@
-﻿    <div class="container">
+﻿<div class="container">
     <div class="row">
         <div class=" col-lg-2"></div>
         <div class=" col-lg-8 col-md-12">
-            <h1> Bienvenido @User.Identity.Name  ! </h1>
+            <h1> Bienvenido @User.Identity.Name ! </h1>
             <h3 class="my-2">En que podemos ayudarte? </h3>
-            <div class="btn-group">
-                <div class="row">
-                </div>
-                <div class="row">
-                </div>
-                <div class="row justify-content-around margin bot">
-                    <div class="col-md-6 text-md-center">
-                        <a type="button" class="menuBotonMedico" asp-area="" asp-controller="Pacientes" asp-action="Index">
-                            Mis Pacientes
-                        </a>
-                    </div>
-                    <div class="col-md-6 text-md-center">
-                        <a type="button" class="menuBotonMedico" asp-area="" asp-route-id="TestCurrentUser()" asp-controller="Pacientes" asp-action="Edit">
-                            Actualizar Informacion Personal
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-2"></div>
+            <ul class="nobull my-5">
+                <li class="my-3">
+                    <a type="button" class="menuBoton" asp-controller="Medicos" asp-action="ListarPacientes" asp-route-id="@ViewData["MedicoId"]">
+                        Mis Pacientes
+                    </a>
+                </li>
+                <li class="my-3">
+                    <a type="button" class="menuBoton"  asp-controller="Medicos" asp-action="Edit" asp-route-id="@ViewData["MedicoId"]">
+                        Actualizar Informacion Personal
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
     </div>
 </div>

@@ -158,7 +158,7 @@ namespace Historias_Clinicas.Controllers
                     pacienteEnDb.FechaDeAlta = paciente.FechaDeAlta;
 
 
-                    if (paciente.HistoriaClinicaId == null)
+                    if (pacienteEnDb.HistoriaClinicaId == null)
                     {
                         HistoriaClinica historiaClinica = new HistoriaClinica()
                         {
@@ -187,6 +187,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
+             
                 return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
@@ -226,16 +227,12 @@ namespace Historias_Clinicas.Controllers
             return _context.Pacientes.Any(e => e.Id == id);
         }
 
-        //private IActionResult HistoriaClinicaPaciente()
-        //{
-        //    int userId = getUsuarioId();
-        //    var historia = _context.HistoriasClinicas
-        //                    .Find(userId);
-        //    var episodios = _context.Episodios
-        //                    .Where(s => s.HistoriaClinicaId == historia.Id);
-
-        //    return View(episodios);
-        // }
+        public IActionResult MiHistoriaClinica()
+        {
+            int Id = getUsuarioId();
+          
+            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = Id } );
+        }
 
         private int getUsuarioId()
         {
@@ -251,10 +248,10 @@ namespace Historias_Clinicas.Controllers
                            userIdValue = Int32.Parse(userIdClaim.Value);
                     }
               }
-            ViewData["PacienteId"] = getUsuarioId();
 
+            //ViewData["PacienteId"] = getUsuarioId();
             return userIdValue;
         }
-       
+
     }
 }
