@@ -185,7 +185,13 @@ namespace Historias_Clinicas.Controllers
                     pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
                     pacienteEnDb.Apellido = paciente.Apellido;
                     pacienteEnDb.Email = paciente.Email;
-                    pacienteEnDb.FechaDeAlta = paciente.FechaDeAlta;
+
+                    var fechaDefault = new DateTime(0001, 1, 1, 00, 00, 00);
+
+                    if (pacienteEnDb.FechaDeAlta == fechaDefault)
+                    {
+                        pacienteEnDb.FechaDeAlta = DateTime.Today;
+                    }
 
                     if (pacienteEnDb.MedicosPaciente == null)
                     {
