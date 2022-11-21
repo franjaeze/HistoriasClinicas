@@ -67,6 +67,9 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,Legajo,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Empleado empleado)
         {
+
+            VerificarDni(empleado);
+
             if (ModelState.IsValid)
             {
                 _context.Add(empleado);
@@ -82,6 +85,31 @@ namespace Historias_Clinicas.Controllers
                 }
             }
             return View(empleado);
+        }
+
+        private bool DniExist(Empleado empleado)
+        {
+            bool devolver = false;
+            if (empleado.Dni != 0)
+            {
+                if (empleado.Id != 0)
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == empleado.Dni && p.Id != empleado.Id);
+                }
+                else
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == empleado.Dni);
+                }
+            }
+            return devolver;
+        }
+
+        private void VerificarDni(Empleado empleado)
+        {
+            if (DniExist(empleado))
+            {
+                ModelState.AddModelError("Dni", "Ya existe una persona con el dni ingresado");
+            }
         }
 
         // GET: Empleadoes/Edit/5
@@ -111,6 +139,8 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+
+            VerificarDni(empleado);
 
             if (ModelState.IsValid)
             {

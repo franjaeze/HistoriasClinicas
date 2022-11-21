@@ -71,9 +71,10 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Create([Bind("Id,ObraSocial,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
         {
 
+            VerificarDni(paciente);
+
             if (ModelState.IsValid)
             {
-                paciente.FechaDeAlta = DateTime.Today;
                 _context.Add(paciente);
                 _context.SaveChanges();
 
@@ -105,6 +106,30 @@ namespace Historias_Clinicas.Controllers
 
            }
 
+        private bool DniExist(Paciente paciente)
+        {
+            bool devolver = false;
+            if (paciente.Dni != 0)
+            {
+                if (paciente.Id != 0)
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == paciente.Dni && p.Id != paciente.Id);
+                }
+                else
+                {
+                    devolver = _context.Personas.Any(p => p.Dni == paciente.Dni);
+                }
+            }
+            return devolver;
+        }
+
+        private void VerificarDni(Paciente paciente)
+        {
+            if (DniExist(paciente))
+            {
+                ModelState.AddModelError("Dni", "Ya existe un persona con el dni ingresado");
+            }
+        }
 
         // GET: Pacientes/Edit/5
 
@@ -137,6 +162,8 @@ namespace Historias_Clinicas.Controllers
 
                 return NotFound();
             }
+
+            VerificarDni(paciente);
 
             if (ModelState.IsValid)
             {
