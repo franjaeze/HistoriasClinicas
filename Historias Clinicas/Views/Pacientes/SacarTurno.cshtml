@@ -10,8 +10,8 @@
                 <div class="form-group">
                     <label class="control-label"></label>
                     <input class="form-control" type="datetime-local" id="meeting-time"
-                           name="meeting-time" value= DateTime.now
-                           min=DateTime.now max="2023-06-14T00:00">
+                           name="meeting-time" value="2022-11-07T00:00"
+                           min="2022-11-07T00:00" max="2023-06-14T00:00">
                     <span class="text-danger"></span>
                 </div>
 
@@ -20,6 +20,6 @@
 
     </div>
     <div>
-        <input type="submit" value="Confirmar" class="boton" asp-action="MenuPaciente" asp-controller="Pacientes" />
+        <input type="submit" value="Confirmar" class="boton" asp-action="Index" asp-controller="Medicos" />
         <a class="boton" asp-action="Index">Cancelar</a>
     </div>

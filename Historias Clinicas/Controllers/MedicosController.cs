@@ -81,9 +81,7 @@ namespace Historias_Clinicas.Controllers
                 _context.SaveChanges();
 
                 List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
-
-
-                this.MedicoPacientes = new List<MedicoPaciente>();
+                
 
                 _context.SaveChanges();
 
@@ -257,9 +255,7 @@ namespace Historias_Clinicas.Controllers
         {
             int id = getUsuarioId();
             var medico = _context.Medicos.Find(id);
-            var pacientes = _context.MedicoPaciente
-                        .Where(x => x.MedicoId == medico.Id)
-                        .ToList();
+            var pacientes = _context.MedicoPaciente.Find(medico.Id);
             return View(pacientes);
             
         }
