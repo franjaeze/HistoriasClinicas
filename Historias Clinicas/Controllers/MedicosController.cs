@@ -220,16 +220,13 @@ namespace Historias_Clinicas.Controllers
             return userIdValue;
         }
 
-        //public IActionResult ListarPacientes(int? id)
-        //{
-        //    var medico = _context.Medicos.Find(id);
-
-        //}
 
         public IActionResult ListarPacientes(int? id)
         {
             var medico = _context.Medicos.Find(id);
-            return View(medico.MedicoPacientes.ToList());
+            var pacientes = _context.MedicoPaciente.Find(medico.Id);
+            return View(pacientes);
+            
         }
 
        

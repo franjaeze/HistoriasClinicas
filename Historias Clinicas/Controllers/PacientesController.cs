@@ -281,10 +281,20 @@ namespace Historias_Clinicas.Controllers
                 Paciente = paciente
             };
 
-            medico.MedicoPacientes.Add(MedicoPaciente);
-            paciente.MedicosPaciente.Add(MedicoPaciente);
+            _context.MedicoPaciente.Add(MedicoPaciente);
+            //medico.MedicoPacientes.Add(MedicoPaciente);
+            //paciente.MedicosPaciente.Add(MedicoPaciente);
+            _context.SaveChanges();
 
             return View();
+        }
+
+        public IActionResult ListarMedicos(int? id)
+        {
+            var paciente = _context.Pacientes.Find(id);
+            var medicos = _context.MedicoPaciente.Find(paciente.Id);
+            return View(medicos);
+
         }
 
     }

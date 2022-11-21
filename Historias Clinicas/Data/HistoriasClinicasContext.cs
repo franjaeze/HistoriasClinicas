@@ -78,6 +78,9 @@ namespace Historias_Clinicas.Data
 
         #pragma warning disable CS0114 // Member hides inherited member; missing override keyword
         public DbSet<Rol> Roles { get; set; }
+
+        #pragma warning disable CS0114 // Member hides inherited member; missing override keyword
+        public DbSet<Historias_Clinicas.Models.MedicoPaciente> MedicoPaciente { get; set; }
         #pragma warning restore CS0114 // Member hides inherited member; missing override keyword
         // Mariano dice que ignoremos este warning, que no afecta en nada(video 33, minuto 36)
     }

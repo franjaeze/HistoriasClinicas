@@ -76,12 +76,12 @@
                     @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
                 </td>
                 <td>
-                    @if (User.IsInRole("Empleado, Medico"))
+                    @if (User.IsInRole("Empleado"))
                     {
                         <div class="divBoton">
                             <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                             <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                            <a class="boton small" asp-action="Index" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
+                            <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
                         </div>
                     }
                 </td>
@@ -89,16 +89,22 @@
         }
     </tbody>
 </table>
-@if (User.IsInRole("Empleado, Medico"))
+@if (User.IsInRole("Empleado"))
 {
     <div>
-        <a asp-action="Index" asp-controller="Pacientes">Volver</a>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
     </div>
 }
 

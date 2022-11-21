@@ -12,6 +12,16 @@
     <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Evolucion : @ViewData["evolucionId"] </p>
 </header>
 
+
+    <p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Nota" asp-route-Id="@ViewData["episodioId"]">
+            Agregar Nota
+        </a>
+
+    </p>
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -40,16 +50,21 @@
                     @Html.DisplayFor(modelItem => item.EmpleadoId)
                 </td>
                 <td>
-                    if (User.IsInRole("Medico, Empleado"))
-                    { <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
-                    <p align="right">
+                    @if (User.IsInRole("Medico"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    }
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    }
 
-                    </p>}
                 </td>
                 <td>
 
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>
 
                 </td>
             </tr>
