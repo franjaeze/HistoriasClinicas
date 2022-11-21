@@ -272,12 +272,12 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult MiHistoriaClinica()
         {
-            int Id = getUsuarioId();
+            int Id = GetUsuarioId();
           
             return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = Id } );
         }
 
-        private int getUsuarioId()
+        private int GetUsuarioId()
         {
             var userIdValue = 0;
             var claimsIdentity = User.Identity as ClaimsIdentity;
@@ -298,12 +298,12 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult SacarTurno(int id)
         {
-            var paciente = _context.Pacientes.Find(getUsuarioId());
+            var paciente = _context.Pacientes.Find(GetUsuarioId());
             var medico = _context.Medicos.Find(id);
             MedicoPaciente MedicoPaciente = new MedicoPaciente()
             {
                 MedicoId = id,
-                PacienteId = getUsuarioId(),
+                PacienteId = GetUsuarioId(),
                 Medico = medico,
                 Paciente = paciente
             };
@@ -318,7 +318,7 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult ListarMedicos()
         {
-            int id = getUsuarioId();
+            int id = GetUsuarioId();
             var paciente = _context.Pacientes.Find(id);
             var medicos = _context.MedicoPaciente
                         .Where(x=> x.PacienteId == paciente.Id)

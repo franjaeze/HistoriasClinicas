@@ -233,7 +233,7 @@ namespace Historias_Clinicas.Controllers
             return View(medicos);
         }
 
-        private int getUsuarioId()
+        private int GetUsuarioId()
         {
             var userIdValue = 0;
             var claimsIdentity = User.Identity as ClaimsIdentity;
@@ -247,23 +247,29 @@ namespace Historias_Clinicas.Controllers
                     userIdValue = Int32.Parse(userIdClaim.Value);
                 }
             }
-            ViewData["MedicoId"] = getUsuarioId();
 
+            
             return userIdValue;
         }
 
 
         public IActionResult ListarPacientes()
         {
-            int id = getUsuarioId();
+            int id = GetUsuarioId();
+            //int id2 = id;
             var medico = _context.Medicos.Find(id);
+<<<<<<< HEAD
             var pacientes = _context.MedicoPaciente
                         .Where(x => x.MedicoId == medico.Id)
                         .ToList();
+=======
+            var pacientes = _context.MedicoPaciente.Where(x => x.MedicoId == medico.Id).ToList();
+>>>>>>> develop
             return View(pacientes);
             
         }
 
-       
+
+            
     }
 }

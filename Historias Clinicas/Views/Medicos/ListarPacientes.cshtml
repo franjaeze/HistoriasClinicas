@@ -6,13 +6,23 @@
 
 <h1>Mis Pacientes</h1>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 <table class="table">
     <thead>
         <tr>
             <th>
+<<<<<<< HEAD
                 @Html.DisplayNameFor(model => model.PacienteId)
             </th>
             <th>
+=======
+                @Html.DisplayNameFor(model => model.MedicoId)
+            </th>
+            @*<th>
+>>>>>>> develop
                 @Html.DisplayNameFor(model => model.Paciente.Apellido)
             </th>
             <th>
@@ -22,12 +32,17 @@
                 @Html.DisplayNameFor(model => model.Paciente.SegundoNombre)
             </th>
             <th>
+<<<<<<< HEAD
                 @Html.DisplayNameFor(model => model.Paciente.ObraSocial)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Paciente.HistoriaClinicaId)
             </th>
 
+=======
+                @Html.DisplayNameFor(model => model.Paciente.Email)
+            </th>*@
+>>>>>>> develop
 
 
             <th></th>
@@ -38,6 +53,7 @@
         {
             <tr>
                 <td>
+<<<<<<< HEAD
                     @Html.DisplayFor(modelItem => item.PacienteId)
                 </td>
                 <td>
@@ -57,8 +73,34 @@
                 </td>
                 
              
+=======
+                    @Html.DisplayFor(modelItem => item.MedicoId)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Apellido)
+                </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SegundoNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+
+                    </td>*@
+>>>>>>> develop
             </tr>
         }
     </tbody>
 </table>
+<<<<<<< HEAD
 <a class="boton" asp-action="MenuMedico" asp-controller="Medicos">Salir</a>
+=======
+<a class="boton" asp-action="MenuPaciente" asp-controller="Pacientes">Salir</a>
+>>>>>>> develop
