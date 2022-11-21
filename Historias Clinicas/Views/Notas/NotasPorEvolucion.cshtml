@@ -14,7 +14,7 @@
 
 
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Nota" asp-route-Id="@ViewData["episodioId"]">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
             Agregar Nota
         </a>
 
@@ -25,9 +25,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Mensaje)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaYHora)
             </th>
@@ -40,9 +37,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mensaje)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaYHora)
                 </td>

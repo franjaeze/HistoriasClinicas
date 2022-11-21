@@ -192,8 +192,7 @@ namespace Historias_Clinicas.Controllers
         public IActionResult EvolucionesPorEpisodio(int id)
         {
             var episodio = _context.Episodios.Find(id);
-           
-               
+                       
             var evoluciones = _context.Evoluciones
                 .Where(x => x.EpisodioId == episodio.Id);
 
@@ -208,6 +207,8 @@ namespace Historias_Clinicas.Controllers
 
             return RedirectToAction("Create", "Evoluciones", new { id = episodio.Id });
         }
+
+
 
     }
 

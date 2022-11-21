@@ -60,9 +60,12 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
-                evolucion.MedicoId = getUsuarioId();
                 evolucion.EpisodioId = id;
-                id = 0;
+                evolucion.MedicoId = getUsuarioId();
+                evolucion.FechaYHoraInicio = DateTime.Today;
+                evolucion.EstadoAbierto = true;
+
+                evolucion.Id= 0;
                 _context.Add(evolucion);
 
                 _context.SaveChanges();
@@ -171,21 +174,23 @@ namespace Historias_Clinicas.Controllers
                     userIdValue = Int32.Parse(userIdClaim.Value);
                 }
             }
-            //ViewData["MedicoId"] = getUsuarioId();
 
             return userIdValue;
         }
 
-        public IActionResult NotasPorEvolucion(int id)
+       
+
+        public IActionResult EvolucionesPorEpisodio(int id)
         {
-            var evolucion = _context.Evoluciones.Find(id);
+            var episodio = _context.Episodios.Find(id);
 
-            var notas = _context.Notas
-                .Where(x => x.EvolucionId == evolucion.Id);
+            var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
 
-            ViewData["evolucionId"] = id;
+            ViewData["EpisodioId"] = id;
 
-            return View(notas);
+            return View(evoluciones);
         }
+
+
     }
 }

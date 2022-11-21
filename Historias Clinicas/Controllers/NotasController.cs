@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -59,11 +60,16 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
+                nota.EvolucionId = id;
+                nota.EmpleadoId = getUsuarioId();
+                nota.FechaYHora = DateTime.Today;
+                nota.Id = 0;
+
                 _context.Add(nota);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(nota);
+            return RedirectToAction("NotasPorEvolucion", "Notas");
         }
 
         // GET: Notas/Edit/5
@@ -150,5 +156,38 @@ namespace Historias_Clinicas.Controllers
         {
             return _context.Notas.Any(e => e.Id == id);
         }
+
+        private int getUsuarioId()
+        {
+            var userIdValue = 0;
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                                  .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    userIdValue = Int32.Parse(userIdClaim.Value);
+                }
+            }
+
+            return userIdValue;
+        }
+
+
+        public IActionResult NotasPorEvolucion(int id)
+        {
+            var evolucion = _context.Evoluciones.Find(id);
+
+            var notas = _context.Notas
+                .Where(x => x.EvolucionId == evolucion.Id);
+
+            ViewData["evolucionId"] = id;
+
+            return View(notas);
+        }
+
+
     }
 }

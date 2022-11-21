@@ -3,13 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
+@ViewData["episodioId"];
 
 <h1>Evoluciones</h1>
 
 @if (User.IsInRole("Medico"))
 {
 <p align="right">
-    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="CargarEvolucion" asp-controller="Episodios" asp-route-id=" @ViewData["episodioId"]">
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evolucion" asp-route-id=" @ViewData["episodioId"]">
     Agregar Evolucion
     </a>
 </p>
