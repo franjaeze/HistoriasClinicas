@@ -71,6 +71,7 @@ namespace Historias_Clinicas.Controllers
                 _context.SaveChanges();
                
                 return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(EvolucionesPorEpisodio));
             }
             return View(evolucion);
         }

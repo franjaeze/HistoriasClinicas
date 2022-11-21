@@ -250,8 +250,9 @@ namespace Historias_Clinicas.Controllers
         }
 
 
-        public IActionResult ListarPacientes(int? id)
+        public IActionResult ListarPacientes()
         {
+            int id = getUsuarioId();
             var medico = _context.Medicos.Find(id);
             var pacientes = _context.MedicoPaciente.Find(medico.Id);
             return View(pacientes);

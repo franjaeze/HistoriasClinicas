@@ -14,7 +14,6 @@ namespace Historias_Clinicas.Helpers
         public const string Password = "Contraseña";
         public const string PassConfirm = "Confirmación de contraseña";
         public const string MedicoId = "Medico";
-        public const string EmpleadoId = "Empleado";
         public const string PacienteId = "Paciente";
         public const string Anio = "Año";
         public const string NombreCompleto = "Nombre completo";
@@ -24,6 +23,12 @@ namespace Historias_Clinicas.Helpers
         public const string Activo = "Activo";
         public const string SegundoNombre = "Segundo Nombre";
         public const string FechaDeAlta = "Fecha De Alta";
+        public const string HistoriaClinicaId = "Historia Clinica";
+        public const string FechaYHoraInicio = "Fecha de Inicio";
+        public const string FechaYHoraCierre = "Fecha de Cierre";
+        public const string EpicrisisId = "Epicrisis";
+        public const string EmpleadoId = "Empleado Registró";
+        public const string EpisodioId = "Episodio";
 
     }
 

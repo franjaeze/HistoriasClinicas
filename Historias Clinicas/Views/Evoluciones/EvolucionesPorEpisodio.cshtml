@@ -51,32 +51,32 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td class="text-left">
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
             </td>
-            <td class="text-left">
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.MedicoId)
             </td>
-            <td class="text-left">
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.EstadoAbierto)
             </td>
-            <td class="text-left">
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
             </td>
-            <td class="text-left">
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
             </td>
             <td>
                 @if (User.IsInRole("Medico"))
                 {
-                    <p align="right">
+                    <p class="text-left">
 
-                        <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
                     </p>
                 }
-                <a class="boton small" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
-                <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                <a class="boton text-left" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
+                <a class="boton text-left" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
 
             </td>
         </tr>

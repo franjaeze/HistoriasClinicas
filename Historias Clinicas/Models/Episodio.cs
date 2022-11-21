@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Historias_Clinicas.Helpers;
 using Historias_Clinicas.Models;
 
 namespace Historias_Clinicas.Models
@@ -13,10 +14,12 @@ namespace Historias_Clinicas.Models
 
 
         [ForeignKey("HistoriaClinica")]
+        [Display(Name = Alias.HistoriaClinicaId)]
         public int HistoriaClinicaId { get; set; }
 
         
         [ForeignKey("Empleado")]
+        [Display(Name = Alias.EmpleadoId)]
         public int EmpleadoId { get; set; }
 
 
@@ -37,14 +40,17 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
+        [Display(Name = Alias.FechaYHoraInicio)]
         public DateTime FechaYHoraInicio { get; set; } 
 
 
         [DataType(DataType.Date)]
+        [Display(Name = Alias.FechaDeAlta)]
         public DateTime FechaYHoraAlta { get; set; } 
 
 
         [DataType(DataType.Date)]
+        [Display(Name = Alias.FechaYHoraCierre)]
         public DateTime FechaYHoraCierre { get; set; } 
 
 

@@ -69,28 +69,28 @@
         {
         <tr>
             @if (User.IsInRole("Empleado")) { 
-                <td class="text-center">
+                <td >
                     @Html.DisplayFor(modelItem => item.MatriculaNacional)
                 </td>
-            <td class="text-center">
+            <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             }
-              <td class="text-center">
+              <td>
                @Html.DisplayFor(modelItem => item.Especialidad)
                </td>
-            <td class="text-center">
+            <td>
                 @Html.DisplayFor(modelItem => item.Apellido)
             </td>
             
-            <td class="text-center">
+            <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
-            <td class="text-center">
+            <td>
                 @Html.DisplayFor(modelItem => item.SegundoNombre)
             </td>
 
-            <td class="text-center">
+            <td>
                 @if (User.IsInRole("Empleado"))
                 {
                     <div class="divBoton">

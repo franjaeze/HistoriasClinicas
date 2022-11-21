@@ -7,23 +7,18 @@
 
 <h1>Evoluciones</h1>
 
-@if (User.IsInRole("Medico"))
-{
-<p align="right">
-    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evolucion" asp-route-id=" @ViewData["episodioId"]">
-    Agregar Evolucion
-    </a>
-</p>
-}
 
 <table class="table">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.FechaYHoraInicio)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.MedicoId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaYHoraInicio)
+                @Html.DisplayNameFor(model => model.EstadoAbierto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaYHoraAlta)
@@ -31,23 +26,22 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaYHoraCierre)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoAbierto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescripcionAtencion)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+            </td>
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.MedicoId)
             </td>
             <td class="text-center">
-                  @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+                @Html.DisplayFor(modelItem => item.EstadoAbierto)
             </td>
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
@@ -55,17 +49,11 @@
             <td class="text-center">
                 @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
             </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.EstadoAbierto)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.DescripcionAtencion)
-            </td>
             <td>
                 @if (User.IsInRole("Medico"))
                 {
-                    <p align="right">
-                        <a class="boton small" asp-action="Index" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
+                    <p align="left">
+                        <a asp-action="Index" asp-controller="Notas" asp-route-id="@item.Id">Notas</a> |
                         <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                         <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
                     </p>
@@ -73,8 +61,8 @@
 
                 @if (User.IsInRole("Empleado"))
                 {
-                    <p align="right">
-                        <a class="boton small" asp-action="Index" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
+                    <p align="left">
+                        <a asp-action="Index" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
                     </p>
                 }
 
@@ -82,8 +70,25 @@
 
             </td>
         </tr>
-}
-
-
+        }
     </tbody>
 </table>
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Paciente"))
+{
+    <div>
+        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </div>
+}

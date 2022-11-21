@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Historias_Clinicas.Helpers;
+using Microsoft.VisualBasic;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,9 +23,11 @@ namespace Historias_Clinicas.Models
 
 
         [DataType(DataType.Date)]
+        [Display(Name = Alias.FechaYHoraInicio)]
         public DateTime FechaYHora { get; set; }
 
         [ForeignKey("Empleado")]
+        [Display(Name = Alias.EmpleadoId)]
         public int EmpleadoId { get; set; }
 
     }
