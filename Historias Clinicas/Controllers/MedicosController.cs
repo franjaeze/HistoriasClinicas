@@ -47,6 +47,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var medico = _context.Medicos
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (medico == null)
             {

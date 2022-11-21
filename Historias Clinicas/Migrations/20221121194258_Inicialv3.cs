@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Historias_Clinicas.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Inicialv3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -87,7 +87,6 @@ namespace Historias_Clinicas.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    DireccionId = table.Column<int>(nullable: true),
                     Nombre = table.Column<string>(maxLength: 20, nullable: true),
                     SegundoNombre = table.Column<string>(maxLength: 20, nullable: true),
                     Apellido = table.Column<string>(maxLength: 20, nullable: true),
@@ -259,6 +258,30 @@ namespace Historias_Clinicas.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Direcciones",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonaId = table.Column<int>(nullable: false),
+                    Calle = table.Column<string>(maxLength: 20, nullable: false),
+                    Altura = table.Column<string>(nullable: false),
+                    Piso = table.Column<string>(nullable: true),
+                    Departamento = table.Column<string>(nullable: true),
+                    Localidad = table.Column<string>(maxLength: 30, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Direcciones", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Direcciones_Personas_PersonaId",
+                        column: x => x.PersonaId,
+                        principalTable: "Personas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MedicoPaciente",
                 columns: table => new
                 {
@@ -375,6 +398,12 @@ namespace Historias_Clinicas.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Direcciones_PersonaId",
+                table: "Direcciones",
+                column: "PersonaId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Episodios_HistoriaClinicaId",
                 table: "Episodios",
                 column: "HistoriaClinicaId");
@@ -464,6 +493,9 @@ namespace Historias_Clinicas.Migrations
 
             migrationBuilder.DropTable(
                 name: "Diagnosticos");
+
+            migrationBuilder.DropTable(
+                name: "Direcciones");
 
             migrationBuilder.DropTable(
                 name: "MedicoPaciente");

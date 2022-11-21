@@ -45,6 +45,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var empleado = _context.Empleados
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (empleado == null)
             {
