@@ -16,6 +16,7 @@ namespace Historias_Clinicas.Controllers
     public class MedicosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
+        public List<MedicoPaciente> MedicoPacientes;
 
         public MedicosController(HistoriasClinicasContext context)
         {
@@ -80,7 +81,7 @@ namespace Historias_Clinicas.Controllers
                 _context.SaveChanges();
 
                 List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
-                medico.MedicoPacientes = MedicoPacientes;
+                
 
                 _context.SaveChanges();
 

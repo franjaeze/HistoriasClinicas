@@ -8,7 +8,7 @@
 
 @if (User.IsInRole("Empleado"))
 {<p align="right">
-    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Paciente</a>
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Paciente</a>
     </p>}
 
 <section class="search-section">
@@ -62,7 +62,7 @@
                     @Html.DisplayFor(modelItem => item.HistoriaClinicaId)
                 </td>
                 <td>
-                      @Html.DisplayFor(modelItem => item.Apellido)
+                    @Html.DisplayFor(modelItem => item.Apellido)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nombre)
@@ -80,33 +80,17 @@
                     {
                         <div class="divBoton">
                             <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                            <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+
                             <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                            <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@item.Id">Historia Clinica</a>
                         </div>
                     }
-                    @if (User.IsInRole("Medico"))
-                    {
-                        <div class="divBoton">
-                            <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                            <a class="boton" asp-action="Index" asp-controller="Episodios" asp-route-id="@item.Id" >Historia Clinica</a>
-                        </div>
-                    }
+                    <div class="divBoton">
+                        <a class="boton" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@item.Id">Historia Clinica</a>
+                    </div>
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<nav aria-label="Pagination">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>

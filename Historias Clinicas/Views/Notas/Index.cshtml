@@ -41,16 +41,16 @@
                 </td>
                 <td>
                     @if (User.IsInRole("Medico"))
-                    { <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
-                    <p align="right">
-                    </p>}
+                    {<a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        <p align="right">
+                        </p>}
                     @if (User.IsInRole("Empleado"))
-                    { <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
-                    <p align="right">
+                    {<a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        <p align="right">
 
-                    </p>}
+                        </p>}
                 </td>
                 <td>
 
@@ -61,3 +61,21 @@
         }
     </tbody>
 </table>
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+@if (User.IsInRole("Paciente"))
+{
+    <div>
+        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </div>
+}

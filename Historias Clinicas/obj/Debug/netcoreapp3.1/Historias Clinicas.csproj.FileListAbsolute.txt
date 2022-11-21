@@ -1319,3 +1319,14 @@ C:\Users\Paola\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\
 >>>>>>> Paola
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\HistoriaClinicas\HistoriaClinicaDePaciente.cshtml.g.cs
 C:\Users\Usuario\source\repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Favicons.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Epicrisis\EpicrisisPorEpisodio.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Evoluciones\EvolucionesPorEpisodio.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\MedicoPacientes\Create.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\MedicoPacientes\Delete.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\MedicoPacientes\Details.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\MedicoPacientes\Edit.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\MedicoPacientes\Index.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Notas\NotasPorEvolucion.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\ListarMedicos.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\SacarTurno.cshtml.g.cs
+C:\Users\Paola\Source\Repos\2022-2C-E-Historias-Clinicas\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Favicons.cshtml.g.cs

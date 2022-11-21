@@ -17,7 +17,7 @@
 
 {
     <p align="right">
-        <a  class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@ViewData["EpisodioId"]">
+        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@ViewData["EpisodioId"]">
             Agregar Evolucion
         </a>
 
@@ -50,38 +50,56 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.MedicoId)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.EstadoAbierto)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
-            </td>
-            <td>
-                @if (User.IsInRole("Medico"))
-                {
-                    <p class="text-left">
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.MedicoId)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.EstadoAbierto)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
+                </td>
+                <td>
+                    @if (User.IsInRole("Medico"))
+                    {
+                        <p class="text-left">
 
-                        <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
-                    </p>
-                }
-                <a class="boton text-left" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
-                <a class="boton text-left" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                            <a class="boton" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="boton" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </p>
+                    }
+                    <a class="boton text-left" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
+                    <a class="boton text-left" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
 
 
     </tbody>
 </table>
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+@if (User.IsInRole("Paciente"))
+{
+    <div>
+        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </div>
+}

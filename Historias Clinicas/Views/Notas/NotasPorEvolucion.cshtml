@@ -13,12 +13,12 @@
 </header>
 
 
-    <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
-            Agregar Nota
-        </a>
+<p align="right">
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
+        Agregar Nota
+    </a>
 
-    </p>
+</p>
 
 
 
@@ -47,22 +47,38 @@
                     @if (User.IsInRole("Medico"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Elimnar</a>
                     }
                     @if (User.IsInRole("Empleado"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                     }
 
                 </td>
                 <td>
-
                     <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>
-
                 </td>
             </tr>
         }
     </tbody>
 </table>
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+@if (User.IsInRole("Paciente"))
+{
+    <div>
+        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </div>
+}
 

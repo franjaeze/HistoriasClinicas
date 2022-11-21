@@ -16,24 +16,24 @@
                     </a>
                 </li>
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area="" asp-controller="Medicos" asp-action="Index" asp-route-id="@ViewData["PacienteId"]">
+                    <a type="button" class="menuBoton"  asp-controller="Pacientes" asp-action="ListarMedicos" asp-route-id="@ViewData["PacienteId"]">
                         Mis Medicos
                     </a>
                 </li>
 
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area="" asp-controller="Medicos" asp-action="Index">
+                    <a type="button" class="menuBoton" asp-controller="Medicos" asp-action="Index">
                         Cartilla medica
                     </a>
                 </li>
 
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area="" asp-controller="Pacientes" asp-action="Contacto">
+                    <a type="button" class="menuBoton"  asp-controller="Pacientes" asp-action="Contacto">
                         Contactarme con un representante
                     </a>
                 </li>
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-area="" asp-route-id="TestCurrentUser()" asp-controller="Pacientes" asp-action="Edit">
+                    <a type="button" class="menuBoton"  asp-route-id="TestCurrentUser()" asp-controller="Pacientes" asp-action="Edit">
                         Actualizar Informacion Personal
                     </a>
                 </li>

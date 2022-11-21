@@ -13,6 +13,8 @@ namespace Historias_Clinicas.Controllers
     public class MedicoPacientesController : Controller
     {
         private readonly HistoriasClinicasContext _context;
+        public List<MedicoPaciente> MedicoPacientes;
+        public List<MedicoPaciente> MedicosPaciente;
 
         public MedicoPacientesController(HistoriasClinicasContext context)
         {

@@ -16,6 +16,7 @@ namespace Historias_Clinicas.Controllers
     {
 
         private readonly HistoriasClinicasContext _context;
+        public List<MedicoPaciente> MedicosPaciente;
 
         public PacientesController(HistoriasClinicasContext context)
         {
@@ -92,8 +93,8 @@ namespace Historias_Clinicas.Controllers
 
                     paciente.HistoriaClinicaId = historiaClinica.Id;
 
-                    List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
-                    paciente.MedicosPaciente = MedicosPaciente;
+                    this.MedicosPaciente = new List<MedicoPaciente>();
+                   
 
                     _context.Update(paciente);
                     _context.SaveChanges();
@@ -195,8 +196,7 @@ namespace Historias_Clinicas.Controllers
 
                     if (pacienteEnDb.MedicosPaciente == null)
                     {
-                        List<MedicoPaciente> MedicosPaciente = new List<MedicoPaciente>();
-                        pacienteEnDb.MedicosPaciente = MedicosPaciente;
+                        this.MedicosPaciente = new List<MedicoPaciente>();
                     }
 
                     _context.SaveChanges();
@@ -320,7 +320,9 @@ namespace Historias_Clinicas.Controllers
         {
             int id = getUsuarioId();
             var paciente = _context.Pacientes.Find(id);
-            var medicos = _context.MedicoPaciente.Find(paciente.Id);
+            var medicos = _context.MedicoPaciente
+                        .Where(x=> x.PacienteId == paciente.Id)
+                        .ToList();
             return View(medicos);
 
         }

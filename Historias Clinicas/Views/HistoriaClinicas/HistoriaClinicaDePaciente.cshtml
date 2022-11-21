@@ -6,12 +6,13 @@
 
 
 
-<header>
+<
+er>
     <h1>Historia Clinica</h1>
     <h3> Listado de Episodios</h3>
     <p></p>
     <p></p>
-    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Historia Clínica : @ViewData["historiaId"] </p>
+    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Número de Historia Clínica : @ViewData["historiaId"] </p>
 </header>
 
 
@@ -80,10 +81,11 @@
                     {
                         <div class="divBoton">
                             <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                            <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                            <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
+
                         </div>
                     }
+                    <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                    <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
                 </td>
             </tr>
         }
