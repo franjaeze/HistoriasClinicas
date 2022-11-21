@@ -59,7 +59,7 @@
                     @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
                 </td>
                 <td>
-                    @if (User.IsInRole("Empleado, Medico"))
+                    @if (User.IsInRole("Empleado"))
                     {
                         <div class="divBoton">
                             <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
@@ -68,19 +68,36 @@
 
                         </div>
                     }
+                    @if (User.IsInRole("Medico"))
+                    {
+                <div class="divBoton">
+                    <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                    <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    @*<a class="boton small" asp-action="CerrarEpisodio" asp-route-id="@item.Id">Cerrar</a>*@
+                    <a class="boton small" asp-action="Index" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
+
+                </div>
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
-@if (User.IsInRole("Empleado, Medico"))
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
 {
     <div>
         <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }
 
-@if (User.IsInRole("Empleado, Medico"))
+@if (User.IsInRole("Paciente"))
 {
     <div>
         <a type="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas">Volver</a>

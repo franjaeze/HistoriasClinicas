@@ -65,8 +65,10 @@ namespace Historias_Clinicas.Controllers
                         
             {
                 episodio.EmpleadoId = getUsuarioId();
-                episodio.HistoriaClinicaId = id;
-                var historia = _context.HistoriasClinicas.Find(id);
+                
+                var paciente = _context.Pacientes.Find(id);
+                var historia = _context.HistoriasClinicas.Find(paciente.HistoriaClinicaId);
+                episodio.HistoriaClinicaId = historia.Id;
 
                 episodio.Id = 0;
                 episodio.FechaYHoraInicio = DateTime.Today;
@@ -198,6 +200,13 @@ namespace Historias_Clinicas.Controllers
             ViewData["episodioId"] = id;
 
             return View(evoluciones);
+        }
+
+        public IActionResult CargarEvolucion(int id)
+        {
+            var episodio = _context.Episodios.Find(id);
+
+            return RedirectToAction("Create", "Evoluciones", new { id = episodio.Id });
         }
 
     }

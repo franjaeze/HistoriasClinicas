@@ -55,7 +55,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,MedicoID,Mensaje,FechaYHora")] Nota nota)
+        public IActionResult Create(int id, [Bind("Id,MedicoID,Mensaje,FechaYHora")] Nota nota)
         {
             if (ModelState.IsValid)
             {
