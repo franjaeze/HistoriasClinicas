@@ -1,4 +1,9 @@
-﻿<div class="container">
+﻿@model Historias_Clinicas.Models.Medico
+@{
+    ViewData["Title"] = "MenuMedico";
+}
+
+<div class="container">
     <div class="row">
         <div class=" col-lg-2"></div>
         <div class=" col-lg-8 col-md-12">
@@ -6,12 +11,12 @@
             <h3 class="my-2">En que podemos ayudarte? </h3>
             <ul class="nobull my-5">
                 <li class="my-3">
-                    <a type="button" class="menuBoton" asp-controller="Medicos" asp-action="ListarPacientes" asp-route-id="@ViewData["MedicoId"]">
+                    <a type="button" class="menuBoton" asp-controller="Medicos" asp-action="ListarPacientes">
                         Mis Pacientes
                     </a>
                 </li>
                 <li class="my-3">
-                    <a type="button" class="menuBoton"  asp-controller="Medicos" asp-action="Edit" asp-route-id="@ViewData["MedicoId"]">
+                    <a type="button" class="menuBoton" asp-controller="Medicos" asp-action="Edit" asp-route-id="@ViewData["MedicoId"]">
                         Actualizar Informacion Personal
                     </a>
                 </li>
@@ -20,5 +25,4 @@
     </div>
     <div class="col-lg-2"></div>
 </div>
-    </div>
-</div>
+   
