@@ -43,9 +43,26 @@ namespace Historias_Clinicas.Controllers
             return View(direccion);
         }
 
+
         // GET: Direcciones/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                ViewData["Id"] = new SelectList(
+                    _context.Pacientes
+                                .Include(clt => clt.Direccion)
+                                .Where(clt => clt.Direccion == null)
+                                , "Id");
+            }
+            else if (_context.Pacientes.Any(c => c.Id == id))
+            {
+                ViewBag.PacienteId = id;
+            }
+            else
+            {
+                return NotFound();
+            }
             return View();
         }
 
@@ -54,11 +71,13 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonaId,Calle,Altura,Piso,Departamento,Localidad")] Direccion direccion)
+        public async Task<IActionResult> Create(int id, [Bind("Id,PersonaId,Calle,Altura,Piso,Departamento,Localidad")] Direccion direccion)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(direccion);
+                direccion.PersonaId = id;    
+                direccion.Id = 0;
+                _context.Direcciones.Add(direccion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

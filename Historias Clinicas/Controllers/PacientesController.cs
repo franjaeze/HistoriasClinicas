@@ -101,7 +101,7 @@ namespace Historias_Clinicas.Controllers
 
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
             }
             return View(paciente);
 

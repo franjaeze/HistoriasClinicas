@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Completar Datos</h1>
 
 <h4>Direccion</h4>
 <hr />
@@ -12,10 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PersonaId" class="control-label"></label>
-                <select asp-for="PersonaId" class ="form-control" asp-items="ViewBag.PersonaId"></select>
-            </div>
             <div class="form-group">
                 <label asp-for="Calle" class="control-label"></label>
                 <input asp-for="Calle" class="form-control" />
@@ -42,7 +38,7 @@
                 <span asp-validation-for="Localidad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" asp-route-id="@ViewBag.PacienteId" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
