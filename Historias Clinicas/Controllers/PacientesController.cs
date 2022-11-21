@@ -32,6 +32,14 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult MenuPaciente()
         {
+            if (!string.IsNullOrEmpty(User.Identity.Name)) { 
+            Paciente pacienteEnDb = _context.Pacientes.FirstOrDefault(c => c.NormalizedUserName == User.Identity.Name.ToUpper());
+            if (pacienteEnDb != null) { 
+            ViewBag.Nombre = pacienteEnDb.Nombre;
+            ViewBag.Id = pacienteEnDb.Id;
+
+                }
+            }
             return View();
         }
 
