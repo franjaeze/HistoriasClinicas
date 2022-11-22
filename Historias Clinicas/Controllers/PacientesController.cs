@@ -93,6 +93,7 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 paciente.UserName = paciente.Email;
+                paciente.FechaDeAlta = DateTime.Today;
                 var resultadoNewPersona = await _userManager.CreateAsync(paciente, Configs.PasswordGenerica);
 
                 if (resultadoNewPersona.Succeeded)
