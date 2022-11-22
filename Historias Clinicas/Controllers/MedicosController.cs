@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Security.Claims;
+using Historias_Clinicas.Helpers;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -16,13 +19,13 @@ namespace Historias_Clinicas.Controllers
     public class MedicosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
+        private readonly UserManager<Persona> _userManager;
         public List<MedicoPaciente> MedicoPacientes;
 
-        public MedicosController(HistoriasClinicasContext context)
+        public MedicosController(HistoriasClinicasContext context, UserManager<Persona> userManager)
         {
-   
-            this._context = context;
-            
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: Medicos
@@ -81,21 +84,33 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public async Task<IActionResult> Create([Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
 
             VerificarDni(medico);
 
             if (ModelState.IsValid)
             {
-                _context.Add(medico);
-                _context.SaveChanges();
+                medico.UserName = medico.Email;
+                var resultadoNewPersona = await _userManager.CreateAsync(medico, Configs.PasswordGenerica);
+
+                if (resultadoNewPersona.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(medico, Configs.MedicoRolName);
+
+                    return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
+
+                }
+                foreach (var error in resultadoNewPersona.Errors)
+                {
+                    ModelState.AddModelError(String.Empty, error.Description);
+                }
 
                 List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
-                
-
                 _context.SaveChanges();
 
+                _context.Medicos.Add(medico);   
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
             }
@@ -270,9 +285,6 @@ namespace Historias_Clinicas.Controllers
             var pacientes = _context.MedicoPaciente.Where(x => x.MedicoId == medico.Id).ToList();
             return View(pacientes);
             
-        }
-
-
-            
+        }      
     }
 }
