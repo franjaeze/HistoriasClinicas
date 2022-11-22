@@ -69,7 +69,7 @@ namespace Historias_Clinicas.Controllers
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction("NotasPorEvolucion", "Notas");
+            return RedirectToAction("Index", "Pacientes");
         }
 
         // GET: Notas/Edit/5
@@ -104,8 +104,12 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
+                    if(nota.EmpleadoId == getUsuarioId()) 
+                    { 
                     _context.Update(nota);
                     _context.SaveChanges();
+                    }
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -118,7 +122,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Pacientes");
             }
             return View(nota);
         }

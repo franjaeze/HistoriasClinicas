@@ -25,18 +25,15 @@
             @if (User.IsInRole("Medico"))
             {
                 <div class="divBoton">
-                        <a type="boton" asp-action="Create" asp-controller="Diagnostico">Agregar Diagnostico</a>
-                    </div>
+                    <a type="boton" asp-action="Create" asp-controller="Diagnostico">Agregar Diagnostico</a>
+                </div>
             }
             <div class="divBoton">
                 <a type="boton" asp-action="DiagnosticoPorEpicrisis" asp-controller="Diagnostico">Ver Diagnostico</a>
             </div>
-            </td>
             <div class="form-group">
                 <label asp-for="FechaYHora" class="control-label"></label>
-                <input class="form-control" asp-for="FechaYHora" type="datetime-local" id="meeting-time"
-                       name="meeting-time" value=DateTime.Now
-                       min=DateTime.Now max="2023-06-14T00:00">
+                <input asp-for="FechaYHora" class="form-control" />
                 <span asp-validation-for="FechaYHora" class="text-danger"></span>
             </div>
             <div class="form-group">

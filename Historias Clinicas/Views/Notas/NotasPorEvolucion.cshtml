@@ -46,7 +46,7 @@
                 <td>
                     @if (User.IsInRole("Medico"))
                     {
-                                <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id"> Eliminar </a>
                     }
                     @if (User.IsInRole("Empleado"))
@@ -56,7 +56,7 @@
                     }
                     <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
                 </td>
-        
+
             </tr>
         }
     </tbody>
@@ -67,7 +67,8 @@
     <div>
         <a class="boton" align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
     </div>
-} else
+}
+else
 {
     <div>
         <a class="boton" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>

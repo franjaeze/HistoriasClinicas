@@ -81,7 +81,8 @@ namespace Historias_Clinicas.Controllers
 
 
                 List<Evolucion> Evoluciones = new List<Evolucion>();
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Index", "Pacientes");
             }
             return View(episodio);
         }
@@ -132,7 +133,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Pacientes");
             }
             return View(episodio);
         }

@@ -69,9 +69,9 @@ namespace Historias_Clinicas.Controllers
                 _context.Add(evolucion);
 
                 _context.SaveChanges();
-               
-                return RedirectToAction(nameof(Index));
-                //return RedirectToAction(nameof(EvolucionesPorEpisodio));
+
+                return RedirectToAction("Index", "Pacientes");
+                
             }
             return View(evolucion);
         }
@@ -122,7 +122,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Pacientes");
             }
             return View(evolucion);
         }
