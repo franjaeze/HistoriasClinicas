@@ -58,6 +58,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var medico = _context.Medicos
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (medico == null)
             {
@@ -96,7 +97,7 @@ namespace Historias_Clinicas.Controllers
                 _context.SaveChanges();
 
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
             }
             return View(medico);
         }

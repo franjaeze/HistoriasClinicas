@@ -41,6 +41,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var persona = _context.Personas
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (persona == null)
             {
@@ -93,7 +94,7 @@ namespace Historias_Clinicas.Controllers
 
                         if (resultadoAddRole.Succeeded)
                         {
-                            return RedirectToAction("Index", "Personas");
+                            return RedirectToAction("Create", "Direcciones");
                             
                         }
                         else
