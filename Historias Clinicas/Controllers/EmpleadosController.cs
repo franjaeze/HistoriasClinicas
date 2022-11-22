@@ -33,6 +33,17 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult MenuEmpleado()
         {
+
+            if (!string.IsNullOrEmpty(User.Identity.Name))
+            {
+                Empleado empleadoEnDb = _context.Empleados.FirstOrDefault(c => c.NormalizedUserName == User.Identity.Name.ToUpper());
+                if (empleadoEnDb != null)
+                {
+                    ViewBag.Nombre = empleadoEnDb.Nombre;
+                    ViewBag.Id = empleadoEnDb.Id;
+
+                }
+            }
             return View();
         }
 

@@ -47,18 +47,16 @@
                     @if (User.IsInRole("Medico"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Elimnar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id"> Eliminar </a>
                     }
                     @if (User.IsInRole("Empleado"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                     }
-
-                </td>
-                <td>
                     <a asp-action="Details" asp-route-id="@item.Id">Detalles</a>
                 </td>
+        
             </tr>
         }
     </tbody>

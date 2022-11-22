@@ -36,6 +36,16 @@ namespace Historias_Clinicas.Controllers
         // GET: Medicos Menu de Opciones
         public IActionResult MenuMedico()
         {
+            if (!string.IsNullOrEmpty(User.Identity.Name))
+            {
+                Medico pacienteEnDb = _context.Medicos.FirstOrDefault(c => c.NormalizedUserName == User.Identity.Name.ToUpper());
+                if (pacienteEnDb != null)
+                {
+                    ViewBag.Nombre = pacienteEnDb.Nombre;
+                    ViewBag.Id = pacienteEnDb.Id;
+
+                }
+            }
             return View();
         }
 
