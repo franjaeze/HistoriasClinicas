@@ -94,6 +94,7 @@ namespace Historias_Clinicas.Controllers
                 var resultado = await _signinManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.Recordarme, false);
                 if (resultado.Succeeded)
                 {
+                   
                     if (User.IsInRole("Paciente"))
                     {
                         return RedirectToAction("MenuPaciente", "Pacientes");
