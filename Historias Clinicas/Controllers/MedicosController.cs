@@ -86,7 +86,7 @@ namespace Historias_Clinicas.Controllers
                 _context.SaveChanges();
 
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
             }
             return View(medico);
         }

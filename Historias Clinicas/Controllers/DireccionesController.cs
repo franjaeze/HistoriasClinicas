@@ -47,22 +47,8 @@ namespace Historias_Clinicas.Controllers
         // GET: Direcciones/Create
         public IActionResult Create(int? id)
         {
-            if (id == null)
-            {
-                ViewData["Id"] = new SelectList(
-                    _context.Pacientes
-                                .Include(clt => clt.Direccion)
-                                .Where(clt => clt.Direccion == null)
-                                , "Id");
-            }
-            else if (_context.Pacientes.Any(c => c.Id == id))
-            {
-                ViewBag.PacienteId = id;
-            }
-            else
-            {
-                return NotFound();
-            }
+            ViewBag.PersonaId = id; // Puede ser persona,empleado,etc
+
             return View();
         }
 
@@ -75,11 +61,11 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
-                direccion.PersonaId = id;    
+                direccion.PersonaId = id;
                 direccion.Id = 0;
                 _context.Direcciones.Add(direccion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(direccion);
         }

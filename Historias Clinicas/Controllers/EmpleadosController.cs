@@ -78,7 +78,7 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("Create", "Direcciones", new { id = empleado.Id });
                 }
                 catch (DbUpdateException dbex)
                 {

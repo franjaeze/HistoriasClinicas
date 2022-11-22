@@ -4,11 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Listado de Direcciones:</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Empleado")){
+    <p>
+        <a asp-action="Create">Crear Direccion</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -49,11 +52,21 @@
                 @Html.DisplayFor(modelItem => item.Localidad)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                        </div>
+                    }
+           
+                
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+ <a class="boton" asp-action="Home" asp-controller="HomeController">Volver</a>

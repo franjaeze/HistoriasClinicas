@@ -231,7 +231,11 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-             
+                if(paciente.Direccion == null)
+                {
+                    return RedirectToAction("Create", "Direcciones", new { id = paciente.Id});
+                }
+                
                 return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
