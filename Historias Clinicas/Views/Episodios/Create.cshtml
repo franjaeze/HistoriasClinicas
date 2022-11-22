@@ -26,9 +26,7 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Internacion" /> @Html.DisplayNameFor(model => model.Internacion)
                 </label>
-            </div>
-
-         
+            </div>       
 
             <div class="form-group">
                 <label asp-for="FechaYHoraAlta" class="control-label"></label>
@@ -45,26 +43,19 @@
                 <span asp-validation-for="FechaYHoraCierre" class="text-danger"></span>
             </div>
             
-            @*<div class="form-group">
-            <label asp-for="EmpleadoId" class="control-label"></label>
-            <input asp-for="EmpleadoId" class="form-control" />
-            <span asp-validation-for="EmpleadoId" class="text-danger"></span>
-        </div>*@
             <div class="form-group">
                 <label asp-for="Especialidad" class="control-label"></label>
                 <select asp-for="Especialidad" class="form-control" asp-items="@Html.GetEnumSelectList<Especialidad>()"></select>
                 <span asp-validation-for="Especialidad" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+            <div class="divBoton">
+                <input type="submit" value="Guardar" class="boton" />
+                <a class="boton" asp-action="Index">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a class="boton" asp-action="Index">Volver</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

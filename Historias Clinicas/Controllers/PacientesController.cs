@@ -351,8 +351,6 @@ namespace Historias_Clinicas.Controllers
                         .Where(x => x.PacienteId == paciente.Id)
                         .ToList();
             return View(medicos);
-
         }
-
     }
 }

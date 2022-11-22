@@ -12,6 +12,9 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (User.IsInRole("Empleado"))
+            {
             <div class="form-group">
                 <label asp-for="MatriculaNacional" class="control-label"></label>
                 <input asp-for="MatriculaNacional" class="form-control" />
@@ -43,6 +46,13 @@
                 <input asp-for="Dni" class="form-control" />
                 <span asp-validation-for="Dni" class="text-danger"></span>
             </div>
+                <div class="form-group">
+                    <label asp-for="FechaDeAlta" class="control-label"></label>
+                    <input asp-for="FechaDeAlta" class="form-control" readonly />
+                    <span asp-validation-for="FechaDeAlta" class="text-danger"></span>
+                </div>
+            }
+            
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
@@ -53,14 +63,11 @@
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="FechaDeAlta" class="control-label"></label>
-                <input asp-for="FechaDeAlta" class="form-control" readonly/>
-                <span asp-validation-for="FechaDeAlta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+            <div class="divBoton">
                 <input type="submit" value="Guardar" class="boton" />
             </div>
+         
         </form>
     </div>
 </div>
