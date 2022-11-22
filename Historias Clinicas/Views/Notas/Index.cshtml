@@ -54,18 +54,18 @@
 @if (User.IsInRole("Empleado"))
 {
     <div>
-        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+        <a class ="botonTablas" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
     </div>
 }
 @if (User.IsInRole("Medico"))
 {
     <div>
-        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+        <a class ="botonTablas" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
     </div>
 }
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+        <a class="botonTablas" align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
     </div>
 }
