@@ -86,4 +86,15 @@ a:active {
     font-weight: bold;
     line-height: 15px;
     box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
-} 
+}
+.botonTablas {
+    display: inline;
+    background: #4E9CAF;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    line-height: 5px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
