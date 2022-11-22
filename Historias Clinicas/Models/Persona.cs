@@ -15,8 +15,6 @@ namespace Historias_Clinicas.Models
 
     public class Persona : IdentityUser<int>
     {
-        [ForeignKey ("Direccion")]
-        public int DireccionId { get; set; }
 
         [Required(ErrorMessage = MensajeError.Requerido)]
         [DataType(DataType.Text)]
@@ -65,6 +63,9 @@ namespace Historias_Clinicas.Models
         [DataType(DataType.Date)]
         [Display(Name = Alias.FechaDeAlta)]
         public DateTime FechaDeAlta { get; set; }
+
+
+        public Direccion Direccion { get; set; }
    
 
         [Display(Name = Alias.NombreCompleto)]

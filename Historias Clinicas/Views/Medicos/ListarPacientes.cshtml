@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Historias_Clinicas.Models.MedicoPaciente>
 @{
 
-    ViewData["Title"] = "ListarMedicos";
+    ViewData["Title"] = "ListarPacientes";
 }
 
-<h1>Mis Medicos</h1>
+<h1>Mis Pacientes</h1>
 
 
 <table class="table">
@@ -13,18 +13,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.MedicoId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medico.Apellido)
+            @*<th>
+                @Html.DisplayNameFor(model => model.Paciente.Apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.Nombre)
+                @Html.DisplayNameFor(model => model.Paciente.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.SegundoNombre)
+                @Html.DisplayNameFor(model => model.Paciente.SegundoNombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.Email)
-            </th>
+                @Html.DisplayNameFor(model => model.Paciente.Email)
+            </th>*@
 
 
             <th></th>
@@ -37,9 +37,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.MedicoId)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Medico.Apellido)
-                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Apellido)
+                </td>*@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Apellido)
                     </td>

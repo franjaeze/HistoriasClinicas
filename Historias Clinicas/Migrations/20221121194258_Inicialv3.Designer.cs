@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Historias_Clinicas.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    [Migration("20221120192317_Inicial")]
-    partial class Inicial
+    [Migration("20221121194258_Inicialv3")]
+    partial class Inicialv3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,6 +76,44 @@ namespace Historias_Clinicas.Migrations
                         .IsUnique();
 
                     b.ToTable("Diagnosticos");
+                });
+
+            modelBuilder.Entity("Historias_Clinicas.Models.Direccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Altura")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Calle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Departamento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Localidad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Piso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonaId")
+                        .IsUnique();
+
+                    b.ToTable("Direcciones");
                 });
 
             modelBuilder.Entity("Historias_Clinicas.Models.Epicrisis", b =>
@@ -467,9 +505,6 @@ namespace Historias_Clinicas.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<int>("DireccionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Dni")
                         .HasColumnType("int");
 
@@ -559,6 +594,15 @@ namespace Historias_Clinicas.Migrations
                     b.HasOne("Historias_Clinicas.Models.Epicrisis", null)
                         .WithOne("Diagnostico")
                         .HasForeignKey("Historias_Clinicas.Models.Diagnostico", "EpicrisisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Historias_Clinicas.Models.Direccion", b =>
+                {
+                    b.HasOne("Historias_Clinicas.Models.Persona", null)
+                        .WithOne("direccion")
+                        .HasForeignKey("Historias_Clinicas.Models.Direccion", "PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

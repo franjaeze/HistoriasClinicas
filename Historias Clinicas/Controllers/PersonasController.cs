@@ -22,7 +22,7 @@ namespace Historias_Clinicas.Controllers
         public PersonasController(HistoriasClinicasContext context, UserManager<Persona> userManager)
         {
             _context = context;
-            this. _userManager = userManager;
+            _userManager = userManager;
         }
 
         // GET: Personas
@@ -41,6 +41,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var persona = _context.Personas
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (persona == null)
             {
@@ -93,7 +94,9 @@ namespace Historias_Clinicas.Controllers
 
                         if (resultadoAddRole.Succeeded)
                         {
-                            return RedirectToAction("Index", "Personas");
+                            _context.Personas.Add(persona);
+                            await _context.SaveChangesAsync();
+                            return RedirectToAction("Create", "Direcciones", new { id = persona.Id });
                             
                         }
                         else
