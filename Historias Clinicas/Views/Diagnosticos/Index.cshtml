@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Especialidad)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
             </td>
         </tr>
 }

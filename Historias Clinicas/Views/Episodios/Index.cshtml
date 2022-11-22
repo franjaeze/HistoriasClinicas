@@ -60,11 +60,11 @@
                         @if (!User.IsInRole("Paciente"))
                         {
                             <p>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                                <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                                 @*<a asp-action="CerrarEpisodio" asp-route-id="@item.Id">Cerrar</a>*@
                             </p>
                         }
-                        <a asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
+                        <a class="botonTablas"  asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
                     </div>
                 </td>
             </tr>
