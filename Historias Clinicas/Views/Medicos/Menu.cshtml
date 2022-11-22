@@ -1,0 +1,27 @@
+﻿@model Historias_Clinicas.Models.Medico
+
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Opciones</h1>
+
+<hr />
+<div class="list-group col-4 offset-4">
+  
+
+    <ul class="navbar-nav mr-auto" style="vertical-align:middle" >
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Create">Alta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Delete">Baja</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Edit">Modificar</a>
+        </li>
+
+
+    </ul>
+</div>

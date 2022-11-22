@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Epicrisis>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Epicrisis</h1>
+
+<p>
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Epicrisis</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EpisodioId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedicoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaYHora)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(modelItem => item.EpisodioId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedicoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnostico)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHora)
+                </td>
+                <td>
+                    <a class="botonTablas"  asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a class="botonTablas"  asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a class="botonTablas"  asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

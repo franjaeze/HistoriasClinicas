@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.HistoriaClinica>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de Historias Clinicas</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PacienteId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PacienteId)
+                </td>
+                <td>
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                    @if (User.IsInRole("Medico"))
+                    {
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    }
+                    <a class="botonTablas" asp-action="Index" asp-controller="Episodios" asp-route-id="@item.Id">Acceso Episodios</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

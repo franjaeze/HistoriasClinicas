@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Nota>
+
+@{
+    ViewData["Title"] = "NotasPorEvolucion";
+}
+
+<header>
+    <h1>Evolucion</h1>
+    <h3> Listado de Notas</h3>
+    <p></p>
+    <p></p>
+    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Evolucion : @ViewData["evolucionId"] </p>
+</header>
+
+
+<p align="right">
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
+        Agregar Nota
+    </a>
+
+</p>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaYHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpleadoId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpleadoId)
+                </td>
+                <td>
+                    @if (User.IsInRole("Medico"))
+                    {
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id"> Eliminar </a>
+                    }
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Paciente"))
+{
+    <div>
+        <a class="boton" align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+else
+{
+    <div>
+        <a class="boton" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    </div>
+}
+

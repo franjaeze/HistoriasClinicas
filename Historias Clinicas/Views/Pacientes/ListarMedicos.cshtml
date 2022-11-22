@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.MedicoPaciente>
+@{
+
+    ViewData["Title"] = "ListarMedicos";
+}
+
+<h1>Mis Medicos</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.SegundoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.Email)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedicoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medico.Apellido)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SegundoNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="boton" asp-action="MenuPaciente" asp-controller="Pacientes">Salir</a>

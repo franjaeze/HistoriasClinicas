@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Empleados</h1>
+
+@if (User.IsInRole("Empleado"))
+{<p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Empleado</a>
+    </p>}
+
+<section class="search-section">
+    <div class="container">
+        <form method="get" asp-action="Buscar" asp-controller="Empleados" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-input" name="Empleado" placeholder="Buscar por Apellido" />
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                            <button class="btn btn-info search-button" type="submit">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Legajo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Legajo)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.SegundoNombre)
+            </td>
+            <td class="text-center">
+                  @Html.DisplayFor(modelItem => item.Dni)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @if (User.IsInRole("Empleado"))
+                {
+                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                }
+                </td>
+        </tr>
+        }
+    </tbody>
+</table>

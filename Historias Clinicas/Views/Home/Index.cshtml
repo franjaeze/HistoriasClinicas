@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+@if(ViewBag.Mensaje != null)
+{
+    <div>
+        <p class="text-info">@ViewBag.Mensaje</p>
+    </div>
+
+}
+
+
+
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4"></div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="fadeImg1">
+                    <h1 class="display-5" style="color:navy"> ORT <br> Salud </h1>
+                </div>
+
+                <div class="fadeImg2">
+                    <p> Bienvenido al Portal de Salud del grupo ORT-Develop </p>
+                </div>
+                <div class="fadeImg3">
+                    <div class="imagen1">
+                        <img src="data:image/png;base64,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" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 "></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 col-md-12">
+                <div class="fadeImg4">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Empleado"))
+                        {
+                            <a class="boton" asp-area="" asp-controller="Empleados" asp-action="MenuEmpleado">Ingresar</a>
+                        }
+                        if (User.IsInRole("Medico"))
+                         {
+                            <a class="boton" asp-area="" asp-controller="Medicos" asp-action="MenuMedico">Ingresar</a>
+                        }
+                        else if (User.IsInRole("Paciente"))
+                          {
+                            <a class="boton" asp-area="" asp-controller="Pacientes" asp-action="MenuPaciente">Ingresar</a>
+
+                          }
+
+
+                    }
+                    else
+                    {
+                        <a class="boton" asp-area="" asp-controller="Account" asp-action="IniciarSesion">Ingresar</a>
+                    }
+                   
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+        body {
+            font-family: Verdana, Arial;
+            background-repeat: no-repeat;
+            background-color: #ffffff;
+            background-position: center;
+            background-size: 200px, 200px;
+            margin: 50px;
+        }
+
+                h1 {
+                    text-align: center
+                }
+        .ingresar {
+        }
+
+                .fadeImg1 {
+                    animation: fadeIn 2s;
+                }
+                .fadeImg2 {
+                    animation: fadeIn 3s;
+                }
+                .fadeImg3 {
+                    animation: fadeIn 4s;
+                }
+                .fadeImg4 {
+                    animation: fadeIn 5s;
+                }
+
+    .imagen1 {
+        position: relative;
+        animation-name: movimiento;
+        animation-duration: 3s;
+    }
+       @@keyframes fadeIn {
+             0% { opacity: 0; }
+            100% { opacity: 1; }
+                    }
+
+
+       @@keyframes movimiento {
+            from {left:800px;}
+            to {left: 0px;
+                            }
+}
+        form {
+            padding: 10px;
+            border-style: solid;
+            width: 250px;
+        }
+</style>
+
+</div>

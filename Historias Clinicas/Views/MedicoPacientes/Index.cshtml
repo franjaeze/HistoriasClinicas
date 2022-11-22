@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.MedicoPaciente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

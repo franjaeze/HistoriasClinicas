@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Medico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Medicos</h1>
+@if (User.IsInRole("Empleado"))
+{
+    <p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Medico</a>
+    </p>}
+
+@*CÓDIGO PARA EL FILTRO DE BÚSQUEDA*@
+@*<div class="d-md-flex justify-content-md-start">*@
+<section class="search-section">
+    <div class="container">
+        <form method="get" asp-action="Buscar" asp-controller="Medicos" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-input" name="Medico" placeholder="Buscar por Apellido" />
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                            <button class="btn btn-info search-button" type="submit">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </form>
+    </div>
+</section>
+
+@*CÓDIGO PARA LA TABLA DE DATOS*@
+<table class="table">
+    <thead>
+        <tr>
+            @if (User.IsInRole("Empleado")) { 
+                <th>
+                    @Html.DisplayNameFor(model => model.MatriculaNacional)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            }          
+            <th>
+                 @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoNombre)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @if (User.IsInRole("Empleado")) { 
+                <td >
+                    @Html.DisplayFor(modelItem => item.MatriculaNacional)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            }
+              <td>
+               @Html.DisplayFor(modelItem => item.Especialidad)
+               </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoNombre)
+            </td>
+
+            <td>
+                @if (User.IsInRole("Empleado"))
+                {
+                    <div class="divBoton">
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </div>
+
+                }
+
+
+                @if (User.IsInRole("Paciente"))
+                {
+                    <div class="divBoton">
+                        <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
+
+                    </div>
+
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
