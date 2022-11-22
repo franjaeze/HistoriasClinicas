@@ -1,5 +1,6 @@
 ﻿using Historias_Clinicas.Helpers;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Historias_Clinicas.Models
 {
@@ -7,6 +8,10 @@ namespace Historias_Clinicas.Models
     {
         [Key]
         public int Id { get; set; }
+
+
+        [ForeignKey("Persona")]
+        public int PersonaId { get; set; }
 
 
         [Required(ErrorMessage = MensajeError.Requerido)]

@@ -57,6 +57,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var paciente = _context.Pacientes
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (paciente == null)
             {
@@ -109,7 +110,7 @@ namespace Historias_Clinicas.Controllers
 
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
             }
             return View(paciente);
 
@@ -238,7 +239,11 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-             
+                if(paciente.Direccion == null)
+                {
+                    return RedirectToAction("Create", "Direcciones", new { id = paciente.Id});
+                }
+                
                 return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
