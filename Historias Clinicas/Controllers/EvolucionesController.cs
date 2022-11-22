@@ -145,6 +145,47 @@ namespace Historias_Clinicas.Controllers
             return View(evolucion);
         }
 
+        public IActionResult Cerrar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            ViewBag.EvolucionId = id;
+
+            var evolucion = _context.Evoluciones
+                .FirstOrDefault(m => m.Id == id);
+            if (evolucion == null)
+            {
+                return NotFound();
+            }
+
+            return View(evolucion);
+        }
+
+        public IActionResult CerrarEvolucion(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var evolucionb = _context.Evoluciones.Find(id);
+
+            if (evolucionb == null)
+            {
+                return NotFound();
+            }
+            evolucionb.EstadoAbierto = false;
+            _context.SaveChanges();
+            evolucionb.FechaYHoraCierre = DateTime.Now;
+            _context.SaveChanges();
+
+
+            return RedirectToAction(nameof(Index));
+            
+        }
+
         // POST: Evolucions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -6,8 +6,8 @@
 
 
 
-<
-er>
+<header
+
     <h1>Historia Clinica</h1>
     <h3> Listado de Episodios</h3>
     <p></p>
@@ -74,16 +74,36 @@ er>
                     @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
-                </td>
+                    @if (item.EstadoAbierto == true)
+                    {
+                    <p>Aun en curso</p>
+                    }
+                    else
+                    {@Html.DisplayFor(modelItem => item.FechaYHoraCierre)
+
+
+                }
+                            </td>
                 <td>
                     @if (User.IsInRole("Empleado"))
                     {
+                    <div class="divBoton">
+                        <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         <div class="divBoton">
-                            <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
 
+                            <a class="boton small" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id">Cerrar Episodio</a>
                         </div>
+                    </div>
                     }
+                    @if (User.IsInRole("Medico"))
+                    {
+                <div class="divBoton">
+            
+                    <a class="boton small" asp-action="Cerrar"  asp-controller="Episodios"asp-route-id="@item.Id">Cerrar Episodio</a>
+                </div>
+                    }
+
+             
                     <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                     <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
                 </td>
