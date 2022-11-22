@@ -321,10 +321,10 @@ namespace Historias_Clinicas.Controllers
             int id = GetUsuarioId();
             var paciente = _context.Pacientes.Find(id);
             var medicos = _context.MedicoPaciente
-                        .Where(x=> x.PacienteId == paciente.Id)
-                        .ToList();
-            return View(medicos);
+                        .Where(x => x.PacienteId == paciente.Id);
 
+            return View(medicos);
+            
         }
 
     }

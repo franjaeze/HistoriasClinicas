@@ -24,6 +24,7 @@ namespace Historias_Clinicas.Controllers
         // GET: MedicoPacientes
         public async Task<IActionResult> Index()
         {
+            
             var historiasClinicasContext = _context.MedicoPaciente.Include(m => m.Medico).Include(m => m.Paciente);
             return View(await historiasClinicasContext.ToListAsync());
         }
@@ -164,5 +165,7 @@ namespace Historias_Clinicas.Controllers
         {
             return _context.MedicoPaciente.Any(e => e.MedicoId == id);
         }
+
+     
     }
 }
