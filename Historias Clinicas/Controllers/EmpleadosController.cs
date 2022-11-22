@@ -9,6 +9,8 @@ using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Data.SqlClient;
+using Historias_Clinicas.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -17,10 +19,12 @@ namespace Historias_Clinicas.Controllers
     public class EmpleadosController : Controller
     {
         private readonly HistoriasClinicasContext _context;
+        private readonly UserManager<Persona> _userManager;
 
-        public EmpleadosController(HistoriasClinicasContext context)
+        public EmpleadosController(HistoriasClinicasContext context, UserManager<Persona> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Empleadoes
@@ -56,6 +60,7 @@ namespace Historias_Clinicas.Controllers
             }
 
             var empleado = _context.Empleados
+                .Include(clt => clt.Direccion)
                 .FirstOrDefault(m => m.Id == id);
             if (empleado == null)
             {
@@ -76,19 +81,31 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Legajo,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Empleado empleado)
+        public async Task<IActionResult> Create([Bind("Id,Legajo,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Empleado empleado)
         {
 
             VerificarDni(empleado);
 
             if (ModelState.IsValid)
             {
-                _context.Add(empleado);
-
                 try
                 {
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    empleado.UserName = empleado.Email;
+                    var resultadoNewPersona = await _userManager.CreateAsync(empleado, Configs.PasswordGenerica);
+
+                    if (resultadoNewPersona.Succeeded)
+                    { 
+                        await _userManager.AddToRoleAsync(empleado, Configs.EmpleadoRolName);
+
+                        _context.Empleados.Add(empleado);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Create", "Direcciones", new { id = empleado.Id });
+
+                    }
+                    foreach (var error in resultadoNewPersona.Errors)
+                    {
+                        ModelState.AddModelError(String.Empty, error.Description);
+                    }
                 }
                 catch (DbUpdateException dbex)
                 {

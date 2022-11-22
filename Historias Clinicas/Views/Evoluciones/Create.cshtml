@@ -19,12 +19,16 @@
             </div>*@
             <div class="form-group">
                 <label asp-for="FechaYHoraAlta" class="control-label"></label>
-                <input asp-for="FechaYHoraAlta" class="form-control" />
+                <input class="form-control" asp-for="FechaYHoraAlta" type="datetime-local" id="meeting-time"
+                       name="meeting-time" value=DateTime.Now
+                       min=DateTime.Now max="2023-06-14T00:00">
                 <span asp-validation-for="FechaYHoraAlta" class="text-danger"></span>
             </div>
-            <div class="form-group">
+ <div class="form-group">
                 <label asp-for="FechaYHoraCierre" class="control-label"></label>
-                <input asp-for="FechaYHoraCierre" class="form-control" />
+            <input class="form-control" asp-for="FechaYHoraCierre" type="datetime-local" id="meeting-time"
+               name="meeting-time" value= DateTime.Now
+                   min=DateTime.Now max="2023-06-14T00:00">
                 <span asp-validation-for="FechaYHoraCierre" class="text-danger"></span>
             </div>
             @*<div class="form-group form-check">
@@ -45,7 +49,7 @@
 </div>
 
 <div>
-    <a asp-action="EvolucionesPorEpisodio">Volver</a>
+    <a class="botonTablas" asp-action="EvolucionesPorEpisodio">Volver</a>
 </div>
 
 @section Scripts {

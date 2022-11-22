@@ -6,6 +6,11 @@
 
 <h1> Listado de Episodios</h1>
 
+@*@if (User.IsInRole("Empleado"))
+    {
+        <p align="right">
+            <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Episodio</a>
+        </p>}*@
 
 <table class="table">
     <thead>
@@ -54,33 +59,48 @@
                     @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
                 </td>
                 <td>
-                    <div class="btn-group">
-                        <a asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div class="divBoton">
+                            @*<a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
+                            <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                            <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Episodios" asp-route-id="@item.Id">Evoluciones</a>
 
-                        @if (!User.IsInRole("Paciente"))
-                        {
-                            <p>
-                                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                                @*<a asp-action="CerrarEpisodio" asp-route-id="@item.Id">Cerrar</a>*@
-                            </p>
-                        }
-                        <a asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
-                    </div>
+                        </div>
+                    }
+                    @if (User.IsInRole("Medico"))
+                    {
+                <div class="divBoton">
+                    <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                  
+                    @*<a class="boton small" asp-action="CerrarEpisodio" asp-route-id="@item.Id">Cerrar</a>*@
+                    <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
+               
+
+                </div>
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+
 @if (User.IsInRole("Paciente"))
 {
     <div>
         <a type="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas">Volver</a>
-    </div>
-}
-else
-{
-    <div>
-        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }

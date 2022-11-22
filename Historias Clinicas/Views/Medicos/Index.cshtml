@@ -8,7 +8,7 @@
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Medico</a>
+        <a class="botonTablas" asp-action="Create">Agregar Medico</a>
     </p>}
 
 @*CÓDIGO PARA EL FILTRO DE BÚSQUEDA*@
@@ -94,9 +94,9 @@
                 @if (User.IsInRole("Empleado"))
                 {
                     <div class="divBoton">
-                        <a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                        <a class="boton small" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                     </div>
 
                 }
@@ -105,7 +105,7 @@
                 @if (User.IsInRole("Paciente"))
                 {
                     <div class="divBoton">
-                        <a class="boton small" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
+                        <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
 
                     </div>
 
