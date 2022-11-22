@@ -264,13 +264,15 @@ namespace Historias_Clinicas.Controllers
         public IActionResult ListarPacientes()
         {
             int id = GetUsuarioId();
-            //int id2 = id;
+        
             var medico = _context.Medicos.Find(id);
-            var pacientes = _context.MedicoPaciente.Where(x => x.MedicoId == medico.Id).ToList();
-            return View(pacientes);
-            
-        }
+            var pacientes = _context.MedicoPaciente.Where(x => x.MedicoId == medico.Id);
 
+
+
+            return View(pacientes);
+
+        }
 
             
     }
