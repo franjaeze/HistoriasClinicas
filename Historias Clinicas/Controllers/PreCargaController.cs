@@ -217,7 +217,7 @@ namespace Historias_Clinicas.Controllers
 
                 Episodio Episodio1 = new Episodio()
                 {
-                    Descripcion = "El paciente se encontraba andando en skate.",
+                    Descripcion = "El paciente se encontraba andando en skate",
                     Motivo = "Traumatismo en pierna izquierda",
                     Internacion = true,
                     FechaYHoraInicio = DateTime.Today,
@@ -237,7 +237,7 @@ namespace Historias_Clinicas.Controllers
                     EpisodioId = Episodio1.Id,
                     MedicoId = 1,
                     EstadoAbierto = true,
-                    DescripcionAtencion = "Bien la Kinesiologia",
+                    DescripcionAtencion = "Continuar con Kinesiologia",
                     Notas = new List<Nota>(),
                     FechaYHoraInicio = DateTime.Today,
                     FechaYHoraAlta = DateTime.Today,
@@ -323,7 +323,7 @@ namespace Historias_Clinicas.Controllers
                     EpisodioId = Episodio2.Id,
                     MedicoId = 1,
                     EstadoAbierto = true,
-                    DescripcionAtencion = "Bien el analisis de sangre",
+                    DescripcionAtencion = "Las marcas estan achicandose",
                     Notas = new List<Nota>(),
                     FechaYHoraInicio = DateTime.Today,
                     FechaYHoraAlta = DateTime.Today,
@@ -338,7 +338,7 @@ namespace Historias_Clinicas.Controllers
                 {
 
                     EvolucionId = Evolucion2.Id,
-                    Mensaje = "Continuar con antencion",
+                    Mensaje = "Probar otra marca crema",
                     FechaYHora = DateTime.Today,
                     EmpleadoId = 0
                 };
