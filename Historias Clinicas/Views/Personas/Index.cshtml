@@ -7,7 +7,7 @@
 <h1>Personas</h1>
 
 <p>
-    <a asp-action="Create">Agregar persona</a>
+    <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar persona</a>
 </p>
 <table class="table">
     <thead>
@@ -61,9 +61,13 @@
                 @Html.DisplayFor(modelItem => item.FechaDeAlta)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                @if (User.IsInRole("Empleado"))
+                    {
+                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a> 
+                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                    }
+                   
             </td>
         </tr>
 }

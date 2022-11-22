@@ -1,25 +1,25 @@
 ﻿@model Historias_Clinicas.Models.Paciente
 
-    <h1>Solicitud de Turno </h1>
+<h1>Solicitud de Turno </h1>
 
-    <h4>Por favor, seleccione fecha y hora del turno para avanzar</h4>
+<h4>Por favor, seleccione fecha y hora del turno para avanzar</h4>
 
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="SacarTurno">
-                <div class="form-group">
-                    <label class="control-label"></label>
-                    <input class="form-control" type="datetime-local" id="meeting-time"
-                           name= DateTime.Now value="2022-11-07T00:00"
-                           min= DateTime.Now max="2023-06-14T00:00">
-                    <span class="text-danger"></span>
-                </div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SacarTurno">
+            <div class="form-group">
+                <label class="control-label"></label>
+                <input class="form-control" type="datetime-local" id="meeting-time"
+                       name="meeting-time" value=DateTime.Now
+                       min=DateTime.Now max="2023-06-14T00:00">
+                <span class="text-danger"></span>
+            </div>
 
-            </form>
-        </div>
-
+        </form>
     </div>
-    <div>
-        <input type="submit" value="Confirmar" class="boton" asp-action="Index" asp-controller="Medicos" />
-        <a class="botonTablas" asp-action="Index">Cancelar</a>
-    </div>
+
+</div>
+<div>
+    <input type="submit" value="Confirmar" class="boton" asp-action="Index" asp-controller="Medicos" />
+    <a class="boton" asp-action="Index">Cancelar</a>
+</div>

@@ -8,7 +8,7 @@
 
 @if (User.IsInRole("Empleado")){
     <p>
-        <a class="botonTablas" asp-action="Create">Crear Direccion</a>
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Crear Direccion</a>
     </p>
 }
 
@@ -69,4 +69,4 @@
     </tbody>
 </table>
 
- <a class="botonTablas" asp-action="Home" asp-controller="HomeController">Volver</a>
+ <a class="boton" asp-action="Home" asp-controller="HomeController">Volver</a>

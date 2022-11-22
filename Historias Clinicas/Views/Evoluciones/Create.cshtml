@@ -31,11 +31,6 @@
                    min=DateTime.Now max="2023-06-14T00:00">
                 <span asp-validation-for="FechaYHoraCierre" class="text-danger"></span>
             </div>
-            @*<div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EstadoAbierto" /> @Html.DisplayNameFor(model => model.EstadoAbierto)
-                </label>
-            </div>*@
             <div class="form-group">
                 <label asp-for="DescripcionAtencion" class="control-label"></label>
                 <input asp-for="DescripcionAtencion" class="form-control" />
@@ -49,7 +44,7 @@
 </div>
 
 <div>
-    <a class="botonTablas" asp-action="EvolucionesPorEpisodio">Volver</a>
+    <a class="boton" asp-action="EvolucionesPorEpisodio">Volver</a>
 </div>
 
 @section Scripts {

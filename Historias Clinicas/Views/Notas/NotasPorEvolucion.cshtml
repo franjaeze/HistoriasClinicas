@@ -61,22 +61,16 @@
         }
     </tbody>
 </table>
-@if (User.IsInRole("Empleado"))
-{
-    <div>
-        <a class="botonTablas" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
-    </div>
-}
-@if (User.IsInRole("Medico"))
-{
-    <div>
-        <a class="botonTablas" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
-    </div>
-}
+
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a class="botonTablas" align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+        <a class="boton" align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </div>
+} else
+{
+    <div>
+        <a class="boton" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
     </div>
 }
 

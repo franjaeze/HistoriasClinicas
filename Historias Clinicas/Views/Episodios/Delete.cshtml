@@ -4,7 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Borrar</h1>
+<h1>Eliminar</h1>
 
 <h3>Esta seguro que desea eliminar este Episodio?</h3>
 <div>
@@ -70,6 +70,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Borrar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver</a>
+        <a class="boton" asp-action="Index">Volver</a>
     </form>
 </div>
