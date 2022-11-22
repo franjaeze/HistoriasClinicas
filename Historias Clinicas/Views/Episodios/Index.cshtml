@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Episodio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Listado de Episodios</h1>
+
+@*@if (User.IsInRole("Empleado"))
+    {
+        <p align="right">
+            <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Episodio</a>
+        </p>}*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="text-left">
+                Abierto
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            <th class="text-left">
+                Episodio de Internacion
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.FechaYHoraInicio)
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.FechaYHoraCierre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.EstadoAbierto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidad)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Internacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
+                </td>
+                <td>
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div class="divBoton">
+                            @*<a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
+                            <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                            <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Episodios" asp-route-id="@item.Id">Evoluciones</a>
+
+                        </div>
+                    }
+                    @if (User.IsInRole("Medico"))
+                    {
+                <div class="divBoton">
+                    <a class="boton small" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                  
+                    @*<a class="boton small" asp-action="CerrarEpisodio" asp-route-id="@item.Id">Cerrar</a>*@
+                    <a class="boton small" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id">Evoluciones</a>
+               
+
+                </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <div>
+        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+
+@if (User.IsInRole("Paciente"))
+{
+    <div>
+        <a type="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas">Volver</a>
+    </div>
+}

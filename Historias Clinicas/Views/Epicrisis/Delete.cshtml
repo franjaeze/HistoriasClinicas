@@ -1,0 +1,39 @@
+﻿@model Historias_Clinicas.Models.Epicrisis
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Esta seguro que desea eliminar esta Epicrisis?</h3>
+<div>
+    <h4>Epicrisis</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MedicoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MedicoId)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EpisodioId)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Diagnostico)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaYHora)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaYHora)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver</a>
+    </form>
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.MedicoPaciente>
+@{
+
+    ViewData["Title"] = "ListarPacientes";
+}
+
+<h1>Mis Pacientes</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.SegundoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Email)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PacienteId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.SegundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Email)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="boton" asp-action="MenuMedico" asp-controller="Medicos">Salir</a>
