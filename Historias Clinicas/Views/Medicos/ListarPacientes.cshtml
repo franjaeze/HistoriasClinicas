@@ -11,9 +11,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MedicoId)
+                @Html.DisplayNameFor(model => model.Paciente.Id)
             </th>
-            @*<th>
+            <th>
                 @Html.DisplayNameFor(model => model.Paciente.Apellido)
             </th>
             <th>
@@ -24,7 +24,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Paciente.Email)
-            </th>*@
+            </th>
 
 
             <th></th>
@@ -35,28 +35,24 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MedicoId)
+                    @Html.DisplayFor(modelItem => item.Paciente.Id)
                 </td>
-                @*<td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Paciente.Apellido)
-                </td>*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Apellido)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SegundoNombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-
-                    </td>*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.SegundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Email)
+                </td>
+                <td>
+                </td>
             </tr>
         }
     </tbody>
 </table>
-<a class="botonTablas" asp-action="MenuPaciente" asp-controller="Pacientes">Salir</a>
+<a class="boton" asp-action="MenuMedico" asp-controller="Medicos">Salir</a>
