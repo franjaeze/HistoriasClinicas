@@ -253,12 +253,20 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
+                
+                
                 if (paciente.Direccion == null)
                 {
                     return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
                 }
+                else
+                {
+                    ViewData["DireccionId"] = paciente.Direccion.Id;
+                    return RedirectToAction("Edit", "Direcciones", new { id = paciente.Id });
+                }
 
-                return RedirectToAction(nameof(MenuPaciente));
+                
+                //return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
         }
@@ -300,6 +308,7 @@ namespace Historias_Clinicas.Controllers
         public IActionResult MiHistoriaClinica()
         {
             int Id = GetUsuarioId();
+
 
             return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = Id });
         }
@@ -365,6 +374,7 @@ namespace Historias_Clinicas.Controllers
 
 
             }
+            
 
             return View(pacientes);
         }

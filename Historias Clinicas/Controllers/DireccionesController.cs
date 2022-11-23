@@ -93,6 +93,8 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,PersonaId,Calle,Altura,Piso,Departamento,Localidad")] Direccion direccion)
         {
+            
+            
             if (id != direccion.Id)
             {
                 return NotFound();

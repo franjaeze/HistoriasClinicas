@@ -106,7 +106,7 @@ namespace Historias_Clinicas.Controllers
                     ModelState.AddModelError(String.Empty, error.Description);
                 }
 
-                List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
+                //List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
                 _context.SaveChanges();
 
                 _context.Medicos.Add(medico);   
@@ -163,7 +163,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (id != medico.Id)
             {
@@ -176,15 +176,27 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    if (medico.MedicoPacientes == null)
+                    var personaEnDb = _context.Medicos.Find(medico.Id);
+                    if (personaEnDb == null)
                     {
-
-                        List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
-                        medico.MedicoPacientes = MedicoPacientes;
+                        return NotFound();
                     }
-                    _context.Update(medico);
+
+                    personaEnDb.Nombre = medico.Nombre;
+                    personaEnDb.SegundoNombre = medico.SegundoNombre;
+                    personaEnDb.Apellido = medico.Apellido;
+                    personaEnDb.Dni = medico.Dni;
+                    personaEnDb.Telefono = medico.Telefono;
+                    personaEnDb.MatriculaNacional = medico.MatriculaNacional;
+                    personaEnDb.Especialidad = medico.Especialidad;
+
+                  
+
+                    _context.Update(personaEnDb);
                     _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
                 }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!MedicoExists(medico.Id))
@@ -196,7 +208,6 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(medico);
         }
