@@ -120,7 +120,7 @@ namespace Historias_Clinicas.Controllers
                         _context.SaveChanges();
                         return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
 
-                }
+                    }
                     foreach (var error in resultadoNewPersona.Errors)
                     {
                         ModelState.AddModelError(String.Empty, error.Description);
@@ -193,7 +193,9 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    var pacienteEnDb = _context.Pacientes.Find(paciente.Id);
+                    var pacienteEnDb = _context.Pacientes
+                .Include(p => p.Direccion)
+                .FirstOrDefault(p => p.Id == id);
 
                     if (pacienteEnDb == null)
                     {
@@ -239,6 +241,16 @@ namespace Historias_Clinicas.Controllers
 
 
                         _context.SaveChanges();
+
+                        if (pacienteEnDb.Direccion == null)
+                        {
+                            return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
+                        }
+                        else
+                        {
+                            ViewData["DireccionId"] = pacienteEnDb.Direccion.Id;
+                            return RedirectToAction("Edit", "Direcciones", new { id = paciente.Id });
+                        }
                     }
                 }
 
@@ -253,19 +265,11 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                
-                
-                if (paciente.Direccion == null)
-                {
-                    return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
-                }
-                else
-                {
-                    ViewData["DireccionId"] = paciente.Direccion.Id;
-                    return RedirectToAction("Edit", "Direcciones", new { id = paciente.Id });
-                }
+
 
                 
+
+
                 //return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
@@ -366,7 +370,7 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Buscar(int historiaClinica)
         {
             var pacientes = from p in _context.Pacientes
-                          select p;
+                            select p;
 
             if (historiaClinica != 0)
             {
@@ -374,7 +378,7 @@ namespace Historias_Clinicas.Controllers
 
 
             }
-            
+
 
             return View(pacientes);
         }
