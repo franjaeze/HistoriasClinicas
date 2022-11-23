@@ -353,5 +353,20 @@ namespace Historias_Clinicas.Controllers
 
             return View(medicos);
         }
+
+        public IActionResult Buscar(int historiaClinica)
+        {
+            var pacientes = from p in _context.Pacientes
+                          select p;
+
+            if (historiaClinica != 0)
+            {
+                pacientes = pacientes.Where(m => m.HistoriaClinicaId == historiaClinica);
+
+
+            }
+
+            return View(pacientes);
+        }
     }
 }
