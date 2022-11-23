@@ -347,10 +347,26 @@ namespace Historias_Clinicas.Controllers
         {
             int id = GetUsuarioId();
             var paciente = _context.Pacientes.Find(id);
-            var medicos = _context.MedicoPaciente
-                        .Where(x => x.PacienteId == paciente.Id)
-                        .ToList();
+            var medicosPacientes = _context.MedicoPaciente
+                        .Where(x => x.PacienteId == paciente.Id);
+            var medicos = _context.Medicos.Where(x => medicosPacientes.Any(y => y.MedicoId == x.Id));
+
             return View(medicos);
+        }
+
+        public IActionResult Buscar(int historiaClinica)
+        {
+            var pacientes = from p in _context.Pacientes
+                          select p;
+
+            if (historiaClinica != 0)
+            {
+                pacientes = pacientes.Where(m => m.HistoriaClinicaId == historiaClinica);
+
+
+            }
+
+            return View(pacientes);
         }
     }
 }

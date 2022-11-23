@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Paciente>
+
+<header>
+    <h1>Búsqueda</h1>
+    <h3> Pacientes que coinciden con la búsqueda </h3>
+    <p></p>
+    <p></p>
+</header>
+
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Historia Clinica</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Especialidad</th>
+                <th>Correo electronico</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Paciente paciente in Model)
+            {
+                <tr>
+                    <td>
+                        @paciente.HistoriaClinicaId
+                    </td>
+                    <td>
+                        @paciente.Apellido
+                    </td>
+                    <td>
+                        @paciente.Nombre
+                    </td>
+                    <td>
+                        @paciente.SegundoNombre
+                    </td>
+                    <td>
+                        @paciente.Email
+                    </td>
+                    <td>
+                        <a class="botonTablas" asp-action="Details" asp-controller="Pacientes" asp-route-id="@paciente.Id">Detalle</a>
+                        <a class="botonTablas" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@paciente.Id">Historia Clinica</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <section>
+        <a type="boton" class="btn btn-secondary align-content-end" asp-action="ListarPacientes" asp-controller="Medicos">Volver</a>
+    </section>
+}
