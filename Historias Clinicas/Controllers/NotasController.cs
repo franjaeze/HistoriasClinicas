@@ -180,7 +180,7 @@ namespace Historias_Clinicas.Controllers
         }
 
 
-        public IActionResult NotasPorEvolucion(int id)
+        public IActionResult NotasPorEvolucion(int id, int paciente)
         {
             var evolucion = _context.Evoluciones.Find(id);
 
@@ -188,6 +188,7 @@ namespace Historias_Clinicas.Controllers
                 .Where(x => x.EvolucionId == evolucion.Id);
 
             ViewData["evolucionId"] = id;
+            TempData["historiaId"] = paciente;
 
             return View(notas);
         }

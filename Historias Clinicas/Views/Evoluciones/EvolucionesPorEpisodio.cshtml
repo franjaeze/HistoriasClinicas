@@ -10,14 +10,14 @@
     <h3> Listado de Evoluciones</h3>
     <p>paciente @TempData["historiaId"]</p>
     <p> Episodio @TempData["EpisodioId"]</p>
-    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Episodio : @ViewData["EpisodioId"] </p>
+    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Episodio : @TempData["EpisodioId"] </p>
 </header>
 
 @if (User.IsInRole("Medico"))
 
 {
     <p align="right">
-        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@ViewData["EpisodioId"]">
+        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@TempData["EpisodioId"]">
             Agregar Evolucion
         </a>
 
@@ -75,8 +75,8 @@
                         <a class="botonTablas" asp-action="Cerrar" asp-route-id="@item.Id">Cerrar </a>
 
                     }
-                    <a class="botonTablas" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id" asp-route-paciente="@TempData["EvolucionId"]">Notas</a>
-                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-paciente="@TempData["evolucionId"]">Detalles</a>
+                    <a class="botonTablas" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Notas</a>
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Detalles</a>
 
                 </td>
             </tr>
@@ -87,6 +87,7 @@
 </table>
 
 
-    <div>
-        <a align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
-    </div>
+<div>
+    <a align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
+</div>
+ 

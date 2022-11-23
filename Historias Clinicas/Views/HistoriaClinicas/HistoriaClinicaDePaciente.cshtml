@@ -10,6 +10,7 @@
 
     <h1>Historia Clinica</h1>
     <h2>@TempData["nombrePaciente"]</h2>
+    <p> Id de paciente @TempData["historiaId"]</p>
     <br />
     <h3> Listado de Episodios</h3>
     <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Número de Historia Clínica : @TempData["historiaId"] </p>
@@ -91,12 +92,15 @@
                     {
 
                         @*<a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
-                        <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id">Cerrar Episodio</a>
+                        @*<a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>*@
                     }
                     @if (User.IsInRole("Medico"))
                     {
-                        <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id">Cerrar Episodio</a>
-                    }
+                        @if (item.EstadoAbierto)
+                        {
+                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>
+                            }
+                        }
 
                     <a class="botonTablas" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Evoluciones</a>
                     <a class="botonTablas" asp-action="EpicrisisPorEpisodio" asp-controller="Epicrisis" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Epicrisis</a>

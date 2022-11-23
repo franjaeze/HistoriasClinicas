@@ -46,8 +46,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Evolucions/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            @TempData["EpisodioId"] = id;
             return View();
         }
 
