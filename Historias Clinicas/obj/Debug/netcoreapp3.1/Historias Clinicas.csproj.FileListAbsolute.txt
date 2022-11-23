@@ -1359,3 +1359,4 @@ C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\ListarMedicos.cshtml.g.cs
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\SacarTurno.cshtml.g.cs
 C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Favicons.cshtml.g.cs
+C:\Users\Fran.000\source\repos\HistoriasClinicasTP\Historias Clinicas\obj\Debug\netcoreapp3.1\Razor\Views\Pacientes\Buscar.cshtml.g.cs

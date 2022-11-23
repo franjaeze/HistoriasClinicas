@@ -62,10 +62,10 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Create(int id, [Bind("Id,HistoriaClinicaId,EpicrisisId,Descripcion,Motivo,Internacion,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,EmpleadoId,Especialidad")] Episodio episodio)
         {
             if (ModelState.IsValid)
-                        
+
             {
                 episodio.EmpleadoId = getUsuarioId();
-                
+
                 var paciente = _context.Pacientes.Find(id);
                 var historia = _context.HistoriasClinicas.Find(paciente.HistoriaClinicaId);
                 episodio.HistoriaClinicaId = historia.Id;
@@ -192,8 +192,8 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult EvolucionesPorEpisodio(int id)
         {
-             Episodio episodio = _context.Episodios.Find(id);
-                       
+            Episodio episodio = _context.Episodios.Find(id);
+
             var evoluciones = _context.Evoluciones
                 .Where(x => x.EpisodioId == episodio.Id);
 
@@ -209,38 +209,76 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Create", "Evoluciones", new { id = episodio.Id });
         }
 
-        public IActionResult Cerrar(int id) {
+        public IActionResult Cerrar(int id, int paciente) {
 
             ViewBag.EpisodioId = id;
-
+           
             var episodio = _context.Episodios.Find(id);
+
             if (episodio == null)
             {
                 return NotFound();
             }
-           
 
+           if ( EvolucionesAbiertas(id) )
+            {
+                return RedirectToAction("MenuMedico", "Medicos");
+            }
+
+            @TempData["historiaId"] = paciente;
+            @TempData["espisodioId"] = id;
             return View();
-                }
+        }
 
-        public IActionResult CerrarEpisodio(int id)
+
+        public bool EvolucionesAbiertas(int id)
+        {
+            bool EvolucionesAbiertasa = false;
+
+            var episodio = _context.Episodios.Find(id);
+            var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
+            if (evoluciones.Any(x => x.EstadoAbierto) || !evoluciones.Any())
+            {
+                EvolucionesAbiertasa = true;
+            }
+           
+            
+
+
+            return EvolucionesAbiertasa;
+        }
+        public IActionResult CerrarEpisodio(int id, int paciente)
         {
 
 
+                var episodioDb = _context.Episodios.Find(id);
 
-            var episodio = _context.Episodios.Find(id);
-
-            if (episodio == null)
-            {
-                return NotFound();
-            }
-            episodio.EstadoAbierto = false;
-            _context.SaveChanges();
-            episodio.FechaYHoraCierre = DateTime.Now;
-            _context.SaveChanges();
+                if (episodioDb == null)
+                {
+                    return NotFound();
+                }
 
 
-            return RedirectToAction(nameof(Index));
+                episodioDb.EstadoAbierto = false;
+                episodioDb.FechaYHoraCierre = DateTime.Now;
+
+                //episodioDb.HistoriaClinicaId = episodio.HistoriaClinicaId;
+                //episodioDb.EmpleadoId = episodio.EmpleadoId;
+                //episodioDb.Descripcion = episodio.Descripcion;
+                //episodioDb.Motivo = episodio.Motivo;
+                //episodioDb.Especialidad = episodio.Especialidad;
+                //episodioDb.FechaYHoraInicio = episodio.FechaYHoraInicio;
+                //episodioDb.FechaYHoraAlta = episodio.FechaYHoraAlta;
+                //episodioDb.Internacion = episodio.Internacion;
+
+
+                _context.Update(episodioDb);
+                _context.SaveChanges();
+
+            
+            @TempData["historiaId"] = paciente;
+
+            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = paciente });
         }
     }
 

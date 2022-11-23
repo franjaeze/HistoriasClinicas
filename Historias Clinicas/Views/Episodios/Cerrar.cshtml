@@ -7,12 +7,12 @@
         <div class=" col-lg-2"></div>
         <div class=" col-lg-8 col-md-12">
             <h1> Esta seguro que desea Cerrar este Episodio?</h1>
-
+            <h3>Id de paciente @TempData["historiaId"]</h3>
             <h1> Esta accion es irreverisble</h1>
 
 
-            <a class="boton" asp-action="Delete" asp-route-id="">Volver</a>
-            <a class="boton" asp-action="CerrarEpisodio" asp-route-id="@ViewBag.EpisodioId">Cerrar Episodio</a>
+            <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
+            <a class="boton" asp-action="CerrarEpisodio" asp-route-id="@TempData["espisodioId"]" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>
         </div>
     </div>
     <div class="col-lg-2"></div>

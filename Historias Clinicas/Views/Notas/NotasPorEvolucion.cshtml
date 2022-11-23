@@ -6,6 +6,7 @@
 
 <header>
     <h1>Evolucion</h1>
+    <p>Id de paciente @TempData["historiaId"]</p>
     <h3> Listado de Notas</h3>
     <p></p>
     <p></p>
@@ -65,13 +66,13 @@
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["EpisodioId"]">Volver</a>
+        <a class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
     </div>
 }
 else
 {
     <div>
-        <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["EpisodioId"]">Cancelar</a>
+        <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Cancelar</a>
     </div>
 }
 
