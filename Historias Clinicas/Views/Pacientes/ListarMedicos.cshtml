@@ -1,29 +1,35 @@
-﻿@model IEnumerable<Historias_Clinicas.Models.MedicoPaciente>
+﻿@model IEnumerable<Historias_Clinicas.Models.Medico>
 @{
 
     ViewData["Title"] = "ListarMedicos";
 }
 
-<h1>Mis Medicos</h1>
 
+<header>
+    <h1>Mis Medicos</h1>
+    <h3> Listado de MEdicos</h3>
+    <p></p>
+    <p></p>
+    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left">  Número de Historia Clínica : @ViewData["historiaId"]  </p>
+</header>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.Id)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.Apellido)
+                @Html.DisplayNameFor(model => model.Apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.Nombre)
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.SegundoNombre)
+                @Html.DisplayNameFor(model => model.SegundoNombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Medico.Email)
+                @Html.DisplayNameFor(model => model.Email)
             </th>
 
 
@@ -35,26 +41,26 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MedicoId)
+                    @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Medico.Apellido)
+                    @Html.DisplayFor(modelItem => item.Apellido)
                 </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Apellido)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SegundoNombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-
-                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SegundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Detalle</a>
+                </td>
             </tr>
         }
     </tbody>
