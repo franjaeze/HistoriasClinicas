@@ -12,39 +12,24 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MedicoId" class="control-label"></label>
-                <input asp-for="MedicoId" class="form-control" />
-                <span asp-validation-for="MedicoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EpisodioId" class="control-label"></label>
-                <input asp-for="EpisodioId" class="form-control" />
-                <span asp-validation-for="EpisodioId" class="text-danger"></span>
-            </div>
-            @if (User.IsInRole("Medico"))
+            @*@if (User.IsInRole("Medico"))
             {
                 <div class="divBoton">
-                    <a type="boton" asp-action="Create" asp-controller="Diagnostico">Agregar Diagnostico</a>
+                    <a type="boton" asp-action="CargarDiagnostico" asp-controller="Epicrisis">Agregar Diagnostico</a>
                 </div>
-            }
-            <div class="divBoton">
+            }*@
+            @*<div class="divBoton">
                 <a type="boton" asp-action="DiagnosticoPorEpicrisis" asp-controller="Diagnostico">Ver Diagnostico</a>
-            </div>
+            </div>*@
             <div class="form-group">
-                <label asp-for="FechaYHora" class="control-label"></label>
-                <input asp-for="FechaYHora" class="form-control" />
-                <span asp-validation-for="FechaYHora" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Volver</a>
+    <a asp-action="Index" asp-controller="Pacientes">Cancelar</a>
 </div>
 
 @section Scripts {
