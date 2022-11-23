@@ -222,14 +222,14 @@ namespace Historias_Clinicas.Controllers
 
        
 
-        public IActionResult EvolucionesPorEpisodio(int id)
+        public IActionResult EvolucionesPorEpisodio(int id, int paciente)
         {
             var episodio = _context.Episodios.Find(id);
 
             var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
 
-            ViewData["EpisodioId"] = id;
-
+            TempData["EpisodioId"] = id;
+             TempData["historiaId"] = paciente;
             return View(evoluciones);
         }
 

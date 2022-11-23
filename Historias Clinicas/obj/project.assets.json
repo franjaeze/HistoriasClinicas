@@ -419,11 +419,11 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/3.1.30": {
+      "Microsoft.EntityFrameworkCore.Design/3.1.31": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.30"
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.31"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -459,11 +459,11 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/3.1.30": {
+      "Microsoft.EntityFrameworkCore.SqlServer/3.1.31": {
         "type": "package",
         "dependencies": {
           "Microsoft.Data.SqlClient": "1.1.3",
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.30"
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.31"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
@@ -472,10 +472,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/3.1.30": {
+      "Microsoft.EntityFrameworkCore.Tools/3.1.31": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "3.1.30"
+          "Microsoft.EntityFrameworkCore.Design": "3.1.31"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -3168,10 +3168,10 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/3.1.30": {
-      "sha512": "UcfdL+FiflqEEpy/m9IJI/0WvoX+P2SwjU31ZT8uE0OOJlNd8F6x47rdZhNtVo2So0O19M+950lghaHTAinDaQ==",
+    "Microsoft.EntityFrameworkCore.Design/3.1.31": {
+      "sha512": "CzT0j4jumyn0F0xsSeGOOWJ5eN4FQSu/cUIsFFI0PPvDiNyq7j0rc99X7RLIXWbNI9mrwlxQL/bTcnQMokk4Cw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/3.1.30",
+      "path": "microsoft.entityframeworkcore.design/3.1.31",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3180,7 +3180,7 @@
         "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.3.1.30.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.3.1.31.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
@@ -3212,31 +3212,31 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/3.1.30": {
-      "sha512": "ylH8ha+qNDxPY5swU700ChdvrkC4CDnSif7GW8we9MNwKULsqnC0C/ufOHtIvIUHF+fFdM4GQM32HwxvBzVbLw==",
+    "Microsoft.EntityFrameworkCore.SqlServer/3.1.31": {
+      "sha512": "k2dFo2MCdjghKjbB7comcuvfSYcmTiMlkPDbWIQgyq0rjXChfJ4GkDzR7qKuT/p6ed9FkCEkuI1iWCJY16+FKw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver/3.1.30",
+      "path": "microsoft.entityframeworkcore.sqlserver/3.1.31",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
-        "microsoft.entityframeworkcore.sqlserver.3.1.30.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlserver.3.1.31.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/3.1.30": {
-      "sha512": "8rLsh7pjMhthwRDnwrwmwSMALhLSi+tOcCxSCdPH0CpoJLijb3GhZJQMpkjaUnjjUf64DDPW9COhRfzzfHutEw==",
+    "Microsoft.EntityFrameworkCore.Tools/3.1.31": {
+      "sha512": "4gPIvdTOqCqCLiv5xVENuX47BUiN4oHuOA8UmV4Sk0pVYWm5tGKHyNYiwpeITV2Eg8sf6tM8OnZEoP7Tpd86nw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/3.1.30",
+      "path": "microsoft.entityframeworkcore.tools/3.1.31",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.tools.3.1.30.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.3.1.31.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PS2.psd1",
         "tools/EntityFrameworkCore.PS2.psm1",
@@ -8648,25 +8648,25 @@
       "Microsoft.EntityFrameworkCore >= 3.1.31",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.31",
       "Microsoft.EntityFrameworkCore.Relational >= 3.1.31",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.30",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.1.30",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.31",
+      "Microsoft.EntityFrameworkCore.Tools >= 3.1.31",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Paola\\.nuget\\packages\\": {}
+    "C:\\Users\\Fran.000\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Paola\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
+      "projectUniqueName": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
       "projectName": "Historias Clinicas",
-      "projectPath": "C:\\Users\\Paola\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\Historias Clinicas.csproj",
-      "packagesPath": "C:\\Users\\Paola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Paola\\Source\\Repos\\2022-2C-E-Historias-Clinicas\\Historias Clinicas\\obj\\",
+      "projectPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\Historias Clinicas.csproj",
+      "packagesPath": "C:\\Users\\Fran.000\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fran.000\\source\\repos\\HistoriasClinicasTP\\Historias Clinicas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Paola\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fran.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8710,13 +8710,13 @@
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
-            "version": "[3.1.30, )"
+            "version": "[3.1.31, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[3.1.30, )"
+            "version": "[3.1.31, )"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
@@ -8741,7 +8741,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
       }
     }
   }

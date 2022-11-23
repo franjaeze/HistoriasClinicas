@@ -67,6 +67,6 @@
     </dl>
 </div>
 <div>
-    <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
-    <a class="boton" asp-action="Index">Volver</a>
+    @*<a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>*@ 
+    <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["paciente"]">Volver</a>
 </div>

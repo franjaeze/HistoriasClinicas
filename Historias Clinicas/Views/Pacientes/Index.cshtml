@@ -81,7 +81,7 @@
                     @if (User.IsInRole("Empleado"))
                     {
                         <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        @*<a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>*@
                     }
 
                     <a class="botonTablas" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@item.Id">Historia Clinica</a>
