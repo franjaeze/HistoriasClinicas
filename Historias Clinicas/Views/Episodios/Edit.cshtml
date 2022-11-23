@@ -13,7 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+         <div class="form-group">
                 <div class="form-group">
                     <label asp-for="Descripcion" class="control-label"></label>
                     <input asp-for="Descripcion" class="form-control" />
@@ -24,21 +24,29 @@
                     <input asp-for="Motivo" class="form-control" />
                     <span asp-validation-for="Motivo" class="text-danger"></span>
                 </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="Internacion" /> @Html.DisplayNameFor(model => model.Internacion)
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label asp-for="FechaYHoraAlta" class="control-label"></label>
-                    <input asp-for="FechaYHoraAlta" class="form-control" />
-                    <span asp-validation-for="FechaYHoraAlta" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="FechaYHoraCierre" class="control-label"></label>
-                    <input asp-for="FechaYHoraCierre" class="form-control" />
-                    <span asp-validation-for="FechaYHoraCierre" class="text-danger"></span>
-                </div>
+               
+                <form asp-action="FechaYHoraAlta">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" type="datetime-local" id="FechaYHoraAlta"
+                               name="FechaYHoraAlta" value=DateTime.Now
+                               min=DateTime.Now max="2023-06-14T00:00">
+                        <span class="text-danger"></span>
+                    </div>
+
+                </form>
+                <form asp-action="FechaYHoraCierre">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <input class="form-control" type="datetime-local" id="FechaYHoraCierre"
+                               name="FechaYHoraCierre" value=DateTime.Now
+                               min=DateTime.Now max="2023-06-14T00:00">
+                        <span class="text-danger"></span>
+                    </div>
+
+                </form>
                 <div class="form-group form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" asp-for="EstadoAbierto" /> @Html.DisplayNameFor(model => model.EstadoAbierto)
@@ -53,7 +61,8 @@
                     <input type="submit" value="Guardar" class="btn btn-primary" />
                 </div>
 </form>
-    </div>
+         </div>   
+         
 </div>
 
 <div>
