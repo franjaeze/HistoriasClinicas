@@ -57,13 +57,18 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
+        public IActionResult Create(int id, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
         {
             if (ModelState.IsValid)
             {
+                diagnostico.EpicrisisId = id;
+                ViewData["EpicrisisId"] = diagnostico.EpicrisisId; 
+
+                diagnostico.Id = 0;
+
                 _context.Add(diagnostico);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Pacientes");
             }
             return View(diagnostico);
         }
@@ -89,7 +94,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
+        public IActionResult Edit(int id, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
         {
             if (id != diagnostico.Id)
             {
@@ -152,5 +157,20 @@ namespace Historias_Clinicas.Controllers
         {
             return _context.Diagnosticos.Any(e => e.Id == id);
         }
+
+        public IActionResult DiagnosticoPorEpicrisis(int id)
+        {
+            var epicrisis = _context.Epicrisis.Find(id);
+
+            var diagnostico = _context.Diagnosticos
+                .Where(x => x.EpicrisisId == epicrisis.Id);
+
+            ViewData["episodioId"] = id;
+
+            return View(diagnostico);
+        }
+
+        }
     }
-}
+
+

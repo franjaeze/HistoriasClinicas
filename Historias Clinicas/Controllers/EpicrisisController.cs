@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Historias_Clinicas.Data;
 using Historias_Clinicas.Models;
+using System.Security.Claims;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -54,13 +55,21 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,MedicoId,PacienteId,Resumen,DiasInternacion,FechaYHora,FechaYHoraAlta,FechaYHoraIngreso")] Epicrisis epicrisis)
+        public IActionResult Create(int id, [Bind("Id,MedicoId,FechaYHora, Diagnostico")] Epicrisis epicrisis)
         {
             if (ModelState.IsValid)
             {
+
+                epicrisis.EpisodioId = id;
+                epicrisis.MedicoId = GetUsuarioId();
+                epicrisis.FechaYHora = DateTime.Today;
+
+                epicrisis.Id = 0;
                 _context.Add(epicrisis);
+
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("CargarDiagnostico",new { id = epicrisis.Id });
             }
             return View(epicrisis);
         }
@@ -148,6 +157,50 @@ namespace Historias_Clinicas.Controllers
         private bool EpicrisisExists(int id)
         {
             return _context.Epicrisis.Any(e => e.Id == id);
+        }
+
+
+        public IActionResult EpicrisisPorEpisodio(int id)
+        {
+            Episodio episodio = _context.Episodios.Find(id);
+
+            var epicrisis = _context.Epicrisis
+                .Where(x => x.EpisodioId == episodio.Id);
+
+            ViewData["episodioId"] = id;
+
+            return View(epicrisis);
+        }
+
+        private int GetUsuarioId()
+        {
+            var userIdValue = 0;
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var userIdClaim = claimsIdentity.Claims
+                                  .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    userIdValue = Int32.Parse(userIdClaim.Value);
+                }
+            }
+
+            return userIdValue;
+        }
+
+        public IActionResult CargarDiagnostico(int id)
+        {
+            var epicrisis = _context.Epicrisis.Find(id);
+
+            if (epicrisis.Diagnostico == null)
+            {
+
+                return RedirectToAction("Create", "Diagnosticos", new { id = epicrisis.Id });
+            }
+
+            return View(epicrisis);
         }
     }
 }

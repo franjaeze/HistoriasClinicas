@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Diagnostico>
+
+@{
+    ViewData["Title"] = "Index";
+
+    <header>
+        <h1>Epicrisis</h1>
+        <h3> Diagnostico</h3>
+        <p></p>
+        <p></p>
+        <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Número de Epicrisis : @ViewData["EpicrisisId"] </p>
+    </header>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EpicrisisId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recomendacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EpicrisisId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recomendacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidad)
+                </td>
+                <td>
+                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+</div>
