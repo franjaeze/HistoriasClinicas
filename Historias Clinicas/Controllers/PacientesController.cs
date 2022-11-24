@@ -378,9 +378,124 @@ namespace Historias_Clinicas.Controllers
 
 
             }
-
-
             return View(pacientes);
         }
+
+
+        public IActionResult CompletarRegistro(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var paciente = _context.Pacientes.Find(id);
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+            return View(paciente);
+        }
+
+        // POST: Pacientes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult CompletarRegistro(int id, [Bind("Id,ObraSocial,Nombre,SegundoNombre,Apellido,HistoriaClinicaId,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
+        {
+
+            if (id != paciente.Id)
+            {
+
+                return NotFound();
+            }
+
+            VerificarDni(paciente);
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var pacienteEnDb = _context.Pacientes
+                .Include(p => p.Direccion)
+                .FirstOrDefault(p => p.Id == id);
+
+                    if (pacienteEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    pacienteEnDb.Dni = paciente.Dni;
+                    pacienteEnDb.Telefono = paciente.Telefono;
+                    pacienteEnDb.ObraSocial = paciente.ObraSocial;
+                    pacienteEnDb.HistoriaClinicaId = paciente.HistoriaClinicaId;
+                    pacienteEnDb.Nombre = paciente.Nombre;
+                    pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
+                    pacienteEnDb.Apellido = paciente.Apellido;
+                    pacienteEnDb.Email = paciente.Email;
+
+                    var fechaDefault = new DateTime(0001, 1, 1, 00, 00, 00);
+
+                    if (pacienteEnDb.FechaDeAlta == fechaDefault)
+                    {
+                        pacienteEnDb.FechaDeAlta = DateTime.Today;
+                    }
+
+                    if (pacienteEnDb.MedicosPaciente == null)
+                    {
+                        this.MedicosPaciente = new List<MedicoPaciente>();
+                    }
+
+                    _context.SaveChanges();
+
+                    if (pacienteEnDb.HistoriaClinicaId == null)
+                    {
+                        HistoriaClinica historiaClinica = new HistoriaClinica()
+                        {
+                            PacienteId = paciente.Id,
+                            Episodios = new List<Episodio>()
+                        };
+
+                        _context.Add(historiaClinica);
+                        _context.SaveChanges();
+
+                        pacienteEnDb.HistoriaClinicaId = historiaClinica.Id;
+
+
+                        _context.SaveChanges();
+
+                        if (pacienteEnDb.Direccion == null)
+                        {
+                            return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
+                        }
+                        else
+                        {
+                            ViewData["DireccionId"] = pacienteEnDb.Direccion.Id;
+                            return RedirectToAction("Edit", "Direcciones", new { id = paciente.Id });
+                        }
+                    }
+                }
+
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PacienteExists(paciente.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                //return RedirectToAction(nameof(MenuPaciente));
+            }
+            return View(paciente);
+        }
+
     }
+
+
 }

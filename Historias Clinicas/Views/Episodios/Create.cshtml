@@ -17,26 +17,22 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
         </form>
-            <div class="form-group">
-                <label asp-for="Motivo" class="control-label"></label>
-                <input asp-for="Motivo" class="form-control" />
-                <span asp-validation-for="Motivo" class="text-danger"></span>
-            </div>
-         
-            
+        <div class="form-group">
+            <label asp-for="Motivo" class="control-label"></label>
+            <input asp-for="Motivo" class="form-control" />
+            <span asp-validation-for="Motivo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Especialidad" class="control-label"></label>
+            <select asp-for="Especialidad" class="form-control" asp-items="@Html.GetEnumSelectList<Especialidad>()"></select>
+            <span asp-validation-for="Especialidad" class="text-danger"></span>
+        </div>
+        <div class="divBoton">
+            <input type="submit" value="Guardar" class="boton" />
+            <a class="boton" asp-action="Index">Cancelar</a>
+        </div>
     </div>
-   
-            <div class="form-group">
-                <label asp-for="Especialidad" class="control-label"></label>
-                <select asp-for="Especialidad" class="form-control" asp-items="@Html.GetEnumSelectList<Especialidad>()"></select>
-                <span asp-validation-for="Especialidad" class="text-danger"></span>
-            </div>
-            <div class="divBoton">
-                <input type="submit" value="Guardar" class="boton" />
-                <a class="boton" asp-action="Index">Cancelar</a>
-            </div>
-        
-    </div>
+</div>
 
 
 

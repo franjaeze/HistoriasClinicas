@@ -264,5 +264,18 @@ namespace Historias_Clinicas.Controllers
 
             return View(paciente);
         }
+        public IActionResult Buscar(string apellido)
+        {
+            var empleados = from m in _context.Empleados
+                          select m;
+
+            if (!String.IsNullOrEmpty(apellido))
+            {
+                empleados = empleados.Where(m => m.Apellido.Contains(apellido));
+                ViewBag.Apellido = apellido;
+            }
+
+            return View(empleados);
+        }
     }
 }
