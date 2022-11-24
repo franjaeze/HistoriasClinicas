@@ -52,19 +52,14 @@
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    @if (User.IsInRole("Empleado"))
-                    {
-                        
-                            <input type="submit" value="Guardar" class="boton" />
-                            <a class="boton" asp-action="Index">Cancelar</a>
-                        
-                    }
-                    @if (User.IsInRole("Paciente"))
-                    {
+                @if (User.IsInRole("Empleado"))
+                {
 
-                        <input type="submit" value="Guardar" class="boton" />
-                        <a class="boton" asp-action="Edit" asp-controller="Direcciones" asp-route-id="@ViewData["DireccionId"]">Editar Direccion</a>
-                    }
+          
+                    <a class="boton" asp-action="Index">Cancelar</a>
+
+                }
+                <input type="submit" value="Guardar" class="boton" />
             </div>
         </form>
     </div>
