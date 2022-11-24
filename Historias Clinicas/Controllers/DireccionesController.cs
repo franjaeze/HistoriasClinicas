@@ -104,8 +104,22 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(direccion);
+                    var direccionEnDb = _context.Direcciones.FirstOrDefault(d => d.Id == id);
+
+                    if (direccionEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    direccionEnDb.Calle = direccion.Calle;
+                    direccionEnDb.Altura = direccion.Altura;
+                    direccionEnDb.Piso = direccion.Piso;
+                    direccionEnDb.Departamento = direccion.Departamento;
+                    direccionEnDb.Localidad = direccion.Localidad;
+
                     await _context.SaveChangesAsync();
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {

@@ -248,8 +248,7 @@ namespace Historias_Clinicas.Controllers
                         }
                         else
                         {
-                            ViewData["DireccionId"] = pacienteEnDb.Direccion.Id;
-                            return RedirectToAction("Edit", "Direcciones", new { id = paciente.Id });
+                            return RedirectToAction("Edit", "Direcciones", new { id = pacienteEnDb.Direccion.Id });
                         }
                     }
                 }

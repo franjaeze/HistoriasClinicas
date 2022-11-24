@@ -12,14 +12,13 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             @if (User.IsInRole("Empleado"))
             {
                 <div class="form-group">
-                    <label asp-for="ObraSocial" class="control-label"></label>
-                    <select asp-for="ObraSocial" class="form-control" asp-items="@Html.GetEnumSelectList<Cobertura>()"></select>
-                    <span asp-validation-for="ObraSocial" class="text-danger"></span>
-                </div>
+                    <label asp-for="Dni" class="control-label"></label>
+                    <input asp-for="Dni" class="form-control" />
+                    <span asp-validation-for="Dni" class="text-danger"></span>
+                </div>    
                 <div class="form-group">
                     <label asp-for="Nombre" class="control-label"></label>
                     <input asp-for="Nombre" class="form-control" />
@@ -35,10 +34,38 @@
                     <input asp-for="Apellido" class="form-control" />
                     <span asp-validation-for="Apellido" class="text-danger"></span>
                 </div>
+                 <div class="form-group">
+                    <label asp-for="ObraSocial" class="control-label"></label>
+                    <select asp-for="ObraSocial" class="form-control" asp-items="@Html.GetEnumSelectList<Cobertura>()"></select>
+                    <span asp-validation-for="ObraSocial" class="text-danger"></span>
+                </div>
+            }
+            @if (User.IsInRole("Paciente"))
+            {
                 <div class="form-group">
                     <label asp-for="Dni" class="control-label"></label>
-                    <input asp-for="Dni" class="form-control" />
+                    <input asp-for="Dni" class="form-control" readonly/>
                     <span asp-validation-for="Dni" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" readonly />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SegundoNombre" class="control-label"></label>
+                    <input asp-for="SegundoNombre" class="form-control" readonly />
+                    <span asp-validation-for="SegundoNombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Apellido" class="control-label"></label>
+                    <input asp-for="Apellido" class="form-control" readonly />
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ObraSocial" class="control-label"></label>
+                    <select asp-for="ObraSocial" class="form-control" asp-items="@Html.GetEnumSelectList<Cobertura>()" readonly></select>
+                    <span asp-validation-for="ObraSocial" class="text-danger"></span>
                 </div>
             }
             <div class="form-group">
@@ -51,15 +78,17 @@
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                @if (User.IsInRole("Empleado"))
+            <div class="divBoton">
+                @if (User.IsInRole("Paciente"))
                 {
-
-          
-                    <a class="boton" asp-action="Index">Cancelar</a>
-
+                    <input type="submit" value="Guardar" class="boton" />
                 }
-                <input type="submit" value="Guardar" class="boton" />
+           
+                @if (User.IsInRole("Empleado"))
+                {        
+                    <a class="boton" asp-action="Index">Cancelar</a>
+                }
+                
             </div>
         </form>
     </div>
