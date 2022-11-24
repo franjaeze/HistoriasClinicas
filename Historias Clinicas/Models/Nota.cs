@@ -22,7 +22,7 @@ namespace Historias_Clinicas.Models
         public string Mensaje { get; set; }
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = Alias.FechaYHoraInicio)]
         public DateTime FechaYHora { get; set; }
 

@@ -219,7 +219,7 @@ namespace Historias_Clinicas.Controllers
                 {
                     Descripcion = "El paciente se encontraba andando en skate",
                     Motivo = "Traumatismo en pierna izquierda",
-                    Internacion = true,
+                   
                     FechaYHoraInicio = DateTime.Today,
                     FechaYHoraAlta = DateTime.Today,
                     FechaYHoraCierre = DateTime.Today,
@@ -305,7 +305,6 @@ namespace Historias_Clinicas.Controllers
                 {
                     Descripcion = "El paciente se encontraba accidentado con fuego",
                     Motivo = "Quemaduras",
-                    Internacion = true,
                     FechaYHoraInicio = DateTime.Today,
                     FechaYHoraAlta = DateTime.Today,
                     FechaYHoraCierre = DateTime.Today,
