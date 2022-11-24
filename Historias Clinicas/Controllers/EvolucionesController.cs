@@ -159,7 +159,7 @@ namespace Historias_Clinicas.Controllers
             return View(evolucion);
         }
 
-        public IActionResult CerrarEvolucion(int? id, int hisotriaId)
+        public IActionResult CerrarEvolucion(int? id, int historiaId)
         {
             if (id == null)
             {
@@ -177,9 +177,9 @@ namespace Historias_Clinicas.Controllers
             evolucionb.FechaYHoraCierre = DateTime.Now;
             _context.SaveChanges();
 
-            TempData["historiaId"] = hisotriaId;
+            TempData["historiaId"] = historiaId;
 
-            return RedirectToAction("HistoriaClincaDePaciente", "HistoriaClincas", new { ruta = @TempData["historiaId"] });
+            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriasClinicas", new { ruta = @TempData["historiaId"] });
         
             
         }
