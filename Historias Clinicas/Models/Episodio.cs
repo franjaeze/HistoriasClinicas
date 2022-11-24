@@ -38,17 +38,17 @@ namespace Historias_Clinicas.Models
     
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = Alias.FechaYHoraInicio)]
         public DateTime FechaYHoraInicio { get; set; } 
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = Alias.FechaDeAlta)]
         public DateTime FechaYHoraAlta { get; set; } 
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = Alias.FechaYHoraCierre)]
         public DateTime FechaYHoraCierre { get; set; } 
 

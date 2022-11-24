@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Historias_Clinicas.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    [Migration("20221121194258_Inicialv3")]
-    partial class Inicialv3
+    [Migration("20221123235343_Inicialv4")]
+    partial class Inicialv4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -169,9 +169,6 @@ namespace Historias_Clinicas.Migrations
 
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("Internacion")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Motivo")
                         .IsRequired()
@@ -601,7 +598,7 @@ namespace Historias_Clinicas.Migrations
             modelBuilder.Entity("Historias_Clinicas.Models.Direccion", b =>
                 {
                     b.HasOne("Historias_Clinicas.Models.Persona", null)
-                        .WithOne("direccion")
+                        .WithOne("Direccion")
                         .HasForeignKey("Historias_Clinicas.Models.Direccion", "PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
