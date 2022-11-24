@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Historias_Clinicas.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    [Migration("20221123235343_Inicialv4")]
-    partial class Inicialv4
+    [Migration("20221124234131_Inicialv5")]
+    partial class Inicialv5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,9 +61,6 @@ namespace Historias_Clinicas.Migrations
                         .HasMaxLength(10000);
 
                     b.Property<int>("EpicrisisId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Especialidad")
                         .HasColumnType("int");
 
                     b.Property<string>("Recomendacion")

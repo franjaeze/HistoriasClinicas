@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Historias_Clinicas.Migrations
 {
-    public partial class Inicialv4 : Migration
+    public partial class Inicialv5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -133,8 +133,7 @@ namespace Historias_Clinicas.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EpicrisisId = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(maxLength: 10000, nullable: false),
-                    Recomendacion = table.Column<string>(maxLength: 10000, nullable: true),
-                    Especialidad = table.Column<int>(nullable: false)
+                    Recomendacion = table.Column<string>(maxLength: 10000, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -295,7 +294,7 @@ namespace Historias_Clinicas.Migrations
                         column: x => x.MedicoId,
                         principalTable: "Personas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MedicoPaciente_Personas_PacienteId",
                         column: x => x.PacienteId,
