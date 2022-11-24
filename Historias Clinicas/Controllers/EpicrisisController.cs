@@ -166,9 +166,8 @@ namespace Historias_Clinicas.Controllers
 
             var epicrisis = _context.Epicrisis
                 .Where(x => x.EpisodioId == episodio.Id);
-
-            ViewData["episodioId"] = id;
-
+            
+           
             return View(epicrisis);
         }
 
