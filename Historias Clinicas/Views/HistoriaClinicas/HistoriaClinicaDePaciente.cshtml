@@ -97,7 +97,7 @@
                     @if (User.IsInRole("Medico"))
                     {
                         @if (item.EstadoAbierto)
-                        {
+                        {     
                             <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>
                             }
                         }

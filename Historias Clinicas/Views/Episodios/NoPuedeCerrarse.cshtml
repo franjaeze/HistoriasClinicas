@@ -1,0 +1,13 @@
+﻿@model Historias_Clinicas.Models.Episodio
+
+@{
+   
+}
+
+
+<h1> Accion Denegada</h1>
+
+<h3>El Episodio tiene alguna Evolución en estado Abierta o no tenga evoluciones.</h3>
+<h3>Complete la Evolucion y vuelva a intentarlo</h3>
+
+<a class="boton" asp-action="HistoriasClincasDePaciente" asp-controller="HistoriaClinca" asp-route="@TempData["historiaId"]"> Volver</a>

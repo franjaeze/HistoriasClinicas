@@ -222,14 +222,19 @@ namespace Historias_Clinicas.Controllers
 
            if ( EvolucionesAbiertas(id) )
             {
-                return RedirectToAction("MenuMedico", "Medicos");
+                return RedirectToAction("NoPuedeCerrarse");
             }
 
             @TempData["historiaId"] = paciente;
             @TempData["espisodioId"] = id;
             return View();
         }
+        public IActionResult NoPuedeCerrarse(int i)
+        {
+            @TempData["espisodioId"] = i;
 
+            return View();
+        }   
 
         public bool EvolucionesAbiertas(int id)
         {
