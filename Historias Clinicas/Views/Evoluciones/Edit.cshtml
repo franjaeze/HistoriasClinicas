@@ -18,12 +18,18 @@
                 <input asp-for="MedicoId" class="form-control" readonly />
                 <span asp-validation-for="MedicoId" class="text-danger"></span>
             </div>
-           
-            <div class="form-group">
-                <label asp-for="FechaYHoraCierre" class="control-label"></label>
-                <input asp-for="FechaYHoraCierre" class="form-control" />
-                <span asp-validation-for="FechaYHoraCierre" class="text-danger"></span>
-            </div>
+
+            <form asp-action="FechaYHoraCierre">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <input class="form-control" type="datetime-local" id="FechaYHoraCierre"
+                           name="FechaYHoraCierre" value=DateTime.Now
+                           min=DateTime.Now max="2023-06-14T00:00">
+                    <span class="text-danger"></span>
+                </div>
+
+            </form>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="EstadoAbierto" /> @Html.DisplayNameFor(model => model.EstadoAbierto)
