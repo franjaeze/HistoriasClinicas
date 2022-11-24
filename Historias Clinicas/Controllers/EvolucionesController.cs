@@ -63,7 +63,7 @@ namespace Historias_Clinicas.Controllers
             {
                 evolucion.EpisodioId = id;
                 evolucion.MedicoId = getUsuarioId();
-                evolucion.FechaYHoraInicio = DateTime.Today;
+                evolucion.FechaYHoraInicio = DateTime.Now;
                 evolucion.EstadoAbierto = true;
 
                 evolucion.Id= 0;

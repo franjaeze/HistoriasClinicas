@@ -62,7 +62,7 @@ namespace Historias_Clinicas.Controllers
             {
                 nota.EvolucionId = id;
                 nota.EmpleadoId = getUsuarioId();
-                nota.FechaYHora = DateTime.Today;
+                nota.FechaYHora = DateTime.Now;
                 nota.Id = 0;
 
                 _context.Add(nota);
