@@ -9,10 +9,11 @@
             <h1> Esta seguro que desea Cerrar este Evolucion?</h1>
 
             <h1> Esta accion es irreverisble</h1>
-           
 
-            <a class="boton" asp-action="Delete" asp-route-id="">Volver</a>
+
+
             <a class="boton" asp-action="CerrarEvolucion" asp-route-id="@TempData["EpisodioId"]" asp-route-paciente="@TempData["paciente"]">Cerrar Evolucion</a>
+            <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Delete" asp-route-id="">Volver</a>
         </div>
     </div>
     <div class="col-lg-2"></div>

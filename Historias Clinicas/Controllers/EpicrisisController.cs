@@ -24,6 +24,7 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Index()
         {
             return View(_context.Epicrisis.ToList());
+
         }
 
         // GET: Epicrisis/Details/5
@@ -167,8 +168,13 @@ namespace Historias_Clinicas.Controllers
 
             var epicrisis = _context.Epicrisis
                 .Where(x => x.EpisodioId == episodio.Id);
+
+            int hca = episodio.HistoriaClinicaId;
+            var historia = _context.HistoriasClinicas.Find(hca);
             
-           
+          
+            ViewData["episodioId"] = episodio.Id;
+            ViewData["pacienteId"] = historia.PacienteId;
             return View(epicrisis);
         }
 
@@ -204,3 +210,5 @@ namespace Historias_Clinicas.Controllers
         }
     }
 }
+
+

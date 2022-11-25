@@ -7,22 +7,22 @@
 
 <header>
     <h1>Epicrisis</h1>
-    
+
     <p></p>
     <p></p>
-    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Episodio : @ViewData["episodioId"] </p>
+    <h3>Listado de Epicrisis cargadas dentro del Episodio  @ViewData["episodioId"] </h3>
 </header>
 
 
 @if (User.IsInRole("Medico"))
-                {  
-                <p align="right">
-                    <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">
-                         Agregar Epicrisis
-                       </a>
-                 </p>
-                }
-                
+{
+    <p align="right">
+        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">
+            Agregar Epicrisis
+        </a>
+    </p>
+}
+
 
 <table class="table">
     <thead>
@@ -62,3 +62,7 @@
         }
     </tbody>
 </table>
+
+<div>
+    <a class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@ViewData["pacienteId"]">Volver</a>
+</div>

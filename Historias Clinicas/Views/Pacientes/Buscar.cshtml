@@ -66,12 +66,12 @@
 @if (User.IsInRole("Empleado"))
 {
     <div>
-        <a type="boton" class="btn btn-secondary align-content-end" asp-action="Index" asp-controller="Pacientes">Volver</a>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px"  asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }
 @if (User.IsInRole("Medico"))
 {
     <section>
-        <a type="boton" class="btn btn-secondary align-content-end" asp-action="ListarPacientes" asp-controller="Medicos">Volver</a>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px"  asp-action="ListarPacientes" asp-controller="Medicos">Volver</a>
     </section>
 }

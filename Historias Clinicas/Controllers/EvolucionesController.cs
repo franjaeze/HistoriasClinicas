@@ -233,7 +233,9 @@ namespace Historias_Clinicas.Controllers
 
             var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
 
-             var pacienteId = _context.HistoriasClinicas.Where(x => x.Id == episodio.HistoriaClinicaId);
+            var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+
+            int pacienteId = hca.PacienteId; 
 
             TempData["EpisodioId"] = id;
             TempData["historiaId"] = paciente;

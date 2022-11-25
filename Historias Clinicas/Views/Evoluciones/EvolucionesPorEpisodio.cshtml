@@ -16,7 +16,7 @@
 
 {
     <p align="right">
-        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@TempData["EpisodioId"]">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@TempData["EpisodioId"]">
             Agregar Evolucion
         </a>
 
@@ -86,7 +86,7 @@
 
                     }
 
-                    <a class="botonTablas" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Notas</a>
+                    <a class="botonTablas" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-Id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Notas</a>
                 </td>
             </tr>
         }
@@ -98,6 +98,6 @@
 
 <div>
     
-    <a  class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["PacienteId"]">Volver</a>
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px"  asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-Id="@TempData["PacienteId"]">Volver</a>
 </div>
  

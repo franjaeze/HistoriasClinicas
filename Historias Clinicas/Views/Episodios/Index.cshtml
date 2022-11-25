@@ -25,9 +25,6 @@
                 @Html.DisplayNameFor(model => model.Especialidad)
             </th>
             <th class="text-left">
-                Episodio de Internacion
-            </th>
-            <th class="text-left">
                 @Html.DisplayNameFor(model => model.FechaYHoraInicio)
             </th>
             <th class="text-left">
@@ -49,8 +46,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Especialidad)
                 </td>
-              
-                <td>
+                              <td>
                     @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
                 </td>
                 <td>
@@ -86,19 +82,19 @@
 @if (User.IsInRole("Empleado"))
 {
     <div>
-        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }
 @if (User.IsInRole("Medico"))
 {
     <div>
-        <a type="boton" asp-action="Index" asp-controller="Pacientes">Volver</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }
 
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a type="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas">Volver</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas">Volver</a>
     </div>
 }

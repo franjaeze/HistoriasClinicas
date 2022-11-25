@@ -55,11 +55,11 @@
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a class="boton" align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
     </div>
 } else
 {
     <div>
-        <a class="boton" align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Volver</a>
     </div>
 }

@@ -66,11 +66,11 @@
                 <input type="submit" value="Guardar" class="boton" />
                 @if (User.IsInRole("Empleado"))
                 {
-                    <a class="boton" asp-action="Index">Cancelar</a>
+                    <a type="button" class="btn btn-secondary" style="margin-left: 20px"  asp-action="Index">Cancelar</a>
                 }
                 @if (User.IsInRole("Medico"))
                 {
-                    <a class="boton" asp-action="MenuMedico">Cancelar</a>
+                    <a type="button" class="btn btn-secondary" style="margin-left: 20px"  asp-action="MenuMedico">Cancelar</a>
                 }
             </div>
 

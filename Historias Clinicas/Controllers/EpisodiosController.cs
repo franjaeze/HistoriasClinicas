@@ -80,7 +80,7 @@ namespace Historias_Clinicas.Controllers
                 episodio.Id = 0;
                 episodio.FechaYHoraInicio = DateTime.Now;
                 episodio.EstadoAbierto = true;
-                
+
                 _context.Add(episodio);
                 _context.SaveChanges();
 
@@ -217,10 +217,11 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Create", "Evoluciones", new { id = episodio.Id });
         }
 
-        public IActionResult Cerrar(int id, int paciente) {
+        public IActionResult Cerrar(int id, int paciente)
+        {
 
             ViewBag.EpisodioId = id;
-           
+
             var episodio = _context.Episodios.Find(id);
 
             if (episodio == null)
@@ -228,22 +229,26 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-           if ( EvolucionesAbiertas(id) )
+            if (EvolucionesAbiertas(id))
             {
                 return RedirectToAction("NoPuedeCerrarse");
             }
 
+            var pac = _context.Pacientes.Where(x => x.HistoriaClinicaId == paciente);
+            
+
             TempData["historiaId"] = paciente;
             TempData["espisodioId"] = id;
+            
             TempData.Keep();
-            return RedirectToAction("Create", "Epicrisis", new { numero = id } );
+            return RedirectToAction("Create", "Epicrisis", new { numero = id });
         }
         public IActionResult NoPuedeCerrarse(int i)
         {
             TempData["espisodioId"] = i;
 
             return View();
-        }   
+        }
 
         public bool EvolucionesAbiertas(int id)
         {
@@ -255,13 +260,11 @@ namespace Historias_Clinicas.Controllers
             {
                 EvolucionesAbiertasa = true;
             }
-           
-            
 
 
             return EvolucionesAbiertasa;
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult CierreAdministrativo(int id, int paciente, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
@@ -292,7 +295,7 @@ namespace Historias_Clinicas.Controllers
             {
                 existe = true;
             }
-            
+
             return existe;
         }
         public IActionResult CierreAdministrativo(int id, int paciente)
@@ -302,9 +305,7 @@ namespace Historias_Clinicas.Controllers
 
             }
 
-
-
-             TempData["historiaId"] = paciente;
+            TempData["historiaId"] = paciente;
             TempData["EpisodioId"] = id;
 
             return View();
@@ -342,7 +343,7 @@ namespace Historias_Clinicas.Controllers
 
 
             //@TempData["historiaId"] = ;
-                  var idHistoria = episodioDb.HistoriaClinicaId;
+            var idHistoria = episodioDb.HistoriaClinicaId;
 
             if (episodioDb.Descripcion == null)
             {
@@ -350,15 +351,34 @@ namespace Historias_Clinicas.Controllers
             }
             return RedirectToAction("HistoriaClincaDePaciente", "HistoriaClinicas", new { id = idHistoria });
         }
-      
-        public IActionResult DarAlta(int id, int paciente) 
+
+        public IActionResult DarAlta(int id, int paciente)
         {
             TempData["historiaId"] = paciente;
-            TempData["espisodioId"] = id;   
+            TempData["episodioId"] = id;
             TempData.Keep();
             return View();
         }
-        
+
+        public IActionResult EpisodiosAbiertos(int id)
+        {
+            var episodios = from e in _context.Episodios
+                            select e;
+
+            if (id !=0)
+            {
+                episodios = episodios.Where(m=> m.EstadoAbierto == true && m.HistoriaClinicaId == id);
+            }
+
+            var hca = _context.HistoriasClinicas.Find(id);
+            int pacienteId = hca.PacienteId;
+            TempData["PacienteId"] = pacienteId;
+
+
+            return View(episodios);
+        }
+
+
 
     }
 

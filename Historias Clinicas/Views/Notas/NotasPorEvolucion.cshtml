@@ -89,13 +89,13 @@
 @if (User.IsInRole("Paciente"))
 {
     <div>
-        <a class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
     </div>
 }
 else
 {
     <div>
-        <a class="boton" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Cancelar</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
     </div>
 }
 
