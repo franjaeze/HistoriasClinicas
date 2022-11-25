@@ -322,7 +322,6 @@ namespace Historias_Clinicas.Controllers
                         .Where(x => x.MedicoId == medico.Id);
             var pacientes = _context.Pacientes.Where(x => medicosPacientes.Any(y => y.PacienteId == x.Id));
 
-
             return View(pacientes);
         }
     }

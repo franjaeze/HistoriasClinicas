@@ -363,6 +363,7 @@ namespace Historias_Clinicas.Controllers
                         .Where(x => x.PacienteId == paciente.Id);
             var medicos = _context.Medicos.Where(x => medicosPacientes.Any(y => y.MedicoId == x.Id));
 
+            TempData["PacienteId"] = paciente.Id;
             return View(medicos);
         }
 

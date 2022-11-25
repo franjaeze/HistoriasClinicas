@@ -132,8 +132,16 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
-            }
+                if(User.IsInRole("Empleado"))
+                {
+                    return RedirectToAction("Index", "Pacientes");
+                }
+                if(User.IsInRole("Paciente"))
+                {
+                    return RedirectToAction("MenuPaciente", "Pacientes");
+                }
+
+}
             return View(direccion);
         }
 
