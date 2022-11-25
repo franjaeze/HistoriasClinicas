@@ -169,8 +169,34 @@ namespace Historias_Clinicas.Controllers
 
             return View(diagnostico);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CierreAdministrativo(int id, int paciente, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
+        {
+            var episodioDb = _context.Episodios.Find(id);
 
+            if (diagnostico == null)
+            {
+                return NotFound();
+            }
+            diagnostico.EpicrisisId = id;
+            _context.Add(diagnostico);
+
+            _context.SaveChanges();
+
+            _context.Update(episodioDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("CargarDiagnostico","Episodio", new { id = paciente });
         }
+        public IActionResult CierreAdministrativo(int id, int paciente)
+        {
+            @TempData["historiaId"] = paciente;
+            @TempData["EpisodioId"] = id;
+
+            return View();
+        }
+    }
     }
 
 

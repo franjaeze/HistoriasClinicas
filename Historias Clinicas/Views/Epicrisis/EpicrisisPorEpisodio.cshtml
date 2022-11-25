@@ -6,8 +6,8 @@
 
 
 <header>
-    <h1>Episodio</h1>
-    <h3> Listado de Epicrisis</h3>
+    <h1>Epicrisis</h1>
+    
     <p></p>
     <p></p>
     <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Episodio : @ViewData["episodioId"] </p>
@@ -15,15 +15,14 @@
 
 
 @if (User.IsInRole("Medico"))
-
-{
-    <p align="right">
-        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">
-            Agregar Epicrisis
-        </a>
-
-    </p>
-}
+                {  
+                <p align="right">
+                    <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">
+                         Agregar Epicrisis
+                       </a>
+                 </p>
+                }
+                
 
 <table class="table">
     <thead>

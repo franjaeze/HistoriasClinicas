@@ -62,7 +62,7 @@ namespace Historias_Clinicas.Controllers
             {
                 nota.EvolucionId = id;
                 nota.EmpleadoId = getUsuarioId();
-                nota.FechaYHora = DateTime.Today;
+                nota.FechaYHora = DateTime.Now;
                 nota.Id = 0;
 
                 _context.Add(nota);
@@ -186,13 +186,14 @@ namespace Historias_Clinicas.Controllers
 
             var notas = _context.Notas
                 .Where(x => x.EvolucionId == evolucion.Id);
-
+            ViewData["Estado"] = evolucion.EstadoAbierto;
             ViewData["evolucionId"] = id;
             TempData["historiaId"] = paciente;
 
             return View(notas);
         }
 
+        
 
     }
 }
