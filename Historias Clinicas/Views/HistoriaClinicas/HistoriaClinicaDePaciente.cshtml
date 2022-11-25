@@ -35,6 +35,9 @@
     <thead>
         <tr>
             <th class="text-left">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="text-left">
                 Abierto
             </th>
             <th class="text-left">
@@ -54,6 +57,9 @@
         {
         <tr>
             <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.EstadoAbierto)
             </td>
             <td>
@@ -64,7 +70,7 @@
             </td>
             <td class="text-left">
                 @*@Html.DisplayNameFor(model => model.FechaYHoraCierre)*@
-           
+
                 @if (item.EstadoAbierto == true)
                 {
                     <p>Aun en curso</p>
