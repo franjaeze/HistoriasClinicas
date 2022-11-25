@@ -76,7 +76,7 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    <a class="botonTablas" asp-action="MenuPaciente"> Sacar turno</a>
+                    <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
 
                 </td>
             </tr>
