@@ -62,7 +62,7 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 evolucion.EpisodioId = id;
-                @TempData["EpisodioId"] = id;
+                TempData["EpisodioId"] = id;
                 evolucion.MedicoId = GetUsuarioId();
                 evolucion.FechaYHoraInicio = DateTime.Now;
                 evolucion.EstadoAbierto = true;
@@ -185,8 +185,13 @@ namespace Historias_Clinicas.Controllers
             _context.SaveChanges();
 
             TempData["historiaId"] = historiaId;
+            
+            var episodio = _context.Episodios.Find(evolucionb.EpisodioId);
+            var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+            TempData["EpisodioId"] = episodio.Id;
+            TempData["PacienteId"] = hca.PacienteId;
 
-            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = @TempData["EpisodioId"] });
+            return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] });
         
             
         }

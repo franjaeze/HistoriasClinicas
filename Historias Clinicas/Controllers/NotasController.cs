@@ -67,9 +67,10 @@ namespace Historias_Clinicas.Controllers
 
                 _context.Add(nota);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                ViewData["evolucionId"] = nota.EvolucionId;
+                return RedirectToAction("NotasPorEvolucion", "Notas" , new { id = @ViewData["evolucionId"]});
             }
-            return RedirectToAction("Index", "Pacientes");
+            return RedirectToAction("NotasPorEvolucion", "Notas", new { id = @ViewData["evolucionId"] });
         }
 
         // GET: Notas/Edit/5
@@ -180,15 +181,20 @@ namespace Historias_Clinicas.Controllers
         }
 
 
-        public IActionResult NotasPorEvolucion(int id, int paciente)
+        public IActionResult NotasPorEvolucion(int id, int? paciente)
         {
             var evolucion = _context.Evoluciones.Find(id);
 
             var notas = _context.Notas
                 .Where(x => x.EvolucionId == evolucion.Id);
+            var hca = _context.HistoriasClinicas.Find(paciente);
+
+
             ViewData["Estado"] = evolucion.EstadoAbierto;
             ViewData["evolucionId"] = id;
             TempData["historiaId"] = paciente;
+            TempData["PacienteId"] = hca.PacienteId;
+
 
             return View(notas);
         }
