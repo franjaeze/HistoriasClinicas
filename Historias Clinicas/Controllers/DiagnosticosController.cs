@@ -182,13 +182,13 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
-            diagnostico.EpicrisisId = id;
-            _context.Add(diagnostico);
+            //diagnostico.EpicrisisId = id;
+            //_context.Add(diagnostico);
 
-            _context.SaveChanges();
+            //_context.SaveChanges();
 
-            _context.Update(episodioDb);
-            _context.SaveChanges();
+            //_context.Update(episodioDb);
+            //_context.SaveChanges();
 
             return RedirectToAction("CargarDiagnostico","Episodio", new { id = paciente });
         }
