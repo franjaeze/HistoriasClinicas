@@ -52,9 +52,7 @@
             <div class="form-group">
                 @if (User.IsInRole("Paciente"))
                 {
-
                     <input type="submit" value="Guardar" class="boton" />
-                    <a class="boton" asp-action="Create" asp-controller="Direcciones" asp-route-id="@ViewData["DireccionId"]">Asignar Direccion</a>
                 }
             </div>
         </form>

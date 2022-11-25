@@ -174,9 +174,34 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(empleado);
+
+                    var empleadoEnDb = _context.Empleados
+                       .Include(e => e.Direccion)
+                       .FirstOrDefault(e => e.Id == id);
+
+                    if (empleadoEnDb == null)
+                    {
+                        return NotFound();
+                    }
+
+                    empleadoEnDb.Nombre = empleado.Nombre;
+                    empleadoEnDb.SegundoNombre = empleado.SegundoNombre;
+                    empleadoEnDb.Apellido = empleado.Apellido;
+                    empleadoEnDb.Dni = empleado.Dni;
+                    empleadoEnDb.Telefono = empleado.Telefono;
+                    empleadoEnDb.Legajo = empleado.Legajo;
+
+                    _context.Update(empleadoEnDb);
                     _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+
+                    if (empleadoEnDb.Direccion == null)
+                    {
+                        return RedirectToAction("Create", "Direcciones", new { id = empleado.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Edit", "Direcciones", new { id = empleadoEnDb.Direccion.Id });
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

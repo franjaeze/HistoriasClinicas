@@ -176,25 +176,36 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    var personaEnDb = _context.Medicos.Find(medico.Id);
-                    if (personaEnDb == null)
+                    var medicoEnDb = _context.Medicos
+                      .Include(m => m.Direccion)
+                      .FirstOrDefault(m => m.Id == id);
+
+                    if (medicoEnDb == null)
                     {
                         return NotFound();
                     }
 
-                    personaEnDb.Nombre = medico.Nombre;
-                    personaEnDb.SegundoNombre = medico.SegundoNombre;
-                    personaEnDb.Apellido = medico.Apellido;
-                    personaEnDb.Dni = medico.Dni;
-                    personaEnDb.Telefono = medico.Telefono;
-                    personaEnDb.MatriculaNacional = medico.MatriculaNacional;
-                    personaEnDb.Especialidad = medico.Especialidad;
+                    medicoEnDb.Nombre = medico.Nombre;
+                    medicoEnDb.SegundoNombre = medico.SegundoNombre;
+                    medicoEnDb.Apellido = medico.Apellido;
+                    medicoEnDb.Dni = medico.Dni;
+                    medicoEnDb.Telefono = medico.Telefono;
+                    medicoEnDb.MatriculaNacional = medico.MatriculaNacional;
+                    medicoEnDb.Especialidad = medico.Especialidad;
 
                   
 
-                    _context.Update(personaEnDb);
+                    _context.Update(medicoEnDb);
                     _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+
+                    if (medicoEnDb.Direccion == null)
+                    {
+                        return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Edit", "Direcciones", new { id = medicoEnDb.Direccion.Id });
+                    }
                 }
 
                 catch (DbUpdateConcurrencyException)

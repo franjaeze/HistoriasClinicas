@@ -98,7 +98,7 @@ namespace Historias_Clinicas.Controllers
 
                 if (resultadoNewPersona.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(paciente, Configs.EmpleadoRolName);
+                    await _userManager.AddToRoleAsync(paciente, Configs.PacienteRolName);
                     if (paciente.HistoriaClinicaId == null)
                     {
                         HistoriaClinica historiaClinica = new HistoriaClinica()
