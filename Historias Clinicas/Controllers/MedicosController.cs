@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Historias_Clinicas.Helpers;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -219,6 +220,10 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
+                catch (DbUpdateException dbex)
+                {
+                    ProcesarDuplicado(dbex);
+                }
             }
             return View(medico);
         }
@@ -257,6 +262,19 @@ namespace Historias_Clinicas.Controllers
         private bool MedicoExists(int id)
         {
             return _context.Medicos.Any(e => e.Id == id);
+        }
+
+        private void ProcesarDuplicado(DbUpdateException dbex)
+        {
+            SqlException innerException = dbex.InnerException as SqlException;
+            if (innerException != null && (innerException.Number == 2627 || innerException.Number == 2601))
+            {
+                ModelState.AddModelError("MatriculaNacional", MensajeError.MatriculaNacionalExistente);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, dbex.Message);
+            }
         }
 
         [AllowAnonymous]
