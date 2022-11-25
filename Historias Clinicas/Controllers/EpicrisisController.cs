@@ -62,7 +62,7 @@ namespace Historias_Clinicas.Controllers
 
                 epicrisis.EpisodioId = id;
                 epicrisis.MedicoId = GetUsuarioId();
-                epicrisis.FechaYHora = DateTime.Today;
+                epicrisis.FechaYHora = DateTime.Now;
 
                 epicrisis.Id = 0;
                 _context.Add(epicrisis);
@@ -166,9 +166,8 @@ namespace Historias_Clinicas.Controllers
 
             var epicrisis = _context.Epicrisis
                 .Where(x => x.EpisodioId == episodio.Id);
-
-            ViewData["episodioId"] = id;
-
+            
+           
             return View(epicrisis);
         }
 

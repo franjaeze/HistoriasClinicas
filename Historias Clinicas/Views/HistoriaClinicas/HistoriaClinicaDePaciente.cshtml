@@ -90,16 +90,20 @@
 
                         @*<a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
                         @*<a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>*@
-                    }
+                        @if (item.EstadoAbierto) { 
+                            <a class="botonTablas" asp-action="CierreAdministrativo" asp-controller="Diagnosticos" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cierre Administrativo</a>
+                        }}
                     @if (User.IsInRole("Medico"))
                     {
+
                         @if (item.EstadoAbierto)
                         {
-                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>
-                            }
+                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Dar Alta</a>
                         }
+                    }
 
                     <a class="botonTablas" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Evoluciones</a>
+
                     <a class="botonTablas" asp-action="EpicrisisPorEpisodio" asp-controller="Epicrisis" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Epicrisis</a>
                 </td>
             </tr>

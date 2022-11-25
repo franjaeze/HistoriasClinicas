@@ -26,7 +26,14 @@ namespace Historias_Clinicas.Controllers
         // GET: Episodios
         public IActionResult Index()
         {
-            return View(_context.Episodios.ToList());
+            var episodios = from m in _context.Episodios
+
+                            orderby m.FechaYHoraInicio
+                            select m;
+
+            return View(episodios);
+
+            ;
         }
 
         // GET: Episodios/Details/5
@@ -71,8 +78,9 @@ namespace Historias_Clinicas.Controllers
                 episodio.HistoriaClinicaId = historia.Id;
 
                 episodio.Id = 0;
-                episodio.FechaYHoraInicio = DateTime.Today;
+                episodio.FechaYHoraInicio = DateTime.Now;
                 episodio.EstadoAbierto = true;
+                
                 _context.Add(episodio);
                 _context.SaveChanges();
 
@@ -222,14 +230,19 @@ namespace Historias_Clinicas.Controllers
 
            if ( EvolucionesAbiertas(id) )
             {
-                return RedirectToAction("MenuMedico", "Medicos");
+                return RedirectToAction("NoPuedeCerrarse");
             }
 
             @TempData["historiaId"] = paciente;
             @TempData["espisodioId"] = id;
             return View();
         }
+        public IActionResult NoPuedeCerrarse(int i)
+        {
+            @TempData["espisodioId"] = i;
 
+            return View();
+        }   
 
         public bool EvolucionesAbiertas(int id)
         {
@@ -277,8 +290,68 @@ namespace Historias_Clinicas.Controllers
 
             
             @TempData["historiaId"] = paciente;
+            @TempData["EpisodioId"] = id;
 
-            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = paciente });
+            if (episodioDb.Descripcion == null)
+            {
+                return RedirectToAction("Create", "Diagnosticos");
+            }
+            return RedirectToAction("HistoriaClincaDePaciente", "HistoriaClinicas", new {id=paciente});
+        }
+
+        public IActionResult DarAlta(int id, int paciente)
+        {
+            //var episodioDb = _context.Epicrisis.Find(x=> x.EpisodioId == );
+            //if (episodioDb.MO)
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CierreAdministrativo(int id, int paciente, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
+        {
+            var episodioDb = _context.Episodios.Find(id);
+
+            if (episodioDb == null)
+            {
+                return NotFound();
+            }
+
+
+            episodioDb.EstadoAbierto = false;
+            episodioDb.FechaYHoraCierre = DateTime.Now;
+
+            _context.Update(episodioDb);
+            _context.SaveChanges();
+
+            return View();
+        }
+
+        private bool epicrisisExiste(int i)
+        {
+            var existe = false;
+            var epicrisis = _context.Epicrisis.Where(x => x.EpisodioId == i);
+
+            if (epicrisis.Any())
+            {
+                existe = true;
+            }
+            
+            return existe;
+        }
+        public IActionResult CierreAdministrativo(int id, int paciente)
+        {
+            if (epicrisisExiste(id))
+            {
+
+            }
+
+
+
+             @TempData["historiaId"] = paciente;
+            @TempData["EpisodioId"] = id;
+
+            return View();
         }
     }
 

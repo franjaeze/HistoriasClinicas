@@ -63,7 +63,7 @@ namespace Historias_Clinicas.Controllers
             {
                 evolucion.EpisodioId = id;
                 evolucion.MedicoId = getUsuarioId();
-                evolucion.FechaYHoraInicio = DateTime.Today;
+                evolucion.FechaYHoraInicio = DateTime.Now;
                 evolucion.EstadoAbierto = true;
 
                 evolucion.Id= 0;
@@ -146,25 +146,20 @@ namespace Historias_Clinicas.Controllers
             return View(evolucion);
         }
 
-        public IActionResult Cerrar(int? id)
+        public IActionResult Cerrar(int id, int paciente)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            ViewBag.EvolucionId = id;
-
             var evolucion = _context.Evoluciones
                 .FirstOrDefault(m => m.Id == id);
             if (evolucion == null)
             {
                 return NotFound();
             }
-
+            TempData["paciente"] = paciente;
+            TempData["EpisodioId"] = id;
             return View(evolucion);
         }
 
-        public IActionResult CerrarEvolucion(int? id)
+        public IActionResult CerrarEvolucion(int? id, int historiaId)
         {
             if (id == null)
             {
@@ -182,8 +177,10 @@ namespace Historias_Clinicas.Controllers
             evolucionb.FechaYHoraCierre = DateTime.Now;
             _context.SaveChanges();
 
+            TempData["historiaId"] = historiaId;
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriasClinicas", new { ruta = @TempData["historiaId"] });
+        
             
         }
 
