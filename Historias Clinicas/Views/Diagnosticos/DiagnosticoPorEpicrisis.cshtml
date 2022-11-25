@@ -25,9 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Recomendacion)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Especialidad)
-            </th>
+       
             <th></th>
         </tr>
     </thead>
@@ -44,9 +42,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Recomendacion)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Especialidad)
-                </td>
+               
                 <td>
                     <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                     <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>

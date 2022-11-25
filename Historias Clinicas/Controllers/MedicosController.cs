@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Historias_Clinicas.Helpers;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -176,25 +177,36 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    var personaEnDb = _context.Medicos.Find(medico.Id);
-                    if (personaEnDb == null)
+                    var medicoEnDb = _context.Medicos
+                      .Include(m => m.Direccion)
+                      .FirstOrDefault(m => m.Id == id);
+
+                    if (medicoEnDb == null)
                     {
                         return NotFound();
                     }
 
-                    personaEnDb.Nombre = medico.Nombre;
-                    personaEnDb.SegundoNombre = medico.SegundoNombre;
-                    personaEnDb.Apellido = medico.Apellido;
-                    personaEnDb.Dni = medico.Dni;
-                    personaEnDb.Telefono = medico.Telefono;
-                    personaEnDb.MatriculaNacional = medico.MatriculaNacional;
-                    personaEnDb.Especialidad = medico.Especialidad;
+                    medicoEnDb.Nombre = medico.Nombre;
+                    medicoEnDb.SegundoNombre = medico.SegundoNombre;
+                    medicoEnDb.Apellido = medico.Apellido;
+                    medicoEnDb.Dni = medico.Dni;
+                    medicoEnDb.Telefono = medico.Telefono;
+                    medicoEnDb.MatriculaNacional = medico.MatriculaNacional;
+                    medicoEnDb.Especialidad = medico.Especialidad;
 
                   
 
-                    _context.Update(personaEnDb);
+                    _context.Update(medicoEnDb);
                     _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+
+                    if (medicoEnDb.Direccion == null)
+                    {
+                        return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Edit", "Direcciones", new { id = medicoEnDb.Direccion.Id });
+                    }
                 }
 
                 catch (DbUpdateConcurrencyException)
@@ -207,6 +219,10 @@ namespace Historias_Clinicas.Controllers
                     {
                         throw;
                     }
+                }
+                catch (DbUpdateException dbex)
+                {
+                    ProcesarDuplicado(dbex);
                 }
             }
             return View(medico);
@@ -246,6 +262,19 @@ namespace Historias_Clinicas.Controllers
         private bool MedicoExists(int id)
         {
             return _context.Medicos.Any(e => e.Id == id);
+        }
+
+        private void ProcesarDuplicado(DbUpdateException dbex)
+        {
+            SqlException innerException = dbex.InnerException as SqlException;
+            if (innerException != null && (innerException.Number == 2627 || innerException.Number == 2601))
+            {
+                ModelState.AddModelError("MatriculaNacional", MensajeError.MatriculaNacionalExistente);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, dbex.Message);
+            }
         }
 
         [AllowAnonymous]

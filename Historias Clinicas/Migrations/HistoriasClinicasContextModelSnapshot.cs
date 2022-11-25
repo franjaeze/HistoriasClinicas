@@ -61,9 +61,6 @@ namespace Historias_Clinicas.Migrations
                     b.Property<int>("EpicrisisId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Especialidad")
-                        .HasColumnType("int");
-
                     b.Property<string>("Recomendacion")
                         .HasColumnType("nvarchar(max)")
                         .HasMaxLength(10000);
