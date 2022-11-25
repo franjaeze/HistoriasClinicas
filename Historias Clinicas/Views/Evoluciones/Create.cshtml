@@ -12,7 +12,16 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+            <form asp-action="FechaYHoraAlta">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <input class="form-control" type="datetime-local" id="FechaYHoraCierre"
+                           name="FechaYHoraCierre" value=DateTime.Now
+                           min=DateTime.Now max="2023-06-14T00:00">
+                    <span class="text-danger"></span>
+                </div>
+            </form>
             <div class="form-group">
                 <label asp-for="DescripcionAtencion" class="control-label"></label>
                 <input asp-for="DescripcionAtencion" class="form-control" />
@@ -26,7 +35,7 @@
 </div>
 
 <div>
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px"  asp-action="EvolucionesPorEpisodio">Cancelar</a>
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px"  asp-action="EvolucionesPorEpisodio" asp-route-Id="@TempData["EpisodioId"]">Cancelar</a>
 </div>
 
 @section Scripts {

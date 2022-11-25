@@ -62,17 +62,17 @@
                 <td>
 
                    
-                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Detalles</a>
+                    <a class="botonTablas" asp-action="Details" asp-route-Id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Detalles</a>
                    
                     @if (User.IsInRole("Medico"))
                     {
-                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Edit" asp-route-Id="@item.Id">Editar</a>
                         @if (item.EstadoAbierto)
                         {
-                            <a class="botonTablas" asp-action="Cerrar" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar </a>
+                            <a class="botonTablas" asp-action="Cerrar" asp-route-Id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar </a>
                         }else
                         {
-                            <a class="botonTablas" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">Agregar Nota</a>
+                            <a class="botonTablas" asp-action="Create" asp-controller="Notas" asp-route-Id="@item.Id">Agregar Nota</a>
                                  
                         }
                     }
