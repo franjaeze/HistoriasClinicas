@@ -6,9 +6,10 @@
 
 
 <header>
-    <h1>Episodio</h1>
-    <h3> Listado de Evoluciones</h3>
-    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Episodio : @TempData["EpisodioId"] </p>
+    <h1>Evoluciones</h1>
+    <br />
+    <h3>Listado de Evoluciones cargadas para el Episodio  @TempData["EpisodioId"] </h3>
+
 </header>
 
 @if (User.IsInRole("Medico"))
@@ -30,9 +31,6 @@
                 @Html.DisplayNameFor(model => model.FechaYHoraInicio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedicoId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.EstadoAbierto)
             </th>
             <th>
@@ -51,9 +49,6 @@
             <tr>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.MedicoId)
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.EstadoAbierto)
@@ -102,6 +97,7 @@
 
 
 <div>
-    <a align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["historiaId"]">Volver</a>
+    
+    <a  class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["PacienteId"]">Volver</a>
 </div>
  
