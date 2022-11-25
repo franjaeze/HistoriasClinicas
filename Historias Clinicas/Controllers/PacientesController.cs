@@ -347,10 +347,17 @@ namespace Historias_Clinicas.Controllers
                 Paciente = paciente
             };
 
-            _context.MedicoPaciente.Add(MedicoPaciente);
-            //medico.MedicoPacientes.Add(MedicoPaciente);
-            //paciente.MedicosPaciente.Add(MedicoPaciente);
-            _context.SaveChanges();
+            MedicoPaciente yaExiste = null;
+            yaExiste = _context.MedicoPaciente.Find(id, GetUsuarioId());
+            if (yaExiste == null)
+            {
+                _context.MedicoPaciente.Add(MedicoPaciente);
+                //medico.MedicoPacientes.Add(MedicoPaciente);
+                //paciente.MedicosPaciente.Add(MedicoPaciente);
+                _context.SaveChanges();
+            }
+
+           
 
             return View();
         }
