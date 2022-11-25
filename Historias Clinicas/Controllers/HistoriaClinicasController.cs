@@ -117,6 +117,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
+                @TempData["PacienteId"] = historiaClinica.PacienteId;
                 return RedirectToAction(nameof(Index));
             }
             return View(historiaClinica);
