@@ -179,7 +179,7 @@ namespace Historias_Clinicas.Controllers
 
             TempData["historiaId"] = hisotriaId;
 
-            return RedirectToAction("HistoriaClincaDePaciente", "HistoriaClincas", new { ruta = @TempData["historiaId"] });
+            return RedirectToAction("HistoriaClincaDePaciente", "HistoriaClincas", new { ruta = TempData["historiaId"] });
         
             
         }

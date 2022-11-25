@@ -44,9 +44,10 @@ namespace Historias_Clinicas.Controllers
             return View(epicrisis);
         }
 
-        // GET: Epicrisis/Create
-        public IActionResult Create()
+        //GET: Epicrisis/Create
+        public IActionResult Create(int id)
         {
+               
             return View();
         }
 
