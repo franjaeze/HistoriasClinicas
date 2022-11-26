@@ -57,7 +57,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(int id, [Bind("Id,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion")] Evolucion evolucion)
+        public IActionResult Create(int id, [Bind("Id,EpisodioId,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion")] Evolucion evolucion)
         {
             if (ModelState.IsValid)
             {
@@ -67,14 +67,13 @@ namespace Historias_Clinicas.Controllers
                 evolucion.FechaYHoraInicio = DateTime.Now;
                 evolucion.EstadoAbierto = true;
 
-                evolucion.Id= 0;
+                evolucion.Id = 0;
                 _context.Add(evolucion);
 
                 _context.SaveChanges();
 
-                
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones" , new { id = @TempData["EpisodioId"] });
-                
+
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] });
             }
             return View(evolucion);
         }
@@ -88,14 +87,17 @@ namespace Historias_Clinicas.Controllers
             }
 
             var evolucion = _context.Evoluciones.Find(id);
+            
             if (evolucion == null)
             {
                 return NotFound();
             }
+            
             var episodioId = evolucion.EpisodioId;
             TempData["EpisodioId"] = episodioId;
             var episodio = _context.Episodios.Find(episodioId);
             TempData["historiaId"] = episodio.HistoriaClinicaId;
+
             return View(evolucion);
         }
 
@@ -104,7 +106,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion,Indicaciones,PrecisaEstudiosAdicionales,PrecisaInterconsultaMedica")] Evolucion evolucion)
+        public IActionResult Edit(int id, [Bind("Id,EpisodioId,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion")] Evolucion evolucion)
         {
             if (id != evolucion.Id)
             {
@@ -129,8 +131,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones" , new { ruta = @TempData["historiaId"] });
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { ruta = @TempData["historiaId"] });
             }
             return View(evolucion);
         }
@@ -151,6 +152,22 @@ namespace Historias_Clinicas.Controllers
             }
 
             return View(evolucion);
+        }
+
+        // POST: Evolucions/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var evolucion = _context.Evoluciones.Find(id);
+            _context.Evoluciones.Remove(evolucion);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool EvolucionExists(int id)
+        {
+            return _context.Evoluciones.Any(e => e.Id == id);
         }
 
         public IActionResult Cerrar(int id, int paciente)
@@ -185,31 +202,13 @@ namespace Historias_Clinicas.Controllers
             _context.SaveChanges();
 
             TempData["historiaId"] = historiaId;
-            
+
             var episodio = _context.Episodios.Find(evolucionb.EpisodioId);
             var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
             TempData["EpisodioId"] = episodio.Id;
             TempData["PacienteId"] = hca.PacienteId;
 
             return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] });
-        
-            
-        }
-
-        // POST: Evolucions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var evolucion = _context.Evoluciones.Find(id);
-            _context.Evoluciones.Remove(evolucion);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool EvolucionExists(int id)
-        {
-            return _context.Evoluciones.Any(e => e.Id == id);
         }
 
         private int GetUsuarioId()
@@ -230,7 +229,7 @@ namespace Historias_Clinicas.Controllers
             return userIdValue;
         }
 
-       
+
 
         public IActionResult EvolucionesPorEpisodio(int id, int paciente)
         {
@@ -240,7 +239,7 @@ namespace Historias_Clinicas.Controllers
 
             var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
 
-            int pacienteId = hca.PacienteId; 
+            int pacienteId = hca.PacienteId;
 
             TempData["EpisodioId"] = id;
             TempData["historiaId"] = paciente;
