@@ -33,7 +33,6 @@ namespace Historias_Clinicas.Controllers
             CrearEmpleados().Wait();
             CrearMedicos().Wait();
 
-
             return RedirectToAction("Index", "Home", new { mensaje = "Precarga finalizada" });
         }
 
@@ -102,6 +101,35 @@ namespace Historias_Clinicas.Controllers
                 };
 
                 _context.Direcciones.Add(Direccion2);
+                await _context.SaveChangesAsync();
+
+
+
+                var paciente1 = _context.Pacientes.Find(1);
+
+                MedicoPaciente MedicoPaciente1 = new MedicoPaciente()
+                {
+                    MedicoId = Medico1.Id,
+                    PacienteId = paciente1.Id,
+                    Medico = Medico1,
+                    Paciente = paciente1
+                };
+
+                _context.MedicoPaciente.Add(MedicoPaciente1);
+                await _context.SaveChangesAsync();
+
+
+                var paciente2 = _context.Pacientes.Find(2);
+
+                MedicoPaciente MedicoPaciente2 = new MedicoPaciente()
+                {
+                    MedicoId = Medico2.Id,
+                    PacienteId = paciente2.Id,
+                    Medico = Medico2,
+                    Paciente = paciente2
+                };
+
+                _context.MedicoPaciente.Add(MedicoPaciente2);
                 await _context.SaveChangesAsync();
             }
         }
@@ -219,23 +247,23 @@ namespace Historias_Clinicas.Controllers
                 {
                     Descripcion = "El paciente se encontraba andando en skate",
                     Motivo = "Traumatismo en pierna izquierda",
-                   
                     FechaYHoraInicio = DateTime.Today,
                     FechaYHoraAlta = DateTime.Today,
                     FechaYHoraCierre = DateTime.Today,
                     EstadoAbierto = true,
                     Especialidad = Especialidad.Enfermeria,
                     HistoriaClinicaId = HistoriaClinica1.Id,
-                    EmpleadoId = 1
+                    EmpleadoId = 3
                 };
 
                 _context.Episodios.Add(Episodio1);
                 await _context.SaveChangesAsync();
 
+
                 Evolucion Evolucion1 = new Evolucion()
                 {
                     EpisodioId = Episodio1.Id,
-                    MedicoId = 1,
+                    MedicoId = 5,
                     EstadoAbierto = true,
                     DescripcionAtencion = "Continuar con Kinesiologia",
                     Notas = new List<Nota>(),
@@ -249,11 +277,10 @@ namespace Historias_Clinicas.Controllers
 
                 Nota Nota1 = new Nota()
                 {
-
                     EvolucionId = Evolucion1.Id,
                     Mensaje = "Subir dosis pastillas",
                     FechaYHora = DateTime.Today,
-                    EmpleadoId = 0
+                    EmpleadoId = 3
                 };
 
                 _context.Notas.Add(Nota1);
@@ -311,7 +338,7 @@ namespace Historias_Clinicas.Controllers
                     EstadoAbierto = true,
                     Especialidad = Especialidad.Dermatologia,
                     HistoriaClinicaId = HistoriaClinica2.Id,
-                    EmpleadoId = 1
+                    EmpleadoId = 4
                 };
 
                 _context.Episodios.Add(Episodio2);
@@ -320,7 +347,7 @@ namespace Historias_Clinicas.Controllers
                 Evolucion Evolucion2 = new Evolucion()
                 {
                     EpisodioId = Episodio2.Id,
-                    MedicoId = 1,
+                    MedicoId = 6,
                     EstadoAbierto = true,
                     DescripcionAtencion = "Las marcas estan achicandose",
                     Notas = new List<Nota>(),
@@ -335,16 +362,14 @@ namespace Historias_Clinicas.Controllers
 
                 Nota Nota2 = new Nota()
                 {
-
                     EvolucionId = Evolucion2.Id,
                     Mensaje = "Probar otra marca crema",
                     FechaYHora = DateTime.Today,
-                    EmpleadoId = 0
+                    EmpleadoId = 4
                 };
 
                 _context.Notas.Add(Nota2);
                 await _context.SaveChangesAsync();
-
             }
         }
 

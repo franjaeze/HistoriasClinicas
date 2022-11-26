@@ -42,8 +42,13 @@ namespace Historias_Clinicas.Controllers
                 // Se cambio del NotFound para que no se rompa todo
             }
 
+            var medico = _context.Medicos
+               .FirstOrDefault(m => m.Id == 5);
+
             var episodioId = evolucion.EpisodioId;
             TempData["EpisodioId"] = episodioId;
+            TempData["nombreMedico"] = medico.NombreCompleto;
+
             return View(evolucion);
         }
 
