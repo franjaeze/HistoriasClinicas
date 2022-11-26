@@ -89,15 +89,7 @@
     </tbody>
 </table>
 
-@if (User.IsInRole("Empleado"))
-{
     <div>
         <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-Id="@TempData["PacienteId"]">Volver</a>
     </div>
-}
-@if (User.IsInRole("Medico"))
-{
-    <div>
-        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-Id="@TempData["PacienteId"]">Volver</a>
-    </div>
-}
+

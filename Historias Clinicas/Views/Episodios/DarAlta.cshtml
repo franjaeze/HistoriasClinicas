@@ -25,12 +25,9 @@
 
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-route-id="@TempData["EpId"]" asp-action="Index">Volver</a>
             </div>
         </form>
     </div>
 
-</div>
-
-<div>
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-route-id= "@TempData["EpId"]" asp-action="Index">Volver</a>
 </div>

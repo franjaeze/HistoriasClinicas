@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Historias_Clinicas.Models.Diagnostico>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "DiagnosticoPorEpicrisis";
 
     <header>
         <h1>Epicrisis</h1>
-        <h3> Diagnostico</h3>
-        <p></p>
-        <p></p>
-        <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Número de Epicrisis : @ViewData["EpicrisisId"] </p>
+        <br/>
+        <h3> Diagnostico cargado para la Epicrisis @ViewData["EpicrisisId"]</h3>
+        <br/>
+        <br/>
     </header>
 }
 
@@ -52,7 +52,10 @@
         }
     </tbody>
 </table>
+<br/>
+<br/>
+<br/>
 
 <div>
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+    <a type="button" class="btn btn-secondary"  asp-action="EpicrisisPorEpisodio" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">Volver</a>
 </div>

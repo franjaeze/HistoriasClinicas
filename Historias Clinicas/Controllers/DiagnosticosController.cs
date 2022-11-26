@@ -42,6 +42,8 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+            var diagnostico1 = _context.Diagnosticos.Find(id);
+            ViewData["EpicrisisId"] = diagnostico1.EpicrisisId;
 
             return View(diagnostico);
         }
@@ -108,6 +110,7 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
+                    diagnostico.EpicrisisId = id;
                     _context.Update(diagnostico);
                     _context.SaveChanges();
                 }
@@ -122,7 +125,9 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                
+                ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
+                return RedirectToAction("DiagnosticoPorEpicrisis", new { id = diagnostico.EpicrisisId });
             }
             return View(diagnostico);
         }
@@ -168,7 +173,8 @@ namespace Historias_Clinicas.Controllers
             var diagnostico = _context.Diagnosticos
                 .Where(x => x.EpicrisisId == epicrisis.Id);
 
-            ViewData["episodioId"] = id;
+            ViewData["episodioId"] = epicrisis.EpisodioId;
+            ViewData["EpicrisisId"] = epicrisis.Id;
 
             return View(diagnostico);
         }

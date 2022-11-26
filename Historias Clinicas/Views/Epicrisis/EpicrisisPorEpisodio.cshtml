@@ -7,21 +7,11 @@
 
 <header>
     <h1>Epicrisis</h1>
-
-    <p></p>
-    <p></p>
+    <br />
     <h3>Listado de Epicrisis cargadas dentro del Episodio  @ViewData["episodioId"] </h3>
+    <br />
+    <br />
 </header>
-
-
-@if (User.IsInRole("Medico"))
-{
-    <p align="right">
-        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">
-            Agregar Epicrisis
-        </a>
-    </p>
-}
 
 
 <table class="table">
@@ -44,7 +34,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayNameFor(modelItem => item.EpisodioId)
+                    @Html.DisplayFor(modelItem => item.EpisodioId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.MedicoId)
@@ -62,7 +52,10 @@
         }
     </tbody>
 </table>
+<br />
+<br />
+<br />
 
 <div>
-    <a class="boton" align="right" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@ViewData["pacienteId"]">Volver</a>
+    <a type="button" class="btn btn-secondary" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@ViewData["pacienteId"]">Volver</a>
 </div>

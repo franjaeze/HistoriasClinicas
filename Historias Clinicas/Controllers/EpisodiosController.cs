@@ -56,8 +56,9 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Episodios/Create
-        public IActionResult Create()
+        public IActionResult Create( int? id)
         {
+            ViewData["PacienteId"] = id;
             return View();
         }
 
@@ -87,10 +88,11 @@ namespace Historias_Clinicas.Controllers
                 historia.Episodios.Add(episodio);
                 _context.SaveChanges();
 
+                ViewData["PacienteId"] = paciente.Id;
 
                 List<Evolucion> Evoluciones = new List<Evolucion>();
 
-                return RedirectToAction("Index", "Pacientes");
+                return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = paciente.Id } );
             }
             return View(episodio);
         }
@@ -220,7 +222,7 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Cerrar(int id)
         {
 
-            ViewBag.EpisodioId = id;
+            ViewData["EpisodioId"] = id;
 
             var episodio = _context.Episodios.Find(id);
 
@@ -235,7 +237,7 @@ namespace Historias_Clinicas.Controllers
             }
 
              
-            return RedirectToAction("Create", "Epicrisis", new { numero = id });
+            return RedirectToAction("Create", "Epicrisis", new { id = episodio.Id });
         }
         public IActionResult NoPuedeCerrarse(int i)
         {
@@ -246,17 +248,17 @@ namespace Historias_Clinicas.Controllers
 
         public bool EvolucionesAbiertas(int id)
         {
-            bool EvolucionesAbiertasa = false;
+            bool EvolucionesAbiertas = false;
 
             var episodio = _context.Episodios.Find(id);
             var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
             if (evoluciones.Any(x => x.EstadoAbierto) || !evoluciones.Any())
             {
-                EvolucionesAbiertasa = true;
+                EvolucionesAbiertas = true;
             }
 
 
-            return EvolucionesAbiertasa;
+            return EvolucionesAbiertas;
         }
 
         [HttpPost]
@@ -344,7 +346,7 @@ namespace Historias_Clinicas.Controllers
             {
                 return RedirectToAction("Create", "Diagnosticos");
             }
-            return RedirectToAction("HistoriaClincaDePaciente", "HistoriaClinicas", new { id = idHistoria });
+            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = idHistoria });
         }
 
         public IActionResult DarAlta(int id, int paciente)
@@ -373,7 +375,13 @@ namespace Historias_Clinicas.Controllers
             return View(episodios);
         }
 
+        public IActionResult GetPacienteId(int id)
+        {
+            var historia = _context.HistoriasClinicas.Find(id);
+            int pacienteId = historia.PacienteId;
 
+            return RedirectToAction("Create", "Episodios", new { id = pacienteId });
+        }
 
     }
 
