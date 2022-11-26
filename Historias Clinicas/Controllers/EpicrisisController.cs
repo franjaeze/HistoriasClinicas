@@ -48,7 +48,8 @@ namespace Historias_Clinicas.Controllers
         //GET: Epicrisis/Create
         public IActionResult Create(int id)
         {
-               
+            ViewBag.EpId = id;
+            TempData.Keep();
             return View();
         }
 
@@ -57,12 +58,12 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(int id, [Bind("Id,MedicoId,FechaYHora, Diagnostico")] Epicrisis epicrisis)
+        public IActionResult Create([Bind("Id,MedicoId,FechaYHora, Diagnostico")] Epicrisis epicrisis)
         {
             if (ModelState.IsValid)
             {
-
-                epicrisis.EpisodioId = id;
+                
+                epicrisis.EpisodioId =(int)ViewBag.EpId;
                 epicrisis.MedicoId = GetUsuarioId();
                 epicrisis.FechaYHora = DateTime.Now;
 

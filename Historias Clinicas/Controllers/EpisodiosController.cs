@@ -217,7 +217,7 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Create", "Evoluciones", new { id = episodio.Id });
         }
 
-        public IActionResult Cerrar(int id, int paciente)
+        public IActionResult Cerrar(int id)
         {
 
             ViewBag.EpisodioId = id;
@@ -234,13 +234,7 @@ namespace Historias_Clinicas.Controllers
                 return RedirectToAction("NoPuedeCerrarse");
             }
 
-            var pac = _context.Pacientes.Where(x => x.HistoriaClinicaId == paciente);
-            
-
-            TempData["historiaId"] = paciente;
-            TempData["espisodioId"] = id;
-            
-            TempData.Keep();
+             
             return RedirectToAction("Create", "Epicrisis", new { numero = id });
         }
         public IActionResult NoPuedeCerrarse(int i)
@@ -312,6 +306,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DarAlta(int id, [Bind("FechaYHoraAlta")] Episodio episodio)
         {
 

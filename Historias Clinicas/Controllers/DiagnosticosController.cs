@@ -69,9 +69,9 @@ namespace Historias_Clinicas.Controllers
                 _context.Add(diagnostico);
                 _context.SaveChanges();
                 var epicrisis = _context.Epicrisis.Find(id);
+                int numeroEp = epicrisis.EpisodioId;
 
-
-                return RedirectToAction("DarAlta","Episodios", new {id = epicrisis.EpisodioId });
+                return RedirectToAction("DarAlta","Episodios", new {id = numeroEp });
             }
             return View(diagnostico);
         }
