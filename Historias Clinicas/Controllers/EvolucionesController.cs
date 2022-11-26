@@ -100,9 +100,8 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var episodioId = evolucion.EpisodioId;
-            TempData["EpisodioId"] = episodioId;
-            var episodio = _context.Episodios.Find(episodioId);
+            TempData["episodioId"] = evolucion.EpisodioId;
+            var episodio = _context.Episodios.Find(evolucion.EpisodioId);
             TempData["historiaId"] = episodio.HistoriaClinicaId;
 
             return View(evolucion);
@@ -148,7 +147,9 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { ruta = @TempData["EpisodioId"] });
+                var episodioId = TempData["episodioId"];
+
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = episodioId});
             }
             return View(evolucion);
         }
