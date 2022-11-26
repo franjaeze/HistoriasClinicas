@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <h4>Evolucion</h4>
 <hr />
@@ -14,29 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="MedicoId" class="control-label"></label>
-                <input asp-for="MedicoId" class="form-control" />
-                <span asp-validation-for="MedicoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaYHoraInicio" class="control-label"></label>
-                <input asp-for="FechaYHoraInicio" class="form-control" />
-                <span asp-validation-for="FechaYHoraInicio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="FechaYHoraAlta" class="control-label"></label>
                 <input asp-for="FechaYHoraAlta" class="form-control" />
                 <span asp-validation-for="FechaYHoraAlta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaYHoraCierre" class="control-label"></label>
-                <input asp-for="FechaYHoraCierre" class="form-control" />
-                <span asp-validation-for="FechaYHoraCierre" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EstadoAbierto" /> @Html.DisplayNameFor(model => model.EstadoAbierto)
-                </label>
             </div>
             <div class="form-group">
                 <label asp-for="DescripcionAtencion" class="control-label"></label>
@@ -44,14 +24,14 @@
                 <span asp-validation-for="DescripcionAtencion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input class = "boton" type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-secondary" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@TempData["EpisodioId"]">Volver</a>
 </div>
 
 @section Scripts {

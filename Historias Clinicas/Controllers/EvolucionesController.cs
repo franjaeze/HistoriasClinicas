@@ -42,6 +42,8 @@ namespace Historias_Clinicas.Controllers
                 // Se cambio del NotFound para que no se rompa todo
             }
 
+            var episodioId = evolucion.EpisodioId;
+            TempData["EpisodioId"] = episodioId;
             return View(evolucion);
         }
 
@@ -87,12 +89,12 @@ namespace Historias_Clinicas.Controllers
             }
 
             var evolucion = _context.Evoluciones.Find(id);
-            
+
             if (evolucion == null)
             {
                 return NotFound();
             }
-            
+
             var episodioId = evolucion.EpisodioId;
             TempData["EpisodioId"] = episodioId;
             var episodio = _context.Episodios.Find(episodioId);
@@ -117,7 +119,17 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(evolucion);
+                    var evolucionEnDb = _context.Evoluciones.FirstOrDefault(e => e.Id == id);
+
+                    if (evolucionEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    evolucionEnDb.DescripcionAtencion = evolucion.DescripcionAtencion;
+                    evolucionEnDb.FechaYHoraAlta = evolucion.FechaYHoraAlta;
+
                     _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -131,7 +143,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { ruta = @TempData["historiaId"] });
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { ruta = @TempData["EpisodioId"] });
             }
             return View(evolucion);
         }
@@ -246,7 +258,5 @@ namespace Historias_Clinicas.Controllers
             TempData["PacienteId"] = pacienteId;
             return View(evoluciones);
         }
-
-
     }
 }
