@@ -247,6 +247,9 @@ namespace Historias_Clinicas.Controllers
         public IActionResult NoPuedeCerrarse(int i)
         {
             TempData["espisodioId"] = i;
+            var episodio = _context.Episodios.Find(i);
+            var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+            TempData["pacienteId"] = hca.PacienteId;
 
             return View();
         }
@@ -375,7 +378,7 @@ namespace Historias_Clinicas.Controllers
             var hca = _context.HistoriasClinicas.Find(id);
             int pacienteId = hca.PacienteId;
             TempData["PacienteId"] = pacienteId;
-
+            TempData["historiaClinicaId"] = hca.Id;
 
             return View(episodios);
         }

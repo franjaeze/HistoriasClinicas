@@ -80,6 +80,8 @@ namespace Historias_Clinicas.Controllers
                 ViewData["evolucionId"] = nota.EvolucionId;
                 var evolucion = _context.Evoluciones.Find(nota.EvolucionId);
                 var episodio = _context.Episodios.Find(evolucion.EpisodioId);
+                var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+                TempData["PacienteId"] = hca.PacienteId;
 
                 return RedirectToAction("NotasPorEvolucion", "Notas" , new { id = @ViewData["evolucionId"] , historiaClinicaId = episodio.HistoriaClinicaId});
             }

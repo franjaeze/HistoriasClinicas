@@ -9,7 +9,8 @@
     <h1>Evoluciones</h1>
     <br />
     <h3>Listado de Evoluciones cargadas para el Episodio  @TempData["EpisodioId"] </h3>
-
+    <br />
+    <br />
 </header>
 
 @if (User.IsInRole("Medico"))
@@ -22,6 +23,7 @@
 
     </p>
 }
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -80,7 +82,7 @@
                     {
                         @if (!item.EstadoAbierto)
                         {
-                            <a class="botonTablas" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">Agregar Nota</a>
+                            <a class="botonTablas" asp-action="Create" asp-controller="Notas" asp-route-Id="@item.Id">Agregar Nota</a>
                         }
 
                     }

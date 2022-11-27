@@ -87,7 +87,8 @@ namespace Historias_Clinicas.Controllers
 
                 var episodio = _context.Episodios.Find(evolucion.EpisodioId);
 
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"], historiaClinicaId = episodio.HistoriaClinicaId });
+                //return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"], historiaClinicaId = episodio.HistoriaClinicaId });
+                return RedirectToAction("Create", "Notas", new { id = evolucion.Id });
             }
             return View(evolucion);
         }
@@ -273,6 +274,7 @@ namespace Historias_Clinicas.Controllers
             int pacienteId = hca.PacienteId;
 
             TempData["EpisodioId"] = id;
+           
             TempData["historiaId"] = historiaClinicaId;
             TempData["PacienteId"] = pacienteId;
             return View(evoluciones);
