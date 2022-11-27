@@ -31,7 +31,7 @@
 </div>
 
 <div>
-    <a class="btn btn-secondary" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones">Volver</a>
+    <a class="btn btn-secondary" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@TempData["episodioId"]" asp-route-paciente="@TempData["historiaId"]">Volver</a>
 </div>
 
 @section Scripts {

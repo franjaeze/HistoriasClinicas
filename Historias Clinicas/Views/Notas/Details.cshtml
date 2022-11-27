@@ -23,14 +23,15 @@
             @Html.DisplayFor(model => model.FechaYHora)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EmpleadoId)
+            Registro
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EmpleadoId)
+            @ViewBag.EmpleadoNombre
         </dd>
     </dl>
 </div>
 <div>
     <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index">Volver</a>
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@TempData["evolucionId"]">Volver</a>
 </div>
+

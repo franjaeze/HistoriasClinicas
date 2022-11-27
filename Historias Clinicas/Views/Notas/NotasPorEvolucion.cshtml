@@ -50,9 +50,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaYHora)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmpleadoId)
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -61,9 +58,6 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaYHora)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmpleadoId)
                 </td>
                 <td>
                     @if (User.IsInRole("Medico"))

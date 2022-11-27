@@ -42,6 +42,11 @@ namespace Historias_Clinicas.Controllers
                 // Se cambio del NotFound para que no se rompa todo
             }
 
+            var empleado = _context.Empleados.FirstOrDefault(e => e.Id == nota.EmpleadoId);
+
+            ViewBag.EmpleadoNombre = empleado.NombreCompleto;
+            TempData["evolucionId"] = nota.EvolucionId;
+
             return View(nota);
         }
 
@@ -136,12 +141,21 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
-            var nota = _context.Notas
-                .FirstOrDefault(m => m.Id == id);
+            var nota = _context.Notas.FirstOrDefault(m => m.Id == id);
+
             if (nota == null)
             {
                 return NotFound();
             }
+
+            var evolucion = _context.Evoluciones.Find(nota.EvolucionId);
+
+            var episodio = _context.Episodios.Find(evolucion.EpisodioId);
+
+            var historiaClinica = _context.Episodios.Find(episodio.HistoriaClinicaId);
+
+            TempData["evolucionId"] = evolucion.Id;
+            TempData["historiaClinicaId"] = historiaClinica.Id;
 
             return View(nota);
         }
