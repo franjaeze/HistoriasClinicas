@@ -47,6 +47,11 @@ namespace Historias_Clinicas.Controllers
             ViewBag.EmpleadoNombre = empleado.NombreCompleto;
             TempData["evolucionId"] = nota.EvolucionId;
 
+            var evolucion = _context.Evoluciones.Find(nota.EvolucionId);
+            var episodio = _context.Episodios.Find(evolucion.EpisodioId);
+            var historiaClinica = _context.Episodios.Find(episodio.HistoriaClinicaId);
+            TempData["historiaClinicaId"] = historiaClinica.Id;
+
             return View(nota);
         }
 
@@ -203,12 +208,10 @@ namespace Historias_Clinicas.Controllers
                 .Where(x => x.EvolucionId == evolucion.Id);
             var hca = _context.HistoriasClinicas.Find(paciente);
 
-
             ViewData["Estado"] = evolucion.EstadoAbierto;
             ViewData["evolucionId"] = id;
             TempData["historiaId"] = paciente;
             TempData["PacienteId"] = hca.PacienteId;
-
 
             return View(notas);
         }

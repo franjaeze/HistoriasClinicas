@@ -31,7 +31,7 @@
     </dl>
 </div>
 <div>
-    <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@TempData["evolucionId"]">Volver</a>
+    <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@TempData["evolucionId"]" asp-route-paciente="@TempData["historiaClinicaId"]">Volver</a>
 </div>
 

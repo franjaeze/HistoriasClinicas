@@ -34,7 +34,7 @@
 
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input class="boton" type="submit" value="Borrar"/> |
+        <input class="boton" type="submit" value="Borrar"/> 
         <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@TempData["evolucionId"]" asp-route-paciente="@TempData["historiaClinicaId"]">Volver</a>
     </form>
 </div>
