@@ -46,7 +46,10 @@ namespace Historias_Clinicas.Controllers
                .FirstOrDefault(m => m.Id == 5);
 
             var episodioId = evolucion.EpisodioId;
+            var episodio = _context.Episodios.Find(episodioId);
+            TempData["EvolucionId"] = evolucion.Id;
             TempData["EpisodioId"] = episodioId;
+            TempData["HistoriaClinicaId"] = episodio.HistoriaClinicaId;
             TempData["nombreMedico"] = medico.NombreCompleto;
 
             return View(evolucion);
@@ -55,7 +58,10 @@ namespace Historias_Clinicas.Controllers
         // GET: Evolucions/Create
         public IActionResult Create(int id)
         {
-            @TempData["EpisodioId"] = id;
+            TempData["EpisodioId"] = id;
+            var episodio = _context.Episodios.Find(id);
+            TempData["historiaClinicaId"] = episodio.HistoriaClinicaId;
+
             return View();
         }
 
@@ -79,8 +85,9 @@ namespace Historias_Clinicas.Controllers
 
                 _context.SaveChanges();
 
+                var episodio = _context.Episodios.Find(evolucion.EpisodioId);
 
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] });
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"], historiaClinicaId = episodio.HistoriaClinicaId });
             }
             return View(evolucion);
         }
@@ -121,9 +128,10 @@ namespace Historias_Clinicas.Controllers
 
             if (ModelState.IsValid)
             {
+                var evolucionEnDb = _context.Evoluciones.FirstOrDefault(e => e.Id == id);
                 try
                 {
-                    var evolucionEnDb = _context.Evoluciones.FirstOrDefault(e => e.Id == id);
+                    
 
                     if (evolucionEnDb == null)
                     {
@@ -135,6 +143,7 @@ namespace Historias_Clinicas.Controllers
                     evolucionEnDb.FechaYHoraAlta = evolucion.FechaYHoraAlta;
 
                     _context.SaveChanges();
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -147,9 +156,12 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                var episodioId = TempData["episodioId"];
+                var episodioId = evolucionEnDb.EpisodioId;
+                var episodio = _context.Episodios.Find(episodioId);
+                var historiaClinica = _context.HistoriasClinicas.FirstOrDefault(e => e.Id == episodio.HistoriaClinicaId);
+               
 
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = episodioId});
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = episodioId , historiaClinicaId = historiaClinica.Id} );
             }
             return View(evolucion);
         }
@@ -188,7 +200,7 @@ namespace Historias_Clinicas.Controllers
             return _context.Evoluciones.Any(e => e.Id == id);
         }
 
-        public IActionResult Cerrar(int id, int paciente)
+        public IActionResult Cerrar(int id, int historiaClinicaId)
         {
             var evolucion = _context.Evoluciones
                 .FirstOrDefault(m => m.Id == id);
@@ -196,14 +208,15 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
-            TempData["paciente"] = paciente;
-            TempData["EpisodioId"] = id;
+            TempData["historiaClinicaId"] = historiaClinicaId;
+            TempData["EpisodioId"] = evolucion.EpisodioId;
+            TempData["EvolucionId"] = id;
             return View(evolucion);
         }
 
-        public IActionResult CerrarEvolucion(int? id, int historiaId)
+        public IActionResult CerrarEvolucion(int id, int historiaClinicaId)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return NotFound();
             }
@@ -219,14 +232,14 @@ namespace Historias_Clinicas.Controllers
             evolucionb.FechaYHoraCierre = DateTime.Now;
             _context.SaveChanges();
 
-            TempData["historiaId"] = historiaId;
+            TempData["historiaClinicaId"] = historiaClinicaId;
 
             var episodio = _context.Episodios.Find(evolucionb.EpisodioId);
             var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
             TempData["EpisodioId"] = episodio.Id;
             TempData["PacienteId"] = hca.PacienteId;
 
-            return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] });
+            return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] , historiaClinicaId = hca.Id });
         }
 
         private int GetUsuarioId()
@@ -249,18 +262,18 @@ namespace Historias_Clinicas.Controllers
 
 
 
-        public IActionResult EvolucionesPorEpisodio(int id, int paciente)
+        public IActionResult EvolucionesPorEpisodio(int id, int historiaClinicaId)
         {
             var episodio = _context.Episodios.Find(id);
 
             var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
 
-            var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+            var hca = _context.HistoriasClinicas.Find(historiaClinicaId);
 
             int pacienteId = hca.PacienteId;
 
             TempData["EpisodioId"] = id;
-            TempData["historiaId"] = paciente;
+            TempData["historiaId"] = historiaClinicaId;
             TempData["PacienteId"] = pacienteId;
             return View(evoluciones);
         }

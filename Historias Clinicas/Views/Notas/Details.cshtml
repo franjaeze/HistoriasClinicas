@@ -23,7 +23,7 @@
             @Html.DisplayFor(model => model.FechaYHora)
         </dd>
         <dt class="col-sm-2">
-            Registro
+            Registró
         </dt>
         <dd class="col-sm-10">
             @ViewBag.EmpleadoNombre
@@ -32,6 +32,6 @@
 </div>
 <div>
     <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@TempData["evolucionId"]" asp-route-paciente="@TempData["historiaClinicaId"]">Volver</a>
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@TempData["evolucionId"]" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Volver</a>
 </div>
 

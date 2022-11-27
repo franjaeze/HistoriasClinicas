@@ -5,44 +5,12 @@
 }
 
 <header>
-    <h1>Evolucion</h1>
-    <br/>
-    <h3> Listado de Notas cargadas para la Evolucion @ViewData["evolucionId"] </h3>
-    
+    <h1>Notas</h1>
+    <br />
+    <h3> Listado de Notas cargadas para la Evolución @ViewData["evolucionId"] </h3>
+    <br />
+    <br />
 </header>
-
-
-@*@if (User.IsInRole("Medico"))
-{ 
-   
-        <p align="right">
-            <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
-                Agregar Nota
-            </a>
-
-        </p>
-    
-
-}
-
-@if (User.IsInRole("Empleado"))
-{    
-    
-    if ()
-    {
-        <p align="right">
-            <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
-                Agregar Nota
-            </a>
-
-        </p>
-    }
-       
-    
-    
-}*@
-
-
 
 <table class="table">
     <thead>
@@ -78,16 +46,8 @@
     </tbody>
 </table>
 
-@if (User.IsInRole("Paciente"))
-{
-    <div>
-        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["PacienteId"]">Volver</a>
-    </div>
-}
-else
-{
-    <div>
-        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["PacienteId"]">Volver</a>
-    </div>
-}
+<div>
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@TempData["EpisodioId"]" asp-route-historiaClinicaId="@TempData["historiaId"]">Volver</a>
+</div>
+
 

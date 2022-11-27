@@ -18,15 +18,13 @@
                 <span asp-validation-for="Mensaje" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input class="boton" type="submit" value="Create"/>
+                <input class="boton" type="submit" value="Create" />
+                <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["PacienteId"]">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["PacienteId"]">Cancelar</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

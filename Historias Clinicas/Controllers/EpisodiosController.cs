@@ -37,7 +37,7 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Episodios/Details/5
-        public IActionResult Details(int? id, int paciente)
+        public IActionResult Details(int? id, int historiaClinicaId)
         {
             if (id == null)
             {
@@ -51,7 +51,7 @@ namespace Historias_Clinicas.Controllers
                 return Content($"El episodio con id {id} no fue encontrado");
                 // Se cambio del NotFound para que no se rompa todo
             }
-            TempData["paciente"] = paciente;
+            TempData["paciente"] = historiaClinicaId;
             return View(episodio);
         }
 

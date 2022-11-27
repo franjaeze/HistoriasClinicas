@@ -180,7 +180,7 @@ namespace Historias_Clinicas.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CierreAdministrativo(int id, int paciente, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
+        public IActionResult CierreAdministrativo(int id, int historiaClinicaId, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
         {
             var episodioDb = _context.Episodios.Find(id);
 
@@ -196,11 +196,11 @@ namespace Historias_Clinicas.Controllers
             //_context.Update(episodioDb);
             //_context.SaveChanges();
 
-            return RedirectToAction("CargarDiagnostico","Episodio", new { id = paciente });
+            return RedirectToAction("CargarDiagnostico","Episodio", new { id = historiaClinicaId });
         }
-        public IActionResult CierreAdministrativo(int id, int paciente)
+        public IActionResult CierreAdministrativo(int id, int historiaClinicaId)
         {
-            @TempData["historiaId"] = paciente;
+            @TempData["historiaId"] = historiaClinicaId;
             @TempData["EpisodioId"] = id;
 
             return View();

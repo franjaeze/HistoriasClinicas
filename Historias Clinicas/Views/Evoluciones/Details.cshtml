@@ -49,6 +49,8 @@
     </dl>
 </div>
 <div>
-    <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
-    <a class="btn btn-secondary" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@TempData["episodioId"]" asp-route-paciente="@TempData["historiaId"]">Volver</a>
+    <a class="boton" asp-action="Edit" asp-route-id="@TempData["EvolucionId"]">Editar</a> 
+    <a class="btn btn-secondary" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@TempData["episodioId"]" asp-route-historiaClinicaId="@TempData["HistoriaClinicaId"]">
+    Volver
+    </a>
 </div>

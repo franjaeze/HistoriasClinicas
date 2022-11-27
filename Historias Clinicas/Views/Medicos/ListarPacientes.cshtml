@@ -7,9 +7,8 @@
 <header>
     <h1>Mis Pacientes</h1>
     <h3> Listado de Pacientes</h3>
-    <p></p>
-    <p></p>
     <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Número de Matricula : @ViewData["MatriculaNacional"] </p>
+    <br />
 </header>
 
 <section class="search-section">
@@ -32,7 +31,8 @@
         </form>
     </div>
 </section>
-
+<br/>
+<br/>
 <table class="table">
     <thead>
         <tr>
@@ -59,31 +59,32 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HistoriaClinicaId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SegundoNombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a class="botonTablas" asp-action="Details"  asp-controller="Pacientes"  asp-route-id="@item.Id">Detalle</a>
-                <a class="botonTablas" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@item.Id">Historia Clinica</a>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HistoriaClinicaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SegundoNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a class="botonTablas" asp-action="Details" asp-controller="Pacientes" asp-route-id="@item.Id">Detalle</a>
+                    <a class="botonTablas" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@item.Id">Historia Clinica</a>
 
-            </td>
-            <td>
-            </td>
-        </tr>
+                </td>
+                <td>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<br/>
 <a class="boton" asp-action="MenuMedico" asp-controller="Medicos">Salir</a>
