@@ -60,34 +60,41 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Legajo)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.SegundoNombre)
-            </td>
-            <td class="text-center">
-                  @Html.DisplayFor(modelItem => item.Dni)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @if (User.IsInRole("Empleado"))
-                {
-                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                }
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Legajo)
                 </td>
-        </tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.SegundoNombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Dni)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<br/>
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuEmpleado" asp-controller="Empleados">Volver</a>
+    </div>
+}

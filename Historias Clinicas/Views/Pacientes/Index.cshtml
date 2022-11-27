@@ -12,6 +12,7 @@
         <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Paciente</a>
     </p>
 }
+<br />
 
 <section class="search-section">
     <div class="container">
@@ -33,6 +34,8 @@
         </form>
     </div>
 </section>
+<br />
+<br />
 
 <table class="table">
     <thead>
@@ -91,3 +94,10 @@
         }
     </tbody>
 </table>
+<br />
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuEmpleado" asp-controller="Empleados">Volver</a>
+    </div>
+}

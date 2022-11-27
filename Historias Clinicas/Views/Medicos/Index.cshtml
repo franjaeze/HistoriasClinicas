@@ -5,14 +5,14 @@
 }
 
 <h1>Medicos</h1>
+
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
         <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Medico</a>
     </p>}
+<br />
 
-@*CÓDIGO PARA EL FILTRO DE BÚSQUEDA*@
-@*<div class="d-md-flex justify-content-md-start">*@
 <section class="search-section">
     <div class="container">
         <form method="get" asp-action="Buscar" asp-controller="Medicos" novalidate="novalidate">
@@ -29,30 +29,33 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </form>
     </div>
 </section>
+<br />
+<br />
 
-@*CÓDIGO PARA LA TABLA DE DATOS*@
+
 <table class="table">
     <thead>
         <tr>
-            @if (User.IsInRole("Empleado")) { 
+            @if (User.IsInRole("Empleado"))
+            {
                 <th>
                     @Html.DisplayNameFor(model => model.MatriculaNacional)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+            }
             <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            }          
-            <th>
-                 @Html.DisplayNameFor(model => model.Especialidad)
+                @Html.DisplayNameFor(model => model.Especialidad)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Apellido)
             </th>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -67,51 +70,66 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            @if (User.IsInRole("Empleado")) { 
-                <td >
-                    @Html.DisplayFor(modelItem => item.MatriculaNacional)
-                </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            }
-              <td>
-               @Html.DisplayFor(modelItem => item.Especialidad)
-               </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SegundoNombre)
-            </td>
-
-            <td>
+            <tr>
                 @if (User.IsInRole("Empleado"))
                 {
-                    <div class="divBoton">
-                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
-                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </div>
-
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MatriculaNacional)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
                 }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SegundoNombre)
+                </td>
+
+                <td>
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div class="divBoton">
+                            <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                            <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </div>
+
+                    }
 
 
-                @if (User.IsInRole("Paciente"))
-                {
-                    <div class="divBoton">
-                        <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
+                    @if (User.IsInRole("Paciente"))
+                    {
+                        <div class="divBoton">
+                            <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
 
-                    </div>
+                        </div>
 
-                }
-            </td>
-        </tr>
+                    }
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<br />
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuEmpleado" asp-controller="Empleados">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Paciente"))
+{
+    <section>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+    </section>
+}
+
