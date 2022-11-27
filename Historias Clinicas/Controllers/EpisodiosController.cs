@@ -51,7 +51,12 @@ namespace Historias_Clinicas.Controllers
                 return Content($"El episodio con id {id} no fue encontrado");
                 // Se cambio del NotFound para que no se rompa todo
             }
-            TempData["paciente"] = historiaClinicaId;
+
+            var empleado = _context.Empleados.Find(episodio.EmpleadoId);
+            var historiaClinica = _context.HistoriasClinicas.Find(historiaClinicaId);
+
+            TempData["pacienteId"] = historiaClinica.PacienteId;
+            TempData["nombreEmpleado"] = empleado.NombreCompleto;
             return View(episodio);
         }
 

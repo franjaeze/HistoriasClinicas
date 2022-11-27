@@ -48,6 +48,10 @@
                 {
                     <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="MenuPaciente" asp-controller="Pacientes">Cancelar</a>
                 }
+                @if (User.IsInRole("Medico"))
+                {
+                        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="MenuMedico" asp-controller="Medicos">Cancelar</a>
+                }
             </div>
         </form>
     </div>

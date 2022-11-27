@@ -93,12 +93,12 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 medico.UserName = medico.Email;
+                medico.FechaDeAlta = DateTime.Now;
                 var resultadoNewPersona = await _userManager.CreateAsync(medico, Configs.PasswordGenerica);
 
                 if (resultadoNewPersona.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(medico, Configs.MedicoRolName);
-
                     return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
 
                 }

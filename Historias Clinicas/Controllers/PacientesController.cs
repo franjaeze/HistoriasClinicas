@@ -93,7 +93,7 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 paciente.UserName = paciente.Email;
-                paciente.FechaDeAlta = DateTime.Today;
+                paciente.FechaDeAlta = DateTime.Now;
                 var resultadoNewPersona = await _userManager.CreateAsync(paciente, Configs.PasswordGenerica);
 
                 if (resultadoNewPersona.Succeeded)
@@ -264,11 +264,6 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-
-
-                
-
-
                 //return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
@@ -337,6 +332,12 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult SacarTurno(int id)
         {
+            TempData["medicoId"] = id;
+            return View();
+        }
+
+        public IActionResult ConfirmarTurno(int id)
+        {
             var paciente = _context.Pacientes.Find(GetUsuarioId());
             var medico = _context.Medicos.Find(id);
             MedicoPaciente MedicoPaciente = new MedicoPaciente()
@@ -352,14 +353,10 @@ namespace Historias_Clinicas.Controllers
             if (yaExiste == null)
             {
                 _context.MedicoPaciente.Add(MedicoPaciente);
-                //medico.MedicoPacientes.Add(MedicoPaciente);
-                //paciente.MedicosPaciente.Add(MedicoPaciente);
                 _context.SaveChanges();
             }
 
-           
-
-            return View();
+            return RedirectToAction("MenuPaciente", "Pacientes");
         }
 
         public IActionResult ListarMedicos()

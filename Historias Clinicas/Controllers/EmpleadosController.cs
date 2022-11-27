@@ -91,16 +91,14 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     empleado.UserName = empleado.Email;
+                    empleado.FechaDeAlta = DateTime.Now;
                     var resultadoNewPersona = await _userManager.CreateAsync(empleado, Configs.PasswordGenerica);
 
                     if (resultadoNewPersona.Succeeded)
                     { 
                         await _userManager.AddToRoleAsync(empleado, Configs.EmpleadoRolName);
 
-                        _context.Empleados.Add(empleado);
-                        await _context.SaveChangesAsync();
                         return RedirectToAction("Create", "Direcciones", new { id = empleado.Id });
-
                     }
                     foreach (var error in resultadoNewPersona.Errors)
                     {
