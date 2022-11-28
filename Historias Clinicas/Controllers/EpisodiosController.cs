@@ -55,6 +55,7 @@ namespace Historias_Clinicas.Controllers
             var empleado = _context.Empleados.Find(episodio.EmpleadoId);
             var historiaClinica = _context.HistoriasClinicas.Find(historiaClinicaId);
 
+
             TempData["pacienteId"] = historiaClinica.PacienteId;
             TempData["nombreEmpleado"] = empleado.NombreCompleto;
             return View(episodio);
@@ -79,9 +80,12 @@ namespace Historias_Clinicas.Controllers
             {
                 episodio.EmpleadoId = getUsuarioId();
 
-                var paciente = _context.Pacientes.Find(id);
-                var historia = _context.HistoriasClinicas.Find(paciente.HistoriaClinicaId);
-                episodio.HistoriaClinicaId = historia.Id;
+                var historia = _context.HistoriasClinicas.Find(id);
+                var idPaciente = historia.PacienteId;
+
+                var paciente = _context.Pacientes.Find(idPaciente);
+                //var historia = _context.HistoriasClinicas.Find(paciente.HistoriaClinicaId);
+                episodio.HistoriaClinicaId = id;
 
                 episodio.Id = 0;
                 episodio.FechaYHoraInicio = DateTime.Now;
@@ -238,16 +242,34 @@ namespace Historias_Clinicas.Controllers
 
             if (EvolucionesAbiertas(id))
             {
-                return RedirectToAction("NoPuedeCerrarse");
+                return RedirectToAction("NoPuedeCerrarse", new { id = episodio.Id });
             }
 
              
             return RedirectToAction("Create", "Epicrisis", new { id = episodio.Id });
         }
-        public IActionResult NoPuedeCerrarse(int i)
+
+        public IActionResult CerrarAdministrativo(int id)
         {
-            TempData["espisodioId"] = i;
-            var episodio = _context.Episodios.Find(i);
+
+            ViewData["EpisodioId"] = id;
+
+            var episodio = _context.Episodios.Find(id);
+
+            if (episodio == null)
+            {
+                return NotFound();
+            }
+
+        
+
+            return RedirectToAction("CrearCierre", "Epicrisis", new { id = episodio.Id });
+        }
+        public IActionResult NoPuedeCerrarse(int id)
+        {
+           
+            TempData["espisodioId"] = id;
+            var episodio = _context.Episodios.Find(id);
             var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
             TempData["pacienteId"] = hca.PacienteId;
 
@@ -267,6 +289,24 @@ namespace Historias_Clinicas.Controllers
 
 
             return EvolucionesAbiertas;
+        }
+        public IActionResult CierreAdministrativo(int id, int paciente)
+        {
+            var episodioDb = _context.Episodios.Find(id);
+
+            if (episodioDb == null)
+            {
+                return NotFound();
+            }
+
+
+            episodioDb.EstadoAbierto = false;
+            episodioDb.FechaYHoraCierre = DateTime.Now;
+
+            _context.Update(episodioDb);
+            _context.SaveChanges();
+
+            return View();
         }
 
         [HttpPost]
@@ -302,18 +342,7 @@ namespace Historias_Clinicas.Controllers
 
             return existe;
         }
-        public IActionResult CierreAdministrativo(int id, int paciente)
-        {
-            if (epicrisisExiste(id))
-            {
-
-            }
-
-            TempData["historiaId"] = paciente;
-            TempData["EpisodioId"] = id;
-
-            return View();
-        }
+      
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -348,13 +377,14 @@ namespace Historias_Clinicas.Controllers
 
 
             //@TempData["historiaId"] = ;
-            var idHistoria = episodioDb.HistoriaClinicaId;
+            var idHistoria = _context.HistoriasClinicas.Find(episodioDb.HistoriaClinicaId);
+            var idPaciente = idHistoria.PacienteId;
 
             if (episodioDb.Descripcion == null)
             {
                 return RedirectToAction("Create", "Diagnosticos");
             }
-            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = idHistoria });
+            return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = idPaciente });
         }
 
         public IActionResult DarAlta(int id, int paciente)

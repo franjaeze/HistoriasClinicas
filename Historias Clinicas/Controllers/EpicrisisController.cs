@@ -209,6 +209,55 @@ namespace Historias_Clinicas.Controllers
 
             return View(epicrisis);
         }
+
+
+        public IActionResult CrearCierre(int id)
+        {
+            ViewData["EpisodioId"] = id;
+            return View();
+        }
+
+        // POST: Epicrisis/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CrearCierre(int id, [Bind("Id,MedicoId,FechaYHora, Diagnostico")] Epicrisis epicrisis)
+        {
+            if (ModelState.IsValid)
+            {
+
+                epicrisis.EpisodioId = id;
+                epicrisis.MedicoId = GetUsuarioId();
+                epicrisis.FechaYHora = DateTime.Now;
+
+                epicrisis.Id = 0;
+                _context.Add(epicrisis);
+
+                _context.SaveChanges();
+                //return RedirectToAction(nameof(Index));
+                ViewData["EpicrisisId"] = epicrisis.Id;
+                return RedirectToAction("CargarCierre", new { id = epicrisis.Id });
+            }
+            return View(epicrisis);
+        }
+
+        public IActionResult CargarCierre(int id)
+        {
+            var epicrisis = _context.Epicrisis.Find(id);
+
+            if (epicrisis.Diagnostico == null)
+            {
+
+                return RedirectToAction("CargarCierre", "Diagnosticos", new { id = epicrisis.Id });
+            }
+
+            return View(epicrisis);
+        }
+
+
+
+
     }
 }
 
