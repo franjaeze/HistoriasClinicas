@@ -24,35 +24,26 @@
         <tbody>
             @foreach (Medico medico in Model)
             {
-            <tr>
-                <td>
-                    @medico.Apellido
-                </td>
-                <td>
-                    @medico.Nombre
-                </td>
-                <td>
-                    @medico.SegundoNombre
-                </td>
-                <td>
-                    @medico.Especialidad
-                </td>
-                <td>
-                    @medico.MatriculaNacional
-                </td>
-                <td>
-                    @medico.Email
-                </td>
-                @if (User.IsInRole("Paciente"))
-                {
-            <td>
-                <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@medico.Id">Solicitar turno</a>
-
-
-            </td>
-                        }
+                <tr>
+                    <td>
+                        @medico.Apellido
+                    </td>
+                    <td>
+                        @medico.Nombre
+                    </td>
+                    <td>
+                        @medico.SegundoNombre
+                    </td>
+                    <td>
+                        @medico.Especialidad
+                    </td>
+                    <td>
+                        @medico.MatriculaNacional
+                    </td>
+                    <td>
+                        @medico.Email
+                    </td>
                 </tr>
-                
             }
         </tbody>
     </table>

@@ -245,7 +245,16 @@ namespace Historias_Clinicas.Controllers
                 return RedirectToAction("NoPuedeCerrarse", new { id = episodio.Id });
             }
 
-             
+  
+            //if (epicrisisExiste(id))
+            //{
+            //    int epicrisis = _context.Epicrisis.ind(x => x.EpisodioId == id)
+
+            //    RedirectToAction("CargarDiagnostico", new { id = epicrisis.Id })
+
+            //}
+
+
             return RedirectToAction("Create", "Epicrisis", new { id = episodio.Id });
         }
 

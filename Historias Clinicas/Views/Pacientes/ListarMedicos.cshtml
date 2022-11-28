@@ -25,11 +25,29 @@
                             <button class="btn btn-info search-button" type="submit">
                                 Buscar
                             </button>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+        <form method="get" asp-action="ListarEspecialidad" asp-controller="Medicos" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <select class="form-control" asp-items="@Html.GetEnumSelectList<Especialidad>()">
+                        </select>
+                        <button class="btn btn-info search-button" type="submit">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
     </div>
 </section>
 <br />
