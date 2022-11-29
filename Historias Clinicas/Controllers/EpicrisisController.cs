@@ -28,22 +28,49 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Epicrisis/Details/5
-        public IActionResult Details(int? id)
+        public IActionResult Details(int episodioId)
         {
-            if (id == null)
+            if (episodioId == 0)
             {
                 return NotFound();
             }
+            //Epicrisis epicrisiDelEpisodio = null;
 
-            var epicrisis = _context.Epicrisis
-                .FirstOrDefault(m => m.Id == id);
-            if (epicrisis == null)
+            //foreach (Epicrisis epicrisis in _context.Epicrisis){
+            //    if (epicrisis.EpisodioId == episodioId)
+            //    {
+            //        epicrisiDelEpisodio = epicrisis;                  
+            //    }                           
+            //}
+
+            var index = 1;
+            var encontrado = false;
+            //var epicrisisActual = _context.Epicrisis.Find(index);
+            var epicrisisActual = _context.Epicrisis
+                .Include(ep => ep.Diagnostico)
+                .FirstOrDefault(ep => ep.Id == index);
+
+            while (epicrisisActual != null && !encontrado)
             {
-                return NotFound();
+                if(epicrisisActual.EpisodioId == episodioId)
+                {
+                    encontrado = true;
+                    var persona = _context.Personas.Find(epicrisisActual.MedicoId);
+                    TempData["nombrePersona"] = persona.NombreCompleto;
+
+                    var episodio = _context.Episodios.Find(episodioId);                   
+                    TempData["hcaPaciente"] = episodio.HistoriaClinicaId;
+
+                    return View(epicrisisActual);
+                }
+                else
+                {
+                    index++;
+                    epicrisisActual = _context.Epicrisis.Find(index);
+                }              
             }
 
-            TempData["episodioId"] = epicrisis.EpisodioId;
-            return View(epicrisis);
+            return NotFound();
         }
 
         //GET: Epicrisis/Create
