@@ -6,15 +6,15 @@
 
 <h1>Medicos</h1>
 <h3>Listado de Profesionales Médicos de la Clinica ORT-Salud </h3>
-<br/>
+<br />
 
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Medico</a>
+        <a type="button" class="botonAgregar" asp-action="Create">Agregar Medico</a>
     </p>}
 <br />
-
+@*btn btn-link justify-content-md-end mb-3*@
 <section class="search-section">
     <div class="container">
         <form method="get" asp-action="Buscar" asp-controller="Medicos" novalidate="novalidate">
@@ -34,21 +34,21 @@
             </div>
         </form>
 
-        </div>
-        @*<div class="container">
+    </div>
+    @*<div class="container">
             <form method="get" asp-action="ListarEspecialidad" asp-controller="Medicos" novalidate="novalidate">
                 <div class="row">
                     <div class="col-lg-4">
-                      
+
                             <div class="form-group row">
                                 <label class="control-label"></label>
                                 <select class="form-control search-input" asp-items="@Html.GetEnumSelectList<Especialidad>()">
                                 </select>
-                               
+
                                     <button class="btn btn-info search-button" value="Post data to controller" type="submit">
                                         Buscar
                                     </button>
-                           
+
                             </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <td>
                     @if (User.IsInRole("Empleado"))
                     {
-                        <div class="divBoton">
+                        <div>
                             <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                             <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                             <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
@@ -130,7 +130,7 @@
 
                     @if (User.IsInRole("Paciente"))
                     {
-                        <div class="divBoton">
+                        <div>
                             <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@item.Id">Solicitar turno</a>
 
                         </div>
