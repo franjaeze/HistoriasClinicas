@@ -16,9 +16,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MedicoId)
         </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EpisodioId)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Diagnostico)
         </dt>
@@ -34,6 +31,5 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index">Volver</a>
+    <a type="button" class="btn btn-secondary"  asp-action="EpicrisisPorEpisodio" asp-route-id="@TempData["episodioId"]">Volver</a>
 </div>

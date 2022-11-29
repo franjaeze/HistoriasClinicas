@@ -64,7 +64,8 @@ namespace Historias_Clinicas.Controllers
         // GET: Episodios/Create
         public IActionResult Create( int? id)
         {
-           
+            var historia = _context.HistoriasClinicas.Find(id);
+            ViewData["PacienteId"] = historia.PacienteId;
 
             return View();
         }
@@ -406,9 +407,9 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = idPaciente });
         }
 
-        public IActionResult DarAlta(int id, int paciente)
+        public IActionResult DarAlta(int id, int pacienteId)
         {
-            TempData["pacienteId"]=paciente; 
+            TempData["pacienteId"]= pacienteId; 
             TempData["episodioId"] = id;
             TempData.Keep();
             return View();
