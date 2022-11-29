@@ -56,8 +56,15 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Notas/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            
+            var evolucion = _context.Evoluciones.Find(id);
+            var episodio = _context.Episodios.Find(evolucion.EpisodioId);
+            TempData["episodioId"] = episodio.Id;
+            var historia = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+
+            TempData["historiaClinicaId"] = historia.Id;
             return View();
         }
 

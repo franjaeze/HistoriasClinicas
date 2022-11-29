@@ -42,6 +42,7 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
+            TempData["episodioId"] = epicrisis.EpisodioId;
             return View(epicrisis);
         }
 
@@ -92,6 +93,8 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+
+            TempData["episodioId"] = epicrisis.EpisodioId;
             return View(epicrisis);
         }
 
@@ -145,6 +148,7 @@ namespace Historias_Clinicas.Controllers
                 return NotFound();
             }
 
+            TempData["episodioId"] = epicrisis.EpisodioId;
             return View(epicrisis);
         }
 
@@ -156,6 +160,7 @@ namespace Historias_Clinicas.Controllers
             var epicrisis = _context.Epicrisis.Find(id);
             _context.Epicrisis.Remove(epicrisis);
             _context.SaveChanges();
+            TempData["episodioId"] = epicrisis.EpisodioId;
             return RedirectToAction(nameof(Index));
         }
 

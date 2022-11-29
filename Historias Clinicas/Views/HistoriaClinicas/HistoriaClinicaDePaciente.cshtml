@@ -101,7 +101,7 @@
 
                         @if (item.EstadoAbierto)
                         {
-                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">Dar Alta</a>
+                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-Id="@TempData["historiaId"]" asp-route-pacienteId="@TempData["pacienteId"]">Dar Alta</a>
                         }
                     }
 

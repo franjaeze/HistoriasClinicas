@@ -14,14 +14,14 @@
 
 @if (User.IsInRole("Medico"))
 
-{
+@*{
     <p align="right">
         <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
             Agregar Nota
         </a>
 
     </p>
-}
+}*@
 
 @if (User.IsInRole("Empleado"))
 

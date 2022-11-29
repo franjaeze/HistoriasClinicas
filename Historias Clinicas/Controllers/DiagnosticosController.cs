@@ -53,12 +53,15 @@ namespace Historias_Clinicas.Controllers
         {
             var epicrisis = _context.Epicrisis.Find(id);
             int numeroEp = epicrisis.EpisodioId;
+            var episodio = _context.Episodios.Find(numeroEp);
+            var historia = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+
 
             if (EpicrisisTieneDiagnostico(id))
             {
                 return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
             }
-
+            TempData["pacienteId"] = historia.PacienteId;
             return View();
         }
 
@@ -118,6 +121,7 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+            ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
             return View(diagnostico);
         }
 
