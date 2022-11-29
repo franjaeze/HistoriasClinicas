@@ -165,7 +165,7 @@ namespace Historias_Clinicas.Controllers
                 .Where(x => x.HistoriaClinicaId == historia.Id);
          
             TempData["historiaId"] = historia.Id;
-
+            TempData["pacienteId"] = id;
             TempData["nombrePaciente"] = paciente.NombreCompleto;
             return View(episodios);
         }
