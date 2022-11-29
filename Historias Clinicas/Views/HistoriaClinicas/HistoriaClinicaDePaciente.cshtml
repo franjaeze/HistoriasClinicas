@@ -23,10 +23,10 @@
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">
+        <a type="button" class="botonAgregar" asp-action="Create" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">
             Agregar Episodio
         </a>
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="EpisodiosAbiertos" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]">
+        <a type="button" class="botonAgregar" asp-action="EpisodiosAbiertos" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]">
             Episodios Abiertos
         </a>
 
