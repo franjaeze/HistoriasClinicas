@@ -49,6 +49,8 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Create(int id)
         {
             ViewData["EpisodioId"] = id;
+            
+            
             return View();
         }
 

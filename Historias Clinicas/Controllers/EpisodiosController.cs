@@ -64,7 +64,9 @@ namespace Historias_Clinicas.Controllers
         // GET: Episodios/Create
         public IActionResult Create( int? id)
         {
-            ViewData["PacienteId"] = id;
+            var historia = _context.HistoriasClinicas.Find(TempData["historiaId"]);
+            TempData["pacienteId"] = historia.PacienteId;
+
             return View();
         }
 
@@ -228,9 +230,9 @@ namespace Historias_Clinicas.Controllers
             return RedirectToAction("Create", "Evoluciones", new { id = episodio.Id });
         }
 
-        public IActionResult Cerrar(int id)
+        public IActionResult Cerrar(int id, int paciente)
         {
-
+            TempData["pacienteId"] = paciente;
             ViewData["EpisodioId"] = id;
 
             var episodio = _context.Episodios.Find(id);
@@ -245,14 +247,15 @@ namespace Historias_Clinicas.Controllers
                 return RedirectToAction("NoPuedeCerrarse", new { id = episodio.Id });
             }
 
-  
-            //if (epicrisisExiste(id))
-            //{
-            //    int epicrisis = _context.Epicrisis.ind(x => x.EpisodioId == id)
 
-            //    RedirectToAction("CargarDiagnostico", new { id = epicrisis.Id })
+            if (epicrisisExiste(id))
+            {
+                
+               var epicrisis = _context.Epicrisis.FirstOrDefault(x => x.EpisodioId == id);
 
-            //}
+                return RedirectToAction("Create", "Diagnosticos", new { id = epicrisis.Id });
+
+            }
 
 
             return RedirectToAction("Create", "Epicrisis", new { id = episodio.Id });
@@ -269,8 +272,16 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+            if (epicrisisExiste(id))
+            {
 
-        
+                var epicrisis = _context.Epicrisis.FirstOrDefault(x => x.EpisodioId == id);
+
+                return RedirectToAction("CargarCierre", "Diagnosticos", new { id = epicrisis.Id });
+
+            }
+
+
 
             return RedirectToAction("CrearCierre", "Epicrisis", new { id = episodio.Id });
         }
@@ -398,7 +409,7 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult DarAlta(int id, int paciente)
         {
-            TempData["historiaId"] = paciente;
+            TempData["pacienteId"]=paciente; 
             TempData["episodioId"] = id;
             TempData.Keep();
             return View();

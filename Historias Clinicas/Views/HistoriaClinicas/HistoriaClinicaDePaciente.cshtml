@@ -23,7 +23,7 @@
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">
             Agregar Episodio
         </a>
         <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="EpisodiosAbiertos" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]">
@@ -101,7 +101,7 @@
 
                         @if (item.EstadoAbierto)
                         {
-                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id">Dar Alta</a>
+                            <a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">Dar Alta</a>
                         }
                     }
 

@@ -49,8 +49,16 @@ namespace Historias_Clinicas.Controllers
         }
 
         // GET: Diagnosticos/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            var epicrisis = _context.Epicrisis.Find(id);
+            int numeroEp = epicrisis.EpisodioId;
+
+            if (EpicrisisTieneDiagnostico(id))
+            {
+                return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+            }
+
             return View();
         }
 
@@ -63,6 +71,17 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
+                var epicrisis = _context.Epicrisis.Find(id);
+                int numeroEp = epicrisis.EpisodioId;
+
+                if (EpicrisisTieneDiagnostico (id))
+                {
+                  return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+                }
+
+
+
+
                 diagnostico.EpicrisisId = id;
                 ViewData["EpicrisisId"] = diagnostico.EpicrisisId; 
 
@@ -70,14 +89,22 @@ namespace Historias_Clinicas.Controllers
 
                 _context.Add(diagnostico);
                 _context.SaveChanges();
-                var epicrisis = _context.Epicrisis.Find(id);
-                int numeroEp = epicrisis.EpisodioId;
+                
 
                 return RedirectToAction("DarAlta","Episodios", new {id = numeroEp });
             }
             return View(diagnostico);
         }
+        private bool EpicrisisTieneDiagnostico(int id)
+        { bool tiene = false;
+            
+            if (_context.Diagnosticos.Any(d=>d.EpicrisisId==id))
+            {
+                tiene = true;
+            }
 
+            return tiene;
+        }
         // GET: Diagnosticos/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -178,8 +205,15 @@ namespace Historias_Clinicas.Controllers
 
             return View(diagnostico);
         }
-        public IActionResult CargarCierre()
+        public IActionResult CargarCierre(int id)
         {
+            var epicrisis = _context.Epicrisis.Find(id);
+            int numeroEp = epicrisis.EpisodioId;
+
+            if (EpicrisisTieneDiagnostico(id))
+            {
+                return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+            }
             return View();
         }
 
@@ -192,6 +226,10 @@ namespace Historias_Clinicas.Controllers
         {
             if (ModelState.IsValid)
             {
+                var epicrisis = _context.Epicrisis.Find(id);
+                int numeroEp = epicrisis.EpisodioId;
+
+
                 diagnostico.EpicrisisId = id;
                 ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
 
@@ -199,8 +237,7 @@ namespace Historias_Clinicas.Controllers
 
                 _context.Add(diagnostico);
                 _context.SaveChanges();
-                var epicrisis = _context.Epicrisis.Find(id);
-                int numeroEp = epicrisis.EpisodioId;
+                
 
                 return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
             }
