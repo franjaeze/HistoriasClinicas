@@ -80,8 +80,15 @@
             </div>
             <div class="divBoton">
                 <input type="submit" value="Guardar" class="boton" />
-                <a type="button" class="btn btn-secondary" style="margin-left: 20px"  asp-action="MenuPaciente">Cancelar</a>
-            </div>
+                @if (User.IsInRole("Paciente"))
+                {
+                    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="MenuPaciente">Cancelar</a>
+                }
+            else
+            {
+            <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+            }
+                </div>
         </form>
     </div>
 </div>

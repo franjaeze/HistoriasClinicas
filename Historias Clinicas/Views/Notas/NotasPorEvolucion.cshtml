@@ -12,6 +12,28 @@
     <br />
 </header>
 
+@if (User.IsInRole("Medico"))
+
+{
+    <p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
+            Agregar Nota
+        </a>
+
+    </p>
+}
+
+@if (User.IsInRole("Empleado"))
+
+{
+    <p align="right">
+        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Notas" asp-route-Id="@ViewData["evolucionId"]">
+            Agregar Nota
+        </a>
+
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -33,11 +55,7 @@
                         <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id"> Eliminar </a>
                     }
-                    @if (User.IsInRole("Empleado"))
-                    {
-                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    }
+
                     <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
                 </td>
 

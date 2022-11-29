@@ -5,6 +5,8 @@
 }
 
 <h1>Pacientes</h1>
+<h3>Listado de Pacientes de la Clinica ORT-Salud </h3>
+<br />
 
 @if (User.IsInRole("Empleado"))
 {
@@ -41,7 +43,7 @@
     <thead>
         <tr>
             <th>
-               Historia Clinica Nro.
+                Historia Clinica Nro.
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Apellido)

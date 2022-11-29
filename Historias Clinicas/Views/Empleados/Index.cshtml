@@ -5,6 +5,8 @@
 }
 
 <h1>Empleados</h1>
+<h3>Listado de Empleados de la Clinica ORT-Salud </h3>
+<br />
 
 @if (User.IsInRole("Empleado"))
 {<p align="right">
@@ -61,22 +63,22 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.Legajo)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.Apellido)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.SegundoNombre)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.Dni)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
@@ -91,7 +93,7 @@
         }
     </tbody>
 </table>
-<br/>
+<br />
 @if (User.IsInRole("Empleado"))
 {
     <div>

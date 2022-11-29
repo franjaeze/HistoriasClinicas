@@ -5,6 +5,8 @@
 }
 
 <h1>Medicos</h1>
+<h3>Listado de Profesionales Médicos de la Clinica ORT-Salud </h3>
+<br/>
 
 @if (User.IsInRole("Empleado"))
 {
@@ -143,13 +145,13 @@
 @if (User.IsInRole("Empleado"))
 {
     <div>
-        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuEmpleado" asp-controller="Empleados">Volver</a>
+        <a type="boton" class="btn btn-secondary align-content-end" asp-action="MenuEmpleado" asp-controller="Empleados">Volver</a>
     </div>
 }
 @if (User.IsInRole("Paciente"))
 {
     <section>
-        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
+        <a type="boton" class="btn btn-secondary align-content-end" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
     </section>
 }
 
