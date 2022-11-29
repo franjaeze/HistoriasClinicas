@@ -1,16 +1,13 @@
 ﻿@model Historias_Clinicas.Models.Diagnostico
 
-@{
-    ViewData["Title"] = "Create";
-}
 
 <h1>Cierre Administrativo</h1>
 
-<h4>Diagnostico</h4>
+<h4>Por favor indique las causas por las cuales se realiza el Cierre Administrativo</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="CargarCierre">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
@@ -19,19 +16,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Recomendacion" class="control-label"></label>
-                <input asp-for="Recomendacion" class="form-control" />
+                <input asp-for="Recomendacion" value ="Es Cierre Administrativo"class="form-control" readonly />
                 <span asp-validation-for="Recomendacion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index">Volver</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

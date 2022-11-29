@@ -292,8 +292,17 @@ namespace Historias_Clinicas.Controllers
 
             return View(medicos);
         }
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult ListarEspecialidad(Especialidad especialidad)
+        {
+            var lista = _context.Medicos.Where(x =>x.Especialidad==especialidad);
+            
 
-        private int GetUsuarioId()
+                return View(lista);
+        }
+
+    private int GetUsuarioId()
         {
             var userIdValue = 0;
             var claimsIdentity = User.Identity as ClaimsIdentity;

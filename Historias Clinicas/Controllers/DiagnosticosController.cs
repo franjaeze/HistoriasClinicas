@@ -178,33 +178,35 @@ namespace Historias_Clinicas.Controllers
 
             return View(diagnostico);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CierreAdministrativo(int id, int historiaClinicaId, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
+        public IActionResult CargarCierre()
         {
-            var episodioDb = _context.Episodios.Find(id);
-
-            if (diagnostico == null)
-            {
-                return NotFound();
-            }
-            //diagnostico.EpicrisisId = id;
-            //_context.Add(diagnostico);
-
-            //_context.SaveChanges();
-
-            //_context.Update(episodioDb);
-            //_context.SaveChanges();
-
-            return RedirectToAction("CargarDiagnostico","Episodio", new { id = historiaClinicaId });
-        }
-        public IActionResult CierreAdministrativo(int id, int historiaClinicaId)
-        {
-            @TempData["historiaId"] = historiaClinicaId;
-            @TempData["EpisodioId"] = id;
-
             return View();
         }
+
+        // POST: Diagnosticos/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CargarCierre(int id, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
+        {
+            if (ModelState.IsValid)
+            {
+                diagnostico.EpicrisisId = id;
+                ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
+
+                diagnostico.Id = 0;
+
+                _context.Add(diagnostico);
+                _context.SaveChanges();
+                var epicrisis = _context.Epicrisis.Find(id);
+                int numeroEp = epicrisis.EpisodioId;
+
+                return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+            }
+            return View(diagnostico);
+        }
+
     }
     }
 
