@@ -64,8 +64,7 @@ namespace Historias_Clinicas.Controllers
         // GET: Episodios/Create
         public IActionResult Create( int? id)
         {
-            var historia = _context.HistoriasClinicas.Find(TempData["historiaId"]);
-            TempData["pacienteId"] = historia.PacienteId;
+           
 
             return View();
         }
