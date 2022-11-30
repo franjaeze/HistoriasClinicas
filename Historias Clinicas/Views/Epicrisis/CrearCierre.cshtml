@@ -2,7 +2,7 @@
 
 
 
-<h1>Crear Cierre Administrativo</h1>
+<h1>Cierre Administrativo</h1>
 
 <h4>Este cierre se genera en casos exepcionales. Debera dejar registro de los motivos por el cual el paciente no fue visto por algun Medico</h4>
 <hr />
@@ -10,17 +10,8 @@
     <div class="col-md-4">
         <form asp-action="CargarCierre">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*@if (User.IsInRole("Medico"))
-                {
-                    <div class="divBoton">
-                        <a type="boton" asp-action="CargarDiagnostico" asp-controller="Epicrisis">Agregar Diagnostico</a>
-                    </div>
-                }*@
-            @*<div class="divBoton">
-                    <a type="boton" asp-action="DiagnosticoPorEpicrisis" asp-controller="Diagnostico">Ver Diagnostico</a>
-                </div>*@
             <div class="form-group">
-                <input type="submit" asp-route-id="@ViewData["EpisodioId"]" value="Crear" class="btn btn-primary" />
+                <input class="boton" type="submit" asp-route-id="@ViewData["EpisodioId"]" value="Realizar" class="btn btn-primary" />
                 <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
             </div>
         </form>

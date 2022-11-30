@@ -66,8 +66,7 @@
                 <td class="text-left">
                     @if (User.IsInRole("Empleado"))
                     {
-                        <div class="divBoton">
-                            @*<a class="boton small" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
+                        <div>
                             <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Detalle</a>
                             <a class="botonTablas" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-Id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Evoluciones</a>
 
@@ -75,13 +74,9 @@
                     }
                     @if (User.IsInRole("Medico"))
                     {
-                        <div class="divBoton">
+                        <div>
                             <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Detalle</a>
-
-                            @*<a class="boton small" asp-action="CerrarEpisodio" asp-route-id="@item.Id">Cerrar</a>*@
                             <a class="botonTablas" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-Id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Evoluciones</a>
-
-
                         </div>
                     }
                 </td>

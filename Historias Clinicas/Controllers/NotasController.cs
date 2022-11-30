@@ -49,7 +49,7 @@ namespace Historias_Clinicas.Controllers
 
             var evolucion = _context.Evoluciones.Find(nota.EvolucionId);
             var episodio = _context.Episodios.Find(evolucion.EpisodioId);
-            var historiaClinica = _context.Episodios.Find(episodio.HistoriaClinicaId);
+            var historiaClinica = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
             TempData["historiaClinicaId"] = historiaClinica.Id;
 
             return View(nota);
@@ -114,7 +114,6 @@ namespace Historias_Clinicas.Controllers
             var episodio = _context.Episodios.FirstOrDefault(e => e.Id == evolucion.EpisodioId);
             var historiaClinica = _context.HistoriasClinicas.FirstOrDefault(e => e.Id == episodio.HistoriaClinicaId);
             TempData["HistoriaClinicaId"] = historiaClinica.Id;
-
 
             return View(nota);
         }
@@ -188,7 +187,7 @@ namespace Historias_Clinicas.Controllers
 
             var episodio = _context.Episodios.Find(evolucion.EpisodioId);
 
-            var historiaClinica = _context.Episodios.Find(episodio.HistoriaClinicaId);
+            var historiaClinica = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
 
             TempData["evolucionId"] = evolucion.Id;
             TempData["historiaClinicaId"] = historiaClinica.Id;
@@ -253,9 +252,6 @@ namespace Historias_Clinicas.Controllers
             TempData["PacienteId"] = hca.PacienteId;
 
             return View(notas);
-        }
-
-        
-
+        }      
     }
 }

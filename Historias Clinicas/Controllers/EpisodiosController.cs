@@ -32,8 +32,6 @@ namespace Historias_Clinicas.Controllers
                             select m;
 
             return View(episodios);
-
-            ;
         }
 
         // GET: Episodios/Details/5
@@ -211,17 +209,24 @@ namespace Historias_Clinicas.Controllers
             return userIdValue;
         }
 
-        public IActionResult EvolucionesPorEpisodio(int id)
-        {
-            Episodio episodio = _context.Episodios.Find(id);
+        //public IActionResult EvolucionesPorEpisodio(int id)
+        //{
+        //    Episodio episodio = _context.Episodios.Find(id);
 
-            var evoluciones = _context.Evoluciones
-                .Where(x => x.EpisodioId == episodio.Id);
+        //    var evoluciones = _context.Evoluciones
+        //        .Where(x => x.EpisodioId == episodio.Id);
 
-            ViewData["episodioId"] = id;
+        //    ViewData["episodioId"] = id;
 
-            return View(evoluciones);
-        }
+        //    if (episodio.EstadoAbierto)
+        //    {
+        //        return View(evoluciones);
+        //    }
+        //    else
+        //    {
+        //      return RedirectToAction("EvolucionesPorEpisodioCerrado", evoluciones);
+        //    }   
+        //}
 
         public IActionResult CargarEvolucion(int id)
         {

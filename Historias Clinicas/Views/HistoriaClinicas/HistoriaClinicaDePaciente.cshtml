@@ -23,10 +23,10 @@
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">
+        <a type="button" class="botonAgregar" asp-action="Create" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]" asp-route-PacienteId="@TempData["pacienteId"]">
             Agregar Episodio
         </a>
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="EpisodiosAbiertos" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]">
+        <a type="button" class="botonAgregar" asp-action="EpisodiosAbiertos" asp-controller="Episodios" asp-route-Id="@TempData["historiaId"]">
             Episodios Abiertos
         </a>
 
@@ -72,8 +72,6 @@
                     @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
                 </td>
                 <td class="text-left">
-                    @*@Html.DisplayNameFor(model => model.FechaYHoraCierre)*@
-
                     @if (item.EstadoAbierto == true)
                     {
                         <p>Aun en curso</p>
@@ -89,13 +87,11 @@
                     <a class="botonTablas" asp-action="Details" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Detalle</a>
                     @if (User.IsInRole("Empleado"))
                     {
-
-                        @*<a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
-                        @*<a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>*@
                         @if (item.EstadoAbierto)
                         {
                             <a class="botonTablas" asp-action="CerrarAdministrativo" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Cierre Administrativo</a>
-                        }}
+                        }
+                    }
                     @if (User.IsInRole("Medico"))
                     {
 
@@ -106,8 +102,11 @@
                     }
 
                     <a class="botonTablas" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Evoluciones</a>
-
-                    <a class="botonTablas" asp-action="EpicrisisPorEpisodio" asp-controller="Epicrisis" asp-route-id="@item.Id">Epicrisis</a>
+                    
+                    @if (!item.EstadoAbierto)
+                        {
+                        <a class="botonTablas" asp-action="Details" asp-controller="Epicrisis" asp-route-episodioId="@item.Id">Epicrisis</a>
+                        }             
                 </td>
             </tr>
         }

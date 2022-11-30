@@ -35,9 +35,6 @@ namespace Historias_Clinicas.Models
         public string Motivo { get; set; } 
 
 
-    
-
-
         [DataType(DataType.DateTime)]
         [Display(Name = Alias.FechaYHoraInicio)]
         public DateTime FechaYHoraInicio { get; set; } 
@@ -51,7 +48,6 @@ namespace Historias_Clinicas.Models
         [DataType(DataType.DateTime)]
         [Display(Name = Alias.FechaYHoraCierre)]
         public DateTime FechaYHoraCierre { get; set; } 
-
 
         public Boolean EstadoAbierto { get; set; } 
 

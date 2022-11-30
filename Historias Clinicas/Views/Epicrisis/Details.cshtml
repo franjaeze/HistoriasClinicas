@@ -11,16 +11,10 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MedicoId)
+            Responsable
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MedicoId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Diagnostico)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Diagnostico)
+            @TempData["nombrePersona"]
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FechaYHora)
@@ -29,7 +23,23 @@
             @Html.DisplayFor(model => model.FechaYHora)
         </dd>
     </dl>
+        <h5>Diagnostico</h5>
+    <dl class="row">
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Diagnostico.Recomendacion)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Diagnostico.Recomendacion)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Diagnostico.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Diagnostico.Descripcion)
+        </dd>
+    </dl>
+
 </div>
 <div>
-    <a type="button" class="btn btn-secondary"  asp-action="EpicrisisPorEpisodio" asp-route-id="@TempData["episodioId"]">Volver</a>
+    <a type="button" class="btn btn-secondary" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas"  asp-route-id="@TempData["hcaPaciente"]">Volver</a>
 </div>
