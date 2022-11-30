@@ -87,9 +87,6 @@
                     <a class="botonTablas" asp-action="Details" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Detalle</a>
                     @if (User.IsInRole("Empleado"))
                     {
-
-                        @*<a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>*@
-                        @*<a class="botonTablas" asp-action="Cerrar" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Cerrar Episodio</a>*@
                         @if (item.EstadoAbierto)
                         {
                             <a class="botonTablas" asp-action="CerrarAdministrativo" asp-controller="Episodios" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Cierre Administrativo</a>

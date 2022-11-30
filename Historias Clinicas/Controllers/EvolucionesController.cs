@@ -132,7 +132,7 @@ namespace Historias_Clinicas.Controllers
                 var evolucionEnDb = _context.Evoluciones.FirstOrDefault(e => e.Id == id);
                 try
                 {
-                    
+
 
                     if (evolucionEnDb == null)
                     {
@@ -144,7 +144,7 @@ namespace Historias_Clinicas.Controllers
                     evolucionEnDb.FechaYHoraAlta = evolucion.FechaYHoraAlta;
 
                     _context.SaveChanges();
-                    
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -160,9 +160,9 @@ namespace Historias_Clinicas.Controllers
                 var episodioId = evolucionEnDb.EpisodioId;
                 var episodio = _context.Episodios.Find(episodioId);
                 var historiaClinica = _context.HistoriasClinicas.FirstOrDefault(e => e.Id == episodio.HistoriaClinicaId);
-               
 
-                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = episodioId , historiaClinicaId = historiaClinica.Id} );
+
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = episodioId, historiaClinicaId = historiaClinica.Id });
             }
             return View(evolucion);
         }
@@ -240,7 +240,7 @@ namespace Historias_Clinicas.Controllers
             TempData["EpisodioId"] = episodio.Id;
             TempData["PacienteId"] = hca.PacienteId;
 
-            return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"] , historiaClinicaId = hca.Id });
+            return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"], historiaClinicaId = hca.Id });
         }
 
         private int GetUsuarioId()
@@ -274,10 +274,10 @@ namespace Historias_Clinicas.Controllers
             int pacienteId = hca.PacienteId;
 
             TempData["EpisodioId"] = id;
-           
+
             TempData["historiaId"] = historiaClinicaId;
             TempData["PacienteId"] = pacienteId;
-            return View(evoluciones);
-        }
+                return View(evoluciones);
+            }
     }
 }

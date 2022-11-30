@@ -32,7 +32,7 @@ namespace Historias_Clinicas.Controllers
         // GET: Medicos
         public IActionResult Index()
         {
-           // MedicosCollections();
+            // MedicosCollections();
             return View(_context.Medicos.ToList());
             //return View();
         }
@@ -76,7 +76,7 @@ namespace Historias_Clinicas.Controllers
         [Authorize(Roles = "Empleado")]
         public IActionResult Create()
         {
-           
+
             return View();
         }
 
@@ -110,7 +110,7 @@ namespace Historias_Clinicas.Controllers
                 //List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
                 _context.SaveChanges();
 
-                _context.Medicos.Add(medico);   
+                _context.Medicos.Add(medico);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
@@ -194,7 +194,7 @@ namespace Historias_Clinicas.Controllers
                     medicoEnDb.MatriculaNacional = medico.MatriculaNacional;
                     medicoEnDb.Especialidad = medico.Especialidad;
 
-                  
+
 
                     _context.Update(medicoEnDb);
                     _context.SaveChanges();
@@ -247,7 +247,7 @@ namespace Historias_Clinicas.Controllers
             return View(medico);
         }
 
-      
+
         // POST: Medicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -282,7 +282,7 @@ namespace Historias_Clinicas.Controllers
         public IActionResult Buscar(string apellido)
         {
             var medicos = from m in _context.Medicos
-                         select m;
+                          select m;
 
             if (!String.IsNullOrEmpty(apellido))
             {
@@ -296,13 +296,11 @@ namespace Historias_Clinicas.Controllers
         [HttpGet]
         public IActionResult ListarEspecialidad(Especialidad especialidad)
         {
-            var lista = _context.Medicos.Where(x =>x.Especialidad==especialidad);
-            
-
-                return View(lista);
+            var lista = _context.Medicos.Where(m => m.Especialidad == especialidad);
+            return View(lista);
         }
 
-    private int GetUsuarioId()
+        private int GetUsuarioId()
         {
             var userIdValue = 0;
             var claimsIdentity = User.Identity as ClaimsIdentity;
@@ -317,7 +315,7 @@ namespace Historias_Clinicas.Controllers
                 }
             }
 
-            
+
             return userIdValue;
         }
 

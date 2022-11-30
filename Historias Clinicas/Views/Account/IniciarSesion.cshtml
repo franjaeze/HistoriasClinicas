@@ -28,15 +28,14 @@
                 <span asp-validation-for="Recordarme" class="text-danger"></span>
             </div>
             <div class="form-group" style="margin-left:300px">
-                <input type="submit" value="Login" class="btn btn-primary"  />
-        
+                <input class="boton" type="submit" value="Login"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index" asp-controller="Home"> Volver</a>
+    <a type="button" class="btn btn-secondary" asp-action="Index" asp-controller="Home"> Volver</a>
 </div>
 
 @section Scripts {

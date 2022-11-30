@@ -34,18 +34,9 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
-            //Epicrisis epicrisiDelEpisodio = null;
-
-            //foreach (Epicrisis epicrisis in _context.Epicrisis){
-            //    if (epicrisis.EpisodioId == episodioId)
-            //    {
-            //        epicrisiDelEpisodio = epicrisis;                  
-            //    }                           
-            //}
 
             var index = 1;
             var encontrado = false;
-            //var epicrisisActual = _context.Epicrisis.Find(index);
             var epicrisisActual = _context.Epicrisis
                 .Include(ep => ep.Diagnostico)
                 .FirstOrDefault(ep => ep.Id == index);
