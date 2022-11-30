@@ -22,7 +22,7 @@ namespace Historias_Clinicas.Models
         public int EpisodioId { get; set; }
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime FechaYHora { get; set; }
 
     }

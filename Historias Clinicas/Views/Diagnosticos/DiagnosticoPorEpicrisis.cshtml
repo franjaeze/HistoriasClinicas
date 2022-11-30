@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Diagnostico>
+
+@{
+    ViewData["Title"] = "DiagnosticoPorEpicrisis";
+
+    <header>
+        <h1>Epicrisis</h1>
+        <br/>
+        <h3> Diagnostico cargado para la Epicrisis @ViewData["EpicrisisId"]</h3>
+        <br/>
+        <br/>
+    </header>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EpicrisisId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recomendacion)
+            </th>
+       
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EpicrisisId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recomendacion)
+                </td>
+               
+                <td>
+                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br/>
+<br/>
+<br/>
+
+<div>
+    <a type="button" class="btn btn-secondary"  asp-action="EpicrisisPorEpisodio" asp-controller="Epicrisis" asp-route-Id="@ViewData["episodioId"]">Volver</a>
+</div>

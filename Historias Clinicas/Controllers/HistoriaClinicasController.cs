@@ -117,6 +117,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
+                @TempData["PacienteId"] = historiaClinica.PacienteId;
                 return RedirectToAction(nameof(Index));
             }
             return View(historiaClinica);
@@ -162,9 +163,10 @@ namespace Historias_Clinicas.Controllers
             var historia = _context.HistoriasClinicas.Find(paciente.HistoriaClinicaId);
             var episodios = _context.Episodios
                 .Where(x => x.HistoriaClinicaId == historia.Id);
-
-            ViewData["historiaId"] = id;
-
+         
+            TempData["historiaId"] = historia.Id;
+            TempData["pacienteId"] = id;
+            TempData["nombrePaciente"] = paciente.NombreCompleto;
             return View(episodios);
         }
     }

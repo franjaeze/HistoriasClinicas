@@ -1,0 +1,24 @@
+﻿@model Historias_Clinicas.Models.Epicrisis
+
+
+
+<h1>Cierre Administrativo</h1>
+
+<h4>Este cierre se genera en casos exepcionales. Debera dejar registro de los motivos por el cual el paciente no fue visto por algun Medico</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CargarCierre">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input class="boton" type="submit" asp-route-id="@ViewData["EpisodioId"]" value="Realizar" class="btn btn-primary" />
+                <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

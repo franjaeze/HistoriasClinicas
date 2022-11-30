@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Paciente>
+
+<header>
+    <h1>Búsqueda</h1>
+    <h3> Pacientes que coinciden con la búsqueda </h3>
+    <p></p>
+    <p></p>
+</header>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoriaClinicaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dni)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HistoriaClinicaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dni)
+            </td>
+            <td>
+                
+                @if (User.IsInRole("Empleado"))
+                {
+                    <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                    <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                }
+                <a class="botonTablas" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@item.Id">Historia Clinica</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px"  asp-action="Index" asp-controller="Pacientes">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Medico"))
+{
+    <section>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px"  asp-action="ListarPacientes" asp-controller="Medicos">Volver</a>
+    </section>
+}

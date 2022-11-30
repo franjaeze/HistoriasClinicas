@@ -12,40 +12,14 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MedicoId" class="control-label"></label>
-                <input asp-for="MedicoId" class="form-control" />
-                <span asp-validation-for="MedicoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EpisodioId" class="control-label"></label>
-                <input asp-for="EpisodioId" class="form-control" />
-                <span asp-validation-for="EpisodioId" class="text-danger"></span>
-            </div>
-            @if (User.IsInRole("Medico"))
-            {
-                <div class="divBoton">
-                    <a type="boton" asp-action="Create" asp-controller="Diagnostico">Agregar Diagnostico</a>
-                </div>
-            }
-            <div class="divBoton">
-                <a type="boton" asp-action="DiagnosticoPorEpicrisis" asp-controller="Diagnostico">Ver Diagnostico</a>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaYHora" class="control-label"></label>
-                <input asp-for="FechaYHora" class="form-control" />
-                <span asp-validation-for="FechaYHora" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+        <div class="form-group">
+                <input class="boton" type="submit" asp-route-id="@ViewData["EpisodioId"]" value="Crear"/>
+            <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClincaDePaciente" asp-controller="HistoriaClincas" asp-route-id="@TempData["pacienteId"]">Cancelar</a>
+        </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Volver</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

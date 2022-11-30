@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Historias_Clinicas.Helpers;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace Historias_Clinicas.Controllers
 {
@@ -31,7 +32,7 @@ namespace Historias_Clinicas.Controllers
         // GET: Medicos
         public IActionResult Index()
         {
-           // MedicosCollections();
+            // MedicosCollections();
             return View(_context.Medicos.ToList());
             //return View();
         }
@@ -41,11 +42,11 @@ namespace Historias_Clinicas.Controllers
         {
             if (!string.IsNullOrEmpty(User.Identity.Name))
             {
-                Medico pacienteEnDb = _context.Medicos.FirstOrDefault(c => c.NormalizedUserName == User.Identity.Name.ToUpper());
-                if (pacienteEnDb != null)
+                Medico medicoEnDb = _context.Medicos.FirstOrDefault(c => c.NormalizedUserName == User.Identity.Name.ToUpper());
+                if (medicoEnDb != null)
                 {
-                    ViewBag.Nombre = pacienteEnDb.Nombre;
-                    ViewBag.Id = pacienteEnDb.Id;
+                    ViewBag.Nombre = medicoEnDb.Nombre;
+                    ViewBag.Id = medicoEnDb.Id;
 
                 }
             }
@@ -75,7 +76,7 @@ namespace Historias_Clinicas.Controllers
         [Authorize(Roles = "Empleado")]
         public IActionResult Create()
         {
-           
+
             return View();
         }
 
@@ -92,12 +93,12 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 medico.UserName = medico.Email;
+                medico.FechaDeAlta = DateTime.Now;
                 var resultadoNewPersona = await _userManager.CreateAsync(medico, Configs.PasswordGenerica);
 
                 if (resultadoNewPersona.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(medico, Configs.MedicoRolName);
-
                     return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
 
                 }
@@ -106,10 +107,10 @@ namespace Historias_Clinicas.Controllers
                     ModelState.AddModelError(String.Empty, error.Description);
                 }
 
-                List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
+                //List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
                 _context.SaveChanges();
 
-                _context.Medicos.Add(medico);   
+                _context.Medicos.Add(medico);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
@@ -163,7 +164,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,EstaActivo,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
+        public IActionResult Edit(int id, [Bind("MatriculaNacional,Especialidad,Id,Nombre,SegundoNombre,Apellido,Dni,Email,Telefono,FechaDeAlta")] Medico medico)
         {
             if (id != medico.Id)
             {
@@ -176,15 +177,38 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    if (medico.MedicoPacientes == null)
-                    {
+                    var medicoEnDb = _context.Medicos
+                      .Include(m => m.Direccion)
+                      .FirstOrDefault(m => m.Id == id);
 
-                        List<MedicoPaciente> MedicoPacientes = new List<MedicoPaciente>();
-                        medico.MedicoPacientes = MedicoPacientes;
+                    if (medicoEnDb == null)
+                    {
+                        return NotFound();
                     }
-                    _context.Update(medico);
+
+                    medicoEnDb.Nombre = medico.Nombre;
+                    medicoEnDb.SegundoNombre = medico.SegundoNombre;
+                    medicoEnDb.Apellido = medico.Apellido;
+                    medicoEnDb.Dni = medico.Dni;
+                    medicoEnDb.Telefono = medico.Telefono;
+                    medicoEnDb.MatriculaNacional = medico.MatriculaNacional;
+                    medicoEnDb.Especialidad = medico.Especialidad;
+
+
+
+                    _context.Update(medicoEnDb);
                     _context.SaveChanges();
+
+                    if (medicoEnDb.Direccion == null)
+                    {
+                        return RedirectToAction("Create", "Direcciones", new { id = medico.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Edit", "Direcciones", new { id = medicoEnDb.Direccion.Id });
+                    }
                 }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!MedicoExists(medico.Id))
@@ -196,7 +220,10 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateException dbex)
+                {
+                    ProcesarDuplicado(dbex);
+                }
             }
             return View(medico);
         }
@@ -220,7 +247,7 @@ namespace Historias_Clinicas.Controllers
             return View(medico);
         }
 
-      
+
         // POST: Medicos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -237,24 +264,40 @@ namespace Historias_Clinicas.Controllers
             return _context.Medicos.Any(e => e.Id == id);
         }
 
+        private void ProcesarDuplicado(DbUpdateException dbex)
+        {
+            SqlException innerException = dbex.InnerException as SqlException;
+            if (innerException != null && (innerException.Number == 2627 || innerException.Number == 2601))
+            {
+                ModelState.AddModelError("MatriculaNacional", MensajeError.MatriculaNacionalExistente);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, dbex.Message);
+            }
+        }
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Buscar(string apellido)
         {
-            var medicos = _context.Medicos
-                .Where(x => x.Apellido.Contains(apellido));
-            //ViewBag.Apellido = apellido;
+            var medicos = from m in _context.Medicos
+                          select m;
 
-            //var medicos = from m in _context.Medicos
-            //              select m;
-
-            //if (!String.IsNullOrEmpty(apellido))
-            //{
-            //    medicos = medicos.Where(m => m.NombreCompleto.Contains(apellido));
-            //    ViewBag.Apellido = apellido;
-            //}
+            if (!String.IsNullOrEmpty(apellido))
+            {
+                medicos = medicos.Where(m => m.Apellido.Contains(apellido));
+                ViewBag.Apellido = apellido;
+            }
 
             return View(medicos);
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult ListarEspecialidad(Especialidad especialidad)
+        {
+            var lista = _context.Medicos.Where(m => m.Especialidad == especialidad);
+            return View(lista);
         }
 
         private int GetUsuarioId()
@@ -272,7 +315,7 @@ namespace Historias_Clinicas.Controllers
                 }
             }
 
-            
+
             return userIdValue;
         }
 
@@ -280,11 +323,13 @@ namespace Historias_Clinicas.Controllers
         public IActionResult ListarPacientes()
         {
             int id = GetUsuarioId();
-            //int id2 = id;
             var medico = _context.Medicos.Find(id);
-            var pacientes = _context.MedicoPaciente.Where(x => x.MedicoId == medico.Id).ToList();
+            ViewData["MatriculaNacional"] = medico.MatriculaNacional;
+            var medicosPacientes = _context.MedicoPaciente
+                        .Where(x => x.MedicoId == medico.Id);
+            var pacientes = _context.Pacientes.Where(x => medicosPacientes.Any(y => y.PacienteId == x.Id));
+
             return View(pacientes);
-            
-        }      
+        }
     }
 }

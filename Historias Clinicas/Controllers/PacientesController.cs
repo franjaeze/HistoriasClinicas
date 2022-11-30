@@ -93,12 +93,12 @@ namespace Historias_Clinicas.Controllers
             if (ModelState.IsValid)
             {
                 paciente.UserName = paciente.Email;
-                paciente.FechaDeAlta = DateTime.Today;
+                paciente.FechaDeAlta = DateTime.Now;
                 var resultadoNewPersona = await _userManager.CreateAsync(paciente, Configs.PasswordGenerica);
 
                 if (resultadoNewPersona.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(paciente, Configs.EmpleadoRolName);
+                    await _userManager.AddToRoleAsync(paciente, Configs.PacienteRolName);
                     if (paciente.HistoriaClinicaId == null)
                     {
                         HistoriaClinica historiaClinica = new HistoriaClinica()
@@ -120,7 +120,7 @@ namespace Historias_Clinicas.Controllers
                         _context.SaveChanges();
                         return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
 
-                }
+                    }
                     foreach (var error in resultadoNewPersona.Errors)
                     {
                         ModelState.AddModelError(String.Empty, error.Description);
@@ -193,7 +193,9 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    var pacienteEnDb = _context.Pacientes.Find(paciente.Id);
+                    var pacienteEnDb = _context.Pacientes
+                .Include(p => p.Direccion)
+                .FirstOrDefault(p => p.Id == id);
 
                     if (pacienteEnDb == null)
                     {
@@ -239,6 +241,15 @@ namespace Historias_Clinicas.Controllers
 
 
                         _context.SaveChanges();
+
+                        if (pacienteEnDb.Direccion == null)
+                        {
+                            return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
+                        }
+                        else
+                        {
+                            return RedirectToAction("Edit", "Direcciones", new { id = pacienteEnDb.Direccion.Id });
+                        }
                     }
                 }
 
@@ -253,12 +264,7 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                if (paciente.Direccion == null)
-                {
-                    return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
-                }
-
-                return RedirectToAction(nameof(MenuPaciente));
+                //return RedirectToAction(nameof(MenuPaciente));
             }
             return View(paciente);
         }
@@ -301,6 +307,7 @@ namespace Historias_Clinicas.Controllers
         {
             int Id = GetUsuarioId();
 
+
             return RedirectToAction("HistoriaClinicaDePaciente", "HistoriaClinicas", new { id = Id });
         }
 
@@ -325,6 +332,12 @@ namespace Historias_Clinicas.Controllers
 
         public IActionResult SacarTurno(int id)
         {
+            TempData["medicoId"] = id;
+            return View();
+        }
+
+        public IActionResult ConfirmarTurno(int id)
+        {
             var paciente = _context.Pacientes.Find(GetUsuarioId());
             var medico = _context.Medicos.Find(id);
             MedicoPaciente MedicoPaciente = new MedicoPaciente()
@@ -335,22 +348,158 @@ namespace Historias_Clinicas.Controllers
                 Paciente = paciente
             };
 
-            _context.MedicoPaciente.Add(MedicoPaciente);
-            //medico.MedicoPacientes.Add(MedicoPaciente);
-            //paciente.MedicosPaciente.Add(MedicoPaciente);
-            _context.SaveChanges();
+            MedicoPaciente yaExiste = null;
+            yaExiste = _context.MedicoPaciente.Find(id, GetUsuarioId());
+            if (yaExiste == null)
+            {
+                _context.MedicoPaciente.Add(MedicoPaciente);
+                _context.SaveChanges();
+            }
 
-            return View();
+            return RedirectToAction("MenuPaciente", "Pacientes");
         }
 
         public IActionResult ListarMedicos()
         {
             int id = GetUsuarioId();
             var paciente = _context.Pacientes.Find(id);
-            var medicos = _context.MedicoPaciente
-                        .Where(x => x.PacienteId == paciente.Id)
-                        .ToList();
+            var medicosPacientes = _context.MedicoPaciente
+                        .Where(x => x.PacienteId == paciente.Id);
+            var medicos = _context.Medicos.Where(x => medicosPacientes.Any(y => y.MedicoId == x.Id));
+
+            TempData["PacienteId"] = paciente.Id;
             return View(medicos);
         }
+
+        public IActionResult Buscar(int historiaClinica)
+        {
+            var pacientes = from p in _context.Pacientes
+                            select p;
+
+            if (historiaClinica != 0)
+            {
+                pacientes = pacientes.Where(m => m.HistoriaClinicaId == historiaClinica);
+
+
+            }
+            return View(pacientes);
+        }
+
+
+        public IActionResult CompletarRegistro(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var paciente = _context.Pacientes.Find(id);
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+            return View(paciente);
+        }
+
+        // POST: Pacientes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult CompletarRegistro(int id, [Bind("Id,ObraSocial,Nombre,SegundoNombre,Apellido,HistoriaClinicaId,Dni,Email,Telefono,FechaDeAlta")] Paciente paciente)
+        {
+
+            if (id != paciente.Id)
+            {
+
+                return NotFound();
+            }
+
+            VerificarDni(paciente);
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var pacienteEnDb = _context.Pacientes
+                .Include(p => p.Direccion)
+                .FirstOrDefault(p => p.Id == id);
+
+                    if (pacienteEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    pacienteEnDb.Dni = paciente.Dni;
+                    pacienteEnDb.Telefono = paciente.Telefono;
+                    pacienteEnDb.ObraSocial = paciente.ObraSocial;
+                    pacienteEnDb.HistoriaClinicaId = paciente.HistoriaClinicaId;
+                    pacienteEnDb.Nombre = paciente.Nombre;
+                    pacienteEnDb.SegundoNombre = paciente.SegundoNombre;
+                    pacienteEnDb.Apellido = paciente.Apellido;
+                    pacienteEnDb.Email = paciente.Email;
+
+                    var fechaDefault = new DateTime(0001, 1, 1, 00, 00, 00);
+
+                    if (pacienteEnDb.FechaDeAlta == fechaDefault)
+                    {
+                        pacienteEnDb.FechaDeAlta = DateTime.Today;
+                    }
+
+                    if (pacienteEnDb.MedicosPaciente == null)
+                    {
+                        this.MedicosPaciente = new List<MedicoPaciente>();
+                    }
+
+                    _context.SaveChanges();
+
+                    if (pacienteEnDb.HistoriaClinicaId == null)
+                    {
+                        HistoriaClinica historiaClinica = new HistoriaClinica()
+                        {
+                            PacienteId = paciente.Id,
+                            Episodios = new List<Episodio>()
+                        };
+
+                        _context.Add(historiaClinica);
+                        _context.SaveChanges();
+
+                        pacienteEnDb.HistoriaClinicaId = historiaClinica.Id;
+
+
+                        _context.SaveChanges();
+
+                        if (pacienteEnDb.Direccion == null)
+                        {
+                            return RedirectToAction("Create", "Direcciones", new { id = paciente.Id });
+                        }
+                        else
+                        {
+                            ViewData["DireccionId"] = pacienteEnDb.Direccion.Id;
+                            return RedirectToAction("Edit", "Direcciones", new { id = paciente.Id });
+                        }
+                    }
+                }
+
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PacienteExists(paciente.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                //return RedirectToAction(nameof(MenuPaciente));
+            }
+            return View(paciente);
+        }
+
     }
+
+
 }

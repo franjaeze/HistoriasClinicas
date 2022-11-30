@@ -5,13 +5,16 @@
 }
 
 <h1>Pacientes</h1>
+<h3>Listado de Pacientes de la Clinica ORT-Salud </h3>
+<br />
 
 @if (User.IsInRole("Empleado"))
 {
     <p align="right">
-        <a type="button" class="btn btn-link justify-content-md-end mb-3" asp-action="Create">Agregar Paciente</a>
+        <a type="button" class="botonAgregar" asp-action="Create">Agregar Paciente</a>
     </p>
 }
+<br />
 
 <section class="search-section">
     <div class="container">
@@ -20,7 +23,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" class="form-control search-input" name="Medico" placeholder=" Buscar por DNI" />
+                            <input type="text" class="form-control search-input" name="historiaClinica" placeholder=" Buscar por Historia Clinica" />
                         </div>
                         <div class="col-lg-2 col-md-3 col-sm-12 p-0">
                             <button class="btn btn-info search-button" type="submit">
@@ -33,12 +36,14 @@
         </form>
     </div>
 </section>
+<br />
+<br />
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.HistoriaClinicaId)
+                Historia Clinica Nro.
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Apellido)
@@ -91,3 +96,10 @@
         }
     </tbody>
 </table>
+<br />
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" style="margin-left: 20px" asp-action="MenuEmpleado" asp-controller="Empleados">Volver</a>
+    </div>
+}

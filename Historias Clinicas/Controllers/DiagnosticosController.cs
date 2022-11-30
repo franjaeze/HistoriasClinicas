@@ -42,13 +42,26 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+            var diagnostico1 = _context.Diagnosticos.Find(id);
+            ViewData["EpicrisisId"] = diagnostico1.EpicrisisId;
 
             return View(diagnostico);
         }
 
         // GET: Diagnosticos/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            var epicrisis = _context.Epicrisis.Find(id);
+            int numeroEp = epicrisis.EpisodioId;
+            var episodio = _context.Episodios.Find(numeroEp);
+            var historia = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+
+
+            if (EpicrisisTieneDiagnostico(id))
+            {
+                return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+            }
+            TempData["pacienteId"] = historia.PacienteId;
             return View();
         }
 
@@ -57,17 +70,44 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
+        public IActionResult Create(int id, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
         {
             if (ModelState.IsValid)
             {
+                var epicrisis = _context.Epicrisis.Find(id);
+                int numeroEp = epicrisis.EpisodioId;
+
+                if (EpicrisisTieneDiagnostico (id))
+                {
+                  return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+                }
+
+
+
+
+                diagnostico.EpicrisisId = id;
+                ViewData["EpicrisisId"] = diagnostico.EpicrisisId; 
+
+                diagnostico.Id = 0;
+
                 _context.Add(diagnostico);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                
+
+                return RedirectToAction("DarAlta","Episodios", new {id = numeroEp });
             }
             return View(diagnostico);
         }
+        private bool EpicrisisTieneDiagnostico(int id)
+        { bool tiene = false;
+            
+            if (_context.Diagnosticos.Any(d=>d.EpicrisisId==id))
+            {
+                tiene = true;
+            }
 
+            return tiene;
+        }
         // GET: Diagnosticos/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -81,6 +121,7 @@ namespace Historias_Clinicas.Controllers
             {
                 return NotFound();
             }
+            ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
             return View(diagnostico);
         }
 
@@ -89,7 +130,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,MedicoId,Descripcion,Recomendacion,Tratamiento,EstudiosEfectuados,EspecialidadD")] Diagnostico diagnostico)
+        public IActionResult Edit(int id, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
         {
             if (id != diagnostico.Id)
             {
@@ -100,6 +141,7 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
+                    diagnostico.EpicrisisId = id;
                     _context.Update(diagnostico);
                     _context.SaveChanges();
                 }
@@ -114,7 +156,9 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                
+                ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
+                return RedirectToAction("DiagnosticoPorEpicrisis", new { id = diagnostico.EpicrisisId });
             }
             return View(diagnostico);
         }
@@ -152,5 +196,59 @@ namespace Historias_Clinicas.Controllers
         {
             return _context.Diagnosticos.Any(e => e.Id == id);
         }
+
+        public IActionResult DiagnosticoPorEpicrisis(int id)
+        {
+            var epicrisis = _context.Epicrisis.Find(id);
+
+            var diagnostico = _context.Diagnosticos
+                .Where(x => x.EpicrisisId == epicrisis.Id);
+
+            ViewData["episodioId"] = epicrisis.EpisodioId;
+            ViewData["EpicrisisId"] = epicrisis.Id;
+
+            return View(diagnostico);
+        }
+        public IActionResult CargarCierre(int id)
+        {
+            var epicrisis = _context.Epicrisis.Find(id);
+            int numeroEp = epicrisis.EpisodioId;
+
+            if (EpicrisisTieneDiagnostico(id))
+            {
+                return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+            }
+            return View();
+        }
+
+        // POST: Diagnosticos/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CargarCierre(int id, [Bind("Id,EpicrisisId,Descripcion,Recomendacion,Especialidad")] Diagnostico diagnostico)
+        {
+            if (ModelState.IsValid)
+            {
+                var epicrisis = _context.Epicrisis.Find(id);
+                int numeroEp = epicrisis.EpisodioId;
+
+
+                diagnostico.EpicrisisId = id;
+                ViewData["EpicrisisId"] = diagnostico.EpicrisisId;
+
+                diagnostico.Id = 0;
+
+                _context.Add(diagnostico);
+                _context.SaveChanges();
+                
+
+                return RedirectToAction("DarAlta", "Episodios", new { id = numeroEp });
+            }
+            return View(diagnostico);
+        }
+
     }
-}
+    }
+
+

@@ -91,16 +91,14 @@ namespace Historias_Clinicas.Controllers
                 try
                 {
                     empleado.UserName = empleado.Email;
+                    empleado.FechaDeAlta = DateTime.Now;
                     var resultadoNewPersona = await _userManager.CreateAsync(empleado, Configs.PasswordGenerica);
 
                     if (resultadoNewPersona.Succeeded)
                     { 
                         await _userManager.AddToRoleAsync(empleado, Configs.EmpleadoRolName);
 
-                        _context.Empleados.Add(empleado);
-                        await _context.SaveChangesAsync();
                         return RedirectToAction("Create", "Direcciones", new { id = empleado.Id });
-
                     }
                     foreach (var error in resultadoNewPersona.Errors)
                     {
@@ -174,9 +172,34 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(empleado);
+
+                    var empleadoEnDb = _context.Empleados
+                       .Include(e => e.Direccion)
+                       .FirstOrDefault(e => e.Id == id);
+
+                    if (empleadoEnDb == null)
+                    {
+                        return NotFound();
+                    }
+
+                    empleadoEnDb.Nombre = empleado.Nombre;
+                    empleadoEnDb.SegundoNombre = empleado.SegundoNombre;
+                    empleadoEnDb.Apellido = empleado.Apellido;
+                    empleadoEnDb.Dni = empleado.Dni;
+                    empleadoEnDb.Telefono = empleado.Telefono;
+                    empleadoEnDb.Legajo = empleado.Legajo;
+
+                    _context.Update(empleadoEnDb);
                     _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+
+                    if (empleadoEnDb.Direccion == null)
+                    {
+                        return RedirectToAction("Create", "Direcciones", new { id = empleado.Id });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Edit", "Direcciones", new { id = empleadoEnDb.Direccion.Id });
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -263,6 +286,19 @@ namespace Historias_Clinicas.Controllers
             }
 
             return View(paciente);
+        }
+        public IActionResult Buscar(string apellido)
+        {
+            var empleados = from m in _context.Empleados
+                          select m;
+
+            if (!String.IsNullOrEmpty(apellido))
+            {
+                empleados = empleados.Where(m => m.Apellido.Contains(apellido));
+                ViewBag.Apellido = apellido;
+            }
+
+            return View(empleados);
         }
     }
 }

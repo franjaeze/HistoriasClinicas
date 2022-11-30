@@ -22,12 +22,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Motivo)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Internacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Internacion)
-        </dd>
+     
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FechaYHoraInicio)
         </dt>
@@ -53,10 +48,10 @@
             @Html.DisplayFor(model => model.EstadoAbierto)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmpleadoId)
+            Registró Empleado
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmpleadoId)
+            @TempData["nombreEmpleado"]
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Especialidad)
@@ -67,6 +62,6 @@
     </dl>
 </div>
 <div>
-    <a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
-    <a class="boton" asp-action="Index">Volver</a>
+    @*<a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>*@ 
+    <a type="button" class="btn btn-secondary" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-id="@TempData["pacienteId"]">Salir</a>
 </div>

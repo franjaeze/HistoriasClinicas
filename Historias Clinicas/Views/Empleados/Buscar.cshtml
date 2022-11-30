@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Empleado>
+
+<header>
+    <h1>Búsqueda</h1>
+    <h3> Empleados que coinciden con la búsqueda </h3>
+    <p></p>
+    <p></p>
+</header>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Legajo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Legajo)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.SegundoNombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Dni)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                        <a class="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="button" style="margin-left: 20px" class="btn btn-secondary align-content-end" asp-action="Index" asp-controller="Empleados">Volver</a>
+    </div>
+}
+

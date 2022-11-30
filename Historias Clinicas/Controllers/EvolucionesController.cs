@@ -42,12 +42,26 @@ namespace Historias_Clinicas.Controllers
                 // Se cambio del NotFound para que no se rompa todo
             }
 
+            var medico = _context.Medicos
+               .FirstOrDefault(m => m.Id == 5);
+
+            var episodioId = evolucion.EpisodioId;
+            var episodio = _context.Episodios.Find(episodioId);
+            TempData["EvolucionId"] = evolucion.Id;
+            TempData["EpisodioId"] = episodioId;
+            TempData["HistoriaClinicaId"] = episodio.HistoriaClinicaId;
+            TempData["nombreMedico"] = medico.NombreCompleto;
+
             return View(evolucion);
         }
 
         // GET: Evolucions/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            TempData["EpisodioId"] = id;
+            var episodio = _context.Episodios.Find(id);
+            TempData["historiaClinicaId"] = episodio.HistoriaClinicaId;
+
             return View();
         }
 
@@ -56,22 +70,25 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(int id, [Bind("Id,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion")] Evolucion evolucion)
+        public IActionResult Create(int id, [Bind("Id,EpisodioId,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion")] Evolucion evolucion)
         {
             if (ModelState.IsValid)
             {
                 evolucion.EpisodioId = id;
-                evolucion.MedicoId = getUsuarioId();
-                evolucion.FechaYHoraInicio = DateTime.Today;
+                TempData["EpisodioId"] = id;
+                evolucion.MedicoId = GetUsuarioId();
+                evolucion.FechaYHoraInicio = DateTime.Now;
                 evolucion.EstadoAbierto = true;
 
-                evolucion.Id= 0;
+                evolucion.Id = 0;
                 _context.Add(evolucion);
 
                 _context.SaveChanges();
 
-                return RedirectToAction("Index", "Pacientes");
-                
+                var episodio = _context.Episodios.Find(evolucion.EpisodioId);
+
+                //return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"], historiaClinicaId = episodio.HistoriaClinicaId });
+                return RedirectToAction("Create", "Notas", new { id = evolucion.Id });
             }
             return View(evolucion);
         }
@@ -85,10 +102,16 @@ namespace Historias_Clinicas.Controllers
             }
 
             var evolucion = _context.Evoluciones.Find(id);
+
             if (evolucion == null)
             {
                 return NotFound();
             }
+
+            TempData["episodioId"] = evolucion.EpisodioId;
+            var episodio = _context.Episodios.Find(evolucion.EpisodioId);
+            TempData["historiaId"] = episodio.HistoriaClinicaId;
+
             return View(evolucion);
         }
 
@@ -97,7 +120,7 @@ namespace Historias_Clinicas.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion,Indicaciones,PrecisaEstudiosAdicionales,PrecisaInterconsultaMedica")] Evolucion evolucion)
+        public IActionResult Edit(int id, [Bind("Id,EpisodioId,MedicoId,FechaYHoraInicio,FechaYHoraAlta,FechaYHoraCierre,EstadoAbierto,DescripcionAtencion")] Evolucion evolucion)
         {
             if (id != evolucion.Id)
             {
@@ -106,10 +129,22 @@ namespace Historias_Clinicas.Controllers
 
             if (ModelState.IsValid)
             {
+                var evolucionEnDb = _context.Evoluciones.FirstOrDefault(e => e.Id == id);
                 try
                 {
-                    _context.Update(evolucion);
+
+
+                    if (evolucionEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    evolucionEnDb.DescripcionAtencion = evolucion.DescripcionAtencion;
+                    evolucionEnDb.FechaYHoraAlta = evolucion.FechaYHoraAlta;
+
                     _context.SaveChanges();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,7 +157,12 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index", "Pacientes");
+                var episodioId = evolucionEnDb.EpisodioId;
+                var episodio = _context.Episodios.Find(episodioId);
+                var historiaClinica = _context.HistoriasClinicas.FirstOrDefault(e => e.Id == episodio.HistoriaClinicaId);
+
+
+                return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = episodioId, historiaClinicaId = historiaClinica.Id });
             }
             return View(evolucion);
         }
@@ -145,47 +185,6 @@ namespace Historias_Clinicas.Controllers
             return View(evolucion);
         }
 
-        public IActionResult Cerrar(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            ViewBag.EvolucionId = id;
-
-            var evolucion = _context.Evoluciones
-                .FirstOrDefault(m => m.Id == id);
-            if (evolucion == null)
-            {
-                return NotFound();
-            }
-
-            return View(evolucion);
-        }
-
-        public IActionResult CerrarEvolucion(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var evolucionb = _context.Evoluciones.Find(id);
-
-            if (evolucionb == null)
-            {
-                return NotFound();
-            }
-            evolucionb.EstadoAbierto = false;
-            _context.SaveChanges();
-            evolucionb.FechaYHoraCierre = DateTime.Now;
-            _context.SaveChanges();
-
-
-            return RedirectToAction(nameof(Index));
-            
-        }
-
         // POST: Evolucions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -202,7 +201,49 @@ namespace Historias_Clinicas.Controllers
             return _context.Evoluciones.Any(e => e.Id == id);
         }
 
-        private int getUsuarioId()
+        public IActionResult Cerrar(int id, int historiaClinicaId)
+        {
+            var evolucion = _context.Evoluciones
+                .FirstOrDefault(m => m.Id == id);
+            if (evolucion == null)
+            {
+                return NotFound();
+            }
+            TempData["historiaClinicaId"] = historiaClinicaId;
+            TempData["EpisodioId"] = evolucion.EpisodioId;
+            TempData["EvolucionId"] = id;
+            return View(evolucion);
+        }
+
+        public IActionResult CerrarEvolucion(int id, int historiaClinicaId)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var evolucionb = _context.Evoluciones.Find(id);
+
+            if (evolucionb == null)
+            {
+                return NotFound();
+            }
+            evolucionb.EstadoAbierto = false;
+            _context.SaveChanges();
+            evolucionb.FechaYHoraCierre = DateTime.Now;
+            _context.SaveChanges();
+
+            TempData["historiaClinicaId"] = historiaClinicaId;
+
+            var episodio = _context.Episodios.Find(evolucionb.EpisodioId);
+            var hca = _context.HistoriasClinicas.Find(episodio.HistoriaClinicaId);
+            TempData["EpisodioId"] = episodio.Id;
+            TempData["PacienteId"] = hca.PacienteId;
+
+            return RedirectToAction("EvolucionesPorEpisodio", "Evoluciones", new { id = @TempData["EpisodioId"], historiaClinicaId = hca.Id });
+        }
+
+        private int GetUsuarioId()
         {
             var userIdValue = 0;
             var claimsIdentity = User.Identity as ClaimsIdentity;
@@ -220,19 +261,23 @@ namespace Historias_Clinicas.Controllers
             return userIdValue;
         }
 
-       
 
-        public IActionResult EvolucionesPorEpisodio(int id)
+
+        public IActionResult EvolucionesPorEpisodio(int id, int historiaClinicaId)
         {
             var episodio = _context.Episodios.Find(id);
 
             var evoluciones = _context.Evoluciones.Where(x => x.EpisodioId == episodio.Id);
 
-            ViewData["EpisodioId"] = id;
+            var hca = _context.HistoriasClinicas.Find(historiaClinicaId);
 
-            return View(evoluciones);
-        }
+            int pacienteId = hca.PacienteId;
 
+            TempData["EpisodioId"] = id;
 
+            TempData["historiaId"] = historiaClinicaId;
+            TempData["PacienteId"] = pacienteId;
+                return View(evoluciones);
+            }
     }
 }

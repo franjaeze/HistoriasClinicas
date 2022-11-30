@@ -93,6 +93,8 @@ namespace Historias_Clinicas.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,PersonaId,Calle,Altura,Piso,Departamento,Localidad")] Direccion direccion)
         {
+            
+            
             if (id != direccion.Id)
             {
                 return NotFound();
@@ -102,8 +104,22 @@ namespace Historias_Clinicas.Controllers
             {
                 try
                 {
-                    _context.Update(direccion);
+                    var direccionEnDb = _context.Direcciones.FirstOrDefault(d => d.Id == id);
+
+                    if (direccionEnDb == null)
+                    {
+                        return NotFound();
+
+                    }
+
+                    direccionEnDb.Calle = direccion.Calle;
+                    direccionEnDb.Altura = direccion.Altura;
+                    direccionEnDb.Piso = direccion.Piso;
+                    direccionEnDb.Departamento = direccion.Departamento;
+                    direccionEnDb.Localidad = direccion.Localidad;
+
                     await _context.SaveChangesAsync();
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -116,7 +132,19 @@ namespace Historias_Clinicas.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                if(User.IsInRole("Empleado"))
+                {
+                    return RedirectToAction("MenuEmpleado", "Empleados");
+                }
+                if(User.IsInRole("Paciente"))
+                {
+                    return RedirectToAction("MenuPaciente", "Pacientes");
+                }
+                if (User.IsInRole("Medico"))
+                {
+                    return RedirectToAction("MenuMedico", "Medicos");
+                }
+
             }
             return View(direccion);
         }

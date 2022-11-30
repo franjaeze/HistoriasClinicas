@@ -103,6 +103,17 @@
 </div>
 <div class="divBoton">
 
-    <a class = "boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> 
-    <a class = "boton" asp-action="MenuPaciente">Volver</a>
+    
+    @if (User.IsInRole("Medico"))
+    {
+        <a type="button" class="btn btn-secondary" asp-action="ListarPacientes" asp-controller="Medicos">Volver</a>}
+    @if (User.IsInRole("Paciente"))
+    {
+        <a type="button" class="btn btn-secondary" asp-action="MenuPaciente">Volver</a>
+    }
+    @if (User.IsInRole("Empleado"))
+    {
+<a class="boton" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="Index" asp-controller="Pacientes" >Volver</a>
+    }
 </div>

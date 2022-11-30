@@ -6,33 +6,28 @@
 
 
 <header>
-    <h1>Episodio</h1>
-    <h3> Listado de Evoluciones</h3>
-    <p></p>
-    <p></p>
-    <p style="background-color: white; color: black; font-weight: bold; font-size:larger" align="left"> Numero de Episodio : @ViewData["EpisodioId"] </p>
+    <h1>Evoluciones</h1>
+    <br />
+    <h3>Listado de Evoluciones cargadas para el Episodio  @TempData["EpisodioId"] </h3>
+    <br />
+    <br />
 </header>
 
 @if (User.IsInRole("Medico"))
-
 {
     <p align="right">
-        <a class="btn btn-link justify-content-md-end mb-3" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@ViewData["EpisodioId"]">
+        <a type="button" class="botonAgregar" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@TempData["EpisodioId"]">
             Agregar Evolucion
         </a>
 
     </p>
 }
-
-
+<br />
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FechaYHoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MedicoId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EstadoAbierto)
@@ -51,33 +46,45 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
                 </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.MedicoId)
-                </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.EstadoAbierto)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
                 </td>
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
                 </td>
                 <td>
+                    <a class="botonTablas" asp-action="Details" asp-route-Id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Detalles</a>
+
                     @if (User.IsInRole("Medico"))
                     {
+                        <a class="botonTablas" asp-action="Edit" asp-route-Id="@item.Id">Editar</a>
+                        @if (item.EstadoAbierto)
+                        {
+                            <a class="botonTablas" asp-action="Cerrar" asp-route-Id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Cerrar </a>
+                        }
+                        else
+                        {
+                            <a class="botonTablas" asp-action="Create" asp-controller="Notas" asp-route-Id="@item.Id">Agregar Nota</a>
 
+                        }
+                    }
 
-                        <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="botonTablas" asp-action="Cerrar" asp-route-id="@item.Id">Cerrar </a>
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        @if (!item.EstadoAbierto)
+                        {
+                            <a class="botonTablas" asp-action="Create" asp-controller="Notas" asp-route-Id="@item.Id">Agregar Nota</a>
+                        }
 
                     }
-                    <a class="botonTablas" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-id="@item.Id">Notas</a>
-                    <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
 
+                    <a class="botonTablas" asp-action="NotasPorEvolucion" asp-controller="Notas" asp-route-Id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaId"]">Notas</a>
                 </td>
             </tr>
         }
@@ -85,21 +92,9 @@
 
     </tbody>
 </table>
-@if (User.IsInRole("Empleado"))
-{
-    <div>
-        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
-    </div>
-}
-@if (User.IsInRole("Medico"))
-{
-    <div>
-        <a align="right" asp-action="Index" asp-controller="Pacientes">Cancelar</a>
-    </div>
-}
-@if (User.IsInRole("Paciente"))
-{
-    <div>
-        <a align="right" asp-action="MenuPaciente" asp-controller="Pacientes">Volver</a>
-    </div>
-}
+<br/>
+
+<div>
+
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-Id="@TempData["PacienteId"]">Volver</a>
+</div>

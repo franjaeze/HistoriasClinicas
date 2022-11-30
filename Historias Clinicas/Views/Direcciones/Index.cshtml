@@ -56,9 +56,9 @@
                     @if (User.IsInRole("Empleado"))
                     {
                         <div>
-                            <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                            <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                            <aclass ="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</aclass>
+                            <a class="botonTablas" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                            <a class ="botonTablas" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
                         </div>
                     }
            
@@ -69,4 +69,4 @@
     </tbody>
 </table>
 
- <a class="boton" asp-action="Home" asp-controller="HomeController">Volver</a>
+ <a class="boton" asp-action="Index" asp-controller="Home">Volver</a>

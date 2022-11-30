@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Medico>
+
+<header>
+    <h1>Búsqueda</h1>
+    <h3> Medicos que coinciden con la búsqueda </h3>
+
+    <p></p>
+    <p></p>
+</header>
+
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Especialidad</th>
+                <th>Matricula</th>
+                <th>Correo electronico</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Medico medico in Model)
+            {
+                <tr>
+                    <td>
+                        @medico.Apellido
+                    </td>
+                    <td>
+                        @medico.Nombre
+                    </td>
+                    <td>
+                        @medico.SegundoNombre
+                    </td>
+                    <td>
+                        @medico.Especialidad
+                    </td>
+                    <td>
+                        @medico.MatriculaNacional
+                    </td>
+                    <td>
+                        @medico.Email
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (User.IsInRole("Empleado"))
+{
+    <div>
+        <a type="boton" class="btn btn-secondary align-content-end" asp-action="Index" asp-controller="Medicos">Volver</a>
+    </div>
+}
+@if (User.IsInRole("Paciente"))
+{
+    <section>
+        <a type="button" class="btn btn-secondary align-content-end" asp-action="ListarMedicos" asp-controller="Pacientes">Cancelar</a>
+    </section>
+}

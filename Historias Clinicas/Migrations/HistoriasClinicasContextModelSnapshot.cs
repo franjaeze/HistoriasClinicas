@@ -61,9 +61,6 @@ namespace Historias_Clinicas.Migrations
                     b.Property<int>("EpicrisisId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Especialidad")
-                        .HasColumnType("int");
-
                     b.Property<string>("Recomendacion")
                         .HasColumnType("nvarchar(max)")
                         .HasMaxLength(10000);
@@ -167,9 +164,6 @@ namespace Historias_Clinicas.Migrations
 
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("Internacion")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Motivo")
                         .IsRequired()
@@ -599,7 +593,7 @@ namespace Historias_Clinicas.Migrations
             modelBuilder.Entity("Historias_Clinicas.Models.Direccion", b =>
                 {
                     b.HasOne("Historias_Clinicas.Models.Persona", null)
-                        .WithOne("direccion")
+                        .WithOne("Direccion")
                         .HasForeignKey("Historias_Clinicas.Models.Direccion", "PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

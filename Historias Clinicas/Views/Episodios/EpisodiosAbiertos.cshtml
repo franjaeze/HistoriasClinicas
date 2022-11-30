@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Historias_Clinicas.Models.Episodio>
+
+@{
+    ViewData["Title"] = "EpisodiosAbiertos";
+}
+
+<h1> Listado de Episodios Abiertos</h1>
+<br />
+<h3>Listado de Episodios abiertos dentro de la Historia Clinica @TempData["historiaClinicaId"] </h3>
+<br />
+<br />
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-left">
+                Episodio
+            </th>
+            <th class="text-left">
+                Abierto
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.FechaYHoraInicio)
+            </th>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.FechaYHoraCierre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.EstadoAbierto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidad)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+                </td>
+                <td class="text-left">
+
+                    @if (item.EstadoAbierto == true)
+                    {
+                        <p>Aun en curso</p>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
+
+
+                    }
+                </td>
+                <td class="text-left">
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div>
+                            <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Detalle</a>
+                            <a class="botonTablas" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-Id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Evoluciones</a>
+
+                        </div>
+                    }
+                    @if (User.IsInRole("Medico"))
+                    {
+                        <div>
+                            <a class="botonTablas" asp-action="Details" asp-route-id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Detalle</a>
+                            <a class="botonTablas" style="margin-left: 20px" asp-action="EvolucionesPorEpisodio" asp-controller="Evoluciones" asp-route-Id="@item.Id" asp-route-historiaClinicaId="@TempData["historiaClinicaId"]">Evoluciones</a>
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a type="button" class="btn btn-secondary" style="margin-left: 20px" asp-action="HistoriaClinicaDePaciente" asp-controller="HistoriaClinicas" asp-route-Id="@TempData["PacienteId"]">Salir</a>
+</div>
+

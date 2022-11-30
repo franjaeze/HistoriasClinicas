@@ -58,7 +58,7 @@ namespace Historias_Clinicas.Controllers
                     {
                         await _signinManager.SignInAsync(pacienteACrear, isPersistent: false);
 
-                        return RedirectToAction("Edit", "Pacientes", new { id = pacienteACrear.Id });
+                        return RedirectToAction("CompletarRegistro", "Pacientes", new { id = pacienteACrear.Id });
                     }
                     else
                     {

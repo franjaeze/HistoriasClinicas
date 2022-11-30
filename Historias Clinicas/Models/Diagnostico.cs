@@ -24,13 +24,9 @@ namespace Historias_Clinicas.Models
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
         public String Descripcion {get; set; }
 
-
-        
+      
         [DataType(DataType.Text)]
         [StringLength(10000, MinimumLength = 5, ErrorMessage = MensajeError.MinMaxString)]
         public String Recomendacion { get; set; }
-
-
-        public Especialidad Especialidad { get; set; }
     }
 }
