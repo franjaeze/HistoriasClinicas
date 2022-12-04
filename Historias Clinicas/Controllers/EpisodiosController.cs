@@ -53,9 +53,9 @@ namespace Historias_Clinicas.Controllers
             var empleado = _context.Empleados.Find(episodio.EmpleadoId);
             var historiaClinica = _context.HistoriasClinicas.Find(historiaClinicaId);
 
-
             TempData["pacienteId"] = historiaClinica.PacienteId;
             TempData["nombreEmpleado"] = empleado.NombreCompleto;
+
             return View(episodio);
         }
 

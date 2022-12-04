@@ -243,14 +243,18 @@ namespace Historias_Clinicas.Controllers
                 _context.HistoriasClinicas.Add(HistoriaClinica1);
                 await _context.SaveChangesAsync();
 
+                DateTime fechaInicio = new DateTime(2022, 10, 1, 8, 30, 52);
+                DateTime fechaAlta = new DateTime(2022, 11, 1, 8, 30, 52);
+                DateTime fechaCierre = new DateTime(2022, 10, 2, 8, 30, 52);
+
                 Episodio Episodio1 = new Episodio()
                 {
                     Descripcion = "El paciente se encontraba andando en skate",
                     Motivo = "Traumatismo en pierna izquierda",
-                    FechaYHoraInicio = DateTime.Today,
-                    FechaYHoraAlta = DateTime.Today,
-                    FechaYHoraCierre = DateTime.Today,
-                    EstadoAbierto = true,
+                    FechaYHoraInicio = fechaInicio,
+                    FechaYHoraAlta = fechaAlta,
+                    FechaYHoraCierre = fechaCierre,
+                    EstadoAbierto = false,
                     Especialidad = Especialidad.Enfermeria,
                     HistoriaClinicaId = HistoriaClinica1.Id,
                     EmpleadoId = 3
@@ -264,12 +268,12 @@ namespace Historias_Clinicas.Controllers
                 {
                     EpisodioId = Episodio1.Id,
                     MedicoId = 5,
-                    EstadoAbierto = true,
+                    EstadoAbierto = false,
                     DescripcionAtencion = "Continuar con Kinesiologia",
                     Notas = new List<Nota>(),
-                    FechaYHoraInicio = DateTime.Today,
-                    FechaYHoraAlta = DateTime.Today,
-                    FechaYHoraCierre = DateTime.Today
+                    FechaYHoraInicio = fechaInicio,
+                    FechaYHoraAlta = fechaAlta,
+                    FechaYHoraCierre = fechaCierre
                 };
 
                 _context.Evoluciones.Add(Evolucion1);
@@ -279,14 +283,32 @@ namespace Historias_Clinicas.Controllers
                 {
                     EvolucionId = Evolucion1.Id,
                     Mensaje = "Subir dosis pastillas",
-                    FechaYHora = DateTime.Today,
+                    FechaYHora = fechaCierre,
                     EmpleadoId = 3
                 };
 
                 _context.Notas.Add(Nota1);
                 await _context.SaveChangesAsync();
 
+                Epicrisis Epicrisis1 = new Epicrisis()
+                {
+                    MedicoId = 5,
+                    EpisodioId = Episodio1.Id,
+                    FechaYHora = fechaCierre
+                };
 
+                _context.Epicrisis.Add(Epicrisis1);
+                await _context.SaveChangesAsync();
+
+                Diagnostico Diagnostico1 = new Diagnostico()
+                {
+                    EpicrisisId = Epicrisis1.Id,
+                    Descripcion = "Se encuentra en buen estado",
+                    Recomendacion = "Nada de deportes por un mes"
+                };
+
+                _context.Diagnosticos.Add(Diagnostico1);
+                await _context.SaveChangesAsync();
 
                 Paciente Paciente2 = new Paciente()
                 {
@@ -332,10 +354,10 @@ namespace Historias_Clinicas.Controllers
                 {
                     Descripcion = "El paciente se encontraba accidentado con fuego",
                     Motivo = "Quemaduras",
-                    FechaYHoraInicio = DateTime.Today,
-                    FechaYHoraAlta = DateTime.Today,
-                    FechaYHoraCierre = DateTime.Today,
-                    EstadoAbierto = true,
+                    FechaYHoraInicio = fechaInicio,
+                    FechaYHoraAlta = fechaAlta,
+                    FechaYHoraCierre = fechaCierre,
+                    EstadoAbierto = false,
                     Especialidad = Especialidad.Dermatologia,
                     HistoriaClinicaId = HistoriaClinica2.Id,
                     EmpleadoId = 4
@@ -348,12 +370,12 @@ namespace Historias_Clinicas.Controllers
                 {
                     EpisodioId = Episodio2.Id,
                     MedicoId = 6,
-                    EstadoAbierto = true,
+                    EstadoAbierto = false,
                     DescripcionAtencion = "Las marcas estan achicandose",
                     Notas = new List<Nota>(),
-                    FechaYHoraInicio = DateTime.Today,
-                    FechaYHoraAlta = DateTime.Today,
-                    FechaYHoraCierre = DateTime.Today
+                    FechaYHoraInicio = fechaInicio,
+                    FechaYHoraAlta = fechaAlta,
+                    FechaYHoraCierre = fechaCierre
                 };
 
                 _context.Evoluciones.Add(Evolucion2);
@@ -364,11 +386,31 @@ namespace Historias_Clinicas.Controllers
                 {
                     EvolucionId = Evolucion2.Id,
                     Mensaje = "Probar otra marca crema",
-                    FechaYHora = DateTime.Today,
+                    FechaYHora = fechaCierre,
                     EmpleadoId = 4
                 };
 
                 _context.Notas.Add(Nota2);
+                await _context.SaveChangesAsync();
+
+                Epicrisis Epicrisis2 = new Epicrisis()
+                {
+                    MedicoId = 6,
+                    EpisodioId = Episodio2.Id,
+                    FechaYHora = fechaCierre
+                };
+
+                _context.Epicrisis.Add(Epicrisis2);
+                await _context.SaveChangesAsync();
+
+                Diagnostico Diagnostico2 = new Diagnostico()
+                {
+                    EpicrisisId = Epicrisis2.Id,
+                    Descripcion = "Su piel se recupero totalmente",
+                    Recomendacion = "Cuidarse de futuras quemaduras"
+                };
+
+                _context.Diagnosticos.Add(Diagnostico2);
                 await _context.SaveChangesAsync();
             }
         }

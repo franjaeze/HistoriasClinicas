@@ -55,9 +55,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
                 </td>
+
+                @if(item.EstadoAbierto == true){
+                <td>
+                    Aun en curso
+                </td>
+                } else {           
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
                 </td>
+                }
+
                 <td>
                     <a class="botonTablas" asp-action="Details" asp-route-Id="@item.Id" asp-route-paciente="@TempData["historiaId"]">Detalles</a>
 
@@ -92,7 +100,7 @@
 
     </tbody>
 </table>
-<br/>
+<br />
 
 <div>
 
