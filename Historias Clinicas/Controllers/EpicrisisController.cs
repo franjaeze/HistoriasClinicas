@@ -57,7 +57,9 @@ namespace Historias_Clinicas.Controllers
                 else
                 {
                     index++;
-                    epicrisisActual = _context.Epicrisis.Find(index);
+                    epicrisisActual = _context.Epicrisis
+                        .Include(ep => ep.Diagnostico)
+                        .FirstOrDefault(ep => ep.Id == index);
                 }              
             }
 
