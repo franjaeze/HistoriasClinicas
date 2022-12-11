@@ -21,30 +21,35 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <input type="text" class="form-control search-input" name="apellido" placeholder="Buscar por Apellido" />
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                        <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="margin-left: 10px">
                             <button class="btn btn-info search-button" type="submit">
                                 Buscar
-                            </button>                        
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-
-        @*<form method="get" asp-action="ListarEspecialidad" asp-controller="Medicos" novalidate="novalidate">
+        <br/>
+        <form method="get" asp-action="ListarEspecialidad" asp-controller="Medicos" novalidate="novalidate">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="control-label"></label>
-                        <select class="form-control" asp-items="@Html.GetEnumSelectList<Especialidad>()">
-                        </select>
-                        <button class="btn btn-info search-button" type="submit">
-                            Buscar
-                        </button>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-input" name="especialidad" asp-items="@Html.GetEnumSelectList<Especialidad>()">
+                                Especialidad
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-12 p-0" style="margin-left: 10px">
+                            <button class="btn btn-info search-button" type="submit" value="Post data to controller">
+                                Buscar
+                            </button>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </form>*@
+        </form>
     </div>
 </section>
 <br />

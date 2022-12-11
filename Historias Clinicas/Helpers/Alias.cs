@@ -31,6 +31,7 @@ namespace Historias_Clinicas.Helpers
         public const string EpisodioId = "Nro de Episodio";
         public const string DiagnosticoId = "Nro de Diagnostico";
         public const string NotaId = "Nro de Nota";
+        public const string DescripcionAtencion = "Descripcion Atención";
 
     }
 

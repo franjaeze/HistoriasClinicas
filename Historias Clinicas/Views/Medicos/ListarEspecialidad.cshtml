@@ -2,7 +2,7 @@
 
 <header>
     <h1>Búsqueda</h1>
-    <h3> Medicos que coinciden con la búsqueda </h3>
+    <h3> Medicos que coinciden con la especialidad seleccionada </h3>
 
     <p></p>
     <p></p>
@@ -10,7 +10,7 @@
 
 
 <div class="table-responsive">
-    <table class="table table-hover table-striped table-sm">
+    <table class="table">
         <thead>
             <tr>
                 <th>Apellido</th>
@@ -24,26 +24,47 @@
         <tbody>
             @foreach (Medico medico in Model)
             {
-                <tr>
-                    <td>
-                        @medico.Apellido
-                    </td>
-                    <td>
-                        @medico.Nombre
-                    </td>
-                    <td>
-                        @medico.SegundoNombre
-                    </td>
-                    <td>
-                        @medico.Especialidad
-                    </td>
-                    <td>
-                        @medico.MatriculaNacional
-                    </td>
-                    <td>
-                        @medico.Email
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @medico.Apellido
+                </td>
+                <td>
+                    @medico.Nombre
+                </td>
+                <td>
+                    @medico.SegundoNombre
+                </td>
+                <td>
+                    @medico.Especialidad
+                </td>
+                <td>
+                    @medico.MatriculaNacional
+                </td>
+                <td>
+                    @medico.Email
+                </td>
+                <td>
+                    @if (User.IsInRole("Empleado"))
+                    {
+                        <div>
+                            <a class="botonTablas" asp-action="Edit" asp-route-id="@medico.Id">Editar</a>
+                            <a class="botonTablas" asp-action="Details" asp-route-id="@medico.Id">Detalle</a>
+                            <a class="botonTablas" asp-action="Delete" asp-route-id="@medico.Id">Eliminar</a>
+                        </div>
+
+                    }
+
+
+                    @if (User.IsInRole("Paciente"))
+                    {
+                        <div>
+                            <a class="botonTablas" asp-action="SacarTurno" asp-controller="Pacientes" asp-route-id="@medico.Id">Solicitar turno</a>
+
+                        </div>
+
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>
