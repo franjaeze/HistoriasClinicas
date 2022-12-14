@@ -274,6 +274,7 @@ namespace Historias_Clinicas.Controllers
             int pacienteId = hca.PacienteId;
 
             TempData["EpisodioId"] = id;
+            ViewBag.estadoEpisodio = episodio.EstadoAbierto;
 
             TempData["historiaId"] = historiaClinicaId;
             TempData["PacienteId"] = pacienteId;

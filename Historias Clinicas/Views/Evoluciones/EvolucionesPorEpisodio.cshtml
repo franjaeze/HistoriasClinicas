@@ -15,12 +15,17 @@
 
 @if (User.IsInRole("Medico"))
 {
-    <p align="right">
-        <a type="button" class="botonAgregar" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@TempData["EpisodioId"]">
-            Agregar Evolucion
-        </a>
+    var estado = @ViewBag.estadoEpisodio;
 
-    </p>
+    if (estado)
+    {
+        <p align="right">
+            <a type="button" class="botonAgregar" asp-action="Create" asp-controller="Evoluciones" asp-route-Id="@TempData["EpisodioId"]">
+                Agregar Evolucion
+            </a>
+
+        </p>
+    }
 }
 <br />
 <table class="table">
@@ -92,7 +97,7 @@
 
     </tbody>
 </table>
-<br/>
+<br />
 
 <div>
 

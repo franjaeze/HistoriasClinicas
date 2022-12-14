@@ -49,6 +49,26 @@ namespace Historias_Clinicas.Controllers
         {
             ViewBag.PersonaId = id; // Puede ser persona,empleado,etc
 
+            var medico = _context.Medicos.Find(id);
+
+            if (medico == null)
+            {
+                var paciente = _context.Pacientes.Find(id);
+
+                if (paciente != null)
+                {
+                    ViewData["esPaciente"] = paciente;
+                }
+                else
+                {
+                    var empleado = _context.Empleados.Find(id);
+                    ViewData["esEmpleado"] = empleado;
+                }
+            }
+            else
+            {
+                ViewData["esMedico"] = medico;
+            }
             return View();
         }
 
